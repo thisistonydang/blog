@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  ignorePatterns: ["*.cjs"],
   env: {
     browser: true,
     node: true,
