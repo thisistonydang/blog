@@ -1,5 +1,7 @@
 import { defineConfig } from "astro/config";
 
+import svelte from "@astrojs/svelte";
+
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 
@@ -9,5 +11,5 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  integrations: [mdx(), tailwind()],
+  integrations: [svelte(), mdx(), tailwind()],
 });
