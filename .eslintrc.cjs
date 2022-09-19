@@ -20,5 +20,10 @@ module.exports = {
     "plugin:astro/jsx-a11y-recommended",
     "prettier",
   ],
-  overrides: [{ files: ["*.astro"], parser: "astro-eslint-parser" }],
+  plugins: ["svelte3"],
+  settings: { "svelte3/typescript": () => require("typescript") },
+  overrides: [
+    { files: ["*.astro"], parser: "astro-eslint-parser" },
+    { files: ["*.svelte"], processor: "svelte3/svelte3" },
+  ],
 };
