@@ -1,6 +1,6 @@
 {
   "name": "@blog/root",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "find ./ -name node_modules -type d -exec rm -rf {} +"
   }
 }
