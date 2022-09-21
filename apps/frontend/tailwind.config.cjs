@@ -30,10 +30,6 @@ module.exports = {
       keyframes: {
         blink: { "0%": { opacity: 0 } },
         "fade-in": { from: { opacity: 0 }, to: { opacity: 1 } },
-        rotate: {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
-        },
         shake: {
           "10%": { transform: "translate3d(-1px, 0, 0)" },
           "20%": { transform: "translate3d(2px, 0, 0)" },
@@ -56,7 +52,6 @@ module.exports = {
       animation: {
         blink: "blink 1s steps(2, start) infinite",
         "fade-in": "fade-in 500ms",
-        rotate: "rotate 2s linear infinite",
         shake: "shake 0.82s cubic-bezier(.36,.07,.19,.97) both",
         wave: "wave 2s linear infinite",
       },
