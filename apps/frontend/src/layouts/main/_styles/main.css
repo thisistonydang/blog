@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 255 255 255; /* white #ffffff rgb(255, 255, 255) */
+    --surface: 228 228 231; /* zinc-200 #e4e4e7 rgb(228, 228, 231) */
+    --heading: 17 24 39; /* prose-headings #111827 rgb(17, 24, 39) */
+    --text: 55 65 81; /* prose-p #374151 rgb(55, 65, 81) */
+    --accent: 22 78 99; /* cyan-900 #164e63 rgb(22, 78, 99)*/
+    --error: 127 29 29; /* red-900 #7f1d1d rgb(127, 29, 29) */
+
+    --scrollbar-track: rgb(255, 255, 255);
+    --scrollbar-thumb: rgb(55, 65, 81, 0.75);
+    --scrollbar-thumb-hover: rgb(55, 65, 81);
+  }
+
+  :root.dark {
+    --bg: 24 24 27; /* zinc-900 #18181b rgb(24, 24, 27) */
+    --surface: 63 63 70; /* zinc-700 #3f3f46 rgb(63, 63, 70) */
+    --heading: 255 255 255; /* white #ffffff rgb(255, 255, 255) */
+    --text: 209 213 219; /* prose-p #d1d5db rgb(209, 213, 219) */
+    --accent: 103 232 249; /* cyan-300 #67e8f9 rgb(103, 232, 249)*/
+    --error: 254 202 202; /* red-200 #fecaca rgb(254, 202, 202) */
+
+    --scrollbar-track: rgb(24, 24, 27);
+    --scrollbar-thumb: rgb(209, 213, 219, 0.75);
+    --scrollbar-thumb-hover: rgb(209, 213, 219);
+  }
+
+  :root::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  :root::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track);
+  }
+
+  :root::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+  }
+
+  :root::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+
+  /* Firefox scrollbar styling. */
+  :root {
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+}
