@@ -35,17 +35,13 @@ module.exports = {
           "30%, 50%, 70%": { transform: "translate3d(-4px, 0, 0)" },
           "40%, 60%": { transform: "translate3d(4px, 0, 0)" },
         },
-        wave: {
-          "0%": { transform: "rotate(0deg)" },
-          "25%": { transform: "rotate(-15deg)" },
-          "50%": { transform: "rotate(0deg)" },
-          "75%": { transform: "rotate(15deg)" },
-          "100%": { transform: "rotate(0deg)" },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-15deg)" },
+          "50%": { transform: "rotate(15deg)" },
         },
       },
       animation: {
         shake: "shake 0.8s",
-        wave: "wave 2s linear infinite",
       },
     },
   },
