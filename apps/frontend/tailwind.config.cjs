@@ -44,7 +44,6 @@ module.exports = {
         },
       },
       animation: {
-        "fade-in": "fade-in 500ms",
         shake: "shake 0.8s",
         wave: "wave 2s linear infinite",
       },
