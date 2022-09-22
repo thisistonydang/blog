@@ -1,0 +1,12 @@
+---
+import DarkModeToggle from "./DarkModeToggle.svelte";
+import HamburgerButton from "./HamburgerButton.svelte";
+import SiteNav from "./SiteNav.astro";
+---
+
+<header class="relative mb-10 flex text-heading">
+  <HamburgerButton client:visible />
+  <a class="text-xl ml-2.5 sm:ml-0" href="/">Tony Dang</a>
+  <SiteNav />
+  <DarkModeToggle client:load />
+</header>
