@@ -1,0 +1,24 @@
+<script lang="ts">
+  let cache: string;
+
+  const handle_keydown = (e: KeyboardEvent): void => {
+    if (document.activeElement instanceof HTMLInputElement) return;
+    if (document.activeElement instanceof HTMLSelectElement) return;
+    if (document.activeElement instanceof HTMLTextAreaElement) return;
+    if (e.key === "g" && cache === "g") {
+      window.scrollTo(0, 0);
+    } else if (e.key === "G") {
+      window.scrollTo(0, document.body.scrollHeight);
+    } else if (e.key === "j") {
+      window.scrollBy(0, 50);
+    } else if (e.key === "k") {
+      window.scrollBy(0, -50);
+    } else {
+      cache = e.key;
+      return;
+    }
+    cache = "";
+  };
+</script>
+
+<svelte:window on:keydown={handle_keydown} />
