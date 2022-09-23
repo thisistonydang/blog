@@ -1,0 +1,24 @@
+---
+import { SEO } from "astro-seo";
+
+import DarkModeScript from "./DarkModeScript.astro";
+import Favicon from "./Favicon.astro";
+import VimModeScript from "./VimModeScript.svelte";
+
+const { frontmatter } = Astro.props;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <Favicon />
+  <SEO
+    title={frontmatter.title ? `${frontmatter.title} | Tony Dang` : "Tony Dang"}
+    description={frontmatter.description
+      ? frontmatter.description
+      : "Tony Dang's Blog"}
+    noindex={frontmatter.noindex}
+  />
+  <DarkModeScript />
+  <VimModeScript client:idle />
+</head>
