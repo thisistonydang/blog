@@ -37,7 +37,7 @@
 <button
   class="
     absolute
-    top-0 right-0
+    top-1.5 right-0
     w-12 h-[26px]
     border border-heading
     cursor-pointer
