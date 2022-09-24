@@ -4,7 +4,7 @@
   export let width: string | undefined = undefined;
   export let loading = false;
   export let onclick: string | undefined = undefined;
-  export let handleClick: (() => void) | undefined = undefined;
+  export let handle_click: (() => void) | undefined = undefined;
 
   let button: HTMLButtonElement;
 
@@ -19,7 +19,7 @@
   bind:this={button}
   disabled={loading}
   {onclick}
-  on:click={handleClick}
+  on:click={handle_click}
   style:width
   class="
     bg-heading
