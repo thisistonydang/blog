@@ -1,7 +1,7 @@
-import { getErrorMessage } from "./get-error-message";
+import { get_error_message } from "./get-error-message";
 import { describe, expect, it } from "vitest";
 
-describe("getErrorMessage", () => {
+describe("get_error_message", () => {
   const promise = new Promise(() => {
     setTimeout(() => null);
   });
@@ -18,16 +18,16 @@ describe("getErrorMessage", () => {
     it("converts any thrown error into a string", () => {
       // GIVEN Errors of unknown type.
 
-      // WHEN getErrorMessage is called with thrown error.
-      let actualMessage = "";
+      // WHEN get_error_message is called with thrown error.
+      let actual_message = "";
       try {
         throw error;
       } catch (e: unknown) {
-        actualMessage = getErrorMessage(e);
+        actual_message = get_error_message(e);
       }
 
       // THEN Error is converted to a string.
-      expect(actualMessage).to.equal(`Error: ${expectedMessage}`);
+      expect(actual_message).to.equal(`Error: ${expectedMessage}`);
     });
   });
 });
