@@ -8,9 +8,9 @@
 
   let button: HTMLButtonElement;
 
-  // Set button width based on slotted text to prevent change in width when
-  // loading spinner shows.
   onMount((): void => {
+    // Set button width based on slotted text to prevent change in width when
+    // loading spinner shows.
     if (!width) width = `${button.offsetWidth}px`;
   });
 </script>
