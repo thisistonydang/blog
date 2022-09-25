@@ -11,5 +11,9 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  integrations: [svelte(), mdx(), tailwind()],
+  integrations: [
+    svelte(),
+    mdx(),
+    tailwind({ config: { applyBaseStyles: false } }),
+  ],
 });
