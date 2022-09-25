@@ -7,6 +7,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@tonydangblog/error-handling": "workspace:*",
     "astro": "^1.2.6"
   }
 }
