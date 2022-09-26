@@ -3,6 +3,8 @@ import { get_error_message } from "@tonydangblog/error-handling";
 
 type Post = ({ request }: { request: Request }) => Promise<Response>;
 export const post: Post = async ({ request }) => {
+  const ACCESS_CONTROL_ALLOW_ORIGIN = import.meta.env
+    .ACCESS_CONTROL_ALLOW_ORIGIN;
   const { name, email } = await request.json();
 
   const SubscriptionForm = z.object({
@@ -23,11 +25,19 @@ export const post: Post = async ({ request }) => {
       const issue_name = issue.path[0];
       if (issue_name) body[issue_name] = issue.message;
     });
-    return new Response(JSON.stringify(body));
+    return new Response(JSON.stringify(body), {
+      headers: {
+        "Access-Control-Allow-Origin": ACCESS_CONTROL_ALLOW_ORIGIN,
+      },
+    });
   }
 
   const body = await create_contact(form.data.name, form.data.email);
-  return new Response(JSON.stringify(body));
+  return new Response(JSON.stringify(body), {
+    headers: {
+      "Access-Control-Allow-Origin": ACCESS_CONTROL_ALLOW_ORIGIN,
+    },
+  });
 };
 
 /** Create contact via SendFox API. */
