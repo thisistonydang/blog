@@ -38,9 +38,11 @@ importers:
     specifiers:
       '@tonydangblog/error-handling': workspace:*
       astro: ^1.2.6
+      zod: ^3.19.1
     dependencies:
       '@tonydangblog/error-handling': link:../../packages/error-handling
       astro: 1.3.0
+      zod: 3.19.1
 
   apps/frontend:
     specifiers:
