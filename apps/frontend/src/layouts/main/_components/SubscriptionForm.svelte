@@ -1,0 +1,120 @@
+<script lang="ts">
+  import { fly } from "svelte/transition";
+
+  import { get_error_message } from "@tonydangblog/error-handling";
+
+  import Button from "@lib/components/Button.svelte";
+  import TextField from "@lib/components/TextField.svelte";
+
+  interface Data {
+    name?: string;
+    email?: string;
+    unsubscribed?: string;
+    confirmed?: string;
+    success?: string;
+    error?: string;
+  }
+
+  let name = "";
+  let name_is_invalid = false;
+  let name_helper_text = "";
+  let email = "";
+  let email_is_invalid = false;
+  let email_helper_text = "";
+  let disabled = false;
+  let message = "";
+
+  const success_handler = (data: Data): void => {
+    if (data.name) {
+      name_is_invalid = true;
+      name_helper_text = data.name;
+    }
+
+    if (data.email) {
+      email_is_invalid = true;
+      email_helper_text = data.email;
+    }
+
+    if (data.unsubscribed) {
+      message = data.unsubscribed;
+    }
+
+    if (data.confirmed || data.success) {
+      name = "";
+      email = "";
+      message = (data.confirmed ?? data.success) as string;
+    }
+
+    if (data.error) {
+      message = data.error;
+    }
+  };
+
+  const handle_submit = async (): Promise<void> => {
+    disabled = true;
+    name_is_invalid = false;
+    name_helper_text = "";
+    email_is_invalid = false;
+    email_helper_text = "";
+    message = "";
+    try {
+      const PUBLIC_BACKEND_URL = import.meta.env.PUBLIC_BACKEND_URL;
+      const res = await fetch(`${PUBLIC_BACKEND_URL}/api/subscribe`, {
+        method: "POST",
+        body: JSON.stringify({ name, email }),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+      if (res.status === 200) {
+        const data = await res.json();
+        success_handler(data);
+        return;
+      }
+      throw new Error("Whoops, something went wrong...");
+    } catch (error: unknown) {
+      message = get_error_message(error);
+    } finally {
+      disabled = false;
+    }
+  };
+</script>
+
+<form id="subscription-form" on:submit|preventDefault={handle_submit}>
+  <p class="text-sm">GET BLOG UPDATES &amp; ANNOUNCEMENTS</p>
+
+  <fieldset {disabled} class="flex items-end">
+    <TextField
+      label="name*"
+      name="name"
+      bind:value={name}
+      autocomplete="name"
+      required
+      width={"33vw"}
+      invalid={name_is_invalid}
+      helper_text={name_helper_text}
+    />
+
+    <span class="w-1.5" />
+
+    <TextField
+      label="email*"
+      type="email"
+      name="email"
+      bind:value={email}
+      autocomplete="email"
+      required
+      width={"33vw"}
+      invalid={email_is_invalid}
+      helper_text={email_helper_text}
+    />
+
+    <span class="w-1.5" />
+
+    <Button loading={disabled}>SUBMIT</Button>
+  </fieldset>
+</form>
+
+{#if message}
+  <p transition:fly={{ y: -20 }} class="p-4 bg-surface">{message}</p>
+{/if}
