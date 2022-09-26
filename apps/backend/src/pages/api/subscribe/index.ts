@@ -61,6 +61,12 @@ const create_contact = async (
         a confirmation sent to your inbox to verify your email.`,
       };
     }
+    if (res.status === 400) {
+      const data = await res.json();
+      if (data.email[0] === "The email must be a valid email address.") {
+        return { email: "Invalid email" };
+      }
+    }
     throw new Error("Whoops, something went wrong...");
   } catch (error: unknown) {
     return { error: get_error_message(error) };
