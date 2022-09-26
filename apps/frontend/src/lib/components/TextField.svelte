@@ -8,7 +8,7 @@
   export let step: number | undefined = undefined;
   export let name: string | undefined = undefined;
   export let value: string | number = "";
-  export let autocomplete: string = "off";
+  export let autocomplete = "off";
   export let required = false;
   export let max_width = "219px";
   export let width = "45vw";
