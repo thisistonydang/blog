@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { fly } from "svelte/transition";
 
   const UNHATCHED = "&#x1F95A;";
@@ -6,6 +7,7 @@
 
   let checked = false;
   let egg = UNHATCHED;
+  let shake = false;
 
   const handle_keydown = (e: KeyboardEvent): void => {
     if (e.key === "Enter" || e.key === " ") checked = !checked;
@@ -15,6 +17,8 @@
   else egg = UNHATCHED;
 
   $: message_is_visible = egg === HATCHED;
+
+  onMount(() => setInterval(() => (shake = !shake), 2000));
 </script>
 
 <input id="easter-egg" type="checkbox" class="peer hidden" bind:checked />
@@ -23,10 +27,10 @@
   class="
     relative
     cursor-help
-    hover:animate-[wiggle_0.5s]
     peer-checked:cursor-pointer
     peer-checked:animate-shake
   "
+  class:animate-[wiggle_0.5s]={shake}
   tabindex="0"
   aria-label="toggling this checkbox shows a random easter egg for fun"
   on:keydown={handle_keydown}
