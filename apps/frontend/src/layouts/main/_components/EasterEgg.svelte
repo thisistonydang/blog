@@ -7,7 +7,7 @@
 
   let checked = false;
   let egg = UNHATCHED;
-  let shake = false;
+  let wiggle = false;
 
   const handle_keydown = (e: KeyboardEvent): void => {
     if (e.key === "Enter" || e.key === " ") checked = !checked;
@@ -18,7 +18,7 @@
 
   $: message_is_visible = egg === HATCHED;
 
-  onMount(() => setInterval(() => (shake = !shake), 2000));
+  onMount(() => setInterval(() => (wiggle = !wiggle), 2000));
 </script>
 
 <input id="easter-egg" type="checkbox" class="peer hidden" bind:checked />
@@ -30,7 +30,7 @@
     peer-checked:cursor-pointer
     peer-checked:animate-shake
   "
-  class:animate-[wiggle_0.5s]={shake}
+  class:animate-[wiggle_0.5s]={wiggle}
   tabindex="0"
   aria-label="toggling this checkbox shows a random easter egg for fun"
   on:keydown={handle_keydown}
