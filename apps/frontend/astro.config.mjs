@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 
 import svelte from "@astrojs/svelte";
 
+import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 
@@ -13,6 +14,7 @@ export default defineConfig({
   },
   integrations: [
     svelte(),
+    image({ logLevel: "debug", serviceEntryPoint: "@astrojs/image/sharp" }),
     mdx(),
     tailwind({ config: { applyBaseStyles: false } }),
   ],
