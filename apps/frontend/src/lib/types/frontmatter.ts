@@ -5,8 +5,8 @@ export interface Frontmatter {
   description: string | null;
   pubDate: string | null;
   tags: string[] | null;
-  draft: boolean;
   noindex: boolean;
+  draft: boolean;
 }
 
 export interface BlogPostFrontmatter extends Frontmatter {
