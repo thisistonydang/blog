@@ -19,7 +19,7 @@
       <a href="https://astro.build">Astro</a>,
       <a href="https://svelte.dev">Svelte</a>,
       <a href="https://tailwindcss.com">Tailwind</a>
-      &amp; &#129483;
+      &amp; <span role="img" aria-label="coffee">🧋</span>
     </p>
   </div>
 </footer>

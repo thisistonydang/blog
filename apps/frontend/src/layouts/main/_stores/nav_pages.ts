@@ -3,5 +3,8 @@ export const nav_pages = [
   { name: "about", path: "/about" },
   { name: "now", path: "/now" },
   { name: "contact", path: "/contact" },
-  { name: "&#129483; buy me a coffee?", path: "/support" },
+  {
+    name: '<span role="img" aria-label="coffee">🧋</span> buy me a coffee?',
+    path: "/support",
+  },
 ];
