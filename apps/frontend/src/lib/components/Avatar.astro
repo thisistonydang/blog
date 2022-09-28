@@ -3,7 +3,7 @@ import { Picture } from "@astrojs/image/components";
 ---
 
 <Picture
-  class="block w-52 h-52 m-auto [&>img]:rounded-full"
+  class="[&>img]:m-auto [&>img]:w-52 [&>img]:h-52 [&>img]:rounded-full"
   src={import("@lib/assets/tony-dang-400px.jpg")}
   alt="Tony typing on a MacBook Pro"
   sizes=""
