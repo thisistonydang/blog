@@ -19,3 +19,6 @@ pnpm-debug.log*
 
 # test coverage
 coverage/
+
+# sandbox route
+sandbox/
