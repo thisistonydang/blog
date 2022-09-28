@@ -5,6 +5,27 @@ title: null
 description: null
 pubDate: null
 tags: null
-draft: false
 noindex: false
+draft: false
 ---
+
+import Avatar from "@lib/components/Avatar.astro";
+import HomeHeading from "./_components/HomeHeading.svelte";
+import MailingListLink from "./_components/MailingListLink.svelte";
+export const __ = undefined;
+
+<Avatar />
+<HomeHeading />
+
+I am a web developer, climber, and calisthenics enthusiast.
+This blog is a space for me to experiment with my current tech stack of choice
+([Astro](https://astro.build/) |
+[Svelte](https://svelte.dev/) |
+[Tailwind](https://tailwindcss.com/) |
+[PostgreSQL](https://www.postgresql.org/))
+as well as share interesting projects I'm working on.
+
+For more about me, check out my [about](/about) and [now](/now) pages.
+For my all my blog posts, head on over to the [posts](/posts) page.
+
+<MailingListLink client:idle />
