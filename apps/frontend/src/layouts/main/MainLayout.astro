@@ -1,9 +1,14 @@
 ---
+import type { Frontmatter } from "@lib/types/frontmatter";
 import "./_styles/main.css";
 import Head from "./_components/Head.astro";
 import Footer from "./_components/Footer.svelte";
 import HamburgerMenu from "./_components/HamburgerMenu.svelte";
 import Header from "./_components/Header.astro";
+
+export interface Props {
+  frontmatter: Frontmatter;
+}
 
 const { frontmatter } = Astro.props;
 ---

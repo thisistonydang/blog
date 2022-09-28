@@ -1,9 +1,15 @@
 ---
 import { SEO } from "astro-seo";
 
+import type { Frontmatter } from "@lib/types/frontmatter";
+
 import DarkModeScript from "./DarkModeScript.astro";
 import Favicon from "./Favicon.astro";
 import VimModeScript from "./VimModeScript.svelte";
+
+export interface Props {
+  frontmatter: Frontmatter;
+}
 
 const { frontmatter } = Astro.props;
 ---
