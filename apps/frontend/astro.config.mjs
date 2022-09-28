@@ -6,6 +6,11 @@ import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 
+import compress from "astro-compress";
+
+const PROD = true;
+const integrations = () => (PROD ? [compress()] : []);
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://tonydang.blog",
@@ -17,5 +22,6 @@ export default defineConfig({
     image({ logLevel: "debug", serviceEntryPoint: "@astrojs/image/sharp" }),
     mdx(),
     tailwind({ config: { applyBaseStyles: false } }),
+    ...integrations(),
   ],
 });
