@@ -1,0 +1,8 @@
+---
+import fs from "fs";
+import LastUpdated from "./LastUpdated.svelte";
+
+const mdx = await import("../index.mdx");
+---
+
+<LastUpdated milliseconds={fs.statSync(mdx.file).mtimeMs} client:idle />
