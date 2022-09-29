@@ -4,19 +4,19 @@ importers:
 
   .:
     specifiers:
-      '@typescript-eslint/eslint-plugin': ^5.38.1
-      '@typescript-eslint/parser': ^5.38.1
+      '@typescript-eslint/eslint-plugin': ^5.38.0
+      '@typescript-eslint/parser': ^5.38.0
       '@vitest/coverage-c8': ^0.23.4
-      eslint: ^8.24.0
+      eslint: ^8.23.1
       eslint-config-prettier: ^8.5.0
       eslint-plugin-astro: ^0.19.0
       eslint-plugin-jsx-a11y: ^6.6.1
       eslint-plugin-svelte3: ^4.0.0
       prettier: ^2.7.1
       prettier-plugin-astro: ^0.5.4
-      prettier-plugin-svelte: ^2.7.1
-      typescript: ^4.8.4
-      vite: ^3.1.4
+      prettier-plugin-tailwindcss: ^0.1.13
+      typescript: ^4.8.3
+      vite: ^3.1.3
       vitest: ^0.23.4
     devDependencies:
       '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
@@ -29,7 +29,7 @@ importers:
       eslint-plugin-svelte3: 4.0.0_eslint@8.24.0
       prettier: 2.7.1
       prettier-plugin-astro: 0.5.4
-      prettier-plugin-svelte: 2.7.1_prettier@2.7.1
+      prettier-plugin-tailwindcss: 0.1.13_prettier@2.7.1
       typescript: 4.8.4
       vite: 3.1.4
       vitest: 0.23.4
@@ -4706,11 +4706,11 @@ packages:
       sass-formatter: 0.7.5
       synckit: 0.7.3
 
-  /prettier-plugin-svelte/2.7.1_prettier@2.7.1:
-    resolution: {integrity: sha512-H33qjhCBZyd9Zr1A5hUAYDh7j0Mf97uvy7XcA7CP4nNSYrNcPvBUf7wI8K9NptWTIs0S41QtgTWmJIUiGlEBtw==}
+  /prettier-plugin-tailwindcss/0.1.13_prettier@2.7.1:
+    resolution: {integrity: sha512-/EKQURUrxLu66CMUg4+1LwGdxnz8of7IDvrSLqEtDqhLH61SAlNNUSr90UTvZaemujgl3OH/VHg+fyGltrNixw==}
+    engines: {node: '>=12.17.0'}
     peerDependencies:
-      prettier: ^1.16.4 || ^2.0.0
-      svelte: ^3.2.0
+      prettier: '>=2.2.0'
     dependencies:
       prettier: 2.7.1
     dev: true

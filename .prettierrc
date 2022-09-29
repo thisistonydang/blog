@@ -1,4 +1,4 @@
 {
-  "plugins": ["prettier-plugin-astro", "prettier-plugin-svelte"],
+  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   "astroAllowShorthand": true
 }
