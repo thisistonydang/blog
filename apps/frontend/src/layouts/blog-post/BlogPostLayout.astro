@@ -1,0 +1,41 @@
+---
+import MainLayout from "@layouts/main/MainLayout.astro";
+import type { BlogPostFrontmatter } from "@lib/types/frontmatter";
+
+import ScrollToTopLink from "./_components/ScrollToTopLink.svelte";
+
+export interface Props {
+  frontmatter: BlogPostFrontmatter;
+}
+
+const { frontmatter } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat(undefined, {
+  dateStyle: "long",
+}).format(new Date(frontmatter.pubDate));
+---
+
+<MainLayout {frontmatter}>
+  <div class="mb-12 text-sm">
+    <a class="no-underline" href="/posts">&larr; Back to all posts</a>
+  </div>
+
+  <article>
+    <header class="mb-12">
+      <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.description}</p>
+      <hr class="my-2" />
+      <div class="text-sm">
+        by <a href="/">Tony Dang</a> on
+        <time datetime={frontmatter.pubDate}>{formattedDate}</time>
+      </div>
+    </header>
+    <slot />
+  </article>
+
+  <footer class="mt-12 text-sm">
+    <a class="no-underline" href="/posts">&larr; Back to all posts</a>
+    &nbsp;/&nbsp;
+    <ScrollToTopLink path={frontmatter.path} client:visible />
+  </footer>
+</MainLayout>
