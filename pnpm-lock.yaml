@@ -48,19 +48,20 @@ importers:
 
   apps/frontend:
     specifiers:
-      '@astrojs/image': ^0.8.1
-      '@astrojs/mdx': ^0.11.3
-      '@astrojs/svelte': ^1.0.1
-      '@astrojs/tailwind': ^2.0.2
+      '@astrojs/image': ^0.8.0
+      '@astrojs/mdx': ^0.11.1
+      '@astrojs/svelte': ^1.0.0
+      '@astrojs/tailwind': ^2.0.1
       '@tailwindcss/forms': ^0.5.3
       '@tailwindcss/typography': ^0.5.7
-      '@tonydangblog/error-handling': workspace:1.0.0
-      astro: ^1.4.0
+      '@tonydangblog/error-handling': workspace:*
+      astro: ^1.2.6
       astro-compress: ^1.0.8
       astro-seo: ^0.6.0
-      sharp: ^0.31.1
-      svelte: ^3.50.1
-      tailwindcss: ^3.1.8
+      date-fns: ^2.29.3
+      sharp: ^0.31.0
+      svelte: ^3.46.4
+      tailwindcss: ^3.0.24
     dependencies:
       '@astrojs/image': 0.8.1_sharp@0.31.1
       '@astrojs/mdx': 0.11.3
@@ -72,6 +73,7 @@ importers:
       astro: 1.4.0
       astro-compress: 1.0.8
       astro-seo: 0.6.0
+      date-fns: 2.29.3
       sharp: 0.31.1
       svelte: 3.50.1
       tailwindcss: 3.1.8
@@ -1783,6 +1785,11 @@ packages:
   /data-uri-to-buffer/4.0.0:
     resolution: {integrity: sha512-Vr3mLBA8qWmcuschSLAOogKgQ/Jwxulv3RNE4FXnYWRGujzrRWQI4m12fQqRkwX06C0KanhLr4hK+GydchZsaA==}
     engines: {node: '>= 12'}
+    dev: false
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
     dev: false
 
   /debug/4.3.4:
