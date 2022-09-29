@@ -13,11 +13,8 @@
   const format_time_since_last_updated = (milliseconds: number): void => {
     const start = new Date(milliseconds);
     const duration = intervalToDuration({ start, end: new Date() });
-    console.log("duration:", duration);
     const formattedDuration = formatDuration(duration, { delimiter: "," });
-    console.log("formattedDuration:", formattedDuration);
     const durationArray = formattedDuration.split(",");
-    console.log("durationArray:", durationArray);
     let time = "";
     durationArray.forEach((i: string, index: number): void => {
       if (durationArray.length > 1 && index + 1 === durationArray.length) {
