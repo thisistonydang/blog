@@ -22,16 +22,15 @@
   on:click={handle_click}
   style:width
   class="
-    bg-heading
-    h-[41px]
-    px-3
-    text-center text-sm text-bg
+    bg-heading text-bg
+    h-[41px] px-3
+    text-center text-sm
     hover:opacity-95
   "
 >
   {#if loading}
     <svg
-      class="inline-block fill-bg animate-[spin_2s_linear_infinite]"
+      class="fill-bg inline-block animate-[spin_2s_linear_infinite]"
       width="1.4rem"
       height="1.4rem"
       viewBox="0 0 512 512"
