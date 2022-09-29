@@ -65,9 +65,9 @@
 
   const display_error = (error: { code: number }): void => {
     const error_messages: [string, string, string, string] = [
-      "Sorry, an unknown error has occurred so it cannot be determined how far apart we are right now :(",
-      "Hmm, it looks like permission to use your location to see how far apart we are was denied :(",
-      "Sorry, your location is unavailable at the moment to calculate how far apart we are :(",
+      "Sorry, an unknown error has occurred so it cannot be determined how far apart we are right now. 😟",
+      "Hmm, it looks like permission to use your location to see how far apart we are was denied. 😟",
+      "Sorry, your location is unavailable at the moment to calculate how far apart we are. 😟",
       "Calculating how far apart we are. Hang tight...",
     ];
 
