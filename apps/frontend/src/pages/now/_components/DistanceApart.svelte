@@ -87,7 +87,7 @@
       position_options.timeout = 100;
       message = `Sorry, looks like this is taking longer than expected.
       Please feel free to try again later if you really want to know how far
-      apart we are...`;
+      apart we are... 😅`;
       loading = false;
     }
   };
