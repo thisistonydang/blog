@@ -1,0 +1,28 @@
+---
+import type { BlogPostFrontmatter, Frontmatter } from "@lib/types/frontmatter";
+
+import PostSearch from "./PostSearch.svelte";
+
+// Get array of all mdx pages.
+const pages = Object.values(
+  import.meta.glob<{ frontmatter: Frontmatter }>("../../**/*.mdx", {
+    eager: true,
+  })
+);
+
+// Get only pages that are blog posts and aren't in draft mode.
+const nonDraftPosts = pages.filter(
+  (page) =>
+    page.frontmatter.layout === "@layouts/blog-post/BlogPostLayout.astro" &&
+    page.frontmatter.draft === false
+);
+
+// Get blog post frontmatter sorted in reverse chronlogical order.
+const posts = (nonDraftPosts as { frontmatter: BlogPostFrontmatter }[])
+  .map((post) => post.frontmatter)
+  .sort(
+    (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
+  );
+---
+
+<PostSearch {posts} client:load />
