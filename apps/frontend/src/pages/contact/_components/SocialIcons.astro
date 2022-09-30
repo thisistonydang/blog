@@ -1,0 +1,24 @@
+---
+import Icon from "./Icon.astro";
+
+const urls = [
+  "github.com/tonydangblog",
+  "linkedin.com/in/tonydangblog",
+  "instagram.com/tonydang.blog",
+  "twitter.com/tonydangblog",
+  "facebook.com/tonydang.blog",
+];
+---
+
+<div class="flex justify-center">
+  {
+    urls.map((url) => {
+      const name = (url.match(/^[^.]+/) as string[])[0] as string;
+      return (
+        <a href={"https://" + url} aria-label={name}>
+          <Icon {name} width="40" height="40" />
+        </a>
+      );
+    })
+  }
+</div>
