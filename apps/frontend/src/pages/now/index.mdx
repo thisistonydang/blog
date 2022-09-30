@@ -1,0 +1,58 @@
+---
+layout: "@layouts/main/MainLayout.astro"
+path: /now
+title: Now
+description: Tony Dang's Now Page
+pubDate: null
+tags: null
+noindex: false
+draft: false
+---
+
+import LastUpdated from "./_components/LastUpdated.astro";
+import DistanceApart from "./_components/DistanceApart.svelte";
+export const __ = undefined;
+
+# Now
+
+This is a [Now Page](https://nownownow.com/about).
+Inspired by [Derek Sivers](https://sive.rs).
+
+<LastUpdated />
+
+## Where am I right now?
+
+I'm in San Jose, Califronia!
+
+<DistanceApart
+  longitude="-121.94797434479396"
+  latitude="37.366885164357875"
+  client:idle
+/>
+
+## What am I currently up to?
+
+### Coding
+
+I'm in process of rebuilding this blog to better understand frontend frameworks.
+Specifically, I'm learning [Svelte](https://svelte.dev/),
+[Lit](https://lit.dev/), and [Astro](https://astro.build/).
+
+### Training
+
+- **Calisthenics**
+
+  Currently foucsed on unlocking the handstand push-up and
+  [planche](<https://en.wikipedia.org/wiki/Planche_(exercise)>).
+
+- **Climbing**
+
+  I've recently discovered the joy of board climbing and now most
+  of my climbing is on the [Kilter
+  Board](https://settercloset.com/pages/the-kilter-board).
+
+  My current PR on the Kilter Board is V8 and I hope to get to V10 one day.
+  However, climbing is secondary to calisthenics training at the moment.
+
+If you'd like to follow my training progress, I post every now and then on
+[Instagram](https://www.instagram.com/tonydang.blog/).
