@@ -1,0 +1,16 @@
+---
+import Button from "@lib/components/Button.svelte";
+---
+
+<script src="https://assets.calendly.com/assets/external/widget.js" defer
+></script>
+<link
+  rel="stylesheet"
+  href="https://assets.calendly.com/assets/external/widget.css"
+/>
+
+<Button
+  onclick={`
+    Calendly.showPopupWidget('https://calendly.com/tonydang/unoffice-hours');
+  `}>BOOK A CALL</Button
+>
