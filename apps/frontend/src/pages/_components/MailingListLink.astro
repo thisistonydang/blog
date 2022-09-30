@@ -1,5 +1,13 @@
-<script lang="ts">
-  const handle_click = (): void => {
+<p>
+  Want to be notified when I have blog updates or announcements? Sign up to my
+  <a href="#subscription-form">mailing list</a> below!👇
+</p>
+
+<script>
+  (
+    document.querySelector('a[href="#subscription-form"]') as HTMLAnchorElement
+  ).addEventListener("click", (e: Event): void => {
+    e.preventDefault();
     const form = document.querySelector("#subscription-form");
     document.documentElement.classList.add("scroll-smooth");
     form?.scrollIntoView();
@@ -8,13 +16,5 @@
       document.documentElement.classList.remove("scroll-smooth");
       form?.classList.remove("animate-shake");
     }, 800);
-  };
+  });
 </script>
-
-<p>
-  Want to be notified when I have blog updates and announcements? Sign up to my
-  <a on:click|preventDefault={handle_click} href="#subscription-form">
-    mailing list
-  </a>
-  below!👇
-</p>

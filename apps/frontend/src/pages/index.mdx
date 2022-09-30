@@ -11,7 +11,7 @@ draft: false
 
 import Avatar from "@lib/components/Avatar.astro";
 import HomeHeading from "./_components/HomeHeading.svelte";
-import MailingListLink from "./_components/MailingListLink.svelte";
+import MailingListLink from "./_components/MailingListLink.astro";
 export const __ = undefined;
 
 <Avatar />
@@ -28,4 +28,4 @@ as well as share interesting projects I'm working on.
 For more about me, check out my [about](/about) and [now](/now) pages.
 For my all my blog posts, head on over to the [posts](/posts) page.
 
-<MailingListLink client:idle />
+<MailingListLink />
