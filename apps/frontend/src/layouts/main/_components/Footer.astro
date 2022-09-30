@@ -1,0 +1,31 @@
+---
+import EasterEgg from "./EasterEgg.svelte";
+import SubscriptionForm from "./SubscriptionForm.svelte";
+
+const year = new Date().getFullYear().toString();
+---
+
+<footer class="mt-24">
+  <SubscriptionForm client:visible />
+  <div class="mt-20 flex items-center">
+    <EasterEgg client:visible />
+    <p class="ml-2 text-xs opacity-90">
+      &copy; <time id="footer-copyright-year" datetime={year}>{year}</time>
+      Tony Dang<br />
+      Built with
+      <a href="https://astro.build">Astro</a>,
+      <a href="https://svelte.dev">Svelte</a>,
+      <a href="https://tailwindcss.com">Tailwind</a>
+      &amp; <span role="img" aria-label="coffee">🧋</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+  const copyright_year = document.getElementById(
+    "footer-copyright-year"
+  ) as HTMLTimeElement;
+  copyright_year.innerHTML = copyright_year.dateTime = new Date()
+    .getFullYear()
+    .toString();
+</script>
