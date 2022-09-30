@@ -103,7 +103,8 @@
 </script>
 
 <p>
-  If you'd like you know how far apart we are, click the following button :)
+  If you'd like you know exactly how far apart we are, click the following
+  button :)
 </p>
 
 <Button {loading} {handle_click}>CLICK HERE...</Button>
