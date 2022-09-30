@@ -1,0 +1,9 @@
+<script>
+  document.querySelectorAll("a").forEach((anchor: HTMLAnchorElement): void => {
+    const a = anchor;
+    if (a.hostname !== window.location.hostname) {
+      a.target = "_blank";
+      a.rel = "noopener";
+    }
+  });
+</script>

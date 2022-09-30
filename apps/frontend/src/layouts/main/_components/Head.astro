@@ -4,6 +4,7 @@ import { SEO } from "astro-seo";
 import type { Frontmatter } from "@lib/types/frontmatter";
 
 import DarkModeScript from "./DarkModeScript.astro";
+import ExternalLinksScript from "./ExternalLinksScript.astro";
 import Favicon from "./Favicon.astro";
 import VimModeScript from "./VimModeScript.svelte";
 
@@ -26,5 +27,6 @@ const { frontmatter } = Astro.props;
     noindex={import.meta.env.NO_INDEX ?? frontmatter.noindex}
   />
   <DarkModeScript />
+  <ExternalLinksScript />
   <VimModeScript client:idle />
 </head>
