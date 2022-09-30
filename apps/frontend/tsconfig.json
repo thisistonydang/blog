@@ -3,7 +3,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@config": ["src/config"],
       "@layouts/*": ["src/layouts/*"],
       "@lib/*": ["src/lib/*"]
     }
