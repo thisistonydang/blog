@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^2.0.0",
+    "@supabase/supabase-js": "^1.35.7",
     "@tonydangblog/error-handling": "workspace:*",
     "astro": "^1.2.6",
     "zod": "^3.19.1"
