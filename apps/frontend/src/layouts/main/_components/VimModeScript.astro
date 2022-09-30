@@ -1,7 +1,7 @@
-<script lang="ts">
+<script>
   let cache: string;
 
-  const handle_keydown = (e: KeyboardEvent): void => {
+  document.addEventListener("keydown", (e: KeyboardEvent): void => {
     if (document.activeElement instanceof HTMLInputElement) return;
     if (document.activeElement instanceof HTMLSelectElement) return;
     if (document.activeElement instanceof HTMLTextAreaElement) return;
@@ -18,7 +18,5 @@
       return;
     }
     cache = "";
-  };
+  });
 </script>
-
-<svelte:window on:keydown={handle_keydown} />

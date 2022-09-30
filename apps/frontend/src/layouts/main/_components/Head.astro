@@ -6,7 +6,7 @@ import type { Frontmatter } from "@lib/types/frontmatter";
 import DarkModeScript from "./DarkModeScript.astro";
 import ExternalLinksScript from "./ExternalLinksScript.astro";
 import Favicon from "./Favicon.astro";
-import VimModeScript from "./VimModeScript.svelte";
+import VimModeScript from "./VimModeScript.astro";
 
 export interface Props {
   frontmatter: Frontmatter;
@@ -28,5 +28,5 @@ const { frontmatter } = Astro.props;
   />
   <DarkModeScript />
   <ExternalLinksScript />
-  <VimModeScript client:idle />
+  <VimModeScript />
 </head>
