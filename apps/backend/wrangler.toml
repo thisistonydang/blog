@@ -1,3 +1,6 @@
 name = "blog-backend"
 main = "src/index.ts"
 compatibility_date = "2022-10-03"
+
+[dev]
+port = 8787
