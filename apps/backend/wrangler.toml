@@ -4,3 +4,6 @@ compatibility_date = "2022-10-03"
 
 [dev]
 port = 8787
+
+[vars]
+ACCESS_CONTROL_ALLOW_ORIGIN = "https://blog-frontend-2q4.pages.dev"
