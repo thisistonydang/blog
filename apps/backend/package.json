@@ -11,6 +11,7 @@
     "wrangler": "2.1.10"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.35.7",
     "@tonydangblog/error-handling": "workspace:*",
     "itty-router": "^2.6.6",
     "zod": "^3.19.1"
