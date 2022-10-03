@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "wrangler pages dev --port 4000 dist",
+    "deploy": "wrangler pages publish dist"
   },
   "dependencies": {
     "@astrojs/image": "^0.8.0",
