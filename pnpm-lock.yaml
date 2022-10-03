@@ -45,19 +45,19 @@ importers:
       '@astrojs/cloudflare': 2.1.0
       '@supabase/supabase-js': 1.35.7
       '@tonydangblog/error-handling': link:../../packages/error-handling
-      astro: 1.4.0
+      astro: 1.4.3
       zod: 3.19.1
 
   apps/frontend:
     specifiers:
       '@astrojs/image': ^0.8.1
-      '@astrojs/mdx': ^0.11.3
+      '@astrojs/mdx': ^0.11.4
       '@astrojs/svelte': ^1.0.1
       '@astrojs/tailwind': ^2.0.2
       '@tailwindcss/forms': ^0.5.3
       '@tailwindcss/typography': ^0.5.7
       '@tonydangblog/error-handling': workspace:1.0.0
-      astro: ^1.4.0
+      astro: ^1.4.3
       astro-compress: ^1.0.9
       astro-seo: ^0.6.0
       date-fns: ^2.29.3
@@ -66,13 +66,13 @@ importers:
       tailwindcss: ^3.1.8
     dependencies:
       '@astrojs/image': 0.8.1_sharp@0.31.1
-      '@astrojs/mdx': 0.11.3
+      '@astrojs/mdx': 0.11.4
       '@astrojs/svelte': 1.0.1_svelte@3.50.1
       '@astrojs/tailwind': 2.0.2_tailwindcss@3.1.8
       '@tailwindcss/forms': 0.5.3_tailwindcss@3.1.8
       '@tailwindcss/typography': 0.5.7_tailwindcss@3.1.8
       '@tonydangblog/error-handling': link:../../packages/error-handling
-      astro: 1.4.0
+      astro: 1.4.3
       astro-compress: 1.0.9
       astro-seo: 0.6.0
       date-fns: 2.29.3
@@ -154,7 +154,7 @@ packages:
       hast-util-to-html: 8.0.3
       import-meta-resolve: 2.1.0
       mdast-util-from-markdown: 1.2.0
-      mdast-util-mdx-expression: 1.3.0
+      mdast-util-mdx-expression: 1.3.1
       mdast-util-mdx-jsx: 1.2.0
       micromark-extension-mdx-expression: 1.0.3
       micromark-extension-mdx-md: 1.0.0
@@ -174,8 +174,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.11.3:
-    resolution: {integrity: sha512-fK6pgDJGslJYi5PdmCssQzl1corKlKqiBKuGnCR9onisvaRYr+O9NRiGbdY7hIfGAPS1peW0Sbeqz7so1ZfJ7g==}
+  /@astrojs/mdx/0.11.4:
+    resolution: {integrity: sha512-b86Fzd87OCuYUGk7O59mwq0URqLdH40wUJC5UCkFmSquIrk8QNrZ7tdjriBfF+Wq3+2UT5JO4ahxIuP6N3cczQ==}
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       '@astrojs/prism': 1.0.1
@@ -479,7 +479,7 @@ packages:
     resolution: {integrity: sha512-j2vJGnkopRzH+ykJ8h68wrHnEUmtK//E723jjixiAl/PPf6FhqY/vYRcMVlNydRKQjQsTsYEjpx+DZMIvnGk/g==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      core-js-pure: 3.25.3
+      core-js-pure: 3.25.4
       regenerator-runtime: 0.13.9
     dev: true
 
@@ -968,8 +968,8 @@ packages:
       '@types/unist': 2.0.6
     dev: false
 
-  /@types/node/18.7.23:
-    resolution: {integrity: sha512-DWNcCHolDq0ZKGizjx2DZjR/PqsYwAcYUJmfMWqtVU2MBMG5Mo+xFZrhGId5r/O5HOuMPyQEcM6KUBp5lBZZBg==}
+  /@types/node/18.8.0:
+    resolution: {integrity: sha512-u+h43R6U8xXDt2vzUaVP3VwjjLyOJk6uEciZS8OSyziUQGOwmk+l+4drxcsDboHXwyTaqS1INebghmWMRxq3LA==}
 
   /@types/parse5/6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
@@ -990,7 +990,7 @@ packages:
   /@types/sass/1.43.1:
     resolution: {integrity: sha512-BPdoIt1lfJ6B7rw35ncdwBZrAssjcwzI5LByIrYs+tpXlj/CAkuVdRsgZDdP4lq5EjyWzwxZCqAoFyHKFwp32g==}
     dependencies:
-      '@types/node': 18.7.23
+      '@types/node': 18.8.0
     dev: false
 
   /@types/unist/2.0.6:
@@ -1329,8 +1329,8 @@ packages:
     resolution: {integrity: sha512-nR+dJlAyQhX6s0oAmbBqPq3KCZax/zVAerFsclGiJQ2znOkS/7L+RGjziS4M9Q3OQxm3FMfqIKHp9Ns73Q81ww==}
     dev: false
 
-  /astro/1.4.0:
-    resolution: {integrity: sha512-MjBQsMS1ySrV0Q2rCcZ75D2zfJlOjv12SEBpH1XIbqe3QRVD5mqj+TiPlBXGQYnggo3+yEDOSUtWK0QsK/2XNA==}
+  /astro/1.4.3:
+    resolution: {integrity: sha512-5MhBoBn/MsDF8uzfr0ZwaMqzcWzmLnTcpxWHlNGQiEy92PqnwaE6mZ16JO/swv5EoABUGtm6yC6cMo4JZU2scg==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -1509,7 +1509,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001414
-      electron-to-chromium: 1.4.269
+      electron-to-chromium: 1.4.270
       node-releases: 2.0.6
       update-browserslist-db: 1.0.9_browserslist@4.21.4
     dev: false
@@ -1783,8 +1783,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /core-js-pure/3.25.3:
-    resolution: {integrity: sha512-T/7qvgv70MEvRkZ8p6BasLZmOVYKzOaWNBEHAU8FmveCJkl4nko2quqPQOmy6AJIp5MBanhz9no3A94NoRb0XA==}
+  /core-js-pure/3.25.4:
+    resolution: {integrity: sha512-qRbgm0ADrsNTU66UcW47YMJjXm+ShhUP2gkoEoAShT2BHO3cb5gGqLtmWpjnM6Wx9h5hMSF4uZ+jEV/8+4KCsw==}
     requiresBuild: true
     dev: true
 
@@ -2060,8 +2060,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: false
 
-  /electron-to-chromium/1.4.269:
-    resolution: {integrity: sha512-7mHFONwp7MNvdyto1v70fCwk28NJMFgsK79op+iYHzz1BLE8T66a1B2qW5alb8XgE0yi3FL3ZQjSYZpJpF6snw==}
+  /electron-to-chromium/1.4.270:
+    resolution: {integrity: sha512-KNhIzgLiJmDDC444dj9vEOpZEgsV96ult9Iff98Vanumn+ShJHd5se8aX6KeVxdc0YQeqdrezBZv89rleDbvSg==}
     dev: false
 
   /emmet/2.3.6:
@@ -2713,7 +2713,7 @@ packages:
       import-fresh: 3.3.0
       imurmurhash: 0.1.4
       is-glob: 4.0.3
-      js-sdsl: 4.1.4
+      js-sdsl: 4.1.5
       js-yaml: 4.1.0
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
@@ -3236,7 +3236,7 @@ packages:
       estree-util-attach-comments: 2.1.0
       estree-util-is-identifier-name: 2.0.1
       hast-util-whitespace: 2.0.0
-      mdast-util-mdx-expression: 1.3.0
+      mdast-util-mdx-expression: 1.3.1
       mdast-util-mdxjs-esm: 1.3.0
       property-information: 6.1.1
       space-separated-tokens: 2.0.1
@@ -3589,8 +3589,8 @@ packages:
       istanbul-lib-report: 3.0.0
     dev: true
 
-  /js-sdsl/4.1.4:
-    resolution: {integrity: sha512-Y2/yD55y5jteOAmY50JbUZYwk3CP3wnLPEZnlR1w9oKhITrBEtAxwuWKebFf8hMrPMgbYwFoWK/lH2sBkErELw==}
+  /js-sdsl/4.1.5:
+    resolution: {integrity: sha512-08bOAKweV2NUC1wqTtf3qZlnpOX/R2DU9ikpjOHs0H+ibQv3zpncVQg6um4uYtRtrwIX8M4Nh3ytK4HGlYAq7Q==}
     dev: true
 
   /js-tokens/4.0.0:
@@ -3892,8 +3892,8 @@ packages:
       - supports-color
     dev: false
 
-  /mdast-util-mdx-expression/1.3.0:
-    resolution: {integrity: sha512-9kTO13HaL/ChfzVCIEfDRdp1m5hsvsm6+R8yr67mH+KS2ikzZ0ISGLPTbTswOFpLLlgVHO9id3cul4ajutCvCA==}
+  /mdast-util-mdx-expression/1.3.1:
+    resolution: {integrity: sha512-TTb6cKyTA1RD+1su1iStZ5PAv3rFfOUKcoU5EstUpv/IZo63uDX03R8+jXjMEhcobXnNOiG6/ccekvVl4eV1zQ==}
     dependencies:
       '@types/estree-jsx': 1.0.0
       '@types/hast': 2.3.4
@@ -3935,7 +3935,7 @@ packages:
   /mdast-util-mdx/2.0.0:
     resolution: {integrity: sha512-M09lW0CcBT1VrJUaF/PYxemxxHa7SLDHdSn94Q9FhxjCQfuW7nMAWKWimTmA3OyDMSTH981NN1csW1X+HPSluw==}
     dependencies:
-      mdast-util-mdx-expression: 1.3.0
+      mdast-util-mdx-expression: 1.3.1
       mdast-util-mdx-jsx: 2.1.0
       mdast-util-mdxjs-esm: 1.3.0
     transitivePeerDependencies:
@@ -6056,7 +6056,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.3
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.7.23
+      '@types/node': 18.8.0
       chai: 4.3.6
       debug: 4.3.4
       local-pkg: 0.4.2
