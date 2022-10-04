@@ -8,7 +8,7 @@
     "deploy": "wrangler pages publish dist"
   },
   "dependencies": {
-    "@astrojs/image": "^0.8.0",
+    "@astrojs/image": "^0.9.1",
     "@astrojs/mdx": "^0.11.1",
     "@astrojs/svelte": "^1.0.0",
     "@astrojs/tailwind": "^2.0.1",

@@ -69,22 +69,22 @@ importers:
 
   apps/frontend:
     specifiers:
-      '@astrojs/image': ^0.8.1
-      '@astrojs/mdx': ^0.11.4
-      '@astrojs/svelte': ^1.0.1
-      '@astrojs/tailwind': ^2.0.2
+      '@astrojs/image': ^0.9.1
+      '@astrojs/mdx': ^0.11.1
+      '@astrojs/svelte': ^1.0.0
+      '@astrojs/tailwind': ^2.0.1
       '@tailwindcss/forms': ^0.5.3
       '@tailwindcss/typography': ^0.5.7
-      '@tonydangblog/error-handling': workspace:1.0.0
-      astro: ^1.4.4
-      astro-compress: ^1.0.10
+      '@tonydangblog/error-handling': workspace:*
+      astro: ^1.2.6
+      astro-compress: ^1.0.8
       astro-seo: ^0.6.0
       date-fns: ^2.29.3
-      sharp: ^0.31.1
-      svelte: ^3.50.1
-      tailwindcss: ^3.1.8
+      sharp: ^0.31.0
+      svelte: ^3.46.4
+      tailwindcss: ^3.0.24
     dependencies:
-      '@astrojs/image': 0.8.1_sharp@0.31.1
+      '@astrojs/image': 0.9.1_sharp@0.31.1
       '@astrojs/mdx': 0.11.4
       '@astrojs/svelte': 1.0.1_svelte@3.50.1
       '@astrojs/tailwind': 2.0.2_tailwindcss@3.1.8
@@ -128,8 +128,8 @@ packages:
   /@astrojs/compiler/0.25.2:
     resolution: {integrity: sha512-GE7uLvH7rSHuTHdMun+867TWsgYNYsaGuhvXsywcaabl4W4n/3b1kzgzrIsrXYBo51J0k6qD33mVdsHdvwv5rw==}
 
-  /@astrojs/image/0.8.1_sharp@0.31.1:
-    resolution: {integrity: sha512-vlfPFYHt9vpAZwZG4O9flumFM2fNkCKleOucqaDngu7pNHxSpf14j9ywlBNz4JryVehUupeffbVn561kBhhOJQ==}
+  /@astrojs/image/0.9.1_sharp@0.31.1:
+    resolution: {integrity: sha512-tnrL9tL539gIzkM9oqRd+asOePPUE/ehtQjmrcsTjJtQx8aPhKHEteJIMuDhby94wRhV6vMK1Wqt4u5DBf6GQQ==}
     peerDependencies:
       sharp: '>=0.31.0'
     peerDependenciesMeta:
@@ -137,6 +137,7 @@ packages:
         optional: true
     dependencies:
       '@altano/tiny-async-pool': 1.0.2
+      http-cache-semantics: 4.1.0
       image-size: 1.0.2
       magic-string: 0.25.9
       mime: 3.0.0
@@ -3792,7 +3793,6 @@ packages:
 
   /http-cache-semantics/4.1.0:
     resolution: {integrity: sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==}
-    dev: true
 
   /human-signals/3.0.1:
     resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
