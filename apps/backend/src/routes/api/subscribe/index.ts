@@ -21,8 +21,7 @@ export default async (request: Request, env: Env): Promise<Response> => {
   if (!form.success) {
     const body: { [key: string]: string } = {};
     form.error.issues.forEach((issue): void => {
-      const issue_name = issue.path[0];
-      if (issue_name) body[issue_name] = issue.message;
+      body[issue.path[0]] = issue.message;
     });
     return new Response(JSON.stringify(body), {
       headers: {
