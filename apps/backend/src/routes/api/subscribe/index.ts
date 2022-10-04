@@ -26,7 +26,7 @@ export default async (request: Request, env: Env): Promise<Response> => {
     });
     return new Response(JSON.stringify(body), {
       headers: {
-        "Access-Control-Allow-Origin": env.ACCESS_CONTROL_ALLOW_ORIGIN,
+        "Access-Control-Allow-Origin": env.BLOG_URL,
       },
     });
   }
@@ -38,7 +38,7 @@ export default async (request: Request, env: Env): Promise<Response> => {
   );
   return new Response(JSON.stringify(body), {
     headers: {
-      "Access-Control-Allow-Origin": env.ACCESS_CONTROL_ALLOW_ORIGIN,
+      "Access-Control-Allow-Origin": env.BLOG_URL,
     },
   });
 };

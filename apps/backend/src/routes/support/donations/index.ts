@@ -16,7 +16,7 @@ export default async (_request: Request, env: Env): Promise<Response> => {
   }
   return new Response(JSON.stringify({ donations: data }), {
     headers: {
-      "Access-Control-Allow-Origin": env.ACCESS_CONTROL_ALLOW_ORIGIN,
+      "Access-Control-Allow-Origin": env.BLOG_URL,
     },
   });
 };
