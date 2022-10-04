@@ -2,9 +2,9 @@ import { loadEnv } from "vite";
 import { describe, expect, it } from "vitest";
 
 import type { Env } from "@lib/types/env";
-import api_subscribe from "../index";
+import api_route from "../index";
 
-describe("/subscribe api route", () => {
+describe("/api/subscribe", () => {
   [
     {
       name: "Terry",
@@ -57,15 +57,12 @@ describe("/subscribe api route", () => {
         ""
       ) as unknown as Env;
 
-      // WHEN Request is made to subscribe api route.
+      // WHEN Request is made to api route.
       const request = new Request("https://tonydang.blog", {
         method: "POST",
         body: JSON.stringify({ name, email }),
-        headers: {
-          Accept: "application/json",
-        },
       });
-      const res = await api_subscribe(request, env);
+      const res = await api_route(request, env);
       const data = await res.json();
 
       // THEN Reponse json is as expected.
