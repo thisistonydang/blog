@@ -4,7 +4,7 @@ export const nav_pages = [
   { name: "now", path: "/now" },
   { name: "contact", path: "/contact" },
   {
-    name: '<span role="img" aria-label="coffee">🧋</span> buy me a coffee?',
+    name: '<span role="img" aria-label="coffee">☕</span> buy me a coffee?',
     path: "/support",
   },
 ];
