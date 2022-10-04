@@ -9,7 +9,7 @@ interface Donation {
   amount: number;
 }
 
-describe("/support/donations api route", () => {
+describe("/support/donations", () => {
   it("returns json response with donations data", async () => {
     // GIVEN Development environmental vars.
     const env = loadEnv(
@@ -19,12 +19,7 @@ describe("/support/donations api route", () => {
     ) as unknown as Env;
 
     // WHEN Request is made to api route.
-    const request = new Request("https://tonydang.blog", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-      },
-    });
+    const request = new Request("https://tonydang.blog");
     const res = await api_route(request, env);
     const data: { donations: Donation[] } = await res.json();
 
