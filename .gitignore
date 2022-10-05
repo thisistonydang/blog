@@ -23,3 +23,6 @@ coverage/
 
 # sandbox route
 sandbox/
+
+# vale
+.vale/
