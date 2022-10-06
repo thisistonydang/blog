@@ -24,9 +24,7 @@ export default async (request: Request, env: Env): Promise<Response> => {
       body[issue.path[0]] = issue.message;
     });
     return new Response(JSON.stringify(body), {
-      headers: {
-        "Access-Control-Allow-Origin": env.BLOG_URL,
-      },
+      headers: { "Access-Control-Allow-Origin": env.BLOG_URL },
     });
   }
 
@@ -36,9 +34,7 @@ export default async (request: Request, env: Env): Promise<Response> => {
     env.SENDFOX_ACCESS_TOKEN
   );
   return new Response(JSON.stringify(body), {
-    headers: {
-      "Access-Control-Allow-Origin": env.BLOG_URL,
-    },
+    headers: { "Access-Control-Allow-Origin": env.BLOG_URL },
   });
 };
 
