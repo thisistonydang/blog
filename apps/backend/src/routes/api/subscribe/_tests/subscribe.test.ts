@@ -1,7 +1,6 @@
-import { loadEnv } from "vite";
 import { describe, expect, it } from "vitest";
 
-import type { Env } from "@lib/types/env";
+import { env } from "../../../../lib/testing/env";
 import api_route from "../index";
 
 describe("/api/subscribe", () => {
@@ -50,12 +49,7 @@ describe("/api/subscribe", () => {
     },
   ].forEach(({ name, email, expected }) => {
     it("returns expected json response", async () => {
-      // GIVEN Name and email for request and development environmental vars.
-      const env = loadEnv(
-        "test",
-        `${process.cwd()}/apps/backend`,
-        ""
-      ) as unknown as Env;
+      // GIVEN Name and email for request.
 
       // WHEN Request is made to api route.
       const request = new Request("https://tonydang.blog", {
