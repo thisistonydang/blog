@@ -1,6 +1,6 @@
-import Stripe from "stripe";
 import { z } from "zod";
-import type { Env } from "@lib/types/env";
+import { stripe } from "../../../lib/stripe/stripe";
+import type { Env } from "../../../lib/types/env";
 
 export default async (request: Request, env: Env): Promise<Response> => {
   const form_data = await request.formData();
@@ -17,11 +17,7 @@ export default async (request: Request, env: Env): Promise<Response> => {
 };
 
 async function create_checkout_url(qty: number, env: Env): Promise<string> {
-  const stripe = new Stripe(env.STRIPE_API_KEY, {
-    apiVersion: "2022-08-01",
-    httpClient: Stripe.createFetchHttpClient(),
-  });
-  const session = await stripe.checkout.sessions.create({
+  const session = await stripe(env).checkout.sessions.create({
     line_items: [{ price: env.STRIPE_ONE_TIME_DONATION_PRICE, quantity: qty }],
     mode: "payment",
     submit_type: "donate",
