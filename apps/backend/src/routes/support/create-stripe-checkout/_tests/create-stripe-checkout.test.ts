@@ -1,7 +1,6 @@
-import { loadEnv } from "vite";
 import { describe, expect, it } from "vitest";
 
-import type { Env } from "@lib/types/env";
+import { env } from "../../../../lib/testing/env";
 import api_route from "../index";
 
 describe("/support/create-stripe-checkout", () => {
@@ -10,12 +9,7 @@ describe("/support/create-stripe-checkout", () => {
     { qty: "1", expected: "https://checkout.stripe.com" },
   ].forEach(({ qty, expected }) => {
     it("returns expected json response", async () => {
-      // GIVEN Development environmental vars.
-      const env = loadEnv(
-        "test",
-        `${process.cwd()}/apps/backend`,
-        ""
-      ) as unknown as Env;
+      // GIVEN N/A.
 
       // WHEN Request is made to api route with mocked request.formData.
       const request = new Request("https://tonydang.blog");
