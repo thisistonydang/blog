@@ -39,6 +39,8 @@ importers:
       '@cloudflare/workers-types': ^3.16.0
       '@supabase/supabase-js': ^1.35.7
       '@tonydangblog/error-handling': workspace:*
+      '@types/crypto-js': ^4.1.1
+      crypto-js: ^4.1.1
       itty-router: ^2.6.6
       stripe: ^10.12.0
       typescript: ^4.8.4
@@ -47,11 +49,13 @@ importers:
     dependencies:
       '@supabase/supabase-js': 1.35.7
       '@tonydangblog/error-handling': link:../../packages/error-handling
+      crypto-js: 4.1.1
       itty-router: 2.6.6
       stripe: 10.12.0
       zod: 3.19.1
     devDependencies:
       '@cloudflare/workers-types': 3.16.0
+      '@types/crypto-js': 4.1.1
       typescript: 4.8.4
       wrangler: 2.1.10
 
@@ -1135,6 +1139,10 @@ packages:
     resolution: {integrity: sha512-hC7OMnszpxhZPduX+m+nrx+uFoLkWOMiR4oa/AZF3MuSETYTZmFfJAHqZEM8MVlvfG7BEUcgvtwoCTxBp6hm3g==}
     dev: true
 
+  /@types/crypto-js/4.1.1:
+    resolution: {integrity: sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA==}
+    dev: true
+
   /@types/debug/4.1.7:
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
     dependencies:
@@ -2059,6 +2067,10 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  /crypto-js/4.1.1:
+    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+    dev: false
 
   /css-select/4.3.0:
     resolution: {integrity: sha512-wPpOYtnsVontu2mODhA19JrqWxNsfdatRKd64kmpRbQgh1KtItko5sTnEpPdpSaJszTOhEMlF/RPz28qj4HqhQ==}
