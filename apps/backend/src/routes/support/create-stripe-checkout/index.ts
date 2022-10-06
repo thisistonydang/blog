@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { stripe } from "../../../lib/stripe/stripe";
-import type { Env } from "../../../lib/types/env";
+import type { Env } from "@lib/types/env";
 
 export default async (request: Request, env: Env): Promise<Response> => {
   const form_data = await request.formData();
