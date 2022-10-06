@@ -1,7 +1,6 @@
-import { loadEnv } from "vite";
 import { describe, expect, it } from "vitest";
 
-import type { Env } from "@lib/types/env";
+import { env} from "../../../../lib/testing/env"
 import api_route from "../index";
 
 interface Donation {
@@ -11,12 +10,7 @@ interface Donation {
 
 describe("/support/donations", () => {
   it("returns json response with donations data", async () => {
-    // GIVEN Development environmental vars.
-    const env = loadEnv(
-      "test",
-      `${process.cwd()}/apps/backend`,
-      ""
-    ) as unknown as Env;
+    // GIVEN N/A.
 
     // WHEN Request is made to api route.
     const request = new Request("https://tonydang.blog");
