@@ -1,5 +1,5 @@
 import { get_error_message } from "@tonydangblog/error-handling";
-import type { Env } from "../../../lib/types/env";
+import type { Env } from "@lib/types/env";
 import { supabase } from "../../../lib/db/supabase";
 
 export default async (_request: Request, env: Env): Promise<Response> => {
