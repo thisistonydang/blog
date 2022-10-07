@@ -21,7 +21,7 @@ async function create_checkout_url(qty: number, env: Env): Promise<string> {
     line_items: [{ price: env.STRIPE_ONE_TIME_DONATION_PRICE, quantity: qty }],
     mode: "payment",
     submit_type: "donate",
-    success_url: `${env.BLOG_URL}/support/success`,
+    success_url: `${env.BLOG_URL}/support/successful-one-time-donation`,
     cancel_url: `${env.BLOG_URL}/support`,
   });
   return session.url ?? `${env.BLOG_URL}/support`;
