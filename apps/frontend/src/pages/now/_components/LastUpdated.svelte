@@ -10,7 +10,7 @@
 
   let time_since_updated: string;
 
-  const format_time_since_last_updated = (milliseconds: number): void => {
+  function format_time_since_last_updated(milliseconds: number): void {
     const start = new Date(milliseconds);
     const duration = intervalToDuration({ start, end: new Date() });
     const formattedDuration = formatDuration(duration, { delimiter: "," });
@@ -26,7 +26,7 @@
       }
     });
     time_since_updated = time;
-  };
+  }
 
   format_time_since_last_updated(milliseconds);
   setInterval((): void => format_time_since_last_updated(milliseconds), 1000);

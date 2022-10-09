@@ -19,12 +19,14 @@
     timeout: 100,
   };
 
-  const deg2rad = (degrees: number): number => (degrees * Math.PI) / 180;
+  function deg2rad(degrees: number): number {
+    return (degrees * Math.PI) / 180;
+  }
 
-  const compute_distance = (
+  function compute_distance(
     startCoords: Coordinates,
     destCoords: Coordinates
-  ): number => {
+  ): number {
     const startLatRads = deg2rad(startCoords.latitude);
     const startLongRads = deg2rad(startCoords.longitude);
     const destLatRads = deg2rad(destCoords.latitude);
@@ -38,9 +40,9 @@
             Math.cos(startLongRads - destLongRads)
       ) * radius
     );
-  };
+  }
 
-  const display_distance = (position: { coords: Coordinates }): void => {
+  function display_distance(position: { coords: Coordinates }): void {
     const my_coordinates = { latitude, longitude };
     const km = compute_distance(position.coords, my_coordinates);
     let msg = `By the magic of the internet, it looks like we are
@@ -61,9 +63,9 @@
     position_options.timeout = 100;
     message = msg;
     loading = false;
-  };
+  }
 
-  const display_error = (error: { code: number }): void => {
+  function display_error(error: { code: number }): void {
     const error_messages: [string, string, string, string] = [
       "Sorry, an unknown error has occurred so it cannot be determined how far apart we are right now. 😟",
       "Hmm, it looks like permission to use your location to see how far apart we are was denied. 😟",
@@ -90,16 +92,16 @@
       apart we are... 😅`;
       loading = false;
     }
-  };
+  }
 
-  const handle_click = (): void => {
+  function handle_click(): void {
     loading = true;
     navigator.geolocation.getCurrentPosition(
       display_distance,
       display_error,
       position_options
     );
-  };
+  }
 </script>
 
 <p>
