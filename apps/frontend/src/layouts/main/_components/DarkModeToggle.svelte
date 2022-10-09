@@ -5,12 +5,12 @@
   let clicked = false;
   let toggled = false;
 
-  const handle_click = (): void => {
+  function handle_click(): void {
     clicked = true;
     toggled = !toggled;
-  };
+  }
 
-  const handle_keydown = (e: KeyboardEvent): void => {
+  function handle_keydown(e: KeyboardEvent): void {
     if (!toggled && (e.key === "ArrowRight" || e.key === "l")) {
       clicked = true;
       toggled = true;
@@ -18,7 +18,7 @@
       clicked = true;
       toggled = false;
     }
-  };
+  }
 
   $: if (mounted && clicked && toggled) {
     document.documentElement.classList.add("dark");
@@ -36,17 +36,17 @@
 
 <button
   class="
-    absolute
+    border-heading
+    before:bg-heading absolute
     top-1.5 right-0
-    w-12 h-[26px]
-    border border-heading
+    h-[26px] w-12
     cursor-pointer
-    hover:opacity-95
+    border
     before:absolute
-    before:top-0.5 before:left-0.5 dark:before:left-6
-    before:w-5 before:h-5
-    before:bg-heading
-    before:duration-100
+    before:top-0.5 before:left-0.5 before:h-5
+    before:w-5 before:duration-100
+    hover:opacity-95
+    dark:before:left-6
   "
   aria-label="dark mode toggle"
   on:click={handle_click}
