@@ -2,7 +2,7 @@ import { z } from "zod";
 import { get_error_message } from "@tonydangblog/error-handling";
 import type { Env } from "@lib/types/env";
 
-export default async function(request: Request, env: Env): Promise<Response> {
+export default async function (request: Request, env: Env): Promise<Response> {
   const { name, email }: { name?: string; email?: string } =
     await request.json();
 
@@ -36,7 +36,7 @@ export default async function(request: Request, env: Env): Promise<Response> {
   return new Response(JSON.stringify(body), {
     headers: { "Access-Control-Allow-Origin": env.BLOG_URL },
   });
-};
+}
 
 /** Create contact via SendFox API. */
 async function create_contact(
@@ -81,4 +81,4 @@ async function create_contact(
   } catch (error: unknown) {
     return { error: get_error_message(error) };
   }
-};
+}
