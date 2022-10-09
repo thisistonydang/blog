@@ -10,10 +10,10 @@ import type { Env } from "@lib/types/env";
  * Returns null if Request signature is invalid or if the Request itself is
  * otherwise invalid.
  */
-export const construct_event = async (
+export async function construct_event(
   request: Request,
   env: Env
-): Promise<Stripe.Event | null> => {
+): Promise<Stripe.Event | null> {
   try {
     const payload = await request.text();
     const sig = request.headers.get("stripe-signature")?.split(",") as string[];
@@ -28,4 +28,4 @@ export const construct_event = async (
     console.log(get_error_message(error));
     return null;
   }
-};
+}
