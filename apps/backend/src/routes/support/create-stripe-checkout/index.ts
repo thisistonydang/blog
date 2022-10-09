@@ -2,7 +2,7 @@ import { z } from "zod";
 import { stripe } from "../../../lib/stripe/stripe";
 import type { Env } from "@lib/types/env";
 
-export default async (request: Request, env: Env): Promise<Response> => {
+export default async function (request: Request, env: Env): Promise<Response> {
   const form_data = await request.formData();
   const BuyMeACoffeeForm = z.object({
     qty: z.preprocess(Number, z.number().int().min(1).max(1000)),
@@ -14,7 +14,7 @@ export default async (request: Request, env: Env): Promise<Response> => {
     : `${env.BLOG_URL}/support`;
 
   return new Response(null, { status: 303, headers: { location } });
-};
+}
 
 async function create_checkout_url(qty: number, env: Env): Promise<string> {
   const session = await stripe(env).checkout.sessions.create({
