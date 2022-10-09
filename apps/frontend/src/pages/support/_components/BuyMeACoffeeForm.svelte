@@ -6,14 +6,18 @@
   const MAX = 1000;
   let qty = 1;
 
-  const remove_qty = (): number => (qty = qty > 1 ? qty - 1 : 1);
+  function remove_qty(): void {
+    qty = qty > 1 ? qty - 1 : 1;
+  }
 
-  const change_qty = (): void => {
+  function change_qty(): void {
     if (isNaN(qty) || qty < 1) qty = 1;
     else if (qty > MAX) qty = MAX;
-  };
+  }
 
-  const add_qty = (): number => (qty = qty < MAX ? qty + 1 : MAX);
+  function add_qty(): void {
+    qty = qty < MAX ? qty + 1 : MAX;
+  }
 </script>
 
 <form
