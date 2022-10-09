@@ -8,7 +8,7 @@
   let search_string = "";
   let filteredPosts = posts;
 
-  $: words = search_string.split(" ").filter((word): boolean => word !== "");
+  $: words = search_string.trim().replace(/\s+/g, " ").split(" ");
 
   $: if (words.length) {
     filteredPosts = posts.filter((post: BlogPostFrontmatter): boolean => {
