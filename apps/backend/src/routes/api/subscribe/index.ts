@@ -2,7 +2,7 @@ import { z } from "zod";
 import { get_error_message } from "@tonydangblog/error-handling";
 import type { Env } from "@lib/types/env";
 
-export default async (request: Request, env: Env): Promise<Response> => {
+export default async function(request: Request, env: Env): Promise<Response> {
   const { name, email }: { name?: string; email?: string } =
     await request.json();
 
@@ -39,11 +39,11 @@ export default async (request: Request, env: Env): Promise<Response> => {
 };
 
 /** Create contact via SendFox API. */
-const create_contact = async (
+async function create_contact(
   name: string,
   email: string,
   token: string
-): Promise<{ [key: string]: string }> => {
+): Promise<{ [key: string]: string }> {
   try {
     const url = `https://api.sendfox.com/contacts?email=${email}&first_name=${name}`;
     const res = await fetch(url, {
