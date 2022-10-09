@@ -22,10 +22,10 @@
     maxlength = type === "email" ? 256 : 50;
   }
 
-  const update_value = (e: Event): void => {
+  function update_value(e: Event): void {
     const target = e.target as HTMLInputElement;
     value = type === "number" ? +target.value : target.value;
-  };
+  }
 </script>
 
 <label>
@@ -50,10 +50,10 @@
     style:max-width={max_width}
     style:width
     class="
-      bg-transparent
-      border-0 border-b border-text
-      hover:border-accent hover:bg-surface
-      focus:ring-0 focus:border-accent focus:bg-surface
+      border-text
+      hover:border-accent hover:bg-surface focus:border-accent
+      focus:bg-surface border-0
+      border-b bg-transparent focus:ring-0
     "
     class:border-error={invalid}
     class:hover:border-error={invalid}
@@ -65,7 +65,7 @@
   />
 
   {#if helper_text}
-    <p class="absolute m-0 text-sm text-error animate-shake">
+    <p class="text-error animate-shake absolute m-0 text-sm">
       {helper_text}
     </p>
   {/if}
