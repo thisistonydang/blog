@@ -2,7 +2,7 @@ import { get_error_message } from "@tonydangblog/error-handling";
 import type { Env } from "@lib/types/env";
 import { supabase } from "../../../lib/db/supabase";
 
-export default async (_request: Request, env: Env): Promise<Response> => {
+export default async function (_request: Request, env: Env): Promise<Response> {
   let data = [];
   try {
     const res = await supabase(env)
@@ -17,4 +17,4 @@ export default async (_request: Request, env: Env): Promise<Response> => {
   return new Response(JSON.stringify({ donations: data }), {
     headers: { "Access-Control-Allow-Origin": env.BLOG_URL },
   });
-};
+}
