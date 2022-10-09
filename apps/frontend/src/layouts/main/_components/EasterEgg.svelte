@@ -9,9 +9,9 @@
   let egg = UNHATCHED;
   let wiggle = false;
 
-  const handle_keydown = (e: KeyboardEvent): void => {
+  function handle_keydown(e: KeyboardEvent): void {
     if (e.key === "Enter" || e.key === " ") checked = !checked;
-  };
+  }
 
   $: if (checked) setTimeout((): string => (egg = HATCHED), 500);
   else egg = UNHATCHED;
@@ -25,10 +25,10 @@
 <label
   for="easter-egg"
   class="
+    peer-checked:animate-shake
     relative
     cursor-help
     peer-checked:cursor-pointer
-    peer-checked:animate-shake
   "
   class:animate-[wiggle_0.5s]={wiggle}
   tabindex="0"
@@ -39,11 +39,11 @@
     <span
       in:fly={{ y: 20 }}
       class="
-        absolute -top-12
+        bg-surface absolute
+        -top-12
         w-48
-        p-2
-        text-sm text-center
-        bg-surface
+        p-2 text-center
+        text-sm
       "
     >
       I'm a random easter egg!
@@ -52,9 +52,9 @@
     <span
       in:fly={{ y: 20 }}
       class="
-        absolute -top-3 left-2.5
-        w-3 h-3
-        border-8 border-transparent border-t-surface
+        border-t-surface absolute -top-3
+        left-2.5 h-3
+        w-3 border-8 border-transparent
       "
     />
   {/if}
