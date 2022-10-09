@@ -1,8 +1,9 @@
 <script lang="ts">
   import { hamburger_menu_is_open } from "../_stores/hamburger_menu_is_open";
 
-  const handle_click = (): boolean =>
-    ($hamburger_menu_is_open = !$hamburger_menu_is_open);
+  function handle_click(): void {
+    $hamburger_menu_is_open = !$hamburger_menu_is_open;
+  }
 </script>
 
 <button
@@ -11,17 +12,17 @@
   on:click={handle_click}
 >
   <div
-    class="bg-heading my-1.5 w-6 h-0.5 duration-100"
+    class="bg-heading my-1.5 h-0.5 w-6 duration-100"
     class:rotate-45={$hamburger_menu_is_open}
     class:translate-x-1={$hamburger_menu_is_open}
     class:translate-y-1.5={$hamburger_menu_is_open}
   />
   <div
-    class="bg-heading my-1.5 w-6 h-0.5 duration-100"
+    class="bg-heading my-1.5 h-0.5 w-6 duration-100"
     class:opacity-0={$hamburger_menu_is_open}
   />
   <div
-    class="bg-heading my-1.5 w-6 h-0.5 duration-100"
+    class="bg-heading my-1.5 h-0.5 w-6 duration-100"
     class:-rotate-45={$hamburger_menu_is_open}
     class:translate-x-1={$hamburger_menu_is_open}
     class:-translate-y-1.5={$hamburger_menu_is_open}
