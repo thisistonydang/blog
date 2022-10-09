@@ -12,14 +12,14 @@
     0
   );
 
-  const get_donations = async (): Promise<void> => {
+  async function get_donations(): Promise<void> {
     const PUBLIC_BACKEND_URL = import.meta.env.PUBLIC_BACKEND_URL;
     const res = await fetch(`${PUBLIC_BACKEND_URL}/support/donations`);
     if (res.status === 200) {
       const data = await res.json();
       donations = data.donations;
     }
-  };
+  }
 </script>
 
 {#await get_donations() then _}
