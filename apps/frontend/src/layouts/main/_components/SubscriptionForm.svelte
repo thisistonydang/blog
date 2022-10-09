@@ -24,7 +24,7 @@
   let disabled = false;
   let message = "";
 
-  const success_handler = (data: Data): void => {
+  function success_handler(data: Data): void {
     if (data.name) {
       name_is_invalid = true;
       name_helper_text = data.name;
@@ -48,9 +48,9 @@
     if (data.error) {
       message = data.error;
     }
-  };
+  }
 
-  const handle_submit = async (): Promise<void> => {
+  async function handle_submit(): Promise<void> {
     disabled = true;
     name_is_invalid = false;
     name_helper_text = "";
@@ -77,7 +77,7 @@
     } finally {
       disabled = false;
     }
-  };
+  }
 </script>
 
 <form id="subscription-form" on:submit|preventDefault={handle_submit}>
@@ -116,5 +116,5 @@
 </form>
 
 {#if message}
-  <p transition:fly={{ y: -20 }} class="p-4 bg-surface">{message}</p>
+  <p transition:fly={{ y: -20 }} class="bg-surface p-4">{message}</p>
 {/if}
