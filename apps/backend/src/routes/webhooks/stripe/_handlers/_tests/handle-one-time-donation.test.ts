@@ -29,7 +29,7 @@ describe("handle_one_time_donation", () => {
 
       // WHEN A mock Stripe.Checkout.Session is handled.
       const session = {
-        customer_details: { name: " handle  one_time_donation", email },
+        customer_details: { name: " test  one_time_donation", email },
         amount_total: 500,
       } as Stripe.Checkout.Session;
       const error = await handle_one_time_donation(session, env);
@@ -43,9 +43,9 @@ describe("handle_one_time_donation", () => {
         .select("*")
         .match({ email });
       if (!error) {
-        expect(res.data?.[0]?.name).to.equal("handle one_time_donation");
+        expect(res.data?.[0]?.name).to.equal("test one_time_donation");
         expect(res.data?.[0]?.email).to.equal("handle@one_time_donation");
-        expect(res.data?.[0]?.display_name).to.equal("handle");
+        expect(res.data?.[0]?.display_name).to.equal("test");
         expect(res.data?.[0]?.amount).to.equal(500);
       }
     });
