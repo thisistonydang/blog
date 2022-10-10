@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.35.7",
-    "@tonydangblog/error-handling": "workspace:*",
+    "@tonydangblog/error-handling": "workspace:1.0.0",
     "crypto-js": "^4.1.1",
     "itty-router": "^2.6.6",
-    "stripe": "^10.12.0",
+    "stripe": "^10.13.0",
     "zod": "^3.19.1"
   }
 }
