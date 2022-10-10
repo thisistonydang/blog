@@ -79,6 +79,10 @@ describe("/webhooks/stripe", () => {
 
       // AND GIVEN only one existing stripe_event with id = 123
       await supabase(env)
+        .from("one_time_donation")
+        .delete()
+        .match({ email: "tony@tonydang.blog" });
+      await supabase(env)
         .from("stripe_event")
         .delete()
         .neq("stripe_event_id", "blah");
