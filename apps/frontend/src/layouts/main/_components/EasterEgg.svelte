@@ -31,7 +31,6 @@
     peer-checked:cursor-pointer
   "
   class:animate-[wiggle_0.5s]={wiggle}
-  tabindex="0"
   aria-label="toggling this checkbox shows a random easter egg for fun"
   on:keydown={handle_keydown}
 >
