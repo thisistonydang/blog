@@ -1,17 +1,18 @@
 <script lang="ts">
   export let current_path: string;
-  export let page: { name: string; path: string };
+  export let page: { name: string; path: string; prefetch: boolean };
 </script>
 
 <a
   class="
-    text-heading opacity-90
-    after:block after:h-0.5 after:w-0
-    after:bg-accent
+    text-heading after:bg-accent
+    opacity-90 after:block after:h-0.5
+    after:w-0
     after:duration-200 after:hover:w-full
   "
   class:after:w-full={current_path === page.path}
   href={page.path}
+  rel={page.prefetch ? "prefetch" : null}
 >
   {@html page.name}
 </a>

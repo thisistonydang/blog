@@ -10,6 +10,7 @@
   "dependencies": {
     "@astrojs/image": "^0.9.1",
     "@astrojs/mdx": "^0.11.1",
+    "@astrojs/prefetch": "^0.0.8",
     "@astrojs/svelte": "^1.0.0",
     "@astrojs/tailwind": "^2.0.1",
     "@tailwindcss/forms": "^0.5.3",

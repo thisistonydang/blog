@@ -61,6 +61,7 @@ importers:
     specifiers:
       '@astrojs/image': ^0.9.1
       '@astrojs/mdx': ^0.11.1
+      '@astrojs/prefetch': ^0.0.8
       '@astrojs/svelte': ^1.0.0
       '@astrojs/tailwind': ^2.0.1
       '@tailwindcss/forms': ^0.5.3
@@ -78,6 +79,7 @@ importers:
     dependencies:
       '@astrojs/image': 0.9.3_sharp@0.31.1
       '@astrojs/mdx': 0.11.4
+      '@astrojs/prefetch': 0.0.8
       '@astrojs/svelte': 1.0.1_svelte@3.51.0
       '@astrojs/tailwind': 2.0.2_tailwindcss@3.1.8
       '@tailwindcss/forms': 0.5.3_tailwindcss@3.1.8
@@ -225,6 +227,12 @@ packages:
       micromark-util-types: 1.0.2
       uvu: 0.5.6
       vfile-message: 3.1.2
+    dev: false
+
+  /@astrojs/prefetch/0.0.8:
+    resolution: {integrity: sha512-DM0g/H+U2hA/3iIlhoXisAKqfPfiToMsEA8YUyg/3z2W4NaatQf3ppWRAYt9t4B7TJcpVdwDMomw2O/ZcFAghQ==}
+    dependencies:
+      throttles: 1.0.1
     dev: false
 
   /@astrojs/prism/1.0.1:
@@ -6048,6 +6056,11 @@ packages:
   /text-table/0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
+
+  /throttles/1.0.1:
+    resolution: {integrity: sha512-fab7Xg+zELr9KOv4fkaBoe/b3L0GMGLd0IBSCn16GoE/Qx6/OfCr1eGNyEcDU2pUA79qQfZ8kPQWlRuok4YwTw==}
+    engines: {node: '>=6'}
+    dev: false
 
   /tiny-glob/0.2.9:
     resolution: {integrity: sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==}
