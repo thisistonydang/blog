@@ -1,0 +1,26 @@
+---
+layout: "@layouts/main/MainLayout.astro"
+path: /support
+title: Buy Me a Coffee?
+description: A Buy Me a Coffee page. Inspired by BuyMeACoffee.com.
+pubDate: null
+tags: null
+noindex: false
+draft: false
+---
+
+import Avatar from "@lib/components/Avatar.astro";
+import BuyMeACoffeeForm from "./_components/BuyMeACoffeeForm.svelte";
+import CoffeeFeed from "./_components/CoffeeFeed.svelte";
+export const __ = undefined;
+
+<Avatar />
+
+# Buy Me A Coffee?
+
+If you found my posts helpful or would like to support this blog, how about
+buying me a coffee? :)
+
+<BuyMeACoffeeForm client:load />
+<hr />
+<CoffeeFeed client:idle />
