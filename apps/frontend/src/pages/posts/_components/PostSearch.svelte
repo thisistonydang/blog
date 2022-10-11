@@ -37,7 +37,7 @@
         {post.pubDate.substring(0, 10)}
       </time>
       <br />
-      <a class="text-lg" href={post.path}>{post.title}</a>
+      <a class="text-lg" href={post.path} rel="prefetch">{post.title}</a>
       <p class="mt-0">{post.description}</p>
     </li>
   {:else}
