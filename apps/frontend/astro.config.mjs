@@ -10,7 +10,7 @@ import tailwind from "@astrojs/tailwind";
 import compress from "astro-compress";
 import remarkToc from "remark-toc";
 
-const PROD = true;
+const PROD = false;
 const integrations = () => (PROD ? [compress()] : []);
 
 export default defineConfig({
