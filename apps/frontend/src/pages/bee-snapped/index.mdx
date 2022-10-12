@@ -1,0 +1,50 @@
+---
+layout: "@layouts/blog-post/BlogPostLayout.astro"
+path: /bee-snapped
+title: Bee Snapped
+description: A portrait photography project
+pubDate: 2021-06-14
+tags: null
+noindex: false
+draft: false
+---
+
+import { Picture } from "@astrojs/image/components";
+import "@lib/components/ShowSubscriptionFormScript.astro";
+import Gallery from "./_components/Gallery.astro";
+export const __ = undefined;
+
+<Picture
+  src={import("./_assets/01-bee-snapped-logo-1280px.png")}
+  alt="Bee Snapped Logo"
+  sizes=""
+  widths={[1280]}
+  aspectRatio="1280:337"
+  loading="eager"
+/>
+
+<Picture
+  src={import("./_assets/_000-tony-1280px.jpg")}
+  alt="Photo of Tony Dang with a camera on a tripod"
+  sizes=""
+  widths={[1280]}
+  aspectRatio="4:3"
+  loading="eager"
+/>
+
+## What is Bee Snapped?
+
+**Bee Snapped** is a portrait photography project started in 2018 when I
+announced that I would snap _free_, studio-quality portraits for _anyone_ who
+asked me. Since then, I've taken the **38 snaps** below.
+
+## Would you like to bee snapped?
+
+At the moment, I am not taking new appointments, but plan to in the future.
+
+Want to get notified when? Sign up to my [mailing list](#subscription-form)
+below.
+
+## Snaps from previous shoots
+
+<Gallery />
