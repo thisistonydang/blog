@@ -1,0 +1,37 @@
+---
+import { Image } from "@astrojs/image/components";
+
+interface PhotoFile {
+  default: {
+    src: string;
+  };
+}
+
+let photoFiles = Object.values(
+  import.meta.glob<PhotoFile>("../_assets/*.jpg", { eager: true })
+);
+photoFiles = photoFiles.filter((photo) => photo.default.src.includes("640px"));
+
+const photos = photoFiles.map((photo) => {
+  const name = photo.default.src.match(/\d\d\d-[a-z]+/)?.[0];
+  return {
+    href: `/bee-snapped-assets/_${name}-1280px.jpg`,
+    src: `_${name}-640px`,
+    alt: `snap of ${name?.substring(4)}`,
+  };
+});
+---
+
+<div class="flex flex-wrap justify-between">
+  {
+    photos.map((photo) => (
+      <a href={photo.href} class="max-w-[49%]">
+        <Image
+          class="my-1.5 duration-200 hover:scale-105"
+          src={import(`../_assets/${photo.src}.jpg`)}
+          alt={photo.alt}
+        />
+      </a>
+    ))
+  }
+</div>
