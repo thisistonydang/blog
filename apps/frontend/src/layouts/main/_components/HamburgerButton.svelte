@@ -12,17 +12,17 @@
   on:click={handle_click}
 >
   <div
-    class="bg-heading my-1.5 h-0.5 w-6 duration-100"
+    class="bg-heading my-1.5 h-0.5 w-6 transition-transform duration-100"
     class:rotate-45={$hamburger_menu_is_open}
     class:translate-x-1={$hamburger_menu_is_open}
     class:translate-y-1.5={$hamburger_menu_is_open}
   />
   <div
-    class="bg-heading my-1.5 h-0.5 w-6 duration-100"
+    class="bg-heading my-1.5 h-0.5 w-6 transition-transform duration-100"
     class:opacity-0={$hamburger_menu_is_open}
   />
   <div
-    class="bg-heading my-1.5 h-0.5 w-6 duration-100"
+    class="bg-heading my-1.5 h-0.5 w-6 transition-transform duration-100"
     class:-rotate-45={$hamburger_menu_is_open}
     class:translate-x-1={$hamburger_menu_is_open}
     class:-translate-y-1.5={$hamburger_menu_is_open}
