@@ -27,7 +27,7 @@
 >
   <fieldset class="m-auto mb-5 flex w-max items-center">
     <button
-      class="active:bg-surface mt-5 p-2 text-4xl duration-200 hover:scale-125"
+      class="active:bg-surface mt-5 p-2 text-4xl transition-transform duration-200 hover:scale-125"
       on:click|preventDefault={remove_qty}
     >
       &minus;
@@ -50,7 +50,7 @@
     />
 
     <button
-      class="active:bg-surface mt-5 p-2 text-4xl duration-200 hover:scale-125"
+      class="active:bg-surface mt-5 p-2 text-4xl transition-transform duration-200 hover:scale-125"
       on:click|preventDefault={add_qty}
     >
       &plus;
