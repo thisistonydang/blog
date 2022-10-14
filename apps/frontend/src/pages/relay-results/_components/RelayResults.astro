@@ -1,0 +1,18 @@
+---
+import RelayResults from "./RelayResults.svelte";
+
+import { sql } from "@lib/db/sql";
+
+const rows = await sql`
+  SELECT DISTINCT run_date, relay_run_location FROM relay_run
+  JOIN relay_run_location USING (relay_run_location_id)
+  ORDER BY run_date DESC
+`;
+
+const runs = rows.map((row) => ({
+  date: row.run_date.toISOString().split("T")[0],
+  location: row.relay_run_location,
+}));
+---
+
+<RelayResults {runs} client:load />
