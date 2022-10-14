@@ -4,20 +4,20 @@ importers:
 
   .:
     specifiers:
-      '@typescript-eslint/eslint-plugin': ^5.40.0
-      '@typescript-eslint/parser': ^5.40.0
-      '@vitest/coverage-c8': ^0.24.3
-      eslint: ^8.25.0
+      '@typescript-eslint/eslint-plugin': ^5.38.0
+      '@typescript-eslint/parser': ^5.38.0
+      '@vitest/coverage-c8': ^0.24.1
+      eslint: ^8.23.1
       eslint-config-prettier: ^8.5.0
       eslint-plugin-astro: ^0.20.0
       eslint-plugin-jsx-a11y: ^6.6.1
       eslint-plugin-svelte3: ^4.0.0
       prettier: ^2.7.1
-      prettier-plugin-astro: ^0.5.5
+      prettier-plugin-astro: ^0.5.4
       prettier-plugin-tailwindcss: ^0.1.13
-      typescript: ^4.8.4
-      vite: ^3.1.8
-      vitest: ^0.24.3
+      typescript: ^4.8.3
+      vite: ^3.1.6
+      vitest: ^0.24.1
     devDependencies:
       '@typescript-eslint/eslint-plugin': 5.40.0_25sstg4uu2sk4pm7xcyzuov7xq
       '@typescript-eslint/parser': 5.40.0_z4bbprzjrhnsfa24uvmcbu7f5q
@@ -36,13 +36,13 @@ importers:
 
   apps/backend:
     specifiers:
-      '@cloudflare/workers-types': ^3.17.0
+      '@cloudflare/workers-types': ^3.16.0
       '@supabase/supabase-js': ^2.0.0
       '@tonydangblog/error-handling': workspace:1.0.0
       '@types/crypto-js': ^4.1.1
       crypto-js: ^4.1.1
       itty-router: ^2.6.6
-      stripe: ^10.14.0
+      stripe: ^10.13.0
       typescript: ^4.8.4
       zod: ^3.19.1
     dependencies:
@@ -60,24 +60,24 @@ importers:
   apps/frontend:
     specifiers:
       '@astrojs/image': ^0.10.0
-      '@astrojs/mdx': ^0.11.4
+      '@astrojs/mdx': ^0.11.1
       '@astrojs/prefetch': ^0.0.8
-      '@astrojs/svelte': ^1.0.2
-      '@astrojs/tailwind': ^2.1.0
+      '@astrojs/svelte': ^1.0.0
+      '@astrojs/tailwind': ^2.0.1
       '@tailwindcss/forms': ^0.5.3
       '@tailwindcss/typography': ^0.5.7
-      '@tonydangblog/error-handling': workspace:1.0.0
+      '@tonydangblog/error-handling': workspace:*
       '@types/d3': ^7.4.0
-      astro: ^1.5.0
-      astro-compress: ^1.0.12
+      astro: ^1.2.6
+      astro-compress: ^1.0.8
       astro-seo: ^0.6.0
       d3: ^7.6.1
       date-fns: ^2.29.3
       postgres: ^3.3.1
       remark-toc: ^8.0.1
-      sharp: ^0.31.1
-      svelte: ^3.51.0
-      tailwindcss: ^3.1.8
+      sharp: ^0.31.0
+      svelte: ^3.46.4
+      tailwindcss: ^3.0.24
     dependencies:
       '@astrojs/image': 0.10.0_sharp@0.31.1
       '@astrojs/mdx': 0.11.4
