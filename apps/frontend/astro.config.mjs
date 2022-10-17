@@ -5,8 +5,8 @@ import svelte from "@astrojs/svelte";
 import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import prefetch from "@astrojs/prefetch";
-import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
 
 import compress from "astro-compress";
 import remarkToc from "remark-toc";
@@ -22,11 +22,11 @@ export default defineConfig({
     image({ logLevel: "debug", serviceEntryPoint: "@astrojs/image/sharp" }),
     mdx({ remarkPlugins: [remarkToc] }),
     prefetch(),
-    tailwind({ config: { applyBaseStyles: false } }),
     sitemap({
       filter: (page) =>
         page !== "https://tonydang.blog/support/successful-one-time-donation/",
     }),
+    tailwind({ config: { applyBaseStyles: false } }),
     ...integrations(),
   ],
 });
