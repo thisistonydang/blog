@@ -60,28 +60,30 @@ importers:
   apps/frontend:
     specifiers:
       '@astrojs/image': ^0.10.0
-      '@astrojs/mdx': ^0.11.4
+      '@astrojs/mdx': ^0.11.1
       '@astrojs/prefetch': ^0.0.8
-      '@astrojs/svelte': ^1.0.2
-      '@astrojs/tailwind': ^2.1.0
+      '@astrojs/rss': ^1.0.2
+      '@astrojs/svelte': ^1.0.0
+      '@astrojs/tailwind': ^2.0.1
       '@tailwindcss/forms': ^0.5.3
       '@tailwindcss/typography': ^0.5.7
-      '@tonydangblog/error-handling': workspace:1.0.0
+      '@tonydangblog/error-handling': workspace:*
       '@types/d3': ^7.4.0
-      astro: ^1.5.0
-      astro-compress: ^1.0.12
+      astro: ^1.2.6
+      astro-compress: ^1.0.8
       astro-seo: ^0.6.0
       d3: ^7.6.1
       date-fns: ^2.29.3
       postgres: ^3.3.1
       remark-toc: ^8.0.1
-      sharp: ^0.31.1
-      svelte: ^3.52.0
-      tailwindcss: ^3.1.8
+      sharp: ^0.31.0
+      svelte: ^3.46.4
+      tailwindcss: ^3.0.24
     dependencies:
       '@astrojs/image': 0.10.0_sharp@0.31.1
       '@astrojs/mdx': 0.11.4
       '@astrojs/prefetch': 0.0.8
+      '@astrojs/rss': 1.0.2
       '@astrojs/svelte': 1.0.2_svelte@3.52.0
       '@astrojs/tailwind': 2.1.0_tailwindcss@3.1.8
       '@tailwindcss/forms': 0.5.3_tailwindcss@3.1.8
@@ -239,6 +241,12 @@ packages:
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       prismjs: 1.29.0
+    dev: false
+
+  /@astrojs/rss/1.0.2:
+    resolution: {integrity: sha512-WPMW5a3D+nAbuu/i7LANfp1GnVrdnzcsUNrR7o8IvPJXJMjVGtDqdUqNDj20Rj3rwcWbOL2KVvGPMjCqx0tRWQ==}
+    dependencies:
+      fast-xml-parser: 4.0.11
     dev: false
 
   /@astrojs/svelte/1.0.2_svelte@3.52.0:
@@ -3352,6 +3360,13 @@ packages:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
     dev: true
 
+  /fast-xml-parser/4.0.11:
+    resolution: {integrity: sha512-4aUg3aNRR/WjQAcpceODG1C3x3lFANXRo8+1biqfieHmg9pyMt7qB4lQV/Ta6sJCTbA5vfD8fnA8S54JATiFUA==}
+    hasBin: true
+    dependencies:
+      strnum: 1.0.5
+    dev: false
+
   /fastq/1.13.0:
     resolution: {integrity: sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==}
     dependencies:
@@ -6029,6 +6044,10 @@ packages:
     dependencies:
       '@types/node': 18.11.0
       qs: 6.11.0
+    dev: false
+
+  /strnum/1.0.5:
+    resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
     dev: false
 
   /style-to-object/0.3.0:
