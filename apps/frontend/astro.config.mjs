@@ -6,6 +6,7 @@ import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import prefetch from "@astrojs/prefetch";
 import tailwind from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
 
 import compress from "astro-compress";
 import remarkToc from "remark-toc";
@@ -22,6 +23,10 @@ export default defineConfig({
     mdx({ remarkPlugins: [remarkToc] }),
     prefetch(),
     tailwind({ config: { applyBaseStyles: false } }),
+    sitemap({
+      filter: (page) =>
+        page !== "https://tonydang.blog/support/successful-one-time-donation/",
+    }),
     ...integrations(),
   ],
 });
