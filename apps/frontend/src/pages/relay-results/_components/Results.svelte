@@ -27,7 +27,7 @@
         stacked_team_times = stack(data.team_results).map(
           (series: Series): Series => {
             series.forEach((seriesPoint: SeriesPoint): void => {
-              const point = seriesPoint;
+              let point = seriesPoint;
               if (Number.isNaN(seriesPoint.slice(-1)[0])) {
                 [point[1]] = seriesPoint;
               } else {
