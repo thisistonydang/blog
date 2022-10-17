@@ -12,19 +12,19 @@
     "deploy": "pnpm -F @blog/frontend run deploy && pnpm -F @blog/backend run deploy"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.38.0",
-    "@typescript-eslint/parser": "^5.38.0",
-    "@vitest/coverage-c8": "^0.24.1",
-    "eslint": "^8.23.1",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "@vitest/coverage-c8": "^0.24.3",
+    "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-astro": "^0.20.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-svelte3": "^4.0.0",
     "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.5.4",
+    "prettier-plugin-astro": "^0.5.5",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "typescript": "^4.8.3",
-    "vite": "^3.1.6",
-    "vitest": "^0.24.1"
+    "typescript": "^4.8.4",
+    "vite": "^3.1.8",
+    "vitest": "^0.24.3"
   }
 }
