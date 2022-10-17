@@ -48,9 +48,9 @@ const viewBox = icon && `0 0 ${icon.width} ${icon.height}`;
   icon && (
     <svg
       class="fill-heading hover:fill-accent m-2"
-      {width}
-      {height}
-      {viewBox}
+      width={width}
+      height={height}
+      viewBox={viewBox}
       set:html={icon.path}
     />
   )

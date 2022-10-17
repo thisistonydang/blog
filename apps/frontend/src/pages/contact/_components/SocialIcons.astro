@@ -16,7 +16,7 @@ const urls = [
       const name = (url.match(/^[^.]+/) as string[])[0] as string;
       return (
         <a href={"https://" + url} aria-label={name}>
-          <Icon {name} width="40" height="40" />
+          <Icon name={name} width="40" height="40" />
         </a>
       );
     })

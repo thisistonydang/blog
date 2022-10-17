@@ -15,7 +15,7 @@ const { frontmatter } = Astro.props;
 ---
 
 <html lang="en" class="bg-bg overflow-y-scroll">
-  <Head {frontmatter} />
+  <Head frontmatter={frontmatter} />
   <body class="p-4 sm:pl-8">
     <Header />
     <HamburgerMenu current_path={Astro.url.pathname} client:load />

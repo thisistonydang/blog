@@ -15,7 +15,7 @@ const formattedDate = new Intl.DateTimeFormat(undefined, {
 }).format(new Date(frontmatter.pubDate));
 ---
 
-<MainLayout {frontmatter}>
+<MainLayout frontmatter={frontmatter}>
   <div class="mb-12 text-sm">
     <a class="no-underline" href="/posts">&larr; Back to all posts</a>
   </div>
