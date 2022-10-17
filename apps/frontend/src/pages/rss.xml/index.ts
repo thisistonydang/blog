@@ -35,5 +35,5 @@ export const get: APIRoute = () =>
     site: import.meta.env.SITE,
     items: posts,
     customData: `<language>en-us</language>`,
-    //stylesheet: "/rss/styles.xsl",
+    stylesheet: "/rss/styles.xsl",
   });
