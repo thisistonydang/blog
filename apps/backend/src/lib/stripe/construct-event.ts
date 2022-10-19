@@ -1,7 +1,7 @@
-import CryptoJS from "crypto-js";
 import type { Stripe } from "stripe";
 
 import { get_error_message } from "@tonydangblog/error-handling";
+import { buf2hex } from "../crypto/buf2hex";
 import type { Env } from "@lib/types/env";
 
 /**
@@ -19,9 +19,22 @@ export async function construct_event(
     const sig = request.headers.get("stripe-signature")?.split(",") as string[];
     const timestamp = sig[0].split("=")[1];
     const signature = sig[1].split("=")[1];
-    const expected_signature = CryptoJS.enc.Hex.stringify(
-      CryptoJS.HmacSHA256(`${timestamp}.${payload}`, env.STRIPE_ENDPOINT_SECRET)
+
+    // Generate expected signature.
+    const key = await crypto.subtle.importKey(
+      "raw",
+      new TextEncoder().encode(env.STRIPE_ENDPOINT_SECRET),
+      { name: "HMAC", hash: "SHA-256" },
+      false,
+      ["sign"]
     );
+    const signed_payload = await crypto.subtle.sign(
+      "HMAC",
+      key,
+      new TextEncoder().encode(`${timestamp}.${payload}`)
+    );
+    const expected_signature = buf2hex(signed_payload);
+
     if (signature === expected_signature) return JSON.parse(payload);
     throw new Error("invalid signature");
   } catch (error: unknown) {

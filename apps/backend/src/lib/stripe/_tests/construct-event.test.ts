@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import CryptoJS from "crypto-js";
-
+import { buf2hex } from "../../crypto/buf2hex";
 import { env } from "../../testing/env";
 import { construct_event } from "../construct-event";
 
@@ -28,10 +27,19 @@ describe("construct_event", () => {
   ].forEach(({ payload, signature_invalidator, expected }) => {
     it("returns an event if valid signature, else returns null", async () => {
       // GIVEN Requst with stripe signature.
-      const v1 = CryptoJS.HmacSHA256(
-        `timestamp.${payload}${signature_invalidator}`,
-        env.STRIPE_ENDPOINT_SECRET
+      const key = await crypto.subtle.importKey(
+        "raw",
+        new TextEncoder().encode(env.STRIPE_ENDPOINT_SECRET),
+        { name: "HMAC", hash: "SHA-256" },
+        false,
+        ["sign"]
       );
+      const signed_payload = await crypto.subtle.sign(
+        "HMAC",
+        key,
+        new TextEncoder().encode(`timestamp.${payload}${signature_invalidator}`)
+      );
+      const v1 = buf2hex(signed_payload);
       const stripe_signature = `t=timestamp,v1=${v1}`;
       const request = new Request("https://tonydang.blog", {
         method: "POST",
