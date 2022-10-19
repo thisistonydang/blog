@@ -1,3 +1,5 @@
+// @vitest-environment miniflare
+
 import { describe, expect, it } from "vitest";
 
 import { buf2hex } from "../../crypto/buf2hex";
