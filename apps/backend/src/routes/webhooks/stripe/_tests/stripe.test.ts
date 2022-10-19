@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import CryptoJS from "crypto-js";
-
+import { buf2hex } from "../../../../lib/crypto/buf2hex";
 import { supabase } from "../../../../lib/db/supabase";
 import { env } from "../../../../lib/testing/env";
 import api_route from "../index";
@@ -91,10 +90,21 @@ describe("/webhooks/stripe", () => {
       expect(data?.length).to.equal(1);
 
       // WHEN A mock event request from Stripe is handled.
-      const v1 = CryptoJS.HmacSHA256(
-        `timestamp.${JSON.stringify(stripe_event)}${signature_invalidator}`,
-        env.STRIPE_ENDPOINT_SECRET
+      const key = await crypto.subtle.importKey(
+        "raw",
+        new TextEncoder().encode(env.STRIPE_ENDPOINT_SECRET),
+        { name: "HMAC", hash: "SHA-256" },
+        false,
+        ["sign"]
       );
+      const signed_payload = await crypto.subtle.sign(
+        "HMAC",
+        key,
+        new TextEncoder().encode(
+          `timestamp.${JSON.stringify(stripe_event)}${signature_invalidator}`
+        )
+      );
+      const v1 = buf2hex(signed_payload);
       const stripe_signature = `t=timestamp,v1=${v1}`;
       const request = new Request("https://tonydang.blog", {
         method: "POST",
