@@ -1,5 +1,5 @@
 name = "blog-backend"
-main = "src/index.ts"
+main = "src/router.ts"
 node_compat = true
 compatibility_date = "2022-10-03"
 
