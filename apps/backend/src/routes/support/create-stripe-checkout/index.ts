@@ -13,7 +13,7 @@ export default async function (request: Request, env: Env): Promise<Response> {
     ? await create_checkout_url(form.data.qty, env)
     : `${env.BLOG_URL}/support`;
 
-  return new Response(null, { status: 303, headers: { location } });
+  return Response.redirect(location, 303);
 }
 
 async function create_checkout_url(qty: number, env: Env): Promise<string> {
