@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { stripe } from "../../../lib/stripe/stripe";
+import { stripe } from "@lib/stripe/stripe";
 import type { Env } from "@lib/types/env";
 
 export default async function (request: Request, env: Env): Promise<Response> {
