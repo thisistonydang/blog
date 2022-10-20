@@ -1,6 +1,6 @@
 import type { Stripe } from "stripe";
 
-import { supabase } from "../../../../lib/db/supabase";
+import { supabase } from "@lib/db/supabase";
 import type { Env } from "@lib/types/env";
 
 /**

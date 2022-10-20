@@ -1,7 +1,7 @@
 import type { Stripe } from "stripe";
 
-import { supabase } from "../../../lib/db/supabase";
-import { construct_event } from "../../../lib/stripe/construct-event";
+import { supabase } from "@lib/db/supabase";
+import { construct_event } from "@lib/stripe/construct-event";
 import type { Env } from "@lib/types/env";
 
 import { handle_one_time_donation } from "./_handlers/handle-one-time-donation";

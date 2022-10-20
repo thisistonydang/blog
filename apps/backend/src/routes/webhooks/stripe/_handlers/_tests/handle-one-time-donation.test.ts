@@ -2,8 +2,9 @@ import { describe, expect, it } from "vitest";
 
 import type { Stripe } from "stripe";
 
-import { supabase } from "../../../../../lib/db/supabase";
-import { env } from "../../../../../lib/testing/env";
+import { supabase } from "@lib/db/supabase";
+import { env } from "@lib/testing/env";
+
 import { handle_one_time_donation } from "../handle-one-time-donation";
 
 describe("handle_one_time_donation", () => {

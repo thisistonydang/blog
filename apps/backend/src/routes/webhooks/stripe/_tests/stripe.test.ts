@@ -2,9 +2,10 @@
 
 import { describe, expect, it } from "vitest";
 
-import { buf2hex } from "../../../../lib/crypto/buf2hex";
-import { supabase } from "../../../../lib/db/supabase";
-import { env } from "../../../../lib/testing/env";
+import { buf2hex } from "@lib/crypto/buf2hex";
+import { supabase } from "@lib/db/supabase";
+import { env } from "@lib/testing/env";
+
 import api_route from "../index";
 
 describe("/webhooks/stripe", () => {
