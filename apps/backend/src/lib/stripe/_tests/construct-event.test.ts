@@ -2,8 +2,9 @@
 
 import { describe, expect, it } from "vitest";
 
-import { buf2hex } from "../../crypto/buf2hex";
-import { env } from "../../testing/env";
+import { buf2hex } from "@lib/crypto/buf2hex";
+import { env } from "@lib/testing/env";
+
 import { construct_event } from "../construct-event";
 
 describe("construct_event", () => {
