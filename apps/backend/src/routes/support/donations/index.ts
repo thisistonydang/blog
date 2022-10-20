@@ -1,6 +1,7 @@
 import { get_error_message } from "@tonydangblog/error-handling";
+
+import { supabase } from "@lib/db/supabase";
 import type { Env } from "@lib/types/env";
-import { supabase } from "../../../lib/db/supabase";
 
 export default async function (_request: Request, env: Env): Promise<Response> {
   let data = [];

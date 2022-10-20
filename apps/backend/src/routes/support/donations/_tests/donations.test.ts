@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { env } from "../../../../lib/testing/env";
+import { env } from "@lib/testing/env";
 import api_route from "../index";
 
 interface Donation {
