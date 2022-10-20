@@ -1,7 +1,8 @@
 import type { Stripe } from "stripe";
 
 import { get_error_message } from "@tonydangblog/error-handling";
-import { buf2hex } from "../crypto/buf2hex";
+
+import { buf2hex } from "@lib/crypto/buf2hex";
 import type { Env } from "@lib/types/env";
 
 /**
