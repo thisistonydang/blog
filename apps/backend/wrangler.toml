@@ -7,4 +7,5 @@ compatibility_date = "2022-10-03"
 port = 8787
 
 [vars]
+BACKEND_URL = "https://blog-backend.tonydang.workers.dev"
 BLOG_URL = "https://blog-frontend-2q4.pages.dev"
