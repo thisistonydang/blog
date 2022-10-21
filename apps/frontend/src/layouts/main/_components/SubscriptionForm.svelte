@@ -59,7 +59,7 @@
     message = "";
     try {
       const PUBLIC_BACKEND_URL = import.meta.env.PUBLIC_BACKEND_URL;
-      const res = await fetch(`${PUBLIC_BACKEND_URL}/api/subscribe`, {
+      const res = await fetch(`${PUBLIC_BACKEND_URL}/list/subscribe`, {
         method: "POST",
         body: JSON.stringify({ name, email }),
         headers: {
