@@ -9,6 +9,6 @@ export interface Env {
   STRIPE_API_KEY: string;
   STRIPE_ENDPOINT_SECRET: string;
   STRIPE_ONE_TIME_DONATION_PRICE: string;
-  SUPABASE_URL: string;
   SUPABASE_SERVICE_KEY: string;
+  SUPABASE_URL: string;
 }
