@@ -1,6 +1,11 @@
 export interface Env {
+  AWS_ACCESS_KEY_ID: string;
+  AWS_SECRET_ACCESS_KEY: string;
+  AWS_SENDER: string;
+  BACKEND_URL: string;
   BLOG_URL: string;
-  SENDFOX_ACCESS_TOKEN: string;
+  JWT_PRIVATE_KEY: string;
+  JWT_PUBLIC_KEY: string;
   STRIPE_API_KEY: string;
   STRIPE_ENDPOINT_SECRET: string;
   STRIPE_ONE_TIME_DONATION_PRICE: string;
