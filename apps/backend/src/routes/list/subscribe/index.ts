@@ -5,6 +5,8 @@ import { supabase } from "@lib/db/supabase";
 import { sign_jwt } from "@lib/jwt/sign-jwt";
 import type { Env } from "@lib/types/env";
 
+import type { Contact } from "../_types/contact";
+
 export default async function (request: Request, env: Env): Promise<Response> {
   const { name, email }: { name?: string; email?: string } =
     await request.json();
@@ -56,7 +58,7 @@ async function process_subscription_request(
 
   // If contact exists...
   if (res.data?.[0]) {
-    const contact = res.data[0];
+    const contact: Contact = res.data[0];
     if (contact.is_subscriber || contact.is_banned)
       return { confirmed: "Thank you for signing up for my mailing list!" };
 

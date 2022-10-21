@@ -2,6 +2,8 @@ import { supabase } from "@lib/db/supabase";
 import { verify_jwt } from "@lib/jwt/verify-jwt";
 import type { Env } from "@lib/types/env";
 
+import type { Contact } from "../_types/contact";
+
 export default async function (request: Request, env: Env): Promise<Response> {
   let payload;
   const jwt = new URL(request.url).searchParams.get("jwt");
@@ -13,7 +15,7 @@ export default async function (request: Request, env: Env): Promise<Response> {
       .select("*")
       .match({ contact_id: payload.id });
     if (res.error) return Response.redirect(`${env.BLOG_URL}/whoops`, 303);
-    const contact = res.data[0];
+    const contact: Contact = res.data[0];
 
     if (contact && !contact.is_banned) {
       res = await supabase(env)
