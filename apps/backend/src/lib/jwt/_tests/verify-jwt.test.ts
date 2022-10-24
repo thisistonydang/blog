@@ -1,3 +1,5 @@
+// @vitest-environment miniflare
+
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { env } from "@lib/testing/env";
