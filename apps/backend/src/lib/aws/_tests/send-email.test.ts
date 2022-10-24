@@ -1,13 +1,15 @@
+// @vitest-environment miniflare
+
 import { describe, expect, it } from "vitest";
 
 import { env } from "@lib/testing/env";
 
 import { send_email } from "../send-email";
 
-const SENDS_EMAIL = process.env.TEST_EMAIL;
+const TEST_EMAIL = process.env.TEST_EMAIL;
 
 describe("send_email", () => {
-  it.skipIf(SENDS_EMAIL)("can send an email", async () => {
+  it.skipIf(!TEST_EMAIL)("can send an email", async () => {
     // GIVEN N/A.
 
     // WHEN An email is sent.
