@@ -43,7 +43,7 @@ export default async function (request: Request, env: Env): Promise<Response> {
   });
 }
 
-async function process_subscription_request(
+export async function process_subscription_request(
   env: Env,
   name: string,
   email: string
