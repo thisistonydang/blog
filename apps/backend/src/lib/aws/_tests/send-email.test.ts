@@ -6,10 +6,10 @@ import { env } from "@lib/testing/env";
 
 import { send_email } from "../send-email";
 
-const TEST_EMAIL = process.env.TEST_EMAIL;
+const SKIP_EMAIL = process.env.SKIP_EMAIL;
 
 describe("send_email", () => {
-  it.skipIf(!TEST_EMAIL)("can send an email", async () => {
+  it.skipIf(SKIP_EMAIL)("can send an email", async () => {
     // GIVEN N/A.
 
     // WHEN An email is sent.
