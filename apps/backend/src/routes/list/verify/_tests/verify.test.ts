@@ -1,6 +1,6 @@
 // @vitest-environment miniflare
 
-import { describe, expect, it } from "vitest";
+import { afterAll, describe, expect, it } from "vitest";
 
 import { supabase } from "@lib/db/supabase";
 import { sign_jwt } from "@lib/jwt/sign-jwt";
@@ -8,17 +8,24 @@ import { env } from "@lib/testing/env";
 
 import api_route from "../index";
 
+const email = "low.oil0318@fastmail.com";
+afterAll(async () => {
+  await supabase(env).from("contact").delete().match({ email });
+});
+
 describe("/list/verify", () => {
   const uuid = crypto.randomUUID();
   it.each([
     // shows whoops page if id in JWT is invalid
     [false, uuid, "123", false, false, "/whoops"],
+
     // verifies and subscribes an contact
     [false, uuid, uuid, true, true, "/list/verify/success"],
+
     // shows expired link page if contact is banned
     [true, uuid, uuid, false, false, "/list/verify/expired"],
   ])(
-    "processes email verification request",
+    "is_banned: %s, contact_id: %s, jwt_id: %s, is_verified: %s, is_subscriber: %s, redirect_path: %s",
     async (
       is_banned,
       contact_id,
@@ -28,7 +35,6 @@ describe("/list/verify", () => {
       redirect_path
     ) => {
       // GIVEN contact in db.
-      const email = "tony@tonydang.blog";
       await supabase(env).from("contact").delete().match({ email });
       await supabase(env).from("contact").insert({
         contact_id,
