@@ -6,28 +6,26 @@ describe("get_error_message", () => {
     setTimeout(() => null);
   });
 
-  [
-    { error: new Error("error message"), expected: "error message" },
-    { error: "wtf", expected: "wtf" },
-    { error: 7, expected: "7" },
-    { error: { wut: "is this" }, expected: "[object Object]" },
-    { error: null, expected: "null" },
-    { error: promise, expected: "[object Promise]" },
-    { error: undefined, expected: "undefined" },
-  ].forEach(({ error, expected }) => {
-    it("converts any thrown error into a string", () => {
-      // GIVEN Errors of unknown type.
+  it.each([
+    [new Error("error message"), "error message"],
+    ["wtf", "wtf"],
+    [7, "7"],
+    [{ wut: "is this" }, "[object Object]"],
+    [null, "null"],
+    [promise, "[object Promise]"],
+    [undefined, "undefined"],
+  ])("converts any thrown error into a string", (error, expected) => {
+    // GIVEN Errors of unknown type.
 
-      // WHEN get_error_message is called with thrown error.
-      let actual_message = "";
-      try {
-        throw error;
-      } catch (e: unknown) {
-        actual_message = get_error_message(e);
-      }
+    // WHEN get_error_message is called with thrown error.
+    let actual_message = "";
+    try {
+      throw error;
+    } catch (e: unknown) {
+      actual_message = get_error_message(e);
+    }
 
-      // THEN Error is converted to a string.
-      expect(actual_message).to.equal(`Error: ${expected}`);
-    });
+    // THEN Error is converted to a string.
+    expect(actual_message).to.equal(`Error: ${expected}`);
   });
 });
