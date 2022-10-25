@@ -8,27 +8,16 @@ import { env } from "@lib/testing/env";
 import { construct_event } from "../construct-event";
 
 describe("construct_event", () => {
-  [
-    {
-      // Valid payload and valid signature
-      payload: JSON.stringify({ id: 12345 }),
-      signature_invalidator: "",
-      expected: { id: 12345 },
-    },
-    {
-      // Valid payload but INVALID signature
-      payload: JSON.stringify({ id: 12345 }),
-      signature_invalidator: "blah",
-      expected: null,
-    },
-    {
-      // INVALID payload
-      payload: "",
-      signature_invalidator: "",
-      expected: null,
-    },
-  ].forEach(({ payload, signature_invalidator, expected }) => {
-    it("returns an event if valid signature, else returns null", async () => {
+  it.each([
+    // Valid payload and valid signature
+    [JSON.stringify({ id: 12345 }), "", { id: 12345 }],
+    // Valid payload but INVALID signature
+    [JSON.stringify({ id: 12345 }), "blah", null],
+    // INVALID payload
+    ["", "", null],
+  ])(
+    "returns an event if valid signature, else returns null",
+    async (payload, signature_invalidator, expected) => {
       // GIVEN Requst with stripe signature.
       const key = await crypto.subtle.importKey(
         "raw",
@@ -55,6 +44,6 @@ describe("construct_event", () => {
 
       // THEN event is returned if valid, else null is returned.
       expect(event).to.deep.equal(expected);
-    });
-  });
+    }
+  );
 });
