@@ -92,7 +92,7 @@ export async function process_subscription_request(
   const contact_id = crypto.randomUUID();
   res = await supabase(env)
     .from("contact")
-    .insert([{ contact_id, name, preferred_name, email }]);
+    .insert({ contact_id, name, preferred_name, email });
   if (res.error) return { error: res.error.message };
   const ses_res = await send_verification_email(
     env,
