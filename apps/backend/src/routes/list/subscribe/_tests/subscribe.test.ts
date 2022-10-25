@@ -7,66 +7,78 @@ import { env } from "@lib/testing/env";
 
 import api_route from "../index";
 
-const SENDS_EMAIL = process.env.TEST_EMAIL;
+const SKIP_EMAIL = process.env.SKIP_EMAIL;
+const subscribed_email = "is_subscriber@tonydang.blog";
+const banned_email = "is_banned@tonydang.blog";
+const verified_email = "is_verified@tonydang.blog";
+const unverified_email = "past.koala8232@fastmail.com";
+const new_contact_email = "wise.job2121@fastmail.com";
 
 beforeAll(async () => {
-  // SETUP Clear contact table and add test data.
-  await supabase(env).from("contact").delete().neq("email", "blah");
   await supabase(env)
     .from("contact")
     .insert([
       {
         name: "is_subscriber",
         preferred_name: "is_subscriber",
-        email: "is_subscriber@tonydang.blog",
+        email: subscribed_email,
+        is_verified: false,
         is_subscriber: true,
+        is_banned: false,
       },
-    ]);
-  await supabase(env)
-    .from("contact")
-    .insert([
       {
         name: "is_banned",
         preferred_name: "is_banned",
-        email: "is_banned@tonydang.blog",
+        email: banned_email,
+        is_verified: false,
+        is_subscriber: false,
         is_banned: true,
       },
-    ]);
-  await supabase(env)
-    .from("contact")
-    .insert([
       {
         name: "is_verified",
         preferred_name: "is_verified",
-        email: "is_verified@tonydang.blog",
+        email: verified_email,
         is_verified: true,
+        is_subscriber: false,
+        is_banned: false,
       },
-    ]);
-  await supabase(env)
-    .from("contact")
-    .insert([
       {
         name: "is_NOT_verified",
         preferred_name: "is_NOT_verified",
-        email: "white.moon8474@fastmail.com",
+        email: unverified_email,
+        is_verified: false,
+        is_subscriber: false,
+        is_banned: false,
       },
     ]);
 });
 
 afterAll(async () => {
-  // TEARDOWN Clear contact table.
-  await supabase(env).from("contact").delete().neq("email", "blah");
+  await supabase(env)
+    .from("contact")
+    .delete()
+    .match({ email: subscribed_email });
+  await supabase(env).from("contact").delete().match({ email: banned_email });
+  await supabase(env).from("contact").delete().match({ email: verified_email });
+  await supabase(env)
+    .from("contact")
+    .delete()
+    .match({ email: unverified_email });
+  await supabase(env)
+    .from("contact")
+    .delete()
+    .match({ email: new_contact_email });
 });
 
 describe.each([
   {
     name: "",
-    email: "terrydang.blog@gmail.com",
+    email: "tony@tonydang.blog",
     expected: { name: "Name is required" },
   },
   {
     name: "0123456789 0123456789 0123456789 0123456789 0123456789",
-    email: "terrydang.blog@gmail.com",
+    email: "tony@tonydang.blog",
     expected: { name: "Name exceeds 50 max length" },
   },
   {
@@ -76,17 +88,17 @@ describe.each([
   },
   {
     name: "Tony",
-    email: "is_subscriber@tonydang.blog",
+    email: subscribed_email,
     expected: { confirmed: "Thank you for signing up for my mailing list!" },
   },
   {
     name: "Tony",
-    email: "is_banned@tonydang.blog",
+    email: banned_email,
     expected: { confirmed: "Thank you for signing up for my mailing list!" },
   },
   {
     name: "Tony",
-    email: "is_verified@tonydang.blog",
+    email: verified_email,
     expected: {
       unsubscribed: `It looks like this email has been unsubscribed from my
         mailing list. If you would like to resubscribe, please send me an email
@@ -95,7 +107,7 @@ describe.each([
   },
   {
     name: "existing_non_verified_contact",
-    email: "white.moon8474@fastmail.com",
+    email: unverified_email,
     expected: {
       success: `Thank you for signing up for my mailing list! Please check
   for a confirmation sent to your inbox to verify your email.`,
@@ -103,15 +115,15 @@ describe.each([
   },
   {
     name: "new_contact",
-    email: "new.hope7149@fastmail.com",
+    email: new_contact_email,
     expected: {
       success: `Thank you for signing up for my mailing list! Please check
   for a confirmation sent to your inbox to verify your email.`,
     },
   },
 ])("/list/subscribe", ({ name, email, expected }) => {
-  it.skipIf(SENDS_EMAIL && expected.success)(
-    `name: '${name}' + email: '${email}' -> expected json`,
+  it.skipIf(SKIP_EMAIL && expected.success)(
+    `name: '${name}' + email: '${email}' -> ${JSON.stringify(expected)}`,
     async () => {
       // GIVEN Name and email for request.
 
