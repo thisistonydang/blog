@@ -1,27 +1,21 @@
 // @vitest-environment miniflare
 
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, describe, expect, it } from "vitest";
 
 import { supabase } from "@lib/db/supabase";
 import { env } from "@lib/testing/env";
 
 import api_route from "../index";
 
-beforeAll(async () => {
-  // SETUP Clear contact table.
-  await supabase(env).from("contact").delete().neq("email", "blah");
-});
-
+const contact_id = crypto.randomUUID();
+const email = "yellow.wheel4376@fastmail.com";
 afterAll(async () => {
-  // TEARDOWN Clear contact table.
-  await supabase(env).from("contact").delete().neq("email", "blah");
+  await supabase(env).from("contact").delete().match({ email });
 });
 
 describe("/list/unsubscribe", () => {
   it("unsubscribes a contact", async () => {
     // GIVEN A subscribed contact.
-    const email = "tony@tonydang.blog";
-    const contact_id = crypto.randomUUID();
     await supabase(env).from("contact").insert({
       contact_id,
       name: "Tony Dang",
