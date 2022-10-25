@@ -1,5 +1,6 @@
-import { get_error_message } from "./get-error-message";
 import { describe, expect, it } from "vitest";
+
+import { get_error_message } from "./get-error-message";
 
 describe("get_error_message", () => {
   const promise = new Promise(() => {
