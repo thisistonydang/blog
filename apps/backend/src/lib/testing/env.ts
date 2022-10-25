@@ -1,4 +1,5 @@
 import { loadEnv } from "vite";
+
 import type { Env } from "@lib/types/env";
 
 export const env = loadEnv(
