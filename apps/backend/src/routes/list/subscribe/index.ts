@@ -1,3 +1,4 @@
+import type { SendEmailCommandOutput } from "@aws-sdk/client-ses";
 import { z } from "zod";
 
 import { send_email } from "@lib/aws/send-email";
@@ -103,14 +104,14 @@ export async function process_subscription_request(
   return { error: "Whoops, something went wrong. Please try again later." };
 }
 
-async function send_verification_email(
+export async function send_verification_email(
   env: Env,
   email: string,
   preferred_name: string,
   contact_id: string
-) {
+): Promise<SendEmailCommandOutput> {
   const jwt = await sign_jwt(env, { id: contact_id }, "24hr");
-  return send_email(
+  return await send_email(
     env,
     email,
     `Hi ${preferred_name} - Please verify your email`,
