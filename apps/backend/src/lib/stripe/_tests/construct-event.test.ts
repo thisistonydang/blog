@@ -11,8 +11,10 @@ describe("construct_event", () => {
   it.each([
     // Valid payload and valid signature
     [JSON.stringify({ id: 12345 }), "", { id: 12345 }],
+
     // Valid payload but INVALID signature
     [JSON.stringify({ id: 12345 }), "blah", null],
+
     // INVALID payload
     ["", "", null],
   ])(
