@@ -1,5 +1,5 @@
-import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
-import type { SendEmailCommandOutput } from "@aws-sdk/client-ses";
+import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
+import type { SendEmailCommandOutput } from "@aws-sdk/client-sesv2";
 
 import type { Env } from "@lib/types/env";
 
@@ -20,7 +20,7 @@ export async function send_email(
   sender: string = env.AWS_SENDER
 ): Promise<SendEmailCommandOutput> {
   try {
-    const client = new SESClient({
+    const client = new SESv2Client({
       credentials: {
         accessKeyId: env.AWS_ACCESS_KEY_ID,
         secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
@@ -29,11 +29,13 @@ export async function send_email(
     });
 
     const command = new SendEmailCommand({
-      Source: sender,
+      FromEmailAddress: sender,
       Destination: { ToAddresses: [recipient] },
-      Message: {
-        Subject: { Data: subject },
-        Body: { Html: { Data: html } },
+      Content: {
+        Simple: {
+          Subject: { Data: subject, Charset: "UTF-8" },
+          Body: { Html: { Data: html, Charset: "UTF-8" } },
+        },
       },
     });
 
