@@ -64,7 +64,7 @@ importers:
   apps/frontend:
     specifiers:
       '@astrojs/image': ^0.10.0
-      '@astrojs/mdx': ^0.11.4
+      '@astrojs/mdx': ^0.11.5
       '@astrojs/prefetch': ^0.0.8
       '@astrojs/rss': ^1.0.2
       '@astrojs/sitemap': ^1.0.0
@@ -74,7 +74,7 @@ importers:
       '@tailwindcss/typography': ^0.5.7
       '@tonydangblog/error-handling': workspace:1.0.0
       '@types/d3': ^7.4.0
-      astro: ^1.5.2
+      astro: ^1.5.3
       astro-compress: ^1.0.12
       astro-seo: ^0.6.0
       d3: ^7.6.1
@@ -86,7 +86,7 @@ importers:
       tailwindcss: ^3.2.1
     dependencies:
       '@astrojs/image': 0.10.0_sharp@0.31.1
-      '@astrojs/mdx': 0.11.4
+      '@astrojs/mdx': 0.11.5
       '@astrojs/prefetch': 0.0.8
       '@astrojs/rss': 1.0.2
       '@astrojs/sitemap': 1.0.0
@@ -96,7 +96,7 @@ importers:
       '@tailwindcss/typography': 0.5.7_tailwindcss@3.2.1
       '@tonydangblog/error-handling': link:../../packages/error-handling
       '@types/d3': 7.4.0
-      astro: 1.5.2
+      astro: 1.5.3
       astro-compress: 1.0.12
       astro-seo: 0.6.0
       d3: 7.6.1
@@ -127,8 +127,8 @@ packages:
   /@astrojs/compiler/0.23.5:
     resolution: {integrity: sha512-vBMPy9ok4iLapSyCCT1qsZ9dK7LkVFl9mObtLEmWiec9myGHS9h2kQY2xzPeFNJiWXUf9O6tSyQpQTy5As/p3g==}
 
-  /@astrojs/compiler/0.27.2:
-    resolution: {integrity: sha512-VG4X87cUkcmT40HqEwShQzUgl0VSnVTszobbmnhAOkHzdoWMxhwAm61A2o5fEsv6eEK8M0lW/fGwkSofYM5GcQ==}
+  /@astrojs/compiler/0.28.1:
+    resolution: {integrity: sha512-rcuQs5kcT6OshfJxXkZ2Tn61V4/5UAmvZKma/qmNhpAdBkGk6J/1gJ/Gxa2sAS6WNUjUyVo5BRrdsNGW36qkoQ==}
     dev: false
 
   /@astrojs/compiler/0.29.3:
@@ -202,8 +202,8 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.11.4:
-    resolution: {integrity: sha512-b86Fzd87OCuYUGk7O59mwq0URqLdH40wUJC5UCkFmSquIrk8QNrZ7tdjriBfF+Wq3+2UT5JO4ahxIuP6N3cczQ==}
+  /@astrojs/mdx/0.11.5:
+    resolution: {integrity: sha512-zSlMX5unK4aIfg6NeYzlw0erLtvKpk71FWo11jYsMmmajYSU2JUk6maKWewERXGuVoY2YpC4W4Fl5dPn6jYGdQ==}
     engines: {node: ^14.18.0 || >=16.12.0}
     dependencies:
       '@astrojs/prism': 1.0.1
@@ -2054,7 +2054,6 @@ packages:
 
   /@types/node/18.11.6:
     resolution: {integrity: sha512-j3CEDa2vd96K0AXF8Wur7UucACvnjkk8hYyQAHhUNciabZLDl9nfAEVUSwmh245OOZV15bRA3Y590Gi5jUcDJg==}
-    dev: true
 
   /@types/parse5/6.0.3:
     resolution: {integrity: sha512-SuT16Q1K51EAVPz1K29DJ/sXjhSQ0zjvsypYJ6tlwVsRV9jwW5Adq2ch8Dq8kDBCkYnELS7N7VNCSB5nC56t/g==}
@@ -2075,7 +2074,7 @@ packages:
   /@types/sass/1.43.1:
     resolution: {integrity: sha512-BPdoIt1lfJ6B7rw35ncdwBZrAssjcwzI5LByIrYs+tpXlj/CAkuVdRsgZDdP4lq5EjyWzwxZCqAoFyHKFwp32g==}
     dependencies:
-      '@types/node': 18.11.5
+      '@types/node': 18.11.6
     dev: false
 
   /@types/sax/1.2.4:
@@ -2431,12 +2430,12 @@ packages:
     resolution: {integrity: sha512-nR+dJlAyQhX6s0oAmbBqPq3KCZax/zVAerFsclGiJQ2znOkS/7L+RGjziS4M9Q3OQxm3FMfqIKHp9Ns73Q81ww==}
     dev: false
 
-  /astro/1.5.2:
-    resolution: {integrity: sha512-ZzPwZYo4GgwNBiOA7xumpkbKNVT/k/ZEvEkAL2lj3NAZHnU801wk9qLlugu8ECoLT4k1j9B/SSmhLr+AhLTazw==}
+  /astro/1.5.3:
+    resolution: {integrity: sha512-LvIQPmLDAgKJNFyftDHj3f7x+pC4xQPo91YjPrr7s22hJpsUy/TgmRGn0vjNwJ27Qs6woQoylGkcgT9oqgchzg==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 0.27.2
+      '@astrojs/compiler': 0.28.1
       '@astrojs/language-server': 0.26.2
       '@astrojs/markdown-remark': 1.1.3
       '@astrojs/telemetry': 1.0.1
