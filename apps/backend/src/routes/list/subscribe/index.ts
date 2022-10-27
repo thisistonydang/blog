@@ -1,4 +1,4 @@
-import type { SendEmailCommandOutput } from "@aws-sdk/client-ses";
+import type { SendEmailCommandOutput } from "@aws-sdk/client-sesv2";
 import { z } from "zod";
 
 import { send_email } from "@lib/aws/send-email";
