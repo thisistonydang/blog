@@ -6,6 +6,8 @@ export interface Env {
   BLOG_URL: string;
   JWT_PRIVATE_KEY: string;
   JWT_PUBLIC_KEY: string;
+  MC_DKIM_PRIVATE_KEY: string;
+  MODE: string;
   STRIPE_API_KEY: string;
   STRIPE_ENDPOINT_SECRET: string;
   STRIPE_ONE_TIME_DONATION_PRICE: string;
