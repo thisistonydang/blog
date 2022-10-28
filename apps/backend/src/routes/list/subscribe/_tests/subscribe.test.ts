@@ -7,12 +7,11 @@ import { env } from "@lib/testing/env";
 
 import api_route from "../index";
 
-const SKIP_EMAIL = process.env.SKIP_EMAIL;
-const subscribed_email = "is_subscriber@tonydang.blog";
-const banned_email = "is_banned@tonydang.blog";
-const verified_email = "is_verified@tonydang.blog";
-const unverified_email = "past.koala8232@fastmail.com";
-const new_contact_email = "wise.job2121@fastmail.com";
+const subscribed_email = "/list/subscribe#1@tonydang.blog";
+const banned_email = "/list/subscribe#2@tonydang.blog";
+const verified_email = "/list/subscribe3#@tonydang.blog";
+const unverified_email = "/list/subscribe#4@tonydang.blog";
+const new_contact_email = "/list/subscribe#5@tonydang.blog";
 
 beforeAll(async () => {
   await supabase(env)
@@ -122,21 +121,20 @@ describe.each([
     },
   },
 ])("/list/subscribe", ({ name, email, expected }) => {
-  it.skipIf(SKIP_EMAIL && expected.success)(
-    `name: '${name}' + email: '${email}' -> ${JSON.stringify(expected)}`,
-    async () => {
-      // GIVEN Name and email for request.
+  it(`name: '${name}' + email: '${email}' -> ${JSON.stringify(
+    expected
+  )}`, async () => {
+    // GIVEN Name and email for request.
 
-      // WHEN Request is made to api route.
-      const request = new Request("https://tonydang.blog/list/subscribe", {
-        method: "POST",
-        body: JSON.stringify({ name, email }),
-      });
-      const res = await api_route(request, env);
-      const data = await res.json();
+    // WHEN Request is made to api route.
+    const request = new Request("https://tonydang.blog/list/subscribe", {
+      method: "POST",
+      body: JSON.stringify({ name, email }),
+    });
+    const res = await api_route(request, env);
+    const data = await res.json();
 
-      // THEN Reponse json is as expected.
-      expect(data).to.deep.equal(expected);
-    }
-  );
+    // THEN Reponse json is as expected.
+    expect(data).to.deep.equal(expected);
+  });
 });
