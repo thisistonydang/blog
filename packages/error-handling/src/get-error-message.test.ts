@@ -8,14 +8,14 @@ describe("get_error_message", () => {
   });
 
   it.each([
-    [new Error("error message"), "error message"],
-    ["wtf", "wtf"],
-    [7, "7"],
-    [{ wut: "is this" }, "[object Object]"],
-    [null, "null"],
-    [promise, "[object Promise]"],
-    [undefined, "undefined"],
-  ])("converts any thrown error into a string", (error, expected) => {
+    ["new Error", new Error("new Error")],
+    ["string", "string"],
+    ["7", 7],
+    ["[object Object]", { wut: "is this" }],
+    ["null", null],
+    ["[object Promise]", promise],
+    ["undefined", undefined],
+  ])("converts error thrown (%s) into a string", (expected, error) => {
     // GIVEN Errors of unknown type.
 
     // WHEN get_error_message is called with thrown error.
