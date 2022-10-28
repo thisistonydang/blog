@@ -9,57 +9,58 @@ import { env } from "@lib/testing/env";
 import api_route from "../index";
 
 describe("/webhooks/stripe", () => {
-  [
-    {
-      // Already handled event
-      id: 123,
-      type: "checkout.session.completed",
-      name: "Tony",
-      signature_invalidator: "",
-      expected: new Response(null, { status: 204 }),
-    },
-    {
-      // Invalid event id
-      id: null,
-      type: "checkout.session.completed",
-      name: "Tony",
-      signature_invalidator: "",
-      expected: new Response("invalid event id", { status: 400 }),
-    },
-    {
-      // Invalid session object (customer name is null)
-      id: 456,
-      type: "checkout.session.completed",
-      name: null,
-      signature_invalidator: "",
-      expected: new Response("invalid session object", { status: 400 }),
-    },
-    {
-      // Not yet handled event that needs to be handled
-      id: 456,
-      type: "checkout.session.completed",
-      name: "Tony",
-      signature_invalidator: "",
-      expected: new Response(null, { status: 201 }),
-    },
-    {
-      // Not yet handled event, but does not need to be handled
-      id: 456,
-      type: "",
-      name: "Tony",
-      signature_invalidator: "",
-      expected: new Response(null, { status: 204 }),
-    },
-    {
-      // Event with invalid signature or request payload
-      id: 456,
-      type: "checkout.session.completed",
-      name: "Tony",
-      signature_invalidator: "blah",
-      expected: new Response("invalid signature or request", { status: 400 }),
-    },
-  ].forEach(({ id, type, name, signature_invalidator, expected }) => {
-    it("returns expected response", async () => {
+  it.each([
+    [
+      "Already handled event",
+      123,
+      "checkout.session.completed",
+      "Tony",
+      "",
+      new Response(null, { status: 204 }),
+    ],
+    [
+      "Invalid event id",
+      null,
+      "checkout.session.completed",
+      "Tony",
+      "",
+      new Response("invalid event id", { status: 400 }),
+    ],
+    [
+      "Invalid session object (customer name is null)",
+      456,
+      "checkout.session.completed",
+      null,
+      "",
+      new Response("invalid session object", { status: 400 }),
+    ],
+    [
+      "Not yet handled event that needs to be handled",
+      456,
+      "checkout.session.completed",
+      "Tony",
+      "",
+      new Response(null, { status: 201 }),
+    ],
+    [
+      "Not yet handled event, but does not need to be handled",
+      456,
+      "",
+      "Tony",
+      "",
+      new Response(null, { status: 204 }),
+    ],
+    [
+      "Event with invalid signature or request payload",
+      456,
+      "checkout.session.completed",
+      "Tony",
+      "blah",
+      new Response("invalid signature or request", { status: 400 }),
+    ],
+  ])(
+    "%s",
+    async (_test_name, id, type, name, signature_invalidator, expected) => {
       // GIVEN mock stripe event
       const stripe_event = {
         id: 123,
@@ -118,6 +119,6 @@ describe("/webhooks/stripe", () => {
 
       // THEN Expected response is returned.
       expect(res).to.deep.equal(expected);
-    });
-  });
+    }
+  );
 });
