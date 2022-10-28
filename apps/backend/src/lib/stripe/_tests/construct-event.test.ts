@@ -18,7 +18,7 @@ describe("construct_event", () => {
     // INVALID payload
     ["", "", null],
   ])(
-    "returns an event if valid signature, else returns null",
+    "payload: %j + signature_invalidator: '%s' -> %j",
     async (payload, signature_invalidator, expected) => {
       // GIVEN Requst with stripe signature.
       const key = await crypto.subtle.importKey(
