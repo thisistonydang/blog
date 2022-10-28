@@ -8,7 +8,7 @@ import { env } from "@lib/testing/env";
 import api_route from "../index";
 
 const contact_id = crypto.randomUUID();
-const email = "yellow.wheel4376@fastmail.com";
+const email = "/list/unsubscribe#1";
 afterAll(async () => {
   await supabase(env).from("contact").delete().match({ email });
 });
