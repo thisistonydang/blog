@@ -69,61 +69,51 @@ afterAll(async () => {
     .match({ email: new_contact_email });
 });
 
-describe.each([
-  {
-    name: "",
-    email: "tony@tonydang.blog",
-    expected: { name: "Name is required" },
-  },
-  {
-    name: "0123456789 0123456789 0123456789 0123456789 0123456789",
-    email: "tony@tonydang.blog",
-    expected: { name: "Name exceeds 50 max length" },
-  },
-  {
-    name: "Terry",
-    email: "t@t",
-    expected: { email: "Invalid email" },
-  },
-  {
-    name: "Tony",
-    email: subscribed_email,
-    expected: { confirmed: "Thank you for signing up for my mailing list!" },
-  },
-  {
-    name: "Tony",
-    email: banned_email,
-    expected: { confirmed: "Thank you for signing up for my mailing list!" },
-  },
-  {
-    name: "Tony",
-    email: verified_email,
-    expected: {
-      unsubscribed: `It looks like this email has been unsubscribed from my
+describe("/list/subscribe", () => {
+  it.each([
+    ["", "tony@tonydang.blog", { name: "Name is required" }],
+    [
+      "0123456789 0123456789 0123456789 0123456789 0123456789",
+      "tony@tonydang.blog",
+      { name: "Name exceeds 50 max length" },
+    ],
+    ["Terry", "t@t", { email: "Invalid email" }],
+    [
+      "Tony",
+      subscribed_email,
+      { confirmed: "Thank you for signing up for my mailing list!" },
+    ],
+    [
+      "Tony",
+      banned_email,
+      { confirmed: "Thank you for signing up for my mailing list!" },
+    ],
+    [
+      "Tony",
+      verified_email,
+      {
+        unsubscribed: `It looks like this email has been unsubscribed from my
         mailing list. If you would like to resubscribe, please send me an email
         at tony@tonydang.blog and I will re-add you.`,
-    },
-  },
-  {
-    name: "existing_non_verified_contact",
-    email: unverified_email,
-    expected: {
-      success: `Thank you for signing up for my mailing list! Please check
+      },
+    ],
+    [
+      "existing_non_verified_contact",
+      unverified_email,
+      {
+        success: `Thank you for signing up for my mailing list! Please check
   for a confirmation sent to your inbox to verify your email.`,
-    },
-  },
-  {
-    name: "new_contact",
-    email: new_contact_email,
-    expected: {
-      success: `Thank you for signing up for my mailing list! Please check
+      },
+    ],
+    [
+      "new_contact",
+      new_contact_email,
+      {
+        success: `Thank you for signing up for my mailing list! Please check
   for a confirmation sent to your inbox to verify your email.`,
-    },
-  },
-])("/list/subscribe", ({ name, email, expected }) => {
-  it(`name: '${name}' + email: '${email}' -> ${JSON.stringify(
-    expected
-  )}`, async () => {
+      },
+    ],
+  ])(`name: '%s' + email: '%s' -> %j`, async (name, email, expected) => {
     // GIVEN Name and email for request.
 
     // WHEN Request is made to api route.
