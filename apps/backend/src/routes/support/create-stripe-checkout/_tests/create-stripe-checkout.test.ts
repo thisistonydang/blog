@@ -8,9 +8,9 @@ import api_route from "../index";
 
 describe("/support/create-stripe-checkout", () => {
   it.each([
-    ["0", "http://localhost:3000"],
-    ["1", "https://checkout.stripe.com"],
-  ])("returns expected json response", async (qty, expected) => {
+    ["redirects back to blog if form error", "0", "http://localhost:3000"],
+    ["redirects to Stripe if no error", "1", "https://checkout.stripe.com"],
+  ])("%s", async (_test_name, qty, expected) => {
     // GIVEN N/A.
 
     // WHEN Request is made to api route with mocked request.formData.
