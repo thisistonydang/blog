@@ -9,7 +9,7 @@ import { send_verification_email } from "../index";
 describe("send_verification_email", () => {
   it("returns null body and 202 status when not in production", async () => {
     // GIVEN Non-production environment.
-    expect(env.MODE).to.equal("test");
+    expect(env.MODE).to.equal("development");
 
     // WHEN send_verification_email is called.
     const res = await send_verification_email(
