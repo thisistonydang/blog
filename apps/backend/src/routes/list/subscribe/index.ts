@@ -1,9 +1,8 @@
-import type { SendEmailCommandOutput } from "@aws-sdk/client-sesv2";
 import { z } from "zod";
 
-import { send_email } from "@lib/aws/send-email";
 import { supabase } from "@lib/db/supabase";
 import { sign_jwt } from "@lib/jwt/sign-jwt";
+import { send_email } from "@lib/mailchannels/send_email";
 import type { Env } from "@lib/types/env";
 
 import type { Contact } from "../_types/contact";
@@ -78,13 +77,14 @@ export async function process_subscription_request(
       .update({ name, preferred_name })
       .match({ email });
     if (res.error) return { error: res.error.message };
-    const ses_res = await send_verification_email(
+    const mc_res = await send_verification_email(
       env,
       email,
+      name,
       preferred_name,
       contact.contact_id
     );
-    if (ses_res.MessageId) return { success };
+    if (mc_res.status === 202) return { success };
     return { error: "Whoops, something went wrong. Please try again later." };
   }
 
@@ -94,37 +94,40 @@ export async function process_subscription_request(
     .from("contact")
     .insert({ contact_id, name, preferred_name, email });
   if (res.error) return { error: res.error.message };
-  const ses_res = await send_verification_email(
+  const mc_res = await send_verification_email(
     env,
     email,
+    name,
     preferred_name,
     contact_id
   );
-  if (ses_res.MessageId) return { success };
+  if (mc_res.status === 202) return { success };
   return { error: "Whoops, something went wrong. Please try again later." };
 }
 
 export async function send_verification_email(
   env: Env,
   email: string,
+  name: string,
   preferred_name: string,
   contact_id: string
-): Promise<SendEmailCommandOutput> {
+): Promise<Response> {
   const jwt = await sign_jwt(env, { id: contact_id }, "24hr");
   return await send_email(
     env,
     email,
+    name,
     `Hi ${preferred_name} - Please verify your email`,
     `Hi ${preferred_name} -<br><br>
 
-    Thank you for signing up for updates from my blog!<br><br>
+    Thank you for signing up to get updates from my blog!<br><br>
 
     Please confirm your subscription by clicking
     <a href="${env.BACKEND_URL}/list/verify?jwt=${jwt}">here</a>.<br><br>
 
-    This link will expire in <b>24 hours</b>. If you received this in error or
-    do not wish to subscribe, simply ignore this email and do not click the
-    link.<br><br>
+    This link will expire in 24 hours. If you received this in error or
+    do not wish to subscribe, please ignore this email or click the unsubscribe
+    link below to never receive another email from me.<br><br>
 
     --<br>
     Tony Dang<br>
