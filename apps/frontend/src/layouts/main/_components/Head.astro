@@ -24,7 +24,7 @@ const { frontmatter } = Astro.props;
     description={frontmatter.description
       ? frontmatter.description
       : "Tony Dang's Blog"}
-    noindex={import.meta.env.NO_INDEX ?? frontmatter.noindex}
+    noindex={frontmatter.noindex}
   />
   <DarkModeScript />
 </head>
