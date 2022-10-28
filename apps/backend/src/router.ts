@@ -16,5 +16,6 @@ router.get("/sandbox", sandbox);
 router.post("/support/create-stripe-checkout", support_create_stripe_checkout);
 router.get("/support/donations", support_donations);
 router.post("/webhooks/stripe", webhooks_stripe);
+router.all("*", () => new Response("Not Found.", { status: 404 }));
 
 export default { fetch: router.handle };
