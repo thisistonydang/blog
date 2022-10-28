@@ -7,8 +7,8 @@ import { env } from "@lib/testing/env";
 
 import { process_subscription_request } from "../index";
 
-const unverified_email = "list/process_subscription_request#1";
-const new_contact_email = "list/process_subscription_request#2";
+const unverified_email = "/list/process_subscription_request#1";
+const new_contact_email = "/list/process_subscription_request#2";
 
 afterAll(async () => {
   await supabase(env)
