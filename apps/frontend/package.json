@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "codegen": "playwright codegen",
     "e2e": "playwright test",
     "report": "playwright show-report",
     "build": "astro check && tsc --noEmit --skipLibCheck && astro build",
