@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "astro dev",
     "e2e": "playwright test",
+    "report": "playwright show-report",
     "build": "astro check && tsc --noEmit --skipLibCheck && astro build",
     "preview": "wrangler pages dev --port 4000 dist",
     "deploy": "wrangler pages publish dist"

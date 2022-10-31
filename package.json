@@ -8,6 +8,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "e2e": "pnpm -F @blog/frontend run e2e",
+    "report": "pnpm -F @blog/frontend run report",
     "build": "pnpm -F @blog/frontend run build",
     "preview": "pnpm -F @blog/frontend run preview",
     "deploy": "pnpm -F @blog/frontend run deploy && pnpm -F @blog/backend run deploy"
