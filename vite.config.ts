@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
     globalSetup: ["./apps/backend/src/test_setup.ts"],
+    include: ["**/*.test.ts"],
     reporters: "verbose",
   },
 });
