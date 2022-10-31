@@ -73,7 +73,7 @@ importers:
       '@tailwindcss/typography': ^0.5.7
       '@tonydangblog/error-handling': workspace:1.0.0
       '@types/d3': ^7.4.0
-      astro: ^1.6.2
+      astro: ^1.6.1
       astro-compress: ^1.1.1
       astro-seo: ^0.6.0
       d3: ^7.6.1
@@ -94,7 +94,7 @@ importers:
       '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.1
       '@tailwindcss/typography': 0.5.7_tailwindcss@3.2.1
       '@tonydangblog/error-handling': link:../../packages/error-handling
-      astro: 1.6.1
+      astro: 1.6.2
       astro-compress: 1.1.1
       astro-seo: 0.6.0
       d3: 7.6.1
@@ -943,7 +943,7 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
-      '@types/node': 18.11.7
+      '@types/node': 18.11.8
       playwright-core: 1.27.1
     dev: true
 
@@ -1415,7 +1415,7 @@ packages:
   /@types/sax/1.2.4:
     resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
     dependencies:
-      '@types/node': 18.11.7
+      '@types/node': 17.0.45
     dev: false
 
   /@types/semver/7.3.13:
