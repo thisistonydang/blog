@@ -26,3 +26,8 @@ sandbox/
 
 # vale
 .vale/
+
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
