@@ -21,6 +21,7 @@
   {onclick}
   on:click={handle_click}
   style:width
+  class:cursor-wait={loading}
   class="
     bg-heading text-bg
     h-[41px] px-3
