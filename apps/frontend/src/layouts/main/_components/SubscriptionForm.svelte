@@ -1,5 +1,6 @@
 <script lang="ts">
   import { fly } from "svelte/transition";
+  import { onMount } from "svelte";
 
   import { get_error_message } from "@tonydangblog/error-handling";
 
@@ -21,7 +22,7 @@
   let email = "";
   let email_is_invalid = false;
   let email_helper_text = "";
-  let disabled = false;
+  let disabled = true;
   let message = "";
 
   function success_handler(data: Data): void {
@@ -78,6 +79,10 @@
       disabled = false;
     }
   }
+
+  onMount(() => {
+    disabled = false;
+  });
 </script>
 
 <form id="subscription-form" on:submit|preventDefault={handle_submit}>
@@ -111,7 +116,7 @@
 
     <span class="w-1.5" />
 
-    <Button loading={disabled}>SUBMIT</Button>
+    <Button width="76px" loading={disabled}>SUBMIT</Button>
   </fieldset>
 </form>
 
