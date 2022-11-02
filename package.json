@@ -7,14 +7,14 @@
     "backend:dev": "pnpm -F @blog/backend run dev",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "codegen": "pnpm -F @blog/frontend run codegen",
-    "e2e": "pnpm -F @blog/frontend run e2e",
-    "report": "pnpm -F @blog/frontend run report",
+    "codegen": "playwright codegen",
+    "e2e": "playwright test",
     "build": "pnpm -F @blog/frontend run build",
     "preview": "pnpm -F @blog/frontend run preview",
     "deploy": "pnpm -F @blog/frontend run deploy && pnpm -F @blog/backend run deploy"
   },
   "devDependencies": {
+    "@playwright/test": "^1.27.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "@vitest/coverage-c8": "^0.24.4",

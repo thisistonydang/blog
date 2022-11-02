@@ -3,9 +3,6 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "codegen": "playwright codegen",
-    "e2e": "playwright test",
-    "report": "playwright show-report",
     "build": "astro check && tsc --noEmit --skipLibCheck && astro build",
     "preview": "wrangler pages dev --port 4000 dist",
     "deploy": "wrangler pages publish dist"
@@ -33,7 +30,6 @@
     "tailwindcss": "^3.2.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.27.1",
     "@types/d3": "^7.4.0"
   }
 }
