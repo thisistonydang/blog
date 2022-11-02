@@ -1,8 +1,16 @@
 import { test, expect } from "@playwright/test";
 
+import { supabase } from "@lib/db/supabase";
+
 test.describe("subscription form", () => {
+  const new_contact_email = "e2e_subscription_form#1@tonydang.blog";
+
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
+  });
+
+  test.afterAll(async () => {
+    await supabase.from("contact").delete().match({ email: new_contact_email });
   });
 
   test("can sign up to mailing list", async ({ page }) => {
@@ -10,9 +18,7 @@ test.describe("subscription form", () => {
 
     name_input.scrollIntoViewIfNeeded();
     await name_input.fill("Tony");
-    await page
-      .locator('[name="email"]')
-      .fill("layouts_main_subscription_form@tonydang.blog");
+    await page.locator('[name="email"]').fill(new_contact_email);
     await page.locator('text="SUBMIT"').click();
 
     const text =
