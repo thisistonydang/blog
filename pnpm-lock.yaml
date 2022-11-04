@@ -51,7 +51,7 @@ importers:
       '@tonydangblog/error-handling': workspace:1.0.0
       itty-router: ^2.6.6
       jose: ^4.10.4
-      stripe: ^10.15.0
+      stripe: ^10.16.0
       typescript: ^4.8.4
       zod: ^3.19.1
     dependencies:
@@ -59,7 +59,7 @@ importers:
       '@tonydangblog/error-handling': link:../../packages/error-handling
       itty-router: 2.6.6
       jose: 4.10.4
-      stripe: 10.15.0
+      stripe: 10.16.0
       zod: 3.19.1
     devDependencies:
       '@cloudflare/workers-types': 3.18.0
@@ -986,8 +986,8 @@ packages:
     transitivePeerDependencies:
       - encoding
 
-  /@supabase/gotrue-js/2.2.2:
-    resolution: {integrity: sha512-rPvBrMFsgkagA+z3ttMT3SJNfp+veN6IK9uU9YlzfwMysd5R0hX/7OuYt46N8w5cw4ZYhgovOjJ0fQ62lJFINg==}
+  /@supabase/gotrue-js/2.2.3:
+    resolution: {integrity: sha512-2pw29sk2Fv/6CHFd72bIGTUNxI3UsyaEvjdpvgvvFtX7DmVBZPuotmQaZ56/V0sKREBdglt+bwIjOece1lmDCw==}
     dependencies:
       cross-fetch: 3.1.5
     transitivePeerDependencies:
@@ -1019,7 +1019,7 @@ packages:
     resolution: {integrity: sha512-zewk3U8wSe2UlKqzUk7iNxeMZzgDa5kjosSG4SKuAizIv+xzS+c2EZsYnNtc2byGjah4QT1dw3t91k2E+j+Akg==}
     dependencies:
       '@supabase/functions-js': 2.0.0
-      '@supabase/gotrue-js': 2.2.2
+      '@supabase/gotrue-js': 2.2.3
       '@supabase/postgrest-js': 1.1.0
       '@supabase/realtime-js': 2.1.0
       '@supabase/storage-js': 2.0.0
@@ -6324,8 +6324,8 @@ packages:
       acorn: 8.8.1
     dev: true
 
-  /stripe/10.15.0:
-    resolution: {integrity: sha512-KXw7dozfIEQCxsshjKUwsNwlD55CkhcvVgwwxFtQNikVlRpNUPy6Ljz2mN9OXjinbbmLIcn26MAiPxfNp8Adtg==}
+  /stripe/10.16.0:
+    resolution: {integrity: sha512-nae4WV8W8xJ8KpjRx3aUD9FavoCQ98F1kaF5v0ltNHoNbtwIPTgrfmq92J0PXKDvb4TOd0tcXXkR5LG3UxjxGw==}
     engines: {node: ^8.1 || >=10.*}
     dependencies:
       '@types/node': 18.11.9
