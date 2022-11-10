@@ -1,5 +1,3 @@
-// @vitest-environment miniflare
-
 import { afterAll, describe, expect, it } from "vitest";
 
 import { supabase } from "@lib/db/supabase";
