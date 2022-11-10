@@ -47,19 +47,19 @@ importers:
   apps/backend:
     specifiers:
       '@cloudflare/workers-types': ^3.18.0
-      '@supabase/supabase-js': ^2.0.5
+      '@supabase/supabase-js': ^2.0.6
       '@tonydangblog/error-handling': workspace:1.0.0
       itty-router: ^2.6.6
-      jose: ^4.10.4
-      stripe: ^10.16.0
+      jose: ^4.11.0
+      stripe: ^10.17.0
       typescript: ^4.8.4
       zod: ^3.19.1
     dependencies:
-      '@supabase/supabase-js': 2.0.5
+      '@supabase/supabase-js': 2.0.6
       '@tonydangblog/error-handling': link:../../packages/error-handling
       itty-router: 2.6.6
-      jose: 4.10.4
-      stripe: 10.16.0
+      jose: 4.11.0
+      stripe: 10.17.0
       zod: 3.19.1
     devDependencies:
       '@cloudflare/workers-types': 3.18.0
@@ -992,6 +992,15 @@ packages:
       cross-fetch: 3.1.5
     transitivePeerDependencies:
       - encoding
+    dev: true
+
+  /@supabase/gotrue-js/2.2.4:
+    resolution: {integrity: sha512-HdBgLIhfjDHeJA/WBPbK+o5p/zKtox+TNMyKZ1AMALnKN3PZK5fZU0FafD3shcVijjj/0+ZzXEjxhgj5ZsTFRw==}
+    dependencies:
+      cross-fetch: 3.1.5
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /@supabase/postgrest-js/1.1.0:
     resolution: {integrity: sha512-qkY8TqIu5sJuae8gjeDPjEqPrefzcTraW9PNSVJQHq4TEv98ZmwaXGwBGz0bVL63bqrGA5hqREbQHkANUTXrvA==}
@@ -1027,6 +1036,21 @@ packages:
     transitivePeerDependencies:
       - encoding
       - supports-color
+    dev: true
+
+  /@supabase/supabase-js/2.0.6:
+    resolution: {integrity: sha512-S8oTHq8Z915X5PevxTeoiqnZZvZ8J4Np2uNmsFarMAjP+6FygMMMpdsicgaWtxr+6isrZ7SMpTkWtUSwxo0MFg==}
+    dependencies:
+      '@supabase/functions-js': 2.0.0
+      '@supabase/gotrue-js': 2.2.4
+      '@supabase/postgrest-js': 1.1.0
+      '@supabase/realtime-js': 2.1.0
+      '@supabase/storage-js': 2.0.0
+      cross-fetch: 3.1.5
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: false
 
   /@sveltejs/vite-plugin-svelte/1.1.0_svelte@3.52.0:
     resolution: {integrity: sha512-cFRfEdztubtj1c/rYh7ArK7XCfFJn6wG6+J8/e9amFsKtEJILovoBrK0/mxt1AjPQg0vaX+fHPKvhx+q8mTPaQ==}
@@ -4324,8 +4348,8 @@ packages:
     resolution: {integrity: sha512-hIPHtXGymCX7Lzb2I4G6JgZFE4QEEQwst9GORK7sMYUpJvLfy4yZJr95r04e8DzoAnj6HcxM2m4TbK+juu+18g==}
     dev: false
 
-  /jose/4.10.4:
-    resolution: {integrity: sha512-eBH77Xs9Yc/oTDvukhAEDVMijhekPuNktXJL4tUlB22jqKP1k48v5nmsUmc8feoJPsxB3HsfEt2LbVSoz+1mng==}
+  /jose/4.11.0:
+    resolution: {integrity: sha512-wLe+lJHeG8Xt6uEubS4x0LVjS/3kXXu9dGoj9BNnlhYq7Kts0Pbb2pvv5KiI0yaKH/eaiR0LUOBhOVo9ktd05A==}
     dev: false
 
   /js-sdsl/4.1.5:
@@ -6339,8 +6363,8 @@ packages:
       acorn: 8.8.1
     dev: true
 
-  /stripe/10.16.0:
-    resolution: {integrity: sha512-nae4WV8W8xJ8KpjRx3aUD9FavoCQ98F1kaF5v0ltNHoNbtwIPTgrfmq92J0PXKDvb4TOd0tcXXkR5LG3UxjxGw==}
+  /stripe/10.17.0:
+    resolution: {integrity: sha512-JHV2KoL+nMQRXu3m9ervCZZvi4DDCJfzHUE6CmtJxR9TmizyYfrVuhGvnsZLLnheby9Qrnf4Hq6iOEcejGwnGQ==}
     engines: {node: ^8.1 || >=10.*}
     dependencies:
       '@types/node': 18.11.9
