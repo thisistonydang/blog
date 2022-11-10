@@ -8,11 +8,7 @@ import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
-import compress from "astro-compress";
 import remarkToc from "remark-toc";
-
-const PROD = false;
-const integrations = () => (PROD ? [compress()] : []);
 
 export default defineConfig({
   site: "https://tonydang.blog",
@@ -32,7 +28,6 @@ export default defineConfig({
         page !== "https://tonydang.blog/whoops/",
     }),
     tailwind({ config: { applyBaseStyles: false } }),
-    ...integrations(),
   ],
   vite: {
     optimizeDeps: {
