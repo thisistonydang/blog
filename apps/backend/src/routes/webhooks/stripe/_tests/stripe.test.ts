@@ -116,7 +116,10 @@ describe("/webhooks/stripe", () => {
       const res = await api_route(request, env);
 
       // THEN Expected response is returned.
-      expect(res).to.deep.equal(expected);
+      const body = await res.text();
+      const expected_body = await expected.text();
+      expect(body).to.equal(expected_body);
+      expect(res.status).to.equal(expected.status);
     }
   );
 });
