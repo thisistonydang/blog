@@ -69,7 +69,7 @@ importers:
     specifiers:
       '@astrojs/image': ^0.11.3
       '@astrojs/mdx': ^0.11.6
-      '@astrojs/prefetch': ^0.0.8
+      '@astrojs/prefetch': ^0.1.1
       '@astrojs/rss': ^1.0.3
       '@astrojs/sitemap': ^1.0.0
       '@astrojs/svelte': ^1.0.2
@@ -90,7 +90,7 @@ importers:
     dependencies:
       '@astrojs/image': 0.11.3_sharp@0.31.2
       '@astrojs/mdx': 0.11.6
-      '@astrojs/prefetch': 0.0.8
+      '@astrojs/prefetch': 0.1.1
       '@astrojs/rss': 1.0.3
       '@astrojs/sitemap': 1.0.0
       '@astrojs/svelte': 1.0.2_svelte@3.53.1
@@ -241,8 +241,8 @@ packages:
       vfile-message: 3.1.2
     dev: false
 
-  /@astrojs/prefetch/0.0.8:
-    resolution: {integrity: sha512-DM0g/H+U2hA/3iIlhoXisAKqfPfiToMsEA8YUyg/3z2W4NaatQf3ppWRAYt9t4B7TJcpVdwDMomw2O/ZcFAghQ==}
+  /@astrojs/prefetch/0.1.1:
+    resolution: {integrity: sha512-+XZcjivPHTo9thQshDWKnnORHJ1dE6odIzhmKHac2ptwla092eohkiJw7Y31+PYmuJkc3Jp+3AawuCvfqCnQ2Q==}
     dependencies:
       throttles: 1.0.1
     dev: false
