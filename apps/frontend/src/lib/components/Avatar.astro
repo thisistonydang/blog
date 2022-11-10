@@ -1,13 +1,10 @@
 ---
-import { Picture } from "@astrojs/image/components";
+import { Image } from "@astrojs/image/components";
 ---
 
-<Picture
-  class="[&>img]:m-auto [&>img]:w-52 [&>img]:h-52 [&>img]:rounded-full [&>img]:mb-3"
+<Image
+  class="m-auto w-52 h-52 rounded-full mb-3"
   src={import("@lib/assets/tony-dang-400px.jpg")}
   alt="Tony typing on a MacBook Pro"
-  sizes=""
-  widths={[400]}
-  aspectRatio="1:1"
   loading="eager"
 />
