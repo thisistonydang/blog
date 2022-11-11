@@ -16,7 +16,7 @@
       {/each}
     </ul>
   </nav>
-  <div class="mb-10 prose dark:prose-invert sm:hidden">
+  <div class="prose dark:prose-invert mb-10 sm:hidden">
     <hr />
   </div>
 {/if}
