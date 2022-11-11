@@ -16,7 +16,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.5.1",
     "@playwright/test": "^1.27.1",
-    "@supabase/supabase-js": "^2.0.6",
+    "@supabase/supabase-js": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "@vitest/coverage-c8": "^0.25.1",
