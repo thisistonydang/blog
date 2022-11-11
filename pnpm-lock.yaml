@@ -69,7 +69,7 @@ importers:
 
   apps/frontend:
     specifiers:
-      '@astrojs/image': ^0.11.3
+      '@astrojs/image': ^0.11.4
       '@astrojs/mdx': ^0.11.6
       '@astrojs/prefetch': ^0.1.1
       '@astrojs/rss': ^1.0.3
@@ -90,7 +90,7 @@ importers:
       svelte: ^3.53.1
       tailwindcss: ^3.2.3
     dependencies:
-      '@astrojs/image': 0.11.3_sharp@0.31.2
+      '@astrojs/image': 0.11.4_sharp@0.31.2
       '@astrojs/mdx': 0.11.6
       '@astrojs/prefetch': 0.1.1
       '@astrojs/rss': 1.0.3
@@ -132,8 +132,8 @@ packages:
   /@astrojs/compiler/0.29.11:
     resolution: {integrity: sha512-iNJMknLhALllV69eSsdDK9o+xEPOiOaCKN9Sv5VK33cbOmcRI8ICFaUN8lMIQnVSXWyKFvX1o9w08PivJ24NfQ==}
 
-  /@astrojs/image/0.11.3_sharp@0.31.2:
-    resolution: {integrity: sha512-8miItrxc+E23CS9ACJmMO5cLOfDdmLDJ7e9+biC90cs+ZxEuzP0Ss9XeTJg8zviY6OvQJpAfF3m0JzgaP5Eiuw==}
+  /@astrojs/image/0.11.4_sharp@0.31.2:
+    resolution: {integrity: sha512-5+ryBMs0pzHXOlB0ZbI/KR8LFIpNw/yTelxV/Au7WtgnRbxDBwBDVmUKZr6vhTwqMpSif8YM32t84ayIGJJdMA==}
     peerDependencies:
       sharp: '>=0.31.0'
     peerDependenciesMeta:
