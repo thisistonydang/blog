@@ -14,6 +14,7 @@
     "deploy": "pnpm -F @blog/frontend run deploy && pnpm -F @blog/backend run deploy"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.5.1",
     "@playwright/test": "^1.27.1",
     "@supabase/supabase-js": "^2.0.6",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
