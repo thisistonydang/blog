@@ -38,6 +38,7 @@
   </p>
 
   <input
+    aria-label={label_is_visible ? undefined : label}
     {type}
     {maxlength}
     {min}
