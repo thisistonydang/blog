@@ -16,6 +16,7 @@
 </script>
 
 <button
+  aria-label={loading ? "loading..." : undefined}
   bind:this={button}
   disabled={loading}
   {onclick}
