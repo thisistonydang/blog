@@ -20,13 +20,14 @@ export default defineConfig({
     prefetch(),
     sitemap({
       filter: (page) =>
-        page !== "https://tonydang.blog/list/unsubscribe/success/" &&
-        page !== "https://tonydang.blog/list/verify/expired/" &&
-        page !== "https://tonydang.blog/list/verify/success/" &&
-        page !== "https://tonydang.blog/sandbox/" &&
-        page !==
-          "https://tonydang.blog/support/successful-one-time-donation/" &&
-        page !== "https://tonydang.blog/whoops/",
+        ![
+          "/list/unsubscribe/success",
+          "/list/verify/expired",
+          "/list/verify/success",
+          "/sandbox",
+          "/support/successful-one-time-donation",
+          "/whoops",
+        ].includes(page.slice(21, -1)),
     }),
     tailwind({ config: { applyBaseStyles: false } }),
   ],
