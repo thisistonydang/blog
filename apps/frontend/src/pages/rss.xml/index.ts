@@ -13,7 +13,8 @@ const pages = Object.values(
 const non_draft_posts = pages.filter(
   (page) =>
     page.frontmatter.layout === "@layouts/blog-post/BlogPostLayout.astro" &&
-    page.frontmatter.draft === false
+    page.frontmatter.draft === false &&
+    page.frontmatter.path !== "/sandbox"
 );
 
 // Get blog post rss data sorted in reverse chronlogical order.
