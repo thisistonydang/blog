@@ -23,6 +23,7 @@ export default defineConfig({
         page !== "https://tonydang.blog/list/unsubscribe/success/" &&
         page !== "https://tonydang.blog/list/verify/expired/" &&
         page !== "https://tonydang.blog/list/verify/success/" &&
+        page !== "https://tonydang.blog/sandbox/" &&
         page !==
           "https://tonydang.blog/support/successful-one-time-donation/" &&
         page !== "https://tonydang.blog/whoops/",
