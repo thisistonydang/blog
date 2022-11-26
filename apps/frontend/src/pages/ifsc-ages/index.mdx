@@ -1,0 +1,90 @@
+---
+layout: "@layouts/blog-post/BlogPostLayout.astro"
+path: /ifsc-ages
+title: How Old Are the World's Best Competitive Climbers?
+description: A look at the age distribution of all IFSC World Cup finalists from the 2022 season
+pubDate: 2022-11-26
+tags: null
+noindex: false
+draft: false
+---
+
+import PlotlyScript from "@lib/components/PlotlyScript.astro";
+import PlotlyPlot from "@lib/components/PlotlyPlot.astro";
+import AllDark from "./_components/plots/age/AllDark.astro";
+import AllWhite from "./_components/plots/age/AllWhite.astro";
+import BoulderAndLeadDark from "./_components/plots/age/BoulderAndLeadDark.astro";
+import BoulderAndLeadWhite from "./_components/plots/age/BoulderAndLeadWhite.astro";
+import BoulderDark from "./_components/plots/age/BoulderDark.astro";
+import BoulderWhite from "./_components/plots/age/BoulderWhite.astro";
+import LeadDark from "./_components/plots/age/LeadDark.astro";
+import LeadWhite from "./_components/plots/age/LeadWhite.astro";
+import SpeedDark from "./_components/plots/age/SpeedDark.astro";
+import SpeedWhite from "./_components/plots/age/SpeedWhite.astro";
+export const __ = undefined;
+
+<PlotlyScript />
+
+> The age range of climbing finalists in the 2022 IFSC World Cup is 16-35
+> years old, with the average age being 22 years old.
+
+The IFSC World Cup is an annual series of climbing competitions organized by
+the International Federation of Sport Climbing (IFSC) and includes what I
+consider to be the best indoor rock climbers in the world.
+
+As I watched the 2022 season, I often found myself wondering, "What is the
+average age of the best climbers in the world?"
+
+To answer this question, I gathered the ages of all athletes who made it to a
+World Cup final in 2022 and plotted the following charts. This includes any
+athlete who made it to the finals round of any of the 3 climbing disciplines
+(boulder, lead, and speed) as well as athletes who made it to the finals round
+of the combined boulder & lead event.
+
+## All Finalists
+
+<PlotlyPlot>
+  <AllWhite slot="white" />
+  <AllDark slot="dark" />
+</PlotlyPlot>
+
+From the data, it appears that **the age range of climbing finalists in the
+2022 IFSC World Cup is 16-35 years old, with the average age being 22 years
+old**.
+
+I was curious to see if the age distribution would be different among boulder,
+lead, and speed categories, so I also plotted the age distribution of each
+discipline separately.
+
+## Boulder Finalists
+
+<PlotlyPlot>
+  <BoulderWhite slot="white" />
+  <BoulderDark slot="dark" />
+</PlotlyPlot>
+
+## Lead Finalists
+
+<PlotlyPlot>
+  <LeadWhite slot="white" />
+  <LeadDark slot="dark" />
+</PlotlyPlot>
+
+## Speed Finalists
+
+<PlotlyPlot>
+  <SpeedWhite slot="white" />
+  <SpeedDark slot="dark" />
+</PlotlyPlot>
+
+What was most surprising to me was that the average age (22 years old) stayed
+the same even when looking at the 3 disciplines separately!
+
+Please feel free to explore the data yourself and let me know if you find
+other interesting insights!
+
+## Sources
+
+- All age info from athlete profiles on
+  [ifsc-climbing.org](https://ifsc-climbing.org). Please note that the data was
+  obtained on Novemeber 19, 2022 so athlete ages may have changed since then.
