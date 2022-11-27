@@ -4,8 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@layouts/*": ["src/layouts/*"],
-      "@lib/*": ["src/lib/*"],
-      "@vendor/*": ["src/vendor/*"]
+      "@lib/*": ["src/lib/*"]
     }
   }
 }
