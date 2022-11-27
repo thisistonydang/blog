@@ -9,14 +9,14 @@ const year = new Date().getFullYear().toString();
   <SubscriptionForm client:visible />
   <div class="mt-20 flex items-center">
     <EasterEgg client:visible />
-    <p class="ml-2 text-xs opacity-90 prose-a:no-underline">
+    <p class="prose-a:no-underline ml-2 text-xs opacity-90">
       &copy; <time id="footer-copyright-year" datetime={year}>{year}</time>
       Tony Dang | <a href="/rss.xml">RSS</a>
       <br />
       Built with
       <a href="https://astro.build">Astro</a>,
-      <a href="https://workers.cloudflare.com">Cloudflare Workers</a>
-      &amp; <span role="img" aria-label="coffee">☕</span>
+      <a href="https://workers.cloudflare.com">Cloudflare Workers</a>, &amp;
+      <span role="img" aria-label="coffee">☕</span>
     </p>
   </div>
 </footer>
