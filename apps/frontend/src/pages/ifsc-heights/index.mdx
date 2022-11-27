@@ -1,0 +1,85 @@
+---
+layout: "@layouts/blog-post/BlogPostLayout.astro"
+path: /ifsc-heights
+title: How Tall Are the World's Best Competitive Bouldering and Lead Climbers?
+description: Heights of IFSC World Cup boulder and lead finalists in 2022
+pubDate: 2022-11-27
+tags: null
+noindex: false
+draft: false
+---
+
+import PlotlyPlot from "@lib/components/PlotlyPlot.astro";
+import PlotlyScript from "@lib/components/PlotlyScript.astro";
+
+import BoulderAndLeadDark from "./_components/plots/height/BoulderAndLeadDark.astro";
+import BoulderAndLeadWhite from "./_components/plots/height/BoulderAndLeadWhite.astro";
+import BoulderDark from "./_components/plots/height/BoulderDark.astro";
+import BoulderWhite from "./_components/plots/height/BoulderWhite.astro";
+import LeadDark from "./_components/plots/height/LeadDark.astro";
+import LeadWhite from "./_components/plots/height/LeadWhite.astro";
+export const __ = undefined;
+
+<PlotlyScript />
+
+> In the 2022 IFSC World Cup, the heights of women finalists were between **152
+> cm (5'0") to 175 cm (5'9")** with an average height of **162 cm (5'4")**,
+> whereas men finalists were between **163 cm (5'4") to 188 cm (6'2")** with an
+> average height of **175 cm (5'9")**.
+
+Following up on my previous post [on the age distribution of IFSC World Cup
+finalists](/ifsc-ages), I decided to also look at the heights of the finalists.
+Unfortunately, I was unable to find height data for several of the speed
+finalists, so I limited this dataset to only bouldering and lead disciplines.
+
+The charts below show the heights of all athletes who made it to an IFSC World
+Cup bouldering or lead final in 2022. This also includes any athlete who made it
+to the final round of the combined boulder & lead event.
+
+## All Boulder & Lead Finalists
+
+<PlotlyPlot>
+  <BoulderAndLeadWhite slot="white" />
+  <BoulderAndLeadDark slot="dark" />
+</PlotlyPlot>
+
+From the data, it appears that in the 2022 IFSC World Cup, the heights of women
+finalists were between **152 cm (5'0") to 175 cm (5'9")** with an average
+height of **162 cm (5'4")**, whereas men finalists were between **163 cm (5'4")
+to 188 cm (6'2")** with an average height of **175 cm (5'9")**.
+
+I also plotted the height distribution of each categories separately to see if
+there were differences between bouldering and lead disciplines.
+
+## Boulder Finalists
+
+<PlotlyPlot>
+  <BoulderWhite slot="white" />
+  <BoulderDark slot="dark" />
+</PlotlyPlot>
+
+## Lead Finalists
+
+<PlotlyPlot>
+  <LeadWhite slot="white" />
+  <LeadDark slot="dark" />
+</PlotlyPlot>
+
+Unsurprisingly, there was little difference in average height between boulder
+and lead groups since several athletes who participated in bouldering also
+participated in lead events.
+
+## Sources & Notes
+
+- Aside from two finalists, Keita Dohi and Mia Aoyagi, all height data was
+  obatined from athlete profiles on
+  [ifsc-climbing.org](https://ifsc-climbing.org).
+- Keita Dohi's height data was found on
+  [wikidata.org](https://www.wikidata.org/wiki/Q57241609).
+- I was unable to find Mia Aoyagi's height data so it is not included in the
+  preceding charts.
+
+<hr />
+
+Interested in seeing the age distribution of the finalists? See my previous
+post [here](/ifsc-ages).
