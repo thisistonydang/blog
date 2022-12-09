@@ -1,3 +1,4 @@
+Acro
 [Aa]stro
 am
 are
@@ -16,6 +17,7 @@ I
 IFSC
 [Ii]t's
 is
+Jenft
 knife
 La Sportiva
 Mad Rock
@@ -25,6 +27,7 @@ Mateo
 Ocun
 OEM
 our
+Pantera
 Scarpa
 SUV
 Tenaya
