@@ -1,8 +1,10 @@
 export interface Frontmatter {
   layout: string | null;
   path: string | null;
-  title: string | null;
-  description: string | null;
+  title: string;
+  description: string;
+  image: boolean;
+  alt: string;
   pubDate: string | null;
   tags: string[] | null;
   noindex: boolean;
@@ -12,8 +14,6 @@ export interface Frontmatter {
 export interface BlogPostFrontmatter extends Frontmatter {
   layout: string;
   path: string;
-  title: string;
-  description: string;
   pubDate: string;
   tags: string[];
 }
