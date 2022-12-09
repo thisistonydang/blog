@@ -1,0 +1,145 @@
+---
+layout: "@layouts/blog-post/BlogPostLayout.astro"
+path: /ifsc-shoes
+title: IFSC Finalists Shoes
+description: Shoes worn by IFSC World Cup bouldering and lead finalists in 2022
+pubDate: 2022-12-09
+tags: null
+noindex: false
+draft: false
+---
+
+import PlotlyPlot from "@lib/components/PlotlyPlot.astro";
+import PlotlyScript from "@lib/components/PlotlyScript.astro";
+
+import BoulderDark from "./_components/plots/shoes/BoulderDark.astro";
+import BoulderWhite from "./_components/plots/shoes/BoulderWhite.astro";
+import LeadDark from "./_components/plots/shoes/LeadDark.astro";
+import LeadWhite from "./_components/plots/shoes/LeadWhite.astro";
+export const __ = undefined;
+
+<PlotlyScript />
+
+Ever wonder what shoes are worn by the world's best climbers? I do. Especially
+when my shoes inevitablely start forming a hole every year or so. 😅
+
+The below charts show the shoes worn by all IFSC bouldering and lead finalists
+in the 2022 season. This data was gathered visually as I watched the climbing
+finals this past year, so my apologizes if there are any inaccurancies. If you
+do find errors, please let me know and I'll update the charts!
+
+While these shoes may not be the best for everyone, I found that they are a
+great starting point for someone like me, who is looking for agressive
+performance shoes for indoor climbing.
+
+## Bouldering
+
+<PlotlyPlot>
+  <BoulderWhite slot="white" />
+  <BoulderDark slot="dark" />
+</PlotlyPlot>
+
+## Lead
+
+<PlotlyPlot>
+  <LeadWhite slot="white" />
+  <LeadDark slot="dark" />
+</PlotlyPlot>
+
+## Notes
+
+1. Shoe models that come in both high volume (HV) and low volume (LV) are
+   grouped together. Example: Drago and Drago LV are both just Drago.
+2. The Five Ten Hiangle and Hiangle Pro are grouped together since several
+   athletes appear to wear both interchangeably.
+3. Mia Krampl appears to wear a different shoe on each feet - Scarpa Drago
+   (right) and Scarpa Chimera (left).
+4. Paul Jenft wears a shoe from EB Climbing, but it doesn't seem to be listed on
+   their website.
+
+## Sources
+
+- All shoe data were visually obtained from event footage on the [IFSC YouTube
+  channel](https://www.youtube.com/@sportclimbing) as well as looking at the
+  athletes' Instagram pages. The shoes listed here are what the athletes seem
+  to wear most frequently during the world cup, but please note that athletes
+  could have several different shoes and may switch to new shoes in the future.
+
+## List of all shoes
+
+### Butora
+
+- [Acro Comp](https://www.butora.com/Product/Detail/view/pid/368/cid/15/spn/Acro-Comp-Black)
+  | [LV](https://www.butora.com/Product/Detail/view/pid/366/cid/14/spn/Acro-Comp-Pink)
+
+### EB
+
+- [Guardian 3.0](https://eb-climbing.com/climbing-shoes/guardian)
+
+### Evolv
+
+- [Shaman](https://www.evolvsports.com/int/shaman-66-0000062203)
+  | [LV](https://www.evolvsports.com/int/shop/climbing/climbing-shoes/evo-lab/113/shaman-low-volume)
+
+### Five Ten
+
+- [Hiangle](https://www.adidas.com/us/five-ten-hiangle-climbing-shoes/EE9033.html)
+  | [LV](https://www.adidas.com/us/five-ten-hiangle-climbing-shoes/EE9071.html)
+  | [Pro](https://www.adidas.com/us/five-ten-hiangle-pro-competition-climbing-shoes/FV4744.html)
+
+### La Sportiva
+
+- [Futura](https://www.lasportiva.com/en/futura-man-blue-20r600100)
+  | [LV](https://www.lasportiva.com/en/futura-woman-woman-green-20f704000)
+- [Skwama](https://www.lasportiva.com/en/skwama-black-10sby)
+  | [LV](https://www.lasportiva.com/en/skwama-woman-woman-green-20i705613)
+- [Solution Comp](https://www.lasportiva.com/en/solution-comp-man-black-20z999100)
+  | [LV](https://www.lasportiva.com/en/solution-comp-woman-woman-pink-30a402602)
+- [Solution](https://www.lasportiva.com/en/solution-man-white-20g000100)
+  | [LV](https://www.lasportiva.com/en/solution-woman-woman-white-20h000203)
+- [Theory](https://www.lasportiva.com/en/theory-man-black-20w999100)
+  | [LV](https://www.lasportiva.com/en/theory-woman-woman-black-20x999402)
+
+### Mad Rock
+
+- [Drone HV](https://madrock.com/collections/shoes/products/drone)
+  | [LV](https://madrock.com/collections/shoes/products/drone-lv)
+- [Shark 2.0](https://madrock.com/collections/shoes/products/shark-2-0)
+
+### Ocun
+
+- Nitro
+
+### Scarpa
+
+- [Chimera](https://world.scarpa.com/product/22684648/chimera-powerfully-soft-black-white-azure)
+- [Drago](https://world.scarpa.com/product/18496558/drago-specialized-performance-yellow)
+  | [LV](https://world.scarpa.com/product/21354647/drago-lv-specialezd-performance-white.html)
+- [Instinct VSR](https://world.scarpa.com/product/18496575/instinct-vsr-specialized-performance-black-azure)
+- [Instinct VS](https://world.scarpa.com/product/18496573/instinct-vs-specialized-performance-black)
+  | [LV](https://world.scarpa.com/product/18496574/instinct-vs-woman-specialized-performance-black-aqua)
+
+### Tenaya
+
+- [Iati](https://tenaya.net/en/iati)
+- [Oasi](https://tenaya.net/en/oasi)
+  | [LV](https://tenaya.net/en/oasi-lv)
+
+### UnParallel
+
+- [Flagship](https://www.unparallelsports.com/product/flagship/)
+  | [LV](https://www.unparallelsports.com/product/flagship-women-lv/)
+- [Regulus](https://www.unparallelsports.com/product/regulus/)
+  | [LV](https://www.unparallelsports.com/product/regulus-lv/)
+
+### Wild Climb
+
+- [Pantera](https://www.wildclimb.it/prodotto/pantera-en/)
+
+<hr />
+
+Interested in seeing the age and height distribution of the finalists? See my
+previous posts:
+
+- [IFSC Finalists Age Distribution](/ifsc-ages)
+- [IFSC Finalists Heights](/ifsc-heights)
