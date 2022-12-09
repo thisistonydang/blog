@@ -25,6 +25,14 @@ const { frontmatter } = Astro.props;
       ? frontmatter.description
       : "Tony Dang's Blog"}
     noindex={frontmatter.noindex}
+    openGraph={{
+      basic: {
+        title: frontmatter.title ? frontmatter.title : "Tony Dang's Blog",
+        type: frontmatter.pubDate ? "article" : "website",
+        image: "https://tonydang.blog/og/tony-dang.jpg",
+      },
+      image: { alt: "Photo of Tony Dang" },
+    }}
   />
   <DarkModeScript />
 </head>
