@@ -20,18 +20,33 @@ const { frontmatter } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <Favicon />
   <SEO
-    title={frontmatter.title ? `${frontmatter.title} | Tony Dang` : "Tony Dang"}
-    description={frontmatter.description
-      ? frontmatter.description
-      : "Tony Dang's Blog"}
+    title={frontmatter.title === "Tony Dang"
+      ? "Tony Dang"
+      : `${frontmatter.title} | Tony Dang`}
+    description={frontmatter.description}
     noindex={frontmatter.noindex}
     openGraph={{
       basic: {
-        title: frontmatter.title ? frontmatter.title : "Tony Dang's Blog",
+        title:
+          frontmatter.title === "Tony Dang"
+            ? "Tony Dang's Blog"
+            : frontmatter.title,
         type: frontmatter.pubDate ? "article" : "website",
-        image: "https://tonydang.blog/og/tony-dang.jpg",
+        image: frontmatter.image
+          ? `https://tonydang.blog/og${frontmatter.path}.jpg`
+          : "https://tonydang.blog/og/tony-dang.jpg",
       },
-      image: { alt: "Photo of Tony Dang" },
+      optional: {
+        description: frontmatter.description,
+        locale: "en_US",
+        siteName: "Tony Dang",
+      },
+      image: {
+        alt: frontmatter.image ? frontmatter.alt : "Photo of Tony Dang",
+        type: "image/jpeg",
+        width: 1200,
+        height: 630,
+      },
     }}
   />
   <DarkModeScript />
