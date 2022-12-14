@@ -11,20 +11,18 @@ noindex: false
 draft: false
 ---
 
+import "@lib/styles/plotly.css";
 import PlotlyPlot from "@lib/components/PlotlyPlot.astro";
-import PlotlyScript from "@lib/components/PlotlyScript.astro";
 
-import AllDark from "./_components/plots/age/AllDark.astro";
-import AllWhite from "./_components/plots/age/AllWhite.astro";
-import BoulderDark from "./_components/plots/age/BoulderDark.astro";
-import BoulderWhite from "./_components/plots/age/BoulderWhite.astro";
-import LeadDark from "./_components/plots/age/LeadDark.astro";
-import LeadWhite from "./_components/plots/age/LeadWhite.astro";
-import SpeedDark from "./_components/plots/age/SpeedDark.astro";
-import SpeedWhite from "./_components/plots/age/SpeedWhite.astro";
+import AllDark from "./_components/AllDark.astro";
+import AllWhite from "./_components/AllWhite.astro";
+import BoulderDark from "./_components/BoulderDark.astro";
+import BoulderWhite from "./_components/BoulderWhite.astro";
+import LeadDark from "./_components/LeadDark.astro";
+import LeadWhite from "./_components/LeadWhite.astro";
+import SpeedDark from "./_components/SpeedDark.astro";
+import SpeedWhite from "./_components/SpeedWhite.astro";
 export const __ = undefined;
-
-<PlotlyScript />
 
 > The age range of climbing finalists in the 2022 IFSC World Cup is 16-35
 > years old, with the average age being 22 years old.
