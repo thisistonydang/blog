@@ -4,9 +4,9 @@ import HamburgerButton from "./HamburgerButton.svelte";
 import SiteNav from "./SiteNav.svelte";
 ---
 
-<header class="relative mb-10 flex items-center text-heading">
+<header class="text-heading relative mb-10 flex items-center">
   <HamburgerButton client:visible />
-  <a class="text-3xl ml-2.5 sm:ml-0" href="/" rel="prefetch">Td</a>
+  <a class="ml-2.5 text-3xl sm:ml-0" href="/" rel="prefetch">Td</a>
   <SiteNav current_path={Astro.url.pathname} />
   <DarkModeToggle client:load />
 </header>
