@@ -80,6 +80,7 @@ importers:
       '@tailwindcss/typography': ^0.5.8
       '@tonydangblog/error-handling': workspace:1.0.0
       '@types/d3': ^7.4.0
+      '@types/plotly.js-dist-min': ^2.3.1
       '@types/three': ^0.146.0
       astro: ^1.6.15
       astro-seo: ^0.6.0
@@ -116,6 +117,7 @@ importers:
       three: 0.147.0
     devDependencies:
       '@types/d3': 7.4.0
+      '@types/plotly.js-dist-min': 2.3.1
       '@types/three': 0.146.0
 
   packages/error-handling:
@@ -1580,6 +1582,16 @@ packages:
 
   /@types/phoenix/1.5.4:
     resolution: {integrity: sha512-L5eZmzw89eXBKkiqVBcJfU1QGx9y+wurRIEgt0cuLH0hwNtVUxtx+6cu0R2STwWj468sjXyBYPYDtGclUd1kjQ==}
+
+  /@types/plotly.js-dist-min/2.3.1:
+    resolution: {integrity: sha512-9+rTvlyKDclIB9twal6ou6unUN6iTATLcRvakoFYaHGPnVRNe06LbUGOcgD8O+sddBFz3y2kS2hTKbUPGeVsHA==}
+    dependencies:
+      '@types/plotly.js': 2.12.11
+    dev: true
+
+  /@types/plotly.js/2.12.11:
+    resolution: {integrity: sha512-FouDGLsFVFTBqedZSUK4LjPYm1HYRJeGfIideEhgsUu4htNmLGsVbbH7SUaCljYKbiZkeCCWinvVYJe8o3m6og==}
+    dev: true
 
   /@types/pug/2.0.6:
     resolution: {integrity: sha512-SnHmG9wN1UVmagJOnyo/qkk0Z7gejYxOYYmaAwr5u2yFYfsupN3sg10kyzN8Hep/2zbHxCnsumxOoRIRMBwKCg==}
