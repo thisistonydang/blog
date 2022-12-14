@@ -80,15 +80,18 @@ importers:
       '@tailwindcss/typography': ^0.5.8
       '@tonydangblog/error-handling': workspace:1.0.0
       '@types/d3': ^7.4.0
+      '@types/three': ^0.146.0
       astro: ^1.6.15
       astro-seo: ^0.6.0
       d3: ^7.7.0
       date-fns: ^2.29.3
+      plotly.js-dist-min: ^2.16.5
       postgres: ^3.3.2
       remark-toc: ^8.0.1
       sharp: ^0.31.2
       svelte: ^3.55.0
       tailwindcss: ^3.2.4
+      three: ^0.147.0
     dependencies:
       '@astrojs/image': 0.12.1_sharp@0.31.2
       '@astrojs/mdx': 0.12.2
@@ -104,13 +107,16 @@ importers:
       astro-seo: 0.6.0
       d3: 7.7.0
       date-fns: 2.29.3
+      plotly.js-dist-min: 2.16.5
       postgres: 3.3.2
       remark-toc: 8.0.1
       sharp: 0.31.2
       svelte: 3.55.0
       tailwindcss: 3.2.4
+      three: 0.147.0
     devDependencies:
       '@types/d3': 7.4.0
+      '@types/three': 0.146.0
 
   packages/error-handling:
     specifiers: {}
@@ -1599,9 +1605,19 @@ packages:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
     dev: true
 
+  /@types/three/0.146.0:
+    resolution: {integrity: sha512-75AgysUrIvTCB054eQa2pDVFurfeFW8CrMQjpzjt3yHBfuuknoSvvsESd/3EhQxPrz9si3+P0wiDUVsWUlljfA==}
+    dependencies:
+      '@types/webxr': 0.5.0
+    dev: true
+
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
     dev: false
+
+  /@types/webxr/0.5.0:
+    resolution: {integrity: sha512-IUMDPSXnYIbEO2IereEFcgcqfDREOgmbGqtrMpVPpACTU6pltYLwHgVkrnYv0XhWEcjio9sYEfIEzgn3c7nDqA==}
+    dev: true
 
   /@types/yargs-parser/21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
@@ -5371,6 +5387,10 @@ packages:
     hasBin: true
     dev: true
 
+  /plotly.js-dist-min/2.16.5:
+    resolution: {integrity: sha512-dxJTO5NRQUNrpaIDZEL8VAjZvAA+T8vjKO6AR0/U3Y0fWS/j+j9VGOQ6s/o+qt7VajIQ5K1U6Jf82z4fIafqhg==}
+    dev: false
+
   /postcss-import/14.1.0_postcss@8.4.20:
     resolution: {integrity: sha512-flwI+Vgm4SElObFVPpTIT7SU7R3qk2L7PyduMcokiaVKuWv9d/U+Gm/QAd8NDLuykTWTkcrjOeD2Pp1rMeBTGw==}
     engines: {node: '>=10.0.0'}
@@ -6364,6 +6384,10 @@ packages:
   /text-table/0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
+
+  /three/0.147.0:
+    resolution: {integrity: sha512-LPTOslYQXFkmvceQjFTNnVVli2LaVF6C99Pv34fJypp8NbQLbTlu3KinZ0zURghS5zEehK+VQyvWuPZ/Sm8fzw==}
+    dev: false
 
   /throttles/1.0.1:
     resolution: {integrity: sha512-fab7Xg+zELr9KOv4fkaBoe/b3L0GMGLd0IBSCn16GoE/Qx6/OfCr1eGNyEcDU2pUA79qQfZ8kPQWlRuok4YwTw==}

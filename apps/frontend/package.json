@@ -22,13 +22,16 @@
     "astro-seo": "^0.6.0",
     "d3": "^7.7.0",
     "date-fns": "^2.29.3",
+    "plotly.js-dist-min": "^2.16.5",
     "postgres": "^3.3.2",
     "remark-toc": "^8.0.1",
     "sharp": "^0.31.2",
     "svelte": "^3.55.0",
-    "tailwindcss": "^3.2.4"
+    "tailwindcss": "^3.2.4",
+    "three": "^0.147.0"
   },
   "devDependencies": {
-    "@types/d3": "^7.4.0"
+    "@types/d3": "^7.4.0",
+    "@types/three": "^0.146.0"
   }
 }
