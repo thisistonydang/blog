@@ -86,7 +86,7 @@ importers:
       astro-seo: ^0.6.1
       d3: ^7.8.0
       date-fns: ^2.29.3
-      plotly.js-dist-min: ^2.16.5
+      plotly.js-dist-min: ^2.17.0
       postgres: ^3.3.2
       remark-toc: ^8.0.1
       sharp: ^0.31.3
@@ -108,7 +108,7 @@ importers:
       astro-seo: 0.6.1
       d3: 7.8.0
       date-fns: 2.29.3
-      plotly.js-dist-min: 2.16.5
+      plotly.js-dist-min: 2.17.0
       postgres: 3.3.2
       remark-toc: 8.0.1
       sharp: 0.31.3
@@ -352,8 +352,8 @@ packages:
       '@babel/highlight': 7.18.6
     dev: false
 
-  /@babel/compat-data/7.20.5:
-    resolution: {integrity: sha512-KZXo2t10+/jxmkhNXc7pZTqRvSOIvVv/+lJwHS+B2rErwOyjuVRh60yVpb7liQ1U5t7lLJ1bz+t8tSypUZdm0g==}
+  /@babel/compat-data/7.20.10:
+    resolution: {integrity: sha512-sEnuDPpOJR/fcafHMjpcpGN5M2jbUGUHwmuWKM/YdPzeEDJg8bgmbcWQFUfE32MQjti1koACvoPVsDe8Uq+idg==}
     engines: {node: '>=6.9.0'}
     dev: false
 
@@ -369,7 +369,7 @@ packages:
       '@babel/helpers': 7.20.7
       '@babel/parser': 7.20.7
       '@babel/template': 7.20.7
-      '@babel/traverse': 7.20.8
+      '@babel/traverse': 7.20.10
       '@babel/types': 7.20.7
       convert-source-map: 1.9.0
       debug: 4.3.4
@@ -402,7 +402,7 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
-      '@babel/compat-data': 7.20.5
+      '@babel/compat-data': 7.20.10
       '@babel/core': 7.20.7
       '@babel/helper-validator-option': 7.18.6
       browserslist: 4.21.4
@@ -447,7 +447,7 @@ packages:
       '@babel/helper-split-export-declaration': 7.18.6
       '@babel/helper-validator-identifier': 7.19.1
       '@babel/template': 7.20.7
-      '@babel/traverse': 7.20.8
+      '@babel/traverse': 7.20.10
       '@babel/types': 7.20.7
     transitivePeerDependencies:
       - supports-color
@@ -492,7 +492,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/template': 7.20.7
-      '@babel/traverse': 7.20.8
+      '@babel/traverse': 7.20.10
       '@babel/types': 7.20.7
     transitivePeerDependencies:
       - supports-color
@@ -563,8 +563,8 @@ packages:
       '@babel/types': 7.20.7
     dev: false
 
-  /@babel/traverse/7.20.8:
-    resolution: {integrity: sha512-/RNkaYDeCy4MjyV70+QkSHhxbvj2JO/5Ft2Pa880qJOG8tWrqcT/wXUuCCv43yogfqPzHL77Xu101KQPf4clnQ==}
+  /@babel/traverse/7.20.10:
+    resolution: {integrity: sha512-oSf1juCgymrSez8NI4A2sr4+uB/mFd9MXplYGPEBnfAuWmmyeVcHa6xLPiaRBcXkcb/28bgxmQLTVwFKE1yfsg==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.18.6
@@ -1986,7 +1986,7 @@ packages:
       '@babel/generator': 7.20.7
       '@babel/parser': 7.20.7
       '@babel/plugin-transform-react-jsx': 7.20.7_@babel+core@7.20.7
-      '@babel/traverse': 7.20.8
+      '@babel/traverse': 7.20.10
       '@babel/types': 7.20.7
       '@proload/core': 0.3.3
       '@proload/plugin-tsm': 0.2.1_@proload+core@0.3.3
@@ -5449,8 +5449,8 @@ packages:
     hasBin: true
     dev: true
 
-  /plotly.js-dist-min/2.16.5:
-    resolution: {integrity: sha512-dxJTO5NRQUNrpaIDZEL8VAjZvAA+T8vjKO6AR0/U3Y0fWS/j+j9VGOQ6s/o+qt7VajIQ5K1U6Jf82z4fIafqhg==}
+  /plotly.js-dist-min/2.17.0:
+    resolution: {integrity: sha512-D6RU+P9g6mG3LW8rXjtDU0Kk78tDeHpSMG4G1Ax8Ngqm5cxydV466Mwd4T8hT2T5GCWRgSzwBmnnhve1LAFVCQ==}
     dev: false
 
   /postcss-import/14.1.0_postcss@8.4.20:
@@ -5918,8 +5918,8 @@ packages:
       fsevents: 2.3.2
     dev: false
 
-  /rollup/3.8.0:
-    resolution: {integrity: sha512-+UR6PnUslneJNiJfLSzy4XH6R50ZGF0MS7UCv20ftXrktF/TkvZDwiBtXX65esblLR5p8w6LmXgPwt2f2B8SoQ==}
+  /rollup/3.8.1:
+    resolution: {integrity: sha512-4yh9eMW7byOroYcN8DlF9P/2jCpu6txVIHjEqquQVSx7DI0RgyCCN3tjrcy4ra6yVtV336aLBB3v2AarYAxePQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -6908,7 +6908,7 @@ packages:
       esbuild: 0.16.10
       postcss: 8.4.20
       resolve: 1.22.1
-      rollup: 3.8.0
+      rollup: 3.8.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -6942,7 +6942,7 @@ packages:
       esbuild: 0.16.10
       postcss: 8.4.20
       resolve: 1.22.1
-      rollup: 3.8.0
+      rollup: 3.8.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
