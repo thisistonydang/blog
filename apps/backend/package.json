@@ -14,7 +14,7 @@
     "@tonydangblog/error-handling": "workspace:1.0.0",
     "itty-router": "^3.0.10",
     "jose": "^4.11.1",
-    "stripe": "^11.4.0",
+    "stripe": "^11.5.0",
     "zod": "^3.20.2"
   }
 }
