@@ -28,6 +28,7 @@ Ocun
 OEM
 our
 Pantera
+planche
 Scarpa
 SUV
 Tenaya
