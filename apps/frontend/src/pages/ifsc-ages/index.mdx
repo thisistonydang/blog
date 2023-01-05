@@ -11,17 +11,13 @@ noindex: false
 draft: false
 ---
 
-import "@lib/styles/plotly.css";
-import PlotlyPlot from "@lib/components/PlotlyPlot.astro";
+import HeightHistogram from "./_components/HeightHistogram.svelte";
 
-import AllDark from "./_components/AllDark.astro";
-import AllWhite from "./_components/AllWhite.astro";
-import BoulderDark from "./_components/BoulderDark.astro";
-import BoulderWhite from "./_components/BoulderWhite.astro";
-import LeadDark from "./_components/LeadDark.astro";
-import LeadWhite from "./_components/LeadWhite.astro";
-import SpeedDark from "./_components/SpeedDark.astro";
-import SpeedWhite from "./_components/SpeedWhite.astro";
+import all from "./_data/all.json";
+import boulder from "./_data/boulder.json";
+import lead from "./_data/lead.json";
+import speed from "./_data/speed.json";
+
 export const __ = undefined;
 
 > The age range of climbing finalists in the 2022 IFSC World Cup is 16-35
@@ -42,10 +38,7 @@ of the combined boulder & lead event.
 
 ## All Finalists
 
-<PlotlyPlot>
-  <AllWhite slot="white" />
-  <AllDark slot="dark" />
-</PlotlyPlot>
+<HeightHistogram data={all} client:load />
 
 From the data, it appears that **the age range of climbing finalists in the
 2022 IFSC World Cup is 16-35 years old, with the average age being 22 years
@@ -57,24 +50,15 @@ discipline separately.
 
 ## Boulder Finalists
 
-<PlotlyPlot>
-  <BoulderWhite slot="white" />
-  <BoulderDark slot="dark" />
-</PlotlyPlot>
+<HeightHistogram data={all} client:load />
 
 ## Lead Finalists
 
-<PlotlyPlot>
-  <LeadWhite slot="white" />
-  <LeadDark slot="dark" />
-</PlotlyPlot>
+<HeightHistogram data={lead} client:load />
 
 ## Speed Finalists
 
-<PlotlyPlot>
-  <SpeedWhite slot="white" />
-  <SpeedDark slot="dark" />
-</PlotlyPlot>
+<HeightHistogram data={speed} client:load />
 
 What was most surprising to me was that the average age (22 years old) stayed
 the same even when looking at the 3 disciplines separately!
