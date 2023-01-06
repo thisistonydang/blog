@@ -50,6 +50,14 @@
     name = "";
     details = [];
   }
+
+  function handle_mouseover(e: Event): void {
+    if (document.activeElement === document.body) show_tooltip(e);
+  }
+
+  function handle_mouseout(): void {
+    if (document.activeElement === document.body) hide_tooltip();
+  }
 </script>
 
 <g class="cursor-crosshair">
@@ -66,8 +74,8 @@
         data-name={name_accessor(d)}
         data-has_img={has_img_accessor(d) ? "true" : null}
         data-details={JSON.stringify([{ name: "Age", value: age_accessor(d) }])}
-        on:mouseover={show_tooltip}
-        on:mouseout={hide_tooltip}
+        on:mouseover={handle_mouseover}
+        on:mouseout={handle_mouseout}
         on:focus={show_tooltip}
         on:blur={hide_tooltip}
       />
