@@ -41,7 +41,8 @@
         bg-surface absolute
         -top-12
         w-48
-        p-2 text-center
+        rounded-md p-2
+        text-center
         text-sm
       "
     >
