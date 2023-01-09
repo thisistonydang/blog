@@ -35,8 +35,8 @@
     y = rect.y.baseVal.value;
     img_src = `/ifsc-athletes/${has_img ? rect.dataset.name : "default"}.jpg`;
     img_alt = has_img
-      ? `Photo of ${name}`
-      : `Placeholder profile photo for ${name}`;
+      ? `Photo of ${rect.dataset.name}`
+      : `Placeholder profile photo for ${rect.dataset.name}`;
     name = rect.dataset.name ?? "";
     details = rect.dataset.details ? JSON.parse(rect.dataset.details) : [];
   }
