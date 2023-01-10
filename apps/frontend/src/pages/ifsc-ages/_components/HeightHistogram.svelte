@@ -11,7 +11,7 @@
   import { bin, mean } from "d3-array";
   import { scaleLinear, scaleOrdinal } from "d3-scale";
 
-  import { Pastel } from "../_lib/colors/Pastel";
+  import { Pastel } from "@lib/colors/Pastel";
 
   import Bins from "./Bins.svelte";
   import Chart from "./Chart.svelte";
