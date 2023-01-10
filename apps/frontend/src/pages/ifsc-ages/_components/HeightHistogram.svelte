@@ -12,13 +12,13 @@
   import { scaleLinear, scaleOrdinal } from "d3-scale";
 
   import { Pastel } from "@lib/colors/Pastel";
+  import VLine from "@lib/components/VLine.svelte";
 
   import Bins from "./Bins.svelte";
   import Chart from "./Chart.svelte";
   import HLegend from "./HLegend.svelte";
   import Tooltip from "./Tooltip.svelte";
   import VBarXAxis from "./VBarXAxis.svelte";
-  import VLine from "./VLine.svelte";
 
   import type { Bin } from "d3";
   import type { Detail } from "./Tooltip.svelte";
