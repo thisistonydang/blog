@@ -4,12 +4,14 @@
   export let dms: Dimensions;
   export let x_position: number;
   export let label: string | null = null;
+
+  const LABEL_PADDING = 10;
 </script>
 
 <g>
   <line
     class="stroke-heading"
-    y1="0"
+    y1={1.5 * -LABEL_PADDING}
     y2={dms.bounded_height}
     transform={`translate(${x_position}, 0)`}
     stroke-dasharray="4"
@@ -18,7 +20,7 @@
   {#if label}
     <text
       class="fill-heading text-xs"
-      transform={`translate(${x_position + 5}, 5)`}
+      transform={`translate(${x_position + 5}, ${-LABEL_PADDING})`}
     >
       {label}
     </text>

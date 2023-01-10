@@ -42,7 +42,7 @@
   let width = 700;
   let height = 450;
 
-  const margin = { top: 10, right: 0, bottom: 100, left: 0 };
+  const margin = { top: 20, right: 0, bottom: 100, left: 0 };
   $: dms = {
     width,
     height,
