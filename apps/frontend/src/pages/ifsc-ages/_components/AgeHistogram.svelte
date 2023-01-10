@@ -13,11 +13,11 @@
 
   import { Pastel } from "@lib/colors/Pastel";
   import Chart from "@lib/components/Chart.svelte";
+  import HLegend from "@lib/components/HLegend.svelte";
   import VBarXAxis from "@lib/components/VBarXAxis.svelte";
   import VLine from "@lib/components/VLine.svelte";
 
   import Bins from "./Bins.svelte";
-  import HLegend from "./HLegend.svelte";
   import Tooltip from "./Tooltip.svelte";
 
   import type { Bin } from "d3";
