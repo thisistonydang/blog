@@ -4,7 +4,6 @@ import svelte from "@astrojs/svelte";
 
 import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
-import partytown from "@astrojs/partytown";
 import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -18,7 +17,6 @@ export default defineConfig({
     svelte(),
     image({ logLevel: "debug", serviceEntryPoint: "@astrojs/image/sharp" }),
     mdx({ remarkPlugins: [remarkToc] }),
-    partytown(),
     prefetch(),
     sitemap({
       filter: (page) =>
