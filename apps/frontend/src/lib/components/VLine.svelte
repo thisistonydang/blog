@@ -10,7 +10,7 @@
 
 <g>
   <line
-    class="stroke-heading"
+    class="stroke-heading pointer-events-none"
     y1={1.5 * -LABEL_PADDING}
     y2={dms.bounded_height}
     transform={`translate(${x_position}, 0)`}
