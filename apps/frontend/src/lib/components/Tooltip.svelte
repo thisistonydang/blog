@@ -71,12 +71,14 @@
         <div bind:this={details_container}>
           {#each details as detail}
             <div class="flex gap-3 text-sm">
-              <div
-                style={`width: ${detail_name_width}px`}
-                class="whitespace-nowrap"
-              >
-                <span class="font-bold">{detail.name}</span>
-              </div>
+              {#if detail.name}
+                <div
+                  style={`width: ${detail_name_width}px`}
+                  class="whitespace-nowrap"
+                >
+                  <span class="font-bold">{detail.name}</span>
+                </div>
+              {/if}
               <div>
                 {detail.value}
               </div>
