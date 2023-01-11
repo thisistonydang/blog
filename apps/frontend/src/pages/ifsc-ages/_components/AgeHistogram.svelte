@@ -1,15 +1,7 @@
-<script context="module" lang="ts">
-  export interface Climber {
-    full_name: string;
-    age: number;
-    gender: string;
-    has_img: boolean;
-  }
-</script>
-
 <script lang="ts">
   import { bin, mean } from "d3-array";
   import { scaleLinear, scaleOrdinal } from "d3-scale";
+  import type { Bin } from "d3";
 
   import { Pastel } from "@lib/colors/Pastel";
   import Chart from "@lib/components/Chart.svelte";
@@ -20,17 +12,17 @@
 
   import Bins from "./Bins.svelte";
 
-  import type { Bin } from "d3";
-  import type { Detail } from "./Tooltip.svelte";
+  import type { Detail } from "@lib/components/Tooltip.svelte";
+  import type { DataPoint } from "@lib/types/d3";
 
   // Data
-  export let data: Climber[];
+  export let data: DataPoint[];
 
   // Accessors
-  const name_accessor = (d: Climber) => d.full_name;
-  const age_accessor = (d: Climber) => d.age;
-  const gender_accessor = (d: Climber) => d.gender;
-  const has_img_accessor = (d: Climber) => d.has_img;
+  const name_accessor = (d: DataPoint) => d.full_name as string;
+  const age_accessor = (d: DataPoint) => d.age as number;
+  const gender_accessor = (d: DataPoint) => d.gender as string;
+  const has_img_accessor = (d: DataPoint) => d.has_img as boolean;
 
   const bar_width_padding = 4;
   const bar_height_padding = 1;
@@ -64,7 +56,7 @@
   $: bins = bin()
     .value(age_accessor as () => number)
     .thresholds(max_age - min_age)(data as []) as unknown as Bin<
-    Climber,
+    DataPoint,
     number
   >[];
 
@@ -102,14 +94,17 @@
       {bins}
       {x_scale}
       {color_scale}
+      color_accessor={gender_accessor}
       {bar_width}
       {bar_width_padding}
       {bar_height}
       {bar_height_padding}
       {name_accessor}
-      {age_accessor}
-      {gender_accessor}
       {has_img_accessor}
+      img_dir="ifsc-athletes"
+      details_array={(d) => [
+        { name: "", value: `${age_accessor(d)} years old` },
+      ]}
       bind:display
       bind:x
       bind:y
