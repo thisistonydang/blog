@@ -2,10 +2,11 @@
 import type { Frontmatter } from "@lib/types/frontmatter";
 
 import "./_styles/main.css";
-import Head from "./_components/Head.astro";
-import Footer from "./_components/Footer.astro";
+import CloudflareAnalytics from "./_components/CloudflareAnalytics.astro";
 import HamburgerMenu from "./_components/HamburgerMenu.svelte";
+import Head from "./_components/Head.astro";
 import Header from "./_components/Header.astro";
+import Footer from "./_components/Footer.astro";
 
 export interface Props {
   frontmatter: Frontmatter;
@@ -27,5 +28,6 @@ const { frontmatter } = Astro.props;
       </main>
       <Footer />
     </div>
+    <CloudflareAnalytics />
   </body>
 </html>
