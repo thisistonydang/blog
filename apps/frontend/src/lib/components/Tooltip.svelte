@@ -58,7 +58,7 @@
       {#if img_src}
         <div>
           <img
-            class="m-0 mr-2 h-10 w-10 rounded-full"
+            class="m-0 mt-1.5 mr-2 h-10 w-10 rounded-full"
             src={img_src}
             alt={img_alt}
           />
@@ -66,12 +66,15 @@
       {/if}
 
       <!-- Tooltip details -->
-      <div class="text-sm">
+      <div>
         <div class="text-heading font-bold">{name}</div>
         <div bind:this={details_container}>
           {#each details as detail}
-            <div class="flex gap-3 text-xs">
-              <div style={`width: ${detail_name_width}px`}>
+            <div class="flex gap-3 text-sm">
+              <div
+                style={`width: ${detail_name_width}px`}
+                class="whitespace-nowrap"
+              >
                 <span class="font-bold">{detail.name}</span>
               </div>
               <div>
