@@ -22,6 +22,6 @@
   {name_accessor}
   {has_img_accessor}
   img_dir="ifsc-athletes"
-  details_array={(d) => [{ name: "", value: `${age_accessor(d)} years old` }]}
+  details_array={(d) => [{ name: "", value: `Age ${age_accessor(d)}` }]}
   v_lines={[{ label: "Avg: 22 years old", value: 22 }]}
 />
