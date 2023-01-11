@@ -11,15 +11,10 @@ noindex: false
 draft: false
 ---
 
-import "@lib/styles/plotly.css";
-import PlotlyPlot from "@lib/components/PlotlyPlot.astro";
-
-import BoulderAndLeadDark from "./_components/BoulderAndLeadDark.astro";
-import BoulderAndLeadWhite from "./_components/BoulderAndLeadWhite.astro";
-import BoulderDark from "./_components/BoulderDark.astro";
-import BoulderWhite from "./_components/BoulderWhite.astro";
-import LeadDark from "./_components/LeadDark.astro";
-import LeadWhite from "./_components/LeadWhite.astro";
+import HeightHistogram from "./_components/HeightHistogram.svelte";
+import boulder from "./_data/boulder.json";
+import boulder_and_lead from "./_data/boulder_and_lead.json";
+import lead from "./_data/lead.json";
 export const __ = undefined;
 
 > In the 2022 IFSC World Cup, the heights of women finalists were between 152
@@ -38,10 +33,14 @@ to the final round of the combined boulder & lead event.
 
 ## Boulder & Lead Finalists
 
-<PlotlyPlot>
-  <BoulderAndLeadWhite slot="white" />
-  <BoulderAndLeadDark slot="dark" />
-</PlotlyPlot>
+<div style="height: 450px;">
+  <HeightHistogram
+    data={boulder_and_lead}
+    mean_height_women={162}
+    mean_height_men={175}
+    client:only
+  />
+</div>
 
 From the data, it appears that **in the 2022 IFSC World Cup, the heights of
 women finalists were between 152 cm (5'0") to 175 cm (5'9") with an average
@@ -53,17 +52,25 @@ there were differences between bouldering and lead disciplines.
 
 ## Boulder Finalists
 
-<PlotlyPlot>
-  <BoulderWhite slot="white" />
-  <BoulderDark slot="dark" />
-</PlotlyPlot>
+<div style="height: 450px;">
+  <HeightHistogram
+    data={boulder}
+    mean_height_women={162}
+    mean_height_men={175}
+    client:only
+  />
+</div>
 
 ## Lead Finalists
 
-<PlotlyPlot>
-  <LeadWhite slot="white" />
-  <LeadDark slot="dark" />
-</PlotlyPlot>
+<div style="height: 450px;">
+  <HeightHistogram
+    data={lead}
+    mean_height_women={161}
+    mean_height_men={174}
+    client:only
+  />
+</div>
 
 Unsurprisingly, there was little difference in average height between boulder
 and lead groups since several athletes who participated in bouldering also
