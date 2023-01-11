@@ -1,3 +1,7 @@
+export interface DataPoint {
+  [key: string]: null | boolean | number | string;
+}
+
 export interface Dimensions {
   width: number;
   height: number;
