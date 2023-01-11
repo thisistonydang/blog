@@ -1,21 +1,21 @@
 <script lang="ts">
   import type { Bin, ScaleLinear, ScaleOrdinal } from "d3";
-  import type { Dimensions } from "@lib/types/d3";
-  import type { Climber } from "./HeightHistogram.svelte";
-  import type { Detail } from "./Tooltip.svelte";
+  import type { Detail } from "@lib/components/Tooltip.svelte";
+  import type { DataPoint, Dimensions } from "@lib/types/d3";
 
   export let dms: Dimensions;
-  export let bins: Bin<Climber, number>[];
+  export let bins: Bin<DataPoint, number>[];
   export let x_scale: ScaleLinear<number, number>;
   export let color_scale: ScaleOrdinal<string, string>;
+  export let color_accessor: (d: DataPoint) => string;
   export let bar_width: number;
   export let bar_width_padding: number;
   export let bar_height: number;
   export let bar_height_padding: number;
-  export let name_accessor: (d: Climber) => string;
-  export let age_accessor: (d: Climber) => number;
-  export let gender_accessor: (d: Climber) => string;
-  export let has_img_accessor: (d: Climber) => boolean;
+  export let name_accessor: (d: DataPoint) => string;
+  export let has_img_accessor: (d: DataPoint) => boolean;
+  export let img_dir: string;
+  export let details_array: (d: DataPoint) => Detail[];
 
   // Tooltip props to pass to parent
   export let display: boolean;
@@ -33,7 +33,7 @@
     display = true;
     x = rect.x.baseVal.value;
     y = rect.y.baseVal.value;
-    img_src = `/ifsc-athletes/${has_img ? rect.dataset.name : "default"}.jpg`;
+    img_src = `/${img_dir}/${has_img ? rect.dataset.name : "default"}.jpg`;
     img_alt = has_img
       ? `Photo of ${rect.dataset.name}`
       : `Placeholder profile photo for ${rect.dataset.name}`;
@@ -64,7 +64,7 @@
   {#each bins as bin}
     {#each bin as d, i}
       <rect
-        class={`fill-[${color_scale(gender_accessor(d))}]`}
+        class={`fill-[${color_scale(color_accessor(d))}]`}
         x={bin.x0 ? Math.round(x_scale(bin.x0) + bar_width_padding / 2) : 0}
         y={dms.bounded_height -
           bar_height -
@@ -73,7 +73,7 @@
         height={bar_height}
         data-name={name_accessor(d)}
         data-has_img={has_img_accessor(d) ? "true" : null}
-        data-details={JSON.stringify([{ name: "Age", value: age_accessor(d) }])}
+        data-details={JSON.stringify(details_array(d))}
         on:mouseover={handle_mouseover}
         on:mouseout={handle_mouseout}
         on:focus={show_tooltip}
