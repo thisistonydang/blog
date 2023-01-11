@@ -25,14 +25,25 @@
   let tooltip_width: number;
   let tooltip_height: number;
 
+  // Tooltip position
+  const TOOLTIP_SHIFT = 4 * bar_width_padding;
   $: position_x =
     x < dms.bounded_width / 2
-      ? dms.left + x - bar_width_padding
-      : dms.left + x - tooltip_width + bar_width + bar_width_padding;
-  $: position_y = dms.top + y - tooltip_height - CARROT_BORDER_WIDTH + 2;
+      ? dms.left + x - TOOLTIP_SHIFT
+      : dms.left + x - tooltip_width + bar_width + TOOLTIP_SHIFT;
+  $: position_y = dms.top + y - tooltip_height - CARROT_BORDER_WIDTH + 1;
 
+  // Tooltip carrot position
   $: carrot_x = dms.left + x + bar_width / 2 - CARROT_BORDER_WIDTH;
-  $: carrot_y = dms.top + y - CARROT_BORDER_WIDTH + 1;
+  $: carrot_y = dms.top + y - CARROT_BORDER_WIDTH;
+
+  // Set width of detail name based on longest name
+  let details_container: HTMLDivElement;
+  let detail_name_width: number;
+  $: spans = details_container?.querySelectorAll("span");
+  $: if (spans) {
+    detail_name_width = Math.max(...[...spans].map((span) => span.offsetWidth));
+  }
 </script>
 
 {#if display}
@@ -56,10 +67,19 @@
 
       <!-- Tooltip details -->
       <div class="text-sm">
-        <span class="text-heading font-bold">{name}</span><br />
-        {#each details as detail}
-          {detail.name}: {detail.value}<br />
-        {/each}
+        <div class="text-heading font-bold">{name}</div>
+        <div bind:this={details_container}>
+          {#each details as detail}
+            <div class="flex gap-3 text-xs">
+              <div style={`width: ${detail_name_width}px`}>
+                <span class="font-bold">{detail.name}</span>
+              </div>
+              <div>
+                {detail.value}
+              </div>
+            </div>
+          {/each}
+        </div>
       </div>
     </div>
 
