@@ -6,6 +6,7 @@
 
   // Data
   export let data: DataPoint[];
+  export let title: string;
   export let mean_height_women: number;
   export let mean_height_men: number;
 
@@ -18,6 +19,7 @@
 
 <Histogram
   {data}
+  {title}
   label="Height (cm)"
   x_accessor={height_accessor}
   num_bins="all_values"

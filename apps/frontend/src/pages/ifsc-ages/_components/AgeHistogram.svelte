@@ -4,6 +4,7 @@
 
   // Data
   export let data: DataPoint[];
+  export let title: string;
 
   // Accessors
   const name_accessor = (d: DataPoint) => d.full_name as string;
@@ -14,6 +15,7 @@
 
 <Histogram
   {data}
+  {title}
   label="Age"
   x_accessor={age_accessor}
   num_ticks="all_values"
