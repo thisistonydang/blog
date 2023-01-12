@@ -39,7 +39,11 @@ of the combined boulder & lead event.
 ## All Finalists
 
 <div style="height: 450px;">
-  <AgeHistogram data={all} client:only />
+  <AgeHistogram
+    data={all}
+    title="Histogram showing age distribution of IFSC world cup finalists."
+    client:only
+  />
 </div>
 
 From the data, it appears that **the age range of climbing finalists in the
@@ -53,19 +57,31 @@ discipline separately.
 ## Boulder Finalists
 
 <div style="height: 450px;">
-  <AgeHistogram data={boulder} client:only />
+  <AgeHistogram
+    data={boulder}
+    title="Histogram showing age distribution of boulder finalists."
+    client:only
+  />
 </div>
 
 ## Lead Finalists
 
 <div style="height: 450px;">
-  <AgeHistogram data={lead} client:only />
+  <AgeHistogram
+    data={lead}
+    title="Histogram showing age distribution of lead finalists."
+    client:only
+  />
 </div>
 
 ## Speed Finalists
 
 <div style="height: 450px;">
-  <AgeHistogram data={speed} client:only />
+  <AgeHistogram
+    data={speed}
+    title="Histogram showing age distribution of speed finalists."
+    client:only
+  />
 </div>
 
 What was most surprising to me was that the average age (22 years old) stayed
