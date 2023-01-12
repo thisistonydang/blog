@@ -58,6 +58,10 @@
   function handle_mouseout(): void {
     if (document.activeElement === document.body) hide_tooltip();
   }
+
+  function details_aria_label(details: Detail[]): string {
+    return details.map((detail) => `${detail.name} ${detail.value}`).join(", ");
+  }
 </script>
 
 <g
@@ -70,7 +74,9 @@
     {#each bin as d, i}
       <rect
         role="listitem"
-        aria-label={`${name_accessor(d)}`}
+        aria-label={`${name_accessor(d)}, ${details_aria_label(
+          details_array(d)
+        )}`}
         class={`fill-[${color_scale(color_accessor(d))}]`}
         x={bin.x0 ? Math.round(x_scale(bin.x0) + bar_width_padding / 2) : 0}
         y={dms.bounded_height -
