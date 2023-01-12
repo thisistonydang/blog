@@ -60,10 +60,17 @@
   }
 </script>
 
-<g class="cursor-crosshair">
+<g
+  role="list"
+  aria-label="Histogram bars."
+  class="cursor-crosshair"
+  on:focus={() => null}
+>
   {#each bins as bin}
     {#each bin as d, i}
       <rect
+        role="listitem"
+        aria-label={`${name_accessor(d)}`}
         class={`fill-[${color_scale(color_accessor(d))}]`}
         x={bin.x0 ? Math.round(x_scale(bin.x0) + bar_width_padding / 2) : 0}
         y={dms.bounded_height -
