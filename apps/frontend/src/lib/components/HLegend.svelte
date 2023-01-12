@@ -10,6 +10,8 @@
 </script>
 
 <g
+  role="presentation"
+  aria-hidden="true"
   transform={`translate(5, ${
     dms.height - (dms.height - dms.bounded_height) / 2.5
   })`}

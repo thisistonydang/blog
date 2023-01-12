@@ -8,7 +8,7 @@
   const LABEL_PADDING = 10;
 </script>
 
-<g>
+<g role="presentation" aria-hidden="true">
   <line
     class="stroke-heading pointer-events-none"
     y1={1.5 * -LABEL_PADDING}

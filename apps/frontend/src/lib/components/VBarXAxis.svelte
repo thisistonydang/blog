@@ -10,7 +10,11 @@
   export let label: string | null = null;
 </script>
 
-<g transform={`translate(0, ${dms.bounded_height})`}>
+<g
+  role="presentation"
+  aria-hidden="true"
+  transform={`translate(0, ${dms.bounded_height})`}
+>
   <line class="stroke-surface" x2={dms.bounded_width} />
 
   {#each ticks as tick}
