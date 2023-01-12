@@ -15,6 +15,7 @@
   import type { DataPoint } from "@lib/types/d3";
 
   export let data: DataPoint[];
+  export let title: string;
   export let label: string;
   export let x_accessor: (d: DataPoint) => number;
   export let num_ticks: "default" | "all_values" = "default";
@@ -93,7 +94,7 @@
 </script>
 
 <div class="relative" bind:clientWidth={width} bind:clientHeight={height}>
-  <Chart {dms}>
+  <Chart {dms} {title}>
     <Bins
       {dms}
       {bins}
