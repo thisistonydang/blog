@@ -8,6 +8,7 @@ import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
+import a11yEmoji from "@fec/remark-a11y-emoji";
 import remarkToc from "remark-toc";
 
 export default defineConfig({
@@ -16,7 +17,7 @@ export default defineConfig({
   integrations: [
     svelte(),
     image({ logLevel: "debug", serviceEntryPoint: "@astrojs/image/sharp" }),
-    mdx({ remarkPlugins: [remarkToc] }),
+    mdx({ remarkPlugins: [a11yEmoji, remarkToc] }),
     prefetch(),
     sitemap({
       filter: (page) =>
