@@ -2,7 +2,20 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
 test.describe("a11y", () => {
-  const paths = ["/", "/posts", "/about", "/now", "/contact", "/support"];
+  const paths = [
+    "/",
+    "/posts",
+    "/about",
+    "/now",
+    "/contact",
+    "/support",
+    "/ifsc-shoes",
+    "/ifsc-heights",
+    "/ifsc-ages",
+    "/relay-results",
+    "/bee-snapped",
+    "/subielife",
+  ];
 
   for (const path of paths) {
     test(`'${path}' is accessible`, async ({ page }) => {
