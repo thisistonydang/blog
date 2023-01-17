@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && tsc --noEmit --skipLibCheck && astro build",
+    "build": "astro check && tsc --noEmit --skipLibCheck && astro build && linkinator http://localhost:3000 -r -s adidas,butora,linkedin",
     "preview": "wrangler pages dev --port 4000 dist",
     "deploy": "wrangler pages publish dist"
   },
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@types/d3": "^7.4.0",
     "@types/plotly.js-dist-min": "^2.3.1",
-    "@types/three": "^0.148.0"
+    "@types/three": "^0.148.0",
+    "linkinator": "^4.1.2"
   }
 }
