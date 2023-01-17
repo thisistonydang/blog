@@ -17,12 +17,18 @@ const { frontmatter } = Astro.props;
 <html lang="en" class="bg-bg overflow-y-scroll p-4 sm:pl-8">
   <Head frontmatter={frontmatter} />
   <body>
+    <a
+      class="focus:bg-surface focus:text-heading sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-1"
+      href="#main-content"
+    >
+      Skip to main content
+    </a>
     <Header />
     <HamburgerMenu current_path={Astro.url.pathname} client:load />
     <div
       class="prose dark:prose-invert prose-a:text-accent prose-a:underline-offset-4 hover:prose-a:no-underline prose-headings:font-normal m-auto max-w-[700px]"
     >
-      <main>
+      <main id="main-content">
         <slot />
       </main>
       <Footer />
