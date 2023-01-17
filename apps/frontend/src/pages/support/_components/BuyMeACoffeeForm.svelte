@@ -56,7 +56,9 @@
       &plus;
     </button>
 
-    <span class="mt-5 p-2 text-4xl">&nbsp; &times; ☕</span>
+    <span class="mt-5 p-2 text-4xl">
+      &nbsp; &times; <span role="img" aria-label="coffee">☕</span>
+    </span>
   </fieldset>
 
   <Button width="150px">SUPPORT ${qty * 5}</Button>
