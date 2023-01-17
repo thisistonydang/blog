@@ -6,7 +6,14 @@ import SiteNav from "./SiteNav.svelte";
 
 <header class="text-heading relative mb-10 flex items-center">
   <HamburgerButton client:visible />
-  <a class="ml-2.5 text-3xl sm:ml-0" href="/" rel="prefetch">Td</a>
+  <a
+    class="ml-2.5 text-3xl sm:ml-0"
+    href="/"
+    rel="prefetch"
+    aria-label="Return to home page."
+  >
+    Td
+  </a>
   <SiteNav current_path={Astro.url.pathname} />
   <DarkModeToggle client:load />
 </header>
