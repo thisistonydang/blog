@@ -9,7 +9,7 @@ importers:
       '@supabase/supabase-js': ^2.4.0
       '@typescript-eslint/eslint-plugin': ^5.48.2
       '@typescript-eslint/parser': ^5.48.2
-      '@vitest/coverage-c8': ^0.27.1
+      '@vitest/coverage-c8': ^0.27.2
       dotenv: ^16.0.3
       eslint: ^8.32.0
       eslint-config-prettier: ^8.6.0
@@ -23,7 +23,7 @@ importers:
       typescript: ^4.9.4
       vite: ^4.0.4
       vite-tsconfig-paths: ^4.0.3
-      vitest: ^0.27.1
+      vitest: ^0.27.2
       vitest-environment-miniflare: ^2.11.0
     devDependencies:
       '@axe-core/playwright': 4.5.2
@@ -31,7 +31,7 @@ importers:
       '@supabase/supabase-js': 2.4.0
       '@typescript-eslint/eslint-plugin': 5.48.2_caon6io6stgpr7lz2rtbhekxqy
       '@typescript-eslint/parser': 5.48.2_7uibuqfxkfaozanbtbziikiqje
-      '@vitest/coverage-c8': 0.27.1
+      '@vitest/coverage-c8': 0.27.2
       dotenv: 16.0.3
       eslint: 8.32.0
       eslint-config-prettier: 8.6.0_eslint@8.32.0
@@ -45,8 +45,8 @@ importers:
       typescript: 4.9.4
       vite: 4.0.4
       vite-tsconfig-paths: 4.0.3_gl4qsmwzp7wy5uclz4tx77gbli
-      vitest: 0.27.1
-      vitest-environment-miniflare: 2.11.0_vitest@0.27.1
+      vitest: 0.27.2
+      vitest-environment-miniflare: 2.11.0_vitest@0.27.2
 
   apps/backend:
     specifiers:
@@ -1203,8 +1203,8 @@ packages:
     transitivePeerDependencies:
       - encoding
 
-  /@supabase/postgrest-js/1.1.1:
-    resolution: {integrity: sha512-jhdBah1JIxkZUp+5QH5JS7Uq9teGwh0Bs3FzbhnVlH619FSUFquTpHuNDxLsJmqEe8r3Wcnw19Dz0t3wEpkfug==}
+  /@supabase/postgrest-js/1.2.0:
+    resolution: {integrity: sha512-O32+dVG2db9a0uRaxNindqLrBSNSRwyKo5KewO0Fq8zUXD+0g9+Z1svdsBLGL9W/8rTIv+YwsWvvPCd7hSivPA==}
     dependencies:
       cross-fetch: 3.1.5
     transitivePeerDependencies:
@@ -1218,8 +1218,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@supabase/storage-js/2.1.0:
-    resolution: {integrity: sha512-bRMLWCbkkx84WDAtHAAMN7FAWuayrGZtTHj/WMUK6PsAWuonovvEa5s34a5iux61qJSn+ls3tFkyQgqxunl5ww==}
+  /@supabase/storage-js/2.2.0:
+    resolution: {integrity: sha512-YvU4pEj1u6oR9/iKN1Nc0KBO1DJgEkmwykx0ESSSUSmnlytLcbuXAM0DHY7W6Px9cQmEkpOcB2eZ3zRYjn+Ikw==}
     dependencies:
       cross-fetch: 3.1.5
     transitivePeerDependencies:
@@ -1230,9 +1230,9 @@ packages:
     dependencies:
       '@supabase/functions-js': 2.0.0
       '@supabase/gotrue-js': 2.7.0
-      '@supabase/postgrest-js': 1.1.1
+      '@supabase/postgrest-js': 1.2.0
       '@supabase/realtime-js': 2.3.1
-      '@supabase/storage-js': 2.1.0
+      '@supabase/storage-js': 2.2.0
       cross-fetch: 3.1.5
     transitivePeerDependencies:
       - encoding
@@ -1786,11 +1786,11 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitest/coverage-c8/0.27.1:
-    resolution: {integrity: sha512-/9VTGDIAp4hv8PBawfyijxhkiyucfOxFRRP+7kzy3Dj0wONy1Mc2MBoPmiH4aZVc0LViQqecrQLs8JVGt42keA==}
+  /@vitest/coverage-c8/0.27.2:
+    resolution: {integrity: sha512-1MFwlwfwIfPFLfu6aN+dZ5jo2aOah5nAwoq/SrqUkt9rXzUmohLOgI1GTT0PpXbJKqaZicIlWuBjiC+BjVgRwQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.27.1
+      vitest: 0.27.2
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -7455,8 +7455,8 @@ packages:
       vfile-message: 3.1.3
     dev: false
 
-  /vite-node/0.27.1_@types+node@18.11.18:
-    resolution: {integrity: sha512-d6+ue/3NzsfndWaPbYh/bFkHbmAWfDXI4B874zRx+WREnG6CUHUbBC8lKaRYZjeR6gCPN5m1aVNNRXBYICA9XA==}
+  /vite-node/0.27.2_@types+node@18.11.18:
+    resolution: {integrity: sha512-IDwuVhslF10qCnWOGJui7/2KksAOBHi+UbVo6Pqt4f5lgn+kS2sVvYDsETRG5PSuslisGB5CFGvb9I6FQgymBQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     dependencies:
@@ -7612,7 +7612,7 @@ packages:
       vite: 3.2.5
     dev: false
 
-  /vitest-environment-miniflare/2.11.0_vitest@0.27.1:
+  /vitest-environment-miniflare/2.11.0_vitest@0.27.2:
     resolution: {integrity: sha512-SQESvpPVtY60WF70AJy4OCDbDvbrFE6xDsgss+Na5oCJK6SRMMkURKkoRLUbaCE66FsSlf8GivGV6IK6Fa5Cnw==}
     engines: {node: '>=16.13'}
     peerDependencies:
@@ -7622,14 +7622,14 @@ packages:
       '@miniflare/runner-vm': 2.11.0
       '@miniflare/shared': 2.11.0
       '@miniflare/shared-test-environment': 2.11.0
-      vitest: 0.27.1
+      vitest: 0.27.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
     dev: true
 
-  /vitest/0.27.1:
-    resolution: {integrity: sha512-1sIpQ1DVFTEn7c1ici1XHcVfdU4nKiBmPtPAtGKJJJLuJjojTv/OHGgcf69P57alM4ty8V4NMv+7Yoi5Cxqx9g==}
+  /vitest/0.27.2:
+    resolution: {integrity: sha512-y7tdsL2uaQy+KF18AlmNHZe29ukyFytlxrpSTwwmgLE2XHR/aPucJP9FLjWoqjgqFlXzRAjHlFJLU+HDyI/OsA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -7666,7 +7666,7 @@ packages:
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.4_@types+node@18.11.18
-      vite-node: 0.27.1_@types+node@18.11.18
+      vite-node: 0.27.2_@types+node@18.11.18
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
