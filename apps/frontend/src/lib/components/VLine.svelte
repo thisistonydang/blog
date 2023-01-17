@@ -19,7 +19,7 @@
 
   {#if label}
     <text
-      class="fill-heading text-xs"
+      class="fill-heading xs:text-xs xxs:text-[10px] text-[8px]"
       transform={`translate(${x_position + 5}, ${-LABEL_PADDING})`}
     >
       {label}
