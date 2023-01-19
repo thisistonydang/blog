@@ -10,6 +10,7 @@
   export let value: string | number = "";
   export let autocomplete = "off";
   export let required = false;
+  export let disabled = false;
   export let max_width = "219px";
   export let width = "45vw";
   export let invalid = false;
@@ -48,6 +49,7 @@
     {value}
     {autocomplete}
     {required}
+    {disabled}
     style:max-width={max_width}
     style:width
     class="
