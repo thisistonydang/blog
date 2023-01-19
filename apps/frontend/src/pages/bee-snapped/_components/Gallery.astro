@@ -17,7 +17,7 @@ const photos = photoFiles.map((photo) => {
   return {
     href: `/bee-snapped-assets/_${name}-1280px.jpg`,
     src: `_${name}-640px`,
-    alt: `snap of ${name?.substring(4)}`,
+    alt: `photo #${name?.substring(0, 3)}: ${name?.substring(4)}`,
   };
 });
 ---
