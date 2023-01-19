@@ -88,19 +88,18 @@
 <form id="subscription-form" on:submit|preventDefault={handle_submit}>
   <p class="text-sm">GET BLOG UPDATES &amp; ANNOUNCEMENTS</p>
 
-  <fieldset {disabled} class="flex items-end">
+  <div class="flex items-end gap-1.5">
     <TextField
       label="name*"
       name="name"
       bind:value={name}
       autocomplete="name"
       required
+      {disabled}
       width={"33vw"}
       invalid={name_is_invalid}
       helper_text={name_helper_text}
     />
-
-    <span class="w-1.5" />
 
     <TextField
       label="email*"
@@ -109,15 +108,14 @@
       bind:value={email}
       autocomplete="email"
       required
+      {disabled}
       width={"33vw"}
       invalid={email_is_invalid}
       helper_text={email_helper_text}
     />
 
-    <span class="w-1.5" />
-
     <Button width="76px" loading={disabled}>SUBMIT</Button>
-  </fieldset>
+  </div>
 </form>
 
 {#if message}
