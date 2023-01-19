@@ -59,7 +59,7 @@
     />
   {/if}
 
-  <p class="m-0 text-4xl">
+  <div class="m-0 text-4xl">
     {@html egg}
-  </p>
+  </div>
 </label>
