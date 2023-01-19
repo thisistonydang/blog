@@ -24,15 +24,20 @@
   style:width
   class:cursor-wait={loading}
   class="
-    bg-heading text-bg
-    h-[41px] px-3
-    text-center text-sm
-    hover:opacity-95
+    bg-heading
+    text-bg hover:bg-bg
+    hover:text-heading hover:border-heading
+    group h-[41px]
+    px-3 text-center text-sm hover:border
   "
 >
   {#if loading}
     <svg
-      class="fill-bg inline-block animate-[spin_2s_linear_infinite]"
+      class="
+        fill-bg group-hover:fill-heading
+        inline-block
+        animate-[spin_2s_linear_infinite]
+      "
       width="1.4rem"
       height="1.4rem"
       viewBox="0 0 512 512"
