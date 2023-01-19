@@ -4,7 +4,7 @@
   <span
     role="img"
     aria-label="waving hand"
-    class="inline-block animate-[wiggle_2.5s_linear_infinite]"
+    class="inline-block motion-safe:animate-[wiggle_2.5s_linear_infinite]"
   >
     👋
   </span>
