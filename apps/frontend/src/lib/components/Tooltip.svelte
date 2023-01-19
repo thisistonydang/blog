@@ -38,11 +38,11 @@
   $: carrot_y = dms.top + y - CARROT_BORDER_WIDTH;
 
   // Set width of detail name based on longest name
-  let details_container: HTMLDivElement;
+  let details_container: HTMLDListElement;
   let detail_name_width: number;
-  $: spans = details_container?.querySelectorAll("span");
-  $: if (spans) {
-    detail_name_width = Math.max(...[...spans].map((span) => span.offsetWidth));
+  $: dts = details_container?.querySelectorAll("dt");
+  $: if (dts) {
+    detail_name_width = Math.max(...[...dts].map((dt) => dt.offsetWidth));
   }
 </script>
 
@@ -68,23 +68,19 @@
       <!-- Tooltip details -->
       <div>
         <div class="text-heading font-bold">{name}</div>
-        <div bind:this={details_container}>
+        <dl bind:this={details_container}>
           {#each details as detail}
-            <div class="flex gap-3 text-sm">
-              {#if detail.name}
-                <div
-                  style={`width: ${detail_name_width}px`}
-                  class="whitespace-nowrap"
-                >
-                  <span class="font-bold">{detail.name}</span>
-                </div>
-              {/if}
-              <div>
-                {detail.value}
-              </div>
+            <div class="flex gap-2 text-sm">
+              <dt
+                style={`width: ${detail_name_width}px`}
+                class="whitespace-nowrap font-bold"
+              >
+                {detail.name}
+              </dt>
+              <dd>{detail.value}</dd>
             </div>
           {/each}
-        </div>
+        </dl>
       </div>
     </div>
 
