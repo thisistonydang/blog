@@ -3,7 +3,10 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && tsc --noEmit --skipLibCheck && astro build && linkinator http://localhost:3000 -r -s adidas,butora,linkedin",
+    "type-check": "astro check && tsc --noEmit --skipLibCheck",
+    "link-check": "linkinator http://localhost:3000 -r -s adidas,butora,linkedin",
+    "a11y-check": "pa11y-ci --sitemap https://tonydang.blog/sitemap-index.xml --sitemap-find https://tonydang.blog --sitemap-replace http://localhost:3000",
+    "build": "pnpm run type-check && astro build && pnpm run link-check && pnpm run a11y-check",
     "preview": "wrangler pages dev --port 4000 dist",
     "deploy": "wrangler pages publish dist"
   },
@@ -35,6 +38,7 @@
     "@types/d3": "^7.4.0",
     "@types/plotly.js-dist-min": "^2.3.1",
     "@types/three": "^0.148.0",
-    "linkinator": "^4.1.2"
+    "linkinator": "^4.1.2",
+    "pa11y-ci": "^3.0.1"
   }
 }
