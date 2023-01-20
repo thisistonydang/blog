@@ -25,7 +25,7 @@
   method="POST"
   action={`${PUBLIC_BACKEND_URL}/support/create-stripe-checkout`}
 >
-  <fieldset class="m-auto mb-5 flex w-max items-center">
+  <div class="m-auto mb-5 flex w-max items-center">
     <button
       class="
         active:bg-surface mt-5 p-2 text-4xl
@@ -65,7 +65,7 @@
     <span class="mt-5 p-2 text-4xl">
       &nbsp; &times; <span role="img" aria-label="coffee">☕</span>
     </span>
-  </fieldset>
+  </div>
 
   <Button width="150px">SUPPORT ${qty * 5}</Button>
 </form>
