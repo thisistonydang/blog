@@ -7,6 +7,7 @@ import Head from "./_components/Head.astro";
 import Header from "./_components/Header.astro";
 import Footer from "./_components/Footer.astro";
 import OnlineStatus from "./_components/OnlineStatus.svelte";
+import SkipToMain from "./_components/SkipToMain.astro";
 
 export interface Props {
   frontmatter: Frontmatter;
@@ -16,15 +17,10 @@ const { frontmatter } = Astro.props;
 ---
 
 <html lang="en" class="bg-bg overflow-y-scroll p-4 sm:pl-8">
-  <Head frontmatter={frontmatter} />
+  <Head {frontmatter} />
   <body>
     <OnlineStatus client:load />
-    <a
-      class="focus:bg-surface text-heading sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-1"
-      href="#main-content"
-    >
-      Skip to main content
-    </a>
+    <SkipToMain />
     <Header />
     <HamburgerMenu current_path={Astro.url.pathname} client:load />
     <div
