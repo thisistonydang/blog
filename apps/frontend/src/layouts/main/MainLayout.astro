@@ -2,11 +2,11 @@
 import type { Frontmatter } from "@lib/types/frontmatter";
 
 import "./_styles/main.css";
-import ConnectivityStatus from "./_components/ConnectivityStatus.svelte";
 import HamburgerMenu from "./_components/HamburgerMenu.svelte";
 import Head from "./_components/Head.astro";
 import Header from "./_components/Header.astro";
 import Footer from "./_components/Footer.astro";
+import OnlineStatus from "./_components/OnlineStatus.svelte";
 
 export interface Props {
   frontmatter: Frontmatter;
@@ -18,7 +18,7 @@ const { frontmatter } = Astro.props;
 <html lang="en" class="bg-bg overflow-y-scroll p-4 sm:pl-8">
   <Head frontmatter={frontmatter} />
   <body>
-    <ConnectivityStatus client:load />
+    <OnlineStatus client:load />
     <a
       class="focus:bg-surface text-heading sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-1"
       href="#main-content"
