@@ -14,12 +14,12 @@
     "deploy": "pnpm -F @blog/frontend run deploy && pnpm -F @blog/backend run deploy"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.5.2",
-    "@playwright/test": "^1.29.2",
+    "@axe-core/playwright": "^4.6.0",
+    "@playwright/test": "^1.30.0",
     "@supabase/supabase-js": "^2.4.1",
-    "@typescript-eslint/eslint-plugin": "^5.48.2",
-    "@typescript-eslint/parser": "^5.48.2",
-    "@vitest/coverage-c8": "^0.27.2",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "@vitest/coverage-c8": "^0.28.2",
     "dotenv": "^16.0.3",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
@@ -29,11 +29,11 @@
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.7.2",
     "prettier-plugin-svelte": "^2.9.0",
-    "prettier-plugin-tailwindcss": "^0.2.1",
+    "prettier-plugin-tailwindcss": "^0.2.2",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
     "vite-tsconfig-paths": "^4.0.5",
-    "vitest": "^0.27.2",
+    "vitest": "^0.28.2",
     "vitest-environment-miniflare": "^2.11.0"
   }
 }
