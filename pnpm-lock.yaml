@@ -90,6 +90,7 @@ importers:
       d3: ^7.8.2
       date-fns: ^2.29.3
       gsap: ^3.11.4
+      lil-gui: ^0.17.0
       linkinator: ^4.1.2
       pa11y-ci: ^3.0.1
       plotly.js-dist-min: ^2.18.0
@@ -116,6 +117,7 @@ importers:
       d3: 7.8.2
       date-fns: 2.29.3
       gsap: 3.11.4
+      lil-gui: 0.17.0
       plotly.js-dist-min: 2.18.0
       postgres: 3.3.3
       remark-toc: 8.0.1
@@ -4514,6 +4516,10 @@ packages:
       prelude-ls: 1.2.1
       type-check: 0.4.0
     dev: true
+
+  /lil-gui/0.17.0:
+    resolution: {integrity: sha512-MVBHmgY+uEbmJNApAaPbtvNh1RCAeMnKym82SBjtp5rODTYKWtM+MXHCifLe2H2Ti1HuBGBtK/5SyG4ShQ3pUQ==}
+    dev: false
 
   /lilconfig/2.0.6:
     resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
