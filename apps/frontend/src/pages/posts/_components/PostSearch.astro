@@ -26,4 +26,4 @@ const posts = (non_draft_posts as { frontmatter: BlogPostFrontmatter }[])
   );
 ---
 
-<PostSearch {posts} client:load />
+<PostSearch posts={posts} client:load />
