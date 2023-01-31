@@ -40,14 +40,15 @@
     before:bg-heading absolute
     top-1.5 right-0
     h-[26px] w-12
-    cursor-pointer
     border
-    before:absolute
-    before:top-0.5 before:left-0.5 before:h-5
-    before:w-5 before:duration-100
+    before:absolute before:top-0.5 before:left-0.5
+    before:h-5 before:w-5
+    before:duration-100
     hover:opacity-95
     dark:before:left-6
   "
+  class:cursor-not-allowed={!mounted}
+  disabled={!mounted}
   aria-label="dark mode toggle"
   on:click={handle_click}
   on:keydown={handle_keydown}
