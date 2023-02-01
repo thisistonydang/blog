@@ -87,6 +87,7 @@ importers:
       '@types/three': ^0.148.1
       astro: ^2.0.2
       astro-seo: ^0.7.0
+      cannon-es: ^0.20.0
       d3: ^7.8.2
       date-fns: ^2.29.3
       gsap: ^3.11.4
@@ -114,6 +115,7 @@ importers:
       '@tonydangblog/error-handling': link:../../packages/error-handling
       astro: 2.0.2
       astro-seo: 0.7.0
+      cannon-es: 0.20.0
       d3: 7.8.2
       date-fns: 2.29.3
       gsap: 3.11.4
@@ -2275,6 +2277,10 @@ packages:
 
   /caniuse-lite/1.0.30001449:
     resolution: {integrity: sha512-CPB+UL9XMT/Av+pJxCKGhdx+yg1hzplvFJQlJ2n68PyQGMz9L/E2zCyLdOL8uasbouTUgnPl+y0tccI/se+BEw==}
+    dev: false
+
+  /cannon-es/0.20.0:
+    resolution: {integrity: sha512-eZhWTZIkFOnMAJOgfXJa9+b3kVlvG+FX4mdkpePev/w/rP5V8NRquGyEozcjPfEoXUlb+p7d9SUcmDSn14prOA==}
     dev: false
 
   /ccount/2.0.1:
