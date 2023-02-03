@@ -18,6 +18,7 @@ importers:
       eslint-plugin-svelte3: ^4.0.0
       prettier: ^2.8.3
       prettier-plugin-astro: ^0.8.0
+      prettier-plugin-glsl: ^0.0.8
       prettier-plugin-svelte: ^2.9.0
       prettier-plugin-tailwindcss: ^0.2.2
       typescript: ^4.9.4
@@ -40,6 +41,7 @@ importers:
       eslint-plugin-svelte3: 4.0.0_eslint@8.33.0
       prettier: 2.8.3
       prettier-plugin-astro: 0.8.0
+      prettier-plugin-glsl: 0.0.8_prettier@2.8.3
       prettier-plugin-svelte: 2.9.0_prettier@2.8.3
       prettier-plugin-tailwindcss: 0.2.2_vulinvujwt57jdbjjpx3dnnkwu
       typescript: 4.9.4
@@ -576,6 +578,29 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
+  /@chevrotain/cst-dts-gen/10.4.2:
+    resolution: {integrity: sha512-0+4bNjlndNWMoVLH/+y4uHnf6GrTipsC+YTppJxelVJo+xeRVQ0s2PpkdDCVTsu7efyj+8r1gFiwVXsp6JZ0iQ==}
+    dependencies:
+      '@chevrotain/gast': 10.4.2
+      '@chevrotain/types': 10.4.2
+      lodash: 4.17.21
+    dev: true
+
+  /@chevrotain/gast/10.4.2:
+    resolution: {integrity: sha512-4ZAn8/mjkmYonilSJ60gGj1tAF0cVWYUMlIGA0e4ATAc3a648aCnvpBw7zlPHDQjFp50XC13iyWEgWAKiRKTOA==}
+    dependencies:
+      '@chevrotain/types': 10.4.2
+      lodash: 4.17.21
+    dev: true
+
+  /@chevrotain/types/10.4.2:
+    resolution: {integrity: sha512-QzSCjg6G4MvIoLeIgOiMR0IgzkGEQqrNJJIr3T5ETRa7l4Av4AMIiEctV99mvDr57iXwwk0/kr3RJxiU36Nevw==}
+    dev: true
+
+  /@chevrotain/utils/10.4.2:
+    resolution: {integrity: sha512-V34dacxWLwKcvcy32dx96ADJVdB7kOJLm7LyBkBQw5u5HC9WdEFw2G17zml+U3ivavGTrGPJHl8o9/UJm0PlUw==}
+    dev: true
+
   /@cloudflare/workers-types/4.20230115.0:
     resolution: {integrity: sha512-GPJEiO8AFN+jUpA+DHJ1qdVmk4s/hq8JYKjOV/+U7avGquQbVnj905+Kg6uAEfrq16muwmRKl+XJGqsvlBlDNg==}
     dev: true
@@ -1060,6 +1085,14 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+    dev: true
+
+  /@netflix/nerror/1.1.3:
+    resolution: {integrity: sha512-b+MGNyP9/LXkapreJzNUzcvuzZslj/RGgdVVJ16P2wSlYatfLycPObImqVJSmNAdyeShvNeM/pl3sVZsObFueg==}
+    dependencies:
+      assert-plus: 1.0.0
+      extsprintf: 1.4.1
+      lodash: 4.17.21
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -1937,6 +1970,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /assert-plus/1.0.0:
+    resolution: {integrity: sha512-NfJ4UzBCcQGLDlQq7nHxH+tv3kyZ0hHQqF5BO6J7tNJeP5do1llPr8dZ8zHonfhAu0PHAdMkSo+8o0wxg9lZWw==}
+    engines: {node: '>=0.8'}
+    dev: true
+
   /assertion-error/1.1.0:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
@@ -2367,6 +2405,17 @@ packages:
       htmlparser2: 8.0.1
       parse5: 7.1.2
       parse5-htmlparser2-tree-adapter: 7.0.0
+    dev: true
+
+  /chevrotain/10.4.2:
+    resolution: {integrity: sha512-gzF5GxE0Ckti5kZVuKEZycLntB5X2aj9RVY0r4/220GwQjdnljU+/t3kP74/FMWC7IzCDDEjQ9wsFUf0WCdSHg==}
+    dependencies:
+      '@chevrotain/cst-dts-gen': 10.4.2
+      '@chevrotain/gast': 10.4.2
+      '@chevrotain/types': 10.4.2
+      '@chevrotain/utils': 10.4.2
+      lodash: 4.17.21
+      regexp-to-ast: 0.5.0
     dev: true
 
   /chokidar/3.5.3:
@@ -3504,6 +3553,11 @@ packages:
       '@types/yauzl': 2.10.0
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /extsprintf/1.4.1:
+    resolution: {integrity: sha512-Wrk35e8ydCKDj/ArClo1VrPVmN8zph5V4AtHwIuHhvMXsKf73UT3BOD+azBIW+3wOJ4FhEH7zyaJCFvChjYvMA==}
+    engines: {'0': node >=0.6.0}
     dev: true
 
   /fast-deep-equal/3.1.3:
@@ -6021,6 +6075,17 @@ packages:
       synckit: 0.8.5
     dev: true
 
+  /prettier-plugin-glsl/0.0.8_prettier@2.8.3:
+    resolution: {integrity: sha512-QZ083Q20Nh5xhqSwfuPSmgdsoj5rJoIwsPT+MGPCpSxgtMJ4bQQdJcGs86FR3tSzMLX4TFWRqMwArnJJTpqUGw==}
+    peerDependencies:
+      prettier: ^2.0.0
+    dependencies:
+      '@netflix/nerror': 1.1.3
+      chevrotain: 10.4.2
+      lodash: 4.17.21
+      prettier: 2.8.3
+    dev: true
+
   /prettier-plugin-svelte/2.9.0_prettier@2.8.3:
     resolution: {integrity: sha512-3doBi5NO4IVgaNPtwewvrgPpqAcvNv0NwJNflr76PIGgi9nf1oguQV1Hpdm9TI2ALIQVn/9iIwLpBO5UcD2Jiw==}
     peerDependencies:
@@ -6258,6 +6323,10 @@ packages:
 
   /regenerator-runtime/0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+    dev: true
+
+  /regexp-to-ast/0.5.0:
+    resolution: {integrity: sha512-tlbJqcMHnPKI9zSrystikWKwHkBqu2a/Sgw01h3zFjvYrMxEDYHzzoMZnUrbIfpTFEsoRnnviOXNCzFiSc54Qw==}
     dev: true
 
   /regexp.prototype.flags/1.4.3:
