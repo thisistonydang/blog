@@ -11,6 +11,8 @@ import tailwind from "@astrojs/tailwind";
 import a11yEmoji from "@fec/remark-a11y-emoji";
 import remarkToc from "remark-toc";
 
+import glsl from "vite-plugin-glsl";
+
 export default defineConfig({
   site: "https://tonydang.blog",
   server: { port: 3000 },
@@ -18,7 +20,7 @@ export default defineConfig({
     svelte(),
     image({ logLevel: "debug", serviceEntryPoint: "@astrojs/image/sharp" }),
     mdx({ remarkPlugins: [a11yEmoji, remarkToc] }),
-    prefetch(),
+    // prefetch(),
     sitemap({
       filter: (page) =>
         ![
@@ -36,5 +38,6 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["postgres"],
     },
+    plugins: [glsl()],
   },
 });
