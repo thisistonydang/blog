@@ -10,12 +10,12 @@ const urls = [
 ];
 ---
 
-<div class="flex justify-center">
+<div class="m-12 flex justify-center">
   {
     urls.map((url) => {
       const name = (url.match(/^[^.]+/) as string[])[0] as string;
       return (
-        <a href={"https://" + url} aria-label={name}>
+        <a href={"https://" + url} aria-label={name} class="stagger">
           <Icon name={name} width="40" height="40" />
         </a>
       );
