@@ -2,11 +2,14 @@
   import { onMount } from "svelte";
 
   export let width: string | undefined = undefined;
+  export let disabled = false;
   export let loading = false;
-  export let onclick: string | undefined = undefined;
   export let handle_click: (() => void) | undefined = undefined;
 
   let button: HTMLButtonElement;
+  let cursor: "wait" | "not-allowed" | null = null;
+
+  $: cursor = loading ? "wait" : disabled ? "not-allowed" : null;
 
   onMount((): void => {
     // Set button width based on slotted text to prevent change in width when
@@ -18,11 +21,11 @@
 <button
   aria-label={loading ? "loading..." : undefined}
   bind:this={button}
-  disabled={loading}
-  {onclick}
+  {disabled}
   on:click={handle_click}
   style:width
-  class:cursor-wait={loading}
+  class:cursor-wait={cursor === "wait"}
+  class:cursor-not-allowed={cursor === "not-allowed"}
   class="
     bg-heading
     text-bg hover:bg-bg
