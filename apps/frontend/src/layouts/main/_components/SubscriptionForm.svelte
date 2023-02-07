@@ -23,6 +23,7 @@
   let email_is_invalid = false;
   let email_helper_text = "";
   let disabled = true;
+  let loading = false;
   let message = "";
 
   function success_handler(data: Data): void {
@@ -53,6 +54,7 @@
 
   async function handle_submit(): Promise<void> {
     disabled = true;
+    loading = true;
     name_is_invalid = false;
     name_helper_text = "";
     email_is_invalid = false;
@@ -77,6 +79,7 @@
       message = get_error_message(error);
     } finally {
       disabled = false;
+      loading = false;
     }
   }
 
@@ -96,7 +99,7 @@
       autocomplete="name"
       required
       {disabled}
-      width={"33vw"}
+      width={"28vw"}
       invalid={name_is_invalid}
       helper_text={name_helper_text}
     />
@@ -109,12 +112,12 @@
       autocomplete="email"
       required
       {disabled}
-      width={"33vw"}
+      width={"28vw"}
       invalid={email_is_invalid}
       helper_text={email_helper_text}
     />
 
-    <Button width="76px" loading={disabled}>SUBMIT</Button>
+    <Button width="76px" {disabled} {loading}>SUBMIT</Button>
   </div>
 </form>
 
