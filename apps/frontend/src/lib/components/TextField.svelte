@@ -58,6 +58,7 @@
       focus:bg-surface border-0
       border-b bg-transparent focus:ring-0
     "
+    class:cursor-not-allowed={disabled}
     class:border-error={invalid}
     class:hover:border-error={invalid}
     class:focus:border-error={invalid}
