@@ -5,7 +5,7 @@
   export let current_path: string;
 </script>
 
-<nav class="hidden sm:block ml-3">
+<nav class="ml-3">
   <ul>
     {#each nav_pages as page}
       <li class="inline-block px-2">
