@@ -2,12 +2,12 @@
 /* import type { Frontmatter } from "@lib/types/frontmatter"; */
 
 import "./_styles/main.css";
-import HamburgerMenu from "./_components/HamburgerMenu.svelte";
 import Head from "./_components/Head.astro";
 import Header from "./_components/Header.astro";
 import Footer from "./_components/Footer.astro";
 import OnlineStatus from "./_components/OnlineStatus.svelte";
 import SkipToMain from "./_components/SkipToMain.astro";
+import SectionNav from "./_components/SectionNav.svelte";
 
 /* export interface Props { */
 /*   frontmatter: Frontmatter; */
@@ -16,13 +16,17 @@ import SkipToMain from "./_components/SkipToMain.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<html lang="en" class="bg-bg overflow-y-scroll p-4 sm:pl-8">
+<html
+  id="root"
+  lang="en"
+  class="bg-bg overflow-y-scroll scroll-smooth p-4 sm:pl-8"
+>
   <Head {frontmatter} />
   <body>
     <OnlineStatus client:load />
     <SkipToMain />
     <Header />
-    <HamburgerMenu current_path={Astro.url.pathname} client:load />
+    {Astro.url.pathname === "/" && <SectionNav client:idle />}
     <div
       class="prose dark:prose-invert prose-a:text-accent prose-a:underline-offset-4 hover:prose-a:no-underline prose-headings:font-normal m-auto max-w-[700px]"
     >
