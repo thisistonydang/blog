@@ -28,7 +28,7 @@
    */
   function determine_section(): void {
     if (is_in_viewport(root_h1)) current_section = "root";
-    else if (window.innerHeight + window.scrollY >= document.body.offsetHeight)
+    else if (window.scrollY + window.innerHeight >= document.body.scrollHeight)
       current_section = "contact";
     else if (is_in_viewport(about_h2)) current_section = "about";
     else if (is_in_viewport(contact_h2)) current_section = "contact";
