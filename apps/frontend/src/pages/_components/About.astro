@@ -1,0 +1,29 @@
+---
+import { Image } from "@astrojs/image/components";
+import Link from "@lib/components/Link.svelte";
+
+import Section from "./Section.astro";
+---
+
+<Section title="About">
+  <div class="sm:flex sm:gap-8">
+    <Image
+      class="stagger w-52 h-52 rounded-sm mt-7 m-auto"
+      src={import("@lib/assets/tony-dang-400px.jpg")}
+      alt="Photo of Tony typing on a MacBook Pro."
+    />
+    <div class="stagger">
+      <p>
+        Hi! My name is Tony Dang. I am a web developer, rock climber, and
+        calisthenics practicioner.
+      </p>
+      <p>
+        This blog is a space for me to experiement with various web technoloiges
+        as well as share useful things I create and learn.
+      </p>
+      <div class="mt-10">
+        <Link href="/posts">SEE BLOG POSTS</Link>
+      </div>
+    </div>
+  </div>
+</Section>
