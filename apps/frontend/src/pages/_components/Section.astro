@@ -1,0 +1,36 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section id={title.toLowerCase()} class="mb-52 mr-12">
+  <h2 class="stagger relative">
+    <span
+      class="bg-bg after:bg-surface pr-3 text-3xl after:absolute after:top-1/2 after:z-[-1] after:h-[1px] after:w-[66%]"
+    >
+      {title}
+    </span>
+  </h2>
+
+  <slot />
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  ["about", "contact"].forEach((section: string): void => {
+    gsap.from(`#${section} .stagger`, {
+      scrollTrigger: `#${section}`,
+      opacity: 0,
+      duration: 0.5,
+      y: 100,
+      stagger: 0.1,
+    });
+  });
+</script>
