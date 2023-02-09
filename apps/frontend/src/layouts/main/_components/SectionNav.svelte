@@ -45,7 +45,8 @@
 
 <svelte:window on:scroll={determine_section} />
 
-<nav class="xxs:block fixed right-5 bottom-0 hidden">
+<nav class="xxs:block fixed right-5 bottom-0 z-50 hidden">
+<!-- z-index required to ensure element is clickable on mobile. -->
   <ul>
     <SectionLink id="root" {current_section} />
     <SectionLink id="about" {current_section} />
