@@ -4,7 +4,6 @@ export const collections = {
   posts: defineCollection({
     schema: z.object({
       layout: z.string(),
-      path: z.string(),
       title: z.string(),
       description: z.string(),
       image: z.boolean(),
