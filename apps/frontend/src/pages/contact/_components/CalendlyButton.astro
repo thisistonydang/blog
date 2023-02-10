@@ -1,5 +1,10 @@
 ---
-import Button from "@lib/components/Button.svelte";
+/* import Button from "@lib/components/Button.svelte"; */
+/* <Button */
+/*   onclick={` */
+/*     Calendly.showPopupWidget('https://calendly.com/tonydang/unoffice-hours'); */
+/*   `}>BOOK A CALL</Button */
+/* > */
 ---
 
 <script src="https://assets.calendly.com/assets/external/widget.js" defer
@@ -8,9 +13,3 @@ import Button from "@lib/components/Button.svelte";
   rel="stylesheet"
   href="https://assets.calendly.com/assets/external/widget.css"
 />
-
-<Button
-  onclick={`
-    Calendly.showPopupWidget('https://calendly.com/tonydang/unoffice-hours');
-  `}>BOOK A CALL</Button
->
