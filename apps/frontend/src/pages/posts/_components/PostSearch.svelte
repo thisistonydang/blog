@@ -37,7 +37,7 @@
 <TextField label="Search" type="search" bind:value={search_string} />
 
 <ul class="list-none p-0">
-  {#each filteredPosts as post (post.data.path)}
+  {#each filteredPosts as post (post.slug)}
     <li>
       <time
         class="text-xs"
@@ -46,7 +46,7 @@
         {format_date(post.data.pubDate)}
       </time>
       <br />
-      <a class="text-lg" href={post.data.path} rel="prefetch">
+      <a class="text-lg" href={post.slug} rel="prefetch">
         {post.data.title}
       </a>
       <p class="mt-0">{post.data.description}</p>
