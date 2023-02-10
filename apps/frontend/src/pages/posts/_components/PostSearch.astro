@@ -1,29 +1,15 @@
 ---
-import type { BlogPostFrontmatter, Frontmatter } from "@lib/types/frontmatter";
-
+import { getCollection } from "astro:content";
 import PostSearch from "./PostSearch.svelte";
 
-// Get array of all mdx pages.
-const pages = Object.values(
-  import.meta.glob<{ frontmatter: Frontmatter }>("../../**/*.mdx", {
-    eager: true,
-  })
-);
+const posts = await getCollection("posts", ({ data }) => {
+  return data.draft !== true;
+});
 
-// Get only pages that are blog posts and aren't in draft mode.
-const non_draft_posts = pages.filter(
-  (page) =>
-    page.frontmatter.layout === "@layouts/blog-post/BlogPostLayout.astro" &&
-    page.frontmatter.draft === false &&
-    page.frontmatter.path !== "/sandbox"
+posts.sort(
+  (a, b) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
-
-// Get blog post frontmatter sorted in reverse chronlogical order.
-const posts = (non_draft_posts as { frontmatter: BlogPostFrontmatter }[])
-  .map((post) => post.frontmatter)
-  .sort(
-    (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
-  );
 ---
 
-<PostSearch posts={posts} client:load />
+<PostSearch {posts} client:load />
