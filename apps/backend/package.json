@@ -7,14 +7,14 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230115.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.5.0",
+    "@supabase/supabase-js": "^2.7.1",
     "@tonydangblog/error-handling": "workspace:1.0.0",
     "itty-router": "^3.0.11",
-    "jose": "^4.11.2",
-    "stripe": "^11.8.0",
-    "zod": "^3.20.2"
+    "jose": "^4.11.4",
+    "stripe": "^11.10.0",
+    "zod": "^3.20.6"
   }
 }
