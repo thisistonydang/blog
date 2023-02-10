@@ -31,3 +31,6 @@ sandbox/
 test-results/
 playwright-report/
 playwright/.cache/
+
+# astro
+.astro
