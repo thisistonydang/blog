@@ -1,0 +1,21 @@
+---
+import Cube from "./Cube.astro";
+import Typewriter from "./Typewriter.svelte";
+---
+
+<section
+  class="h-[calc(100vh-16px-36px-40px)] min-h-[720px] sm:flex sm:items-center"
+>
+  <div id="three-cube" class="xxs:w-[340px] m-auto aspect-square sm:order-2">
+    <Cube />
+  </div>
+  <div class="ml-5 mt-10 sm:order-1 sm:m-0 sm:w-1/2">
+    <h1 class="text-5xl">
+      <span class="text-accent">Tony</span> Dang
+    </h1>
+    <Typewriter
+      strings={["web developer", "rock climber", "calisthenics practitioner"]}
+      client:idle
+    />
+  </div>
+</section>
