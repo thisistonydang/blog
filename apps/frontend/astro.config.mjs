@@ -20,7 +20,7 @@ export default defineConfig({
     svelte(),
     image({ logLevel: "debug", serviceEntryPoint: "@astrojs/image/sharp" }),
     mdx({ remarkPlugins: [a11yEmoji, remarkToc] }),
-    // prefetch(),
+    prefetch(),
     sitemap({
       filter: (page) =>
         ![
