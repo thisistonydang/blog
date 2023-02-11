@@ -2,8 +2,6 @@
 import MainLayout from "@layouts/main/MainLayout.astro";
 import type { BlogPostFrontmatter } from "@lib/types/frontmatter";
 
-import ScrollToTopLink from "./_components/ScrollToTopLink.svelte";
-
 export interface Props {
   frontmatter: BlogPostFrontmatter;
 }
@@ -36,6 +34,6 @@ const formattedDate = new Intl.DateTimeFormat(undefined, {
   <footer class="mt-12 text-sm">
     <a class="no-underline" href="/posts">&larr; Back to all posts</a>
     &nbsp;/&nbsp;
-    <ScrollToTopLink path={frontmatter.path} client:visible />
+    <a class="no-underline" href="#root">&uarr; Scroll to top</a>
   </footer>
 </MainLayout>
