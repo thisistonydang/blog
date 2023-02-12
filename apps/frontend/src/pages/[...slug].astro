@@ -14,9 +14,7 @@ export async function getStaticPaths() {
     return !["home"].includes(entry.slug) && entry.data.draft === false;
   });
 
-  const posts = await getCollection("posts", (entry) => {
-    return entry.data.draft === false;
-  });
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
 
   return [...pages, ...posts].map((entry) => ({
     params: { slug: entry.slug },

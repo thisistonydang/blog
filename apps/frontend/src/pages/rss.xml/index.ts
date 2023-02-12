@@ -2,9 +2,7 @@ import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
 
-const entries = await getCollection("posts", ({ data }) => {
-  return data.draft === false;
-});
+const entries = await getCollection("posts", ({ data }) => !data.draft);
 
 entries.sort(
   (a, b) =>

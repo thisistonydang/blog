@@ -2,9 +2,7 @@
 import { getCollection } from "astro:content";
 import PostSearch from "./PostSearch.svelte";
 
-const entries = await getCollection("posts", ({ data }) => {
-  return data.draft === false;
-});
+const entries = await getCollection("posts", ({ data }) => !data.draft);
 
 entries.sort(
   (a, b) =>
