@@ -11,7 +11,7 @@
         cy="16"
         r="15"
         stroke-width="2"
-        class="stroke-surface fill-bg"
+        class="stroke-surface fill-transparent"
         class:stroke-text={id === current_section}
       />
     </svg>
