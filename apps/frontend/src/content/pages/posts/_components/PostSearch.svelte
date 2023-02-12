@@ -46,7 +46,7 @@
         {format_date(post.data.pubDate)}
       </time>
       <br />
-      <a class="text-lg" href={`/${post.slug}`} rel="prefetch">
+      <a class="text-lg" href={`/${post.slug}/`} rel="prefetch">
         {post.data.title}
       </a>
       <p class="mt-0">{post.data.description}</p>
