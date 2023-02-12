@@ -6,6 +6,6 @@ const entry = await getEntryBySlug("pages", "home");
 const { Content } = await entry.render();
 ---
 
-<MainLayout {entry}>
+<MainLayout entry={entry}>
   <Content />
 </MainLayout>
