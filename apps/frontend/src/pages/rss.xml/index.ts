@@ -1,40 +1,27 @@
 import type { APIRoute } from "astro";
+import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
-import type { BlogPostFrontmatter, Frontmatter } from "@lib/types/frontmatter";
 
-// Get array of all mdx pages.
-const pages = Object.values(
-  import.meta.glob<{ frontmatter: Frontmatter }>("../../**/*.mdx", {
-    eager: true,
-  })
+const posts = await getCollection("posts", ({ data }) => {
+  return data.draft !== true;
+});
+
+posts.sort(
+  (a, b) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
-
-// Get only pages that are blog posts and aren't in draft mode.
-const non_draft_posts = pages.filter(
-  (page) =>
-    page.frontmatter.layout === "@layouts/blog-post/BlogPostLayout.astro" &&
-    page.frontmatter.draft === false &&
-    page.frontmatter.path !== "/sandbox"
-);
-
-// Get blog post rss data sorted in reverse chronlogical order.
-const posts = (non_draft_posts as { frontmatter: BlogPostFrontmatter }[])
-  .map((post) => ({
-    link: post.frontmatter.path,
-    title: post.frontmatter.title,
-    description: post.frontmatter.description,
-    pubDate: new Date(post.frontmatter.pubDate),
-  }))
-  .sort(
-    (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
-  );
 
 export const get: APIRoute = () =>
   rss({
     title: "Tony Dang",
     description: "Tony Dang’s Blog",
     site: import.meta.env.SITE,
-    items: posts,
+    items: posts.map((post) => ({
+      title: post.data.title,
+      pubDate: post.data.pubDate,
+      description: post.data.description,
+      link: post.slug,
+    })),
     customData: `<language>en-us</language>`,
     stylesheet: "/rss/styles.xsl",
   });
