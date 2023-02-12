@@ -2,8 +2,11 @@ import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
 
-const posts = await getCollection("posts", ({ data }) => data.draft === false);
-posts.sort(
+const entries = await getCollection("posts", ({ data }) => {
+  return data.draft === false;
+});
+
+entries.sort(
   (a, b) =>
     new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
@@ -13,11 +16,11 @@ export const get: APIRoute = () =>
     title: "Tony Dang",
     description: "Tony Dang’s Blog",
     site: import.meta.env.SITE,
-    items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.pubDate,
-      description: post.data.description,
-      link: post.slug,
+    items: entries.map((entry) => ({
+      title: entry.data.title,
+      pubDate: entry.data.pubDate,
+      description: entry.data.description,
+      link: entry.slug,
     })),
     customData: `<language>en-us</language>`,
     stylesheet: "/rss/styles.xsl",

@@ -2,11 +2,14 @@
 import { getCollection } from "astro:content";
 import PostSearch from "./PostSearch.svelte";
 
-const posts = await getCollection("posts", ({ data }) => data.draft === false);
-posts.sort(
+const entries = await getCollection("posts", ({ data }) => {
+  return data.draft === false;
+});
+
+entries.sort(
   (a, b) =>
     new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 ---
 
-<PostSearch posts={posts} client:load />
+<PostSearch posts={entries} client:load />
