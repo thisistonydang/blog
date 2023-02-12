@@ -21,7 +21,7 @@ const { entry } = Astro.props;
   lang="en"
   class="bg-bg overflow-y-scroll scroll-smooth p-4 sm:pl-8"
 >
-  <Head {entry} />
+  <Head entry={entry} />
   <body>
     <OnlineStatus client:load />
     <SkipToMain />
