@@ -1,5 +1,5 @@
 ---
-/* import type { Frontmatter } from "@lib/types/frontmatter"; */
+import type { CollectionEntry } from "astro:content";
 
 import "./_styles/main.css";
 import Footer from "./_components/Footer.astro";
@@ -9,11 +9,11 @@ import OnlineStatus from "./_components/OnlineStatus.svelte";
 import SectionNav from "./_components/SectionNav.svelte";
 import SkipToMain from "./_components/SkipToMain.astro";
 
-/* export interface Props { */
-/*   frontmatter: Frontmatter; */
-/* } */
+export interface Props {
+  entry: CollectionEntry<"pages"> | CollectionEntry<"posts">;
+}
 
-const { frontmatter } = Astro.props;
+const { entry } = Astro.props;
 ---
 
 <html
@@ -21,7 +21,7 @@ const { frontmatter } = Astro.props;
   lang="en"
   class="bg-bg overflow-y-scroll scroll-smooth p-4 sm:pl-8"
 >
-  <Head {frontmatter} />
+  <Head {entry} />
   <body>
     <OnlineStatus client:load />
     <SkipToMain />
