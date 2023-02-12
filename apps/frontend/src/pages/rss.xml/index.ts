@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
 
 const posts = await getCollection("posts", ({ data }) => data.draft === false);
-
 posts.sort(
   (a, b) =>
     new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
