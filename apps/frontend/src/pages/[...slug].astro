@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import BlogPostLayout from "@layouts/blog-post/BlogPostLayout.astro";
+import MainLayout from "@layouts/main/MainLayout.astro";
+
+export interface Props {
+  entry: CollectionEntry<"pages"> | CollectionEntry<"posts">;
+}
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages", (entry) => {
+    return !["home"].includes(entry.slug) && entry.data.draft === false;
+  });
+
+  const posts = await getCollection("posts", (entry) => {
+    return entry.data.draft === false;
+  });
+
+  return [...pages, ...posts].map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+{
+  entry.collection === "posts" ? (
+    <BlogPostLayout entry={entry}>
+      <Content />
+    </BlogPostLayout>
+  ) : (
+    <MainLayout entry={entry}>
+      <Content />
+    </MainLayout>
+  )
+}
