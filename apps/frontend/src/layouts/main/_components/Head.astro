@@ -1,17 +1,17 @@
 ---
-import { SEO } from "astro-seo";
+import type { CollectionEntry } from "astro:content";
 
-import type { Frontmatter } from "@lib/types/frontmatter";
+import { SEO } from "astro-seo";
 
 import DarkModeScript from "./DarkModeScript.astro";
 import "./ExternalLinksScript.astro";
 import Favicon from "./Favicon.astro";
 
 export interface Props {
-  frontmatter: Frontmatter;
+  entry: CollectionEntry<"pages"> | CollectionEntry<"posts">;
 }
 
-const { frontmatter } = Astro.props;
+const { entry } = Astro.props;
 ---
 
 <head>
@@ -19,29 +19,29 @@ const { frontmatter } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <Favicon />
   <SEO
-    title={frontmatter.title === "Tony Dang"
+    title={entry.data.title === "Tony Dang"
       ? "Tony Dang"
-      : `${frontmatter.title} | Tony Dang`}
-    description={frontmatter.description}
-    noindex={frontmatter.noindex}
+      : `${entry.data.title} | Tony Dang`}
+    description={entry.data.description}
+    noindex={entry.data.noindex}
     openGraph={{
       basic: {
         title:
-          frontmatter.title === "Tony Dang"
+          entry.data.title === "Tony Dang"
             ? "Tony Dang's Blog"
-            : frontmatter.title,
-        type: frontmatter.pubDate ? "article" : "website",
-        image: frontmatter.image
-          ? `https://tonydang.blog/og${frontmatter.path}.jpg`
+            : entry.data.title,
+        type: entry.collection === "posts" ? "article" : "website",
+        image: entry.data.image
+          ? `https://tonydang.blog/og/${entry.slug}.jpg`
           : "https://tonydang.blog/og/tony-dang.jpg",
       },
       optional: {
-        description: frontmatter.description,
+        description: entry.data.description,
         locale: "en_US",
         siteName: "Tony Dang",
       },
       image: {
-        alt: frontmatter.image ? frontmatter.alt : "Photo of Tony Dang",
+        alt: entry.data.image ? entry.data.alt : "Photo of Tony Dang",
         type: "image/jpeg",
         width: 1200,
         height: 630,
