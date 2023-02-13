@@ -76,6 +76,7 @@ importers:
       '@astrojs/image': ^0.14.1
       '@astrojs/mdx': ^0.16.0
       '@astrojs/prefetch': ^0.1.2
+      '@astrojs/react': ^2.0.2
       '@astrojs/rss': ^2.1.0
       '@astrojs/sitemap': ^1.0.1
       '@astrojs/svelte': ^2.0.1
@@ -98,6 +99,8 @@ importers:
       pa11y-ci: ^3.0.1
       plotly.js-dist-min: ^2.18.1
       postgres: ^3.3.3
+      react: ^18.2.0
+      react-dom: ^18.2.0
       remark-toc: ^8.0.1
       sharp: ^0.31.3
       stats.js: ^0.17.0
@@ -109,6 +112,7 @@ importers:
       '@astrojs/image': 0.14.1_astro@2.0.10+sharp@0.31.3
       '@astrojs/mdx': 0.16.0_astro@2.0.10
       '@astrojs/prefetch': 0.1.2
+      '@astrojs/react': 2.0.2_biqbaboplfbrettd7655fr4n2y
       '@astrojs/rss': 2.1.0
       '@astrojs/sitemap': 1.0.1
       '@astrojs/svelte': 2.0.1_astro@2.0.10+svelte@3.55.1
@@ -126,6 +130,8 @@ importers:
       lil-gui: 0.17.0
       plotly.js-dist-min: 2.18.1
       postgres: 3.3.3
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
       remark-toc: 8.0.1
       sharp: 0.31.3
       svelte: 3.55.1
@@ -262,6 +268,23 @@ packages:
     engines: {node: '>=16.12.0'}
     dependencies:
       prismjs: 1.29.0
+    dev: false
+
+  /@astrojs/react/2.0.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-UmQNvzJul5M/Q9aZJXnqz4z0ODZXkLuaNvgsYoKB7OdM8c2v85FsTjMZZJ7BvFo4On31jJ0rL/gwTaCeuYqmpw==}
+    engines: {node: '>=16.12.0'}
+    peerDependencies:
+      '@types/react': ^17.0.50 || ^18.0.21
+      '@types/react-dom': ^17.0.17 || ^18.0.6
+      react: ^17.0.2 || ^18.0.0
+      react-dom: ^17.0.2 || ^18.0.0
+    dependencies:
+      '@babel/core': 7.20.12
+      '@babel/plugin-transform-react-jsx': 7.20.13_@babel+core@7.20.12
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@astrojs/rss/2.1.0:
@@ -4676,6 +4699,13 @@ packages:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
     dev: false
 
+  /loose-envify/1.4.0:
+    resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
+    dependencies:
+      js-tokens: 4.0.0
+    dev: false
+
   /loupe/2.3.6:
     resolution: {integrity: sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA==}
     dependencies:
@@ -6276,9 +6306,26 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
+  /react-dom/18.2.0_react@18.2.0:
+    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.2.0
+      scheduler: 0.23.0
+    dev: false
+
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
     dev: true
+
+  /react/18.2.0:
+    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      loose-envify: 1.4.0
+    dev: false
 
   /read-cache/1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
@@ -6573,6 +6620,12 @@ packages:
 
   /sax/1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    dev: false
+
+  /scheduler/0.23.0:
+    resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
+    dependencies:
+      loose-envify: 1.4.0
     dev: false
 
   /section-matter/1.0.0:

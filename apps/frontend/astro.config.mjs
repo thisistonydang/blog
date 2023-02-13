@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 
+import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 
 import image from "@astrojs/image";
@@ -17,6 +18,7 @@ export default defineConfig({
   site: "https://tonydang.blog",
   server: { port: 3000 },
   integrations: [
+    react(),
     svelte(),
     image({ logLevel: "debug", serviceEntryPoint: "@astrojs/image/sharp" }),
     mdx({ remarkPlugins: [a11yEmoji, remarkToc] }),
