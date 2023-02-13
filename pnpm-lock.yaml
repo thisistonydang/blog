@@ -87,6 +87,7 @@ importers:
       '@tonydangblog/error-handling': workspace:1.0.0
       '@types/d3': ^7.4.0
       '@types/plotly.js-dist-min': ^2.3.1
+      '@types/react': ^18.0.28
       '@types/three': ^0.149.0
       astro: ^2.0.10
       astro-seo: ^0.7.0
@@ -112,7 +113,7 @@ importers:
       '@astrojs/image': 0.14.1_astro@2.0.10+sharp@0.31.3
       '@astrojs/mdx': 0.16.0_astro@2.0.10
       '@astrojs/prefetch': 0.1.2
-      '@astrojs/react': 2.0.2_biqbaboplfbrettd7655fr4n2y
+      '@astrojs/react': 2.0.2_zula6vjvt3wdocc4mwcxqa6nzi
       '@astrojs/rss': 2.1.0
       '@astrojs/sitemap': 1.0.1
       '@astrojs/svelte': 2.0.1_astro@2.0.10+svelte@3.55.1
@@ -141,6 +142,7 @@ importers:
     devDependencies:
       '@types/d3': 7.4.0
       '@types/plotly.js-dist-min': 2.3.1
+      '@types/react': 18.0.28
       '@types/three': 0.149.0
       linkinator: 4.1.2
       pa11y-ci: 3.0.1
@@ -270,7 +272,7 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/react/2.0.2_biqbaboplfbrettd7655fr4n2y:
+  /@astrojs/react/2.0.2_zula6vjvt3wdocc4mwcxqa6nzi:
     resolution: {integrity: sha512-UmQNvzJul5M/Q9aZJXnqz4z0ODZXkLuaNvgsYoKB7OdM8c2v85FsTjMZZJ7BvFo4On31jJ0rL/gwTaCeuYqmpw==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
@@ -281,6 +283,7 @@ packages:
     dependencies:
       '@babel/core': 7.20.12
       '@babel/plugin-transform-react-jsx': 7.20.13_@babel+core@7.20.12
+      '@types/react': 18.0.28
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     transitivePeerDependencies:
@@ -1590,6 +1593,16 @@ packages:
     resolution: {integrity: sha512-p/xo8LuJMxSvT/szkjgUJVlopRu049NZ+p46MpcSlovmO6tIgyzldm8kLUo9p24XE/5iZzGSTtvIUQjLwIUQxw==}
     dev: true
 
+  /@types/prop-types/15.7.5:
+    resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+
+  /@types/react/18.0.28:
+    resolution: {integrity: sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.2
+      csstype: 3.1.1
+
   /@types/resolve/1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
     dev: false
@@ -1599,6 +1612,9 @@ packages:
     dependencies:
       '@types/node': 17.0.45
     dev: false
+
+  /@types/scheduler/0.16.2:
+    resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
 
   /@types/semver/7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
@@ -2605,6 +2621,9 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+
+  /csstype/3.1.1:
+    resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
 
   /d/1.0.1:
     resolution: {integrity: sha512-m62ShEObQ39CfralilEQRjH6oAMtNCV1xJyEx5LpRYUVN+EviphDgUc/F3hnYbADmkiNs67Y+3ylmlG7Lnu+FA==}
