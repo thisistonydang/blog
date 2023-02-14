@@ -21,8 +21,9 @@ pnpm-debug.log*
 # test coverage
 coverage/
 
-# sandbox route
+# sandbox
 sandbox/
+sandbox.astro
 
 # vale
 .vale/
