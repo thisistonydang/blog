@@ -8,7 +8,10 @@ import "./ExternalLinksScript.astro";
 import Favicon from "./Favicon.astro";
 
 export interface Props {
-  entry: CollectionEntry<"pages"> | CollectionEntry<"posts">;
+  entry:
+    | CollectionEntry<"pages">
+    | CollectionEntry<"posts">
+    | CollectionEntry<"projects">;
 }
 
 const { entry } = Astro.props;
