@@ -2,15 +2,13 @@
 import type { CollectionEntry } from "astro:content";
 
 import "./_styles/main.css";
-import Footer from "./_components/Footer.astro";
 import Head from "./_components/Head.astro";
-import Header from "./_components/Header.astro";
-import OnlineStatus from "./_components/OnlineStatus.svelte";
-import SectionNav from "./_components/SectionNav.svelte";
-import SkipToMain from "./_components/SkipToMain.astro";
 
 export interface Props {
-  entry: CollectionEntry<"pages"> | CollectionEntry<"posts">;
+  entry:
+    | CollectionEntry<"pages">
+    | CollectionEntry<"posts">
+    | CollectionEntry<"projects">;
 }
 
 const { entry } = Astro.props;
@@ -23,17 +21,6 @@ const { entry } = Astro.props;
 >
   <Head entry={entry} />
   <body>
-    <OnlineStatus client:load />
-    <SkipToMain />
-    <Header />
-    {Astro.url.pathname === "/" && <SectionNav client:idle />}
-    <div
-      class="prose dark:prose-invert prose-a:text-accent prose-a:underline-offset-4 hover:prose-a:no-underline prose-headings:font-normal m-auto max-w-[700px]"
-    >
-      <main id="main-content">
-        <slot />
-      </main>
-      <Footer />
-    </div>
+    <slot />
   </body>
 </html>
