@@ -2,11 +2,15 @@
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
+import BaseLayout from "@layouts/base/BaseLayout.astro";
+import PageLayout from "@layouts/page/PageLayout.astro";
 import BlogPostLayout from "@layouts/blog-post/BlogPostLayout.astro";
-import MainLayout from "@layouts/main/MainLayout.astro";
 
 export interface Props {
-  entry: CollectionEntry<"pages"> | CollectionEntry<"posts">;
+  entry:
+    | CollectionEntry<"pages">
+    | CollectionEntry<"posts">
+    | CollectionEntry<"projects">;
 }
 
 export async function getStaticPaths() {
@@ -16,7 +20,9 @@ export async function getStaticPaths() {
 
   const posts = await getCollection("posts", ({ data }) => !data.draft);
 
-  return [...pages, ...posts].map((entry) => ({
+  const projects = await getCollection("projects", ({ data }) => !data.draft);
+
+  return [...pages, ...posts, ...projects].map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -27,13 +33,17 @@ const { Content } = await entry.render();
 ---
 
 {
-  entry.collection === "posts" ? (
+  entry.collection === "pages" ? (
+    <PageLayout entry={entry}>
+      <Content />
+    </PageLayout>
+  ) : entry.collection === "posts" ? (
     <BlogPostLayout entry={entry}>
       <Content />
     </BlogPostLayout>
   ) : (
-    <MainLayout entry={entry}>
+    <BaseLayout entry={entry}>
       <Content />
-    </MainLayout>
+    </BaseLayout>
   )
 }
