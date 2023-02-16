@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import MainLayout from "@layouts/main/MainLayout.astro";
+import PageLayout from "@layouts/page/PageLayout.astro";
 
 export interface Props {
   entry: CollectionEntry<"posts">;
@@ -13,7 +13,7 @@ const formatted_date = new Intl.DateTimeFormat(undefined, {
 }).format(entry.data.pubDate);
 ---
 
-<MainLayout entry={entry}>
+<PageLayout entry={entry}>
   <div class="mb-12 text-sm">
     <a class="no-underline" href="/posts">&larr; Back to all posts</a>
   </div>
@@ -38,4 +38,4 @@ const formatted_date = new Intl.DateTimeFormat(undefined, {
     &nbsp;/&nbsp;
     <a class="no-underline" href="#root">&uarr; Scroll to top</a>
   </footer>
-</MainLayout>
+</PageLayout>
