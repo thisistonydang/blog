@@ -4,7 +4,7 @@ import type { CollectionEntry } from "astro:content";
 
 import BaseLayout from "@layouts/base/BaseLayout.astro";
 import PageLayout from "@layouts/page/PageLayout.astro";
-import BlogPostLayout from "@layouts/blog-post/BlogPostLayout.astro";
+import PostLayout from "@layouts/post/PostLayout.astro";
 
 export interface Props {
   entry:
@@ -38,9 +38,9 @@ const { Content } = await entry.render();
       <Content />
     </PageLayout>
   ) : entry.collection === "posts" ? (
-    <BlogPostLayout entry={entry}>
+    <PostLayout entry={entry}>
       <Content />
-    </BlogPostLayout>
+    </PostLayout>
   ) : (
     <BaseLayout entry={entry}>
       <Content />
