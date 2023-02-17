@@ -42,7 +42,7 @@ const { Content } = await entry.render();
       <Content />
     </PostLayout>
   ) : (
-    <BaseLayout entry={entry}>
+    <BaseLayout entry={entry} has_classes={false}>
       <Content />
     </BaseLayout>
   )

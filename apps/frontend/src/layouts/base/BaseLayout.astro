@@ -9,15 +9,20 @@ export interface Props {
     | CollectionEntry<"pages">
     | CollectionEntry<"posts">
     | CollectionEntry<"projects">;
+  has_classes?: boolean;
 }
 
-const { entry } = Astro.props;
+const { entry, has_classes = true } = Astro.props;
 ---
 
 <html
   id="root"
   lang="en"
-  class="bg-bg overflow-y-scroll scroll-smooth p-4 sm:pl-8"
+  class:list={[
+    {
+      "bg-bg overflow-y-scroll scroll-smooth p-4 sm:pl-8": has_classes,
+    },
+  ]}
 >
   <Head entry={entry} />
   <body>
