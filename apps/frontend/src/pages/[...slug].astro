@@ -15,7 +15,7 @@ export interface Props {
 
 export async function getStaticPaths() {
   const pages = await getCollection("pages", (entry) => {
-    return !["home"].includes(entry.slug) && entry.data.draft === false;
+    return !["home"].includes(entry.slug) && !entry.data.draft;
   });
 
   const posts = await getCollection("posts", ({ data }) => !data.draft);
