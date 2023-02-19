@@ -1,14 +1,20 @@
----
-import EasterEgg from "./EasterEgg.svelte";
-import SubscriptionForm from "./SubscriptionForm.svelte";
+<script lang="ts">
+  import { onMount } from "svelte";
 
-const year = new Date().getFullYear().toString();
----
+  import EasterEgg from "./EasterEgg.svelte";
+  import SubscriptionForm from "./SubscriptionForm.svelte";
+
+  let year = new Date().getFullYear().toString();
+
+  onMount(() => {
+    year = new Date().getFullYear().toString();
+  });
+</script>
 
 <footer class="xxs:mr-14 mt-24">
-  <SubscriptionForm client:visible />
+  <SubscriptionForm />
   <div class="mt-20 flex items-center">
-    <EasterEgg client:visible />
+    <EasterEgg />
     <p class="prose-a:no-underline ml-2 text-xs leading-relaxed opacity-90">
       &copy; <time id="footer-copyright-year" datetime={year}>{year}</time>
       Tony Dang |
@@ -21,12 +27,3 @@ const year = new Date().getFullYear().toString();
     </p>
   </div>
 </footer>
-
-<script>
-  const copyright_year = document.getElementById(
-    "footer-copyright-year"
-  ) as HTMLTimeElement;
-  copyright_year.innerHTML = copyright_year.dateTime = new Date()
-    .getFullYear()
-    .toString();
-</script>

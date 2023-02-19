@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "@layouts/base/BaseLayout.astro";
-import Footer from "./_components/Footer.astro";
+import Footer from "./_components/Footer.svelte";
 import Header from "./_components/Header.astro";
 import OnlineStatus from "./_components/OnlineStatus.svelte";
 import SectionNav from "./_components/SectionNav.svelte";
@@ -25,6 +25,6 @@ const { entry } = Astro.props;
     <main id="main-content">
       <slot />
     </main>
-    <Footer />
+    <Footer client:visible />
   </div>
 </BaseLayout>
