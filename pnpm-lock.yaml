@@ -82,8 +82,8 @@ importers:
       '@astrojs/svelte': ^2.0.2
       '@astrojs/tailwind': ^3.0.1
       '@fec/remark-a11y-emoji': ^3.1.0
-      '@react-three/drei': ^9.56.25
-      '@react-three/fiber': ^8.11.2
+      '@react-three/drei': ^9.56.24
+      '@react-three/fiber': ^8.11.1
       '@react-three/rapier': ^0.13.2
       '@tailwindcss/forms': ^0.5.3
       '@tailwindcss/typography': ^0.5.9
@@ -124,9 +124,9 @@ importers:
       '@astrojs/svelte': 2.0.2_astro@2.0.14+svelte@3.55.1
       '@astrojs/tailwind': 3.0.1_hf2kjfio2dr6w52rh4mpociq2u
       '@fec/remark-a11y-emoji': 3.1.0
-      '@react-three/drei': 9.56.25_ceh54bdkswdljeyl3jd54pj65e
-      '@react-three/fiber': 8.11.2_xor7byvqlg4baqj6ymfbcmaax4
-      '@react-three/rapier': 0.13.2_mwnnnbckvcqi26tj6me4jgcpge
+      '@react-three/drei': 9.56.24_dnzsvkb3dcowwlgign6zktihi4
+      '@react-three/fiber': 8.11.1_xor7byvqlg4baqj6ymfbcmaax4
+      '@react-three/rapier': 0.13.2_nas3qhvnzdenypk4ocnxxeiwki
       '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
       '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
       '@tonydangblog/error-handling': link:../../packages/error-handling
@@ -140,7 +140,7 @@ importers:
       lil-gui: 0.18.0
       plotly.js-dist-min: 2.18.2
       postgres: 3.3.3
-      r3f-perf: 7.1.2_ceh54bdkswdljeyl3jd54pj65e
+      r3f-perf: 7.1.2_dnzsvkb3dcowwlgign6zktihi4
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       remark-toc: 8.0.1
@@ -1463,7 +1463,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@react-spring/three/9.6.1_mwnnnbckvcqi26tj6me4jgcpge:
+  /@react-spring/three/9.6.1_nas3qhvnzdenypk4ocnxxeiwki:
     resolution: {integrity: sha512-Tyw2YhZPKJAX3t2FcqvpLRb71CyTe1GvT3V+i+xJzfALgpk10uPGdGaQQ5Xrzmok1340DAeg2pR/MCfaW7b8AA==}
     peerDependencies:
       '@react-three/fiber': '>=6.0'
@@ -1474,7 +1474,7 @@ packages:
       '@react-spring/core': 9.6.1_react@18.2.0
       '@react-spring/shared': 9.6.1_react@18.2.0
       '@react-spring/types': 9.6.1
-      '@react-three/fiber': 8.11.2_xor7byvqlg4baqj6ymfbcmaax4
+      '@react-three/fiber': 8.11.1_xor7byvqlg4baqj6ymfbcmaax4
       react: 18.2.0
       three: 0.149.0
     dev: false
@@ -1483,8 +1483,8 @@ packages:
     resolution: {integrity: sha512-POu8Mk0hIU3lRXB3bGIGe4VHIwwDsQyoD1F394OK7STTiX9w4dG3cTLljjYswkQN+hDSHRrj4O36kuVa7KPU8Q==}
     dev: false
 
-  /@react-three/drei/9.56.25_ceh54bdkswdljeyl3jd54pj65e:
-    resolution: {integrity: sha512-Wlsmp8q1yqpsHgbUbnt+R83esU4rAE21k4xmcGXaJwNx4PJHR8VZY2kpnEt6TE2uo3L2blUFU0yBMi5/mCyhyw==}
+  /@react-three/drei/9.56.24_dnzsvkb3dcowwlgign6zktihi4:
+    resolution: {integrity: sha512-sxM+l3dos6i9EYgWacLZ7ts752YjopftVcToR2U+buoKCIJ+xCNPAWh7Y9MggL+x/z82D1ItQmA+vdfj9aoyBw==}
     peerDependencies:
       '@react-three/fiber': '>=8.0'
       react: '>=18.0'
@@ -1495,8 +1495,8 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.20.13
-      '@react-spring/three': 9.6.1_mwnnnbckvcqi26tj6me4jgcpge
-      '@react-three/fiber': 8.11.2_xor7byvqlg4baqj6ymfbcmaax4
+      '@react-spring/three': 9.6.1_nas3qhvnzdenypk4ocnxxeiwki
+      '@react-three/fiber': 8.11.1_xor7byvqlg4baqj6ymfbcmaax4
       '@use-gesture/react': 10.2.24_react@18.2.0
       camera-controls: 2.2.2_three@0.149.0
       detect-gpu: 5.0.12
@@ -1522,8 +1522,47 @@ packages:
       - '@types/three'
     dev: false
 
-  /@react-three/fiber/8.11.2_xor7byvqlg4baqj6ymfbcmaax4:
-    resolution: {integrity: sha512-cJibYk8LtDS3QlDbmN2GzrB3YSuRaUxkOmy69jAs70sqjK/dClWbNaVJu6T/YcWhPopl+hMf+M24Uh+HEtVj2A==}
+  /@react-three/drei/9.56.25_dnzsvkb3dcowwlgign6zktihi4:
+    resolution: {integrity: sha512-Wlsmp8q1yqpsHgbUbnt+R83esU4rAE21k4xmcGXaJwNx4PJHR8VZY2kpnEt6TE2uo3L2blUFU0yBMi5/mCyhyw==}
+    peerDependencies:
+      '@react-three/fiber': '>=8.0'
+      react: '>=18.0'
+      react-dom: '>=18.0'
+      three: '>=0.137'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.20.13
+      '@react-spring/three': 9.6.1_nas3qhvnzdenypk4ocnxxeiwki
+      '@react-three/fiber': 8.11.1_xor7byvqlg4baqj6ymfbcmaax4
+      '@use-gesture/react': 10.2.24_react@18.2.0
+      camera-controls: 2.2.2_three@0.149.0
+      detect-gpu: 5.0.12
+      glsl-noise: 0.0.0
+      lodash.clamp: 4.0.3
+      lodash.omit: 4.5.0
+      lodash.pick: 4.4.0
+      maath: 0.5.2_arp7zvamcwb6gpsp77lqxsjc74
+      meshline: 3.1.6_three@0.149.0
+      react: 18.2.0
+      react-composer: 5.0.3_react@18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-merge-refs: 1.1.0
+      stats.js: 0.17.0
+      suspend-react: 0.0.8_react@18.2.0
+      three: 0.149.0
+      three-mesh-bvh: 0.5.23_three@0.149.0
+      three-stdlib: 2.21.8_three@0.149.0
+      troika-three-text: 0.47.1_three@0.149.0
+      utility-types: 3.10.0
+      zustand: 3.7.2_react@18.2.0
+    transitivePeerDependencies:
+      - '@types/three'
+    dev: false
+
+  /@react-three/fiber/8.11.1_xor7byvqlg4baqj6ymfbcmaax4:
+    resolution: {integrity: sha512-88ZXSRm+MxTO6g+4Yp3O7wWZr9PWAYxUsny+o+xjaNuxpFoo3RPYJxaSRDdKIKPms3gwvPvy7bCBoUQDUf1JZw==}
     peerDependencies:
       expo: '>=43.0'
       expo-asset: '>=8.4'
@@ -1557,7 +1596,7 @@ packages:
       zustand: 3.7.2_react@18.2.0
     dev: false
 
-  /@react-three/rapier/0.13.2_mwnnnbckvcqi26tj6me4jgcpge:
+  /@react-three/rapier/0.13.2_nas3qhvnzdenypk4ocnxxeiwki:
     resolution: {integrity: sha512-zdajV4X+P449lTV9BiuxOvXZMeTQ7HTtc5YVBztKFZBOaib1kXWGhnirdv0ZrYvetvr1JZKmnl1UtgipCBKcTg==}
     peerDependencies:
       '@react-three/fiber': 8.9.1
@@ -1565,7 +1604,7 @@ packages:
       three: '>=0.139.2'
     dependencies:
       '@dimforge/rapier3d-compat': 0.11.1
-      '@react-three/fiber': 8.11.2_xor7byvqlg4baqj6ymfbcmaax4
+      '@react-three/fiber': 8.11.1_xor7byvqlg4baqj6ymfbcmaax4
       react: 18.2.0
       three: 0.149.0
       three-stdlib: 2.21.6_three@0.149.0
@@ -6975,7 +7014,7 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /r3f-perf/7.1.2_ceh54bdkswdljeyl3jd54pj65e:
+  /r3f-perf/7.1.2_dnzsvkb3dcowwlgign6zktihi4:
     resolution: {integrity: sha512-AQ78ULjufILylHZpbgBdzk7JF3F7bceehlgOL19xtyJIDhvi4J4vwE5wpxNZ5q4PT4Oza1WADZt6KSlrkCqgkA==}
     peerDependencies:
       '@react-three/fiber': '>=8.0'
@@ -6992,8 +7031,8 @@ packages:
         optional: true
     dependencies:
       '@radix-ui/react-icons': 1.2.0_react@18.2.0
-      '@react-three/drei': 9.56.25_ceh54bdkswdljeyl3jd54pj65e
-      '@react-three/fiber': 8.11.2_xor7byvqlg4baqj6ymfbcmaax4
+      '@react-three/drei': 9.56.25_dnzsvkb3dcowwlgign6zktihi4
+      '@react-three/fiber': 8.11.1_xor7byvqlg4baqj6ymfbcmaax4
       '@stitches/react': 1.2.8_react@18.2.0
       '@utsubo/events': 0.1.7_react@18.2.0
       react: 18.2.0
