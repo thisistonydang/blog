@@ -13,7 +13,9 @@ export function add_resize_listener(
     camera.aspect = container.offsetWidth / container.offsetHeight;
     camera.updateProjectionMatrix();
 
-    // Update renderer
+    // Update renderer size and pixel ratio. Pixel ratio may change when moving
+    // across different monitors.
     renderer.setSize(container.offsetWidth, container.offsetHeight);
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   });
 }
