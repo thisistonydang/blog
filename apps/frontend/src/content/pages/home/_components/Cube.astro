@@ -1,0 +1,41 @@
+<div id="three-" class="h-full w-full cursor-grab active:cursor-grabbing"></div>
+
+<script>
+  import { Clock } from "three";
+
+  import { setup_three } from "@lib/three/setup_three";
+  import { create_basic_cube } from "@lib/three/create_basic_cube";
+  import { create_orbit_controls } from "@lib/three/create_orbit_controls";
+
+  /** Setup three *************************************************************/
+  const { scene, camera, renderer } = setup_three("three-");
+
+  /** Add meshes **************************************************************/
+
+  // Add box
+  const cube = create_basic_cube();
+  scene.add(cube);
+
+  /** Add utilities ***********************************************************/
+
+  // Add controls
+  const controls = create_orbit_controls(camera, renderer.domElement);
+
+  /** Animate *****************************************************************/
+  const clock = new Clock();
+
+  (function animate() {
+    requestAnimationFrame(animate);
+    const elapsed_time = clock.getElapsedTime();
+
+    // Rotate cube
+    cube.rotation.x = elapsed_time * 0.1;
+    cube.rotation.y = elapsed_time * 0.12;
+
+    // Update controls
+    controls.update();
+
+    // Render
+    renderer.render(scene, camera);
+  })();
+</script>
