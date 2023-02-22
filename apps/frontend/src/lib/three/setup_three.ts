@@ -1,4 +1,4 @@
-import { PerspectiveCamera, Scene, WebGLRenderer } from "three";
+import { Camera, Scene, WebGLRenderer } from "three";
 import { create_perspective_camera } from "./create_perspective_camera";
 import { create_renderer } from "./create_renderer";
 import { add_resize_listener } from "./add_resize_listener";
@@ -8,7 +8,7 @@ import { add_resize_listener } from "./add_resize_listener";
  */
 export function setup_three(id: string): {
   scene: Scene;
-  camera: PerspectiveCamera;
+  camera: Camera;
   renderer: WebGLRenderer;
 } {
   // Get parent container div by id.
