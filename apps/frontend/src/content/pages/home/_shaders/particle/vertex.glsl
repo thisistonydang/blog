@@ -1,10 +1,7 @@
 uniform float u_elapsed_time;
 uniform float u_pixel_ratio;
-uniform float u_mix_percentage;
 
 attribute float a_scale;
-
-varying float v_mix_percentage;
 
 void main() {
   /**
@@ -38,9 +35,4 @@ void main() {
 
   // Add size attenuation
   gl_PointSize = gl_PointSize * (1.0 / -viewPosition.z);
-
-  /**
- * Set varyings
- */
-  v_mix_percentage = u_mix_percentage;
 }

@@ -1,10 +1,10 @@
-varying float v_mix_percentage;
+uniform float u_mix_percentage;
 
 void main() {
   // Set color depending on whether theme is in light or dark mode.
   vec3 light_accent_color = vec3(22.0 / 255.0, 78.0 / 255.0, 99.0 / 255.0);
   vec3 dark_accent_color = vec3(103.0 / 255.0, 232.0 / 255.0, 249.0 / 255.0);
-  vec3 color = mix(light_accent_color, dark_accent_color, v_mix_percentage);
+  vec3 color = mix(light_accent_color, dark_accent_color, u_mix_percentage);
 
   // Calculate alpha so that particle is brightest in the center and rapidly
   // drops in brightness away from the center.
