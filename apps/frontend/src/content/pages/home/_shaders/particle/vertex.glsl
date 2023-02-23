@@ -28,7 +28,7 @@ void main() {
  */
 
   // Set base particle size
-  gl_PointSize = 125.0;
+  gl_PointSize = 150.0;
 
   // Multiply by random scale to vary particle sizes
   gl_PointSize = gl_PointSize * a_scale;
