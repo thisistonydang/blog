@@ -3,17 +3,20 @@ import AxeBuilder from "@axe-core/playwright";
 
 test.describe("a11y", () => {
   const paths = [
+    // Pages.
     "/",
+    "/404",
+    "/list/unsubscribe/success",
+    "/list/verify/expired",
+    "/list/verify/success",
     "/posts",
-    "/about",
-    "/now",
-    "/contact",
-    "/support",
-    "/ifsc-shoes",
-    "/ifsc-heights",
-    "/ifsc-ages",
-    "/relay-results",
+    "/whoops",
+    // Posts
     "/bee-snapped",
+    "/ifsc-ages",
+    "/ifsc-heights",
+    "/ifsc-shoes",
+    "/relay-results",
     "/subielife",
   ];
 
