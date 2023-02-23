@@ -4,7 +4,6 @@ import BaseLayout from "@layouts/base/BaseLayout.astro";
 import Footer from "./_components/Footer.svelte";
 import Header from "./_components/Header.astro";
 import OnlineStatus from "./_components/OnlineStatus.svelte";
-import SectionNav from "./_components/SectionNav.svelte";
 import SkipToMain from "./_components/SkipToMain.astro";
 
 export interface Props {
@@ -18,7 +17,6 @@ const { entry } = Astro.props;
   <OnlineStatus client:load />
   <SkipToMain />
   <Header />
-  {Astro.url.pathname === "/" && <SectionNav client:idle />}
   <div
     class="prose dark:prose-invert prose-a:text-accent prose-a:underline-offset-4 hover:prose-a:no-underline prose-headings:font-normal m-auto max-w-[700px]"
   >
