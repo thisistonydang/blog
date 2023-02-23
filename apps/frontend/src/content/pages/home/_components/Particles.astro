@@ -1,0 +1,41 @@
+<div id="three-particles" class="h-full w-full animate-[fade-in_10s]"></div>
+
+<script>
+  import { Clock } from "three";
+  import { setup_three } from "@lib/three/setup_three";
+  import { create_particles } from "../_lib/create_particles";
+
+  /**
+   * Setup three.js scene
+   */
+  const { scene, camera, renderer } = setup_three("three-particles");
+
+  /**
+   * Add meshes
+   */
+
+  // Add particles
+  const particles = create_particles();
+  scene.add(particles.points);
+
+  /**
+   * Animate
+   */
+  const clock = new Clock();
+
+  (function animate() {
+    requestAnimationFrame(animate);
+    const elapsed_time = clock.getElapsedTime();
+
+    // Send elapsed time as uniform to particle shader
+    const u_elapsed_time = particles.material.uniforms.u_elapsed_time;
+    if (u_elapsed_time) u_elapsed_time.value = elapsed_time;
+
+    // Rotate all particles
+    particles.points.rotation.x = elapsed_time * 0.1;
+    particles.points.rotation.y = elapsed_time * 0.12;
+
+    // Render
+    renderer.render(scene, camera);
+  })();
+</script>
