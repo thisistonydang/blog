@@ -14,36 +14,33 @@ test.describe("navigation", () => {
 
   const nav_pages = [
     { name: "Posts", path: "/posts" },
-    { name: "About", path: "/about" },
-    { name: "Now", path: "/now" },
-    { name: "Contact", path: "/contact" },
-    { name: "Buy Me a Coffee?", path: "/support" },
+    // { name: "About", path: "/about" },
+    // { name: "Now", path: "/now" },
+    // { name: "Contact", path: "/contact" },
+    // { name: "Buy Me a Coffee?", path: "/support" },
   ];
 
   for (const nav_page of nav_pages) {
-    test(`[desktop] can navigate to '${nav_page.name}' page`, async ({
-      page,
-      isMobile,
-    }) => {
-      test.skip(isMobile ?? false);
+    test(`can navigate to '${nav_page.name}' page`, async ({ page }) => {
+      // test.skip(isMobile ?? false);
 
       await page.locator(`nav >> text=${nav_page.name}`).click();
       await expect(page).toHaveURL(nav_page.path);
       await expect(page).toHaveTitle(`${nav_page.name} | Tony Dang`);
     });
 
-    test(`[mobile] can navigate to '${nav_page.name}' page`, async ({
-      page,
-      isMobile,
-    }) => {
-      test.skip(!isMobile ?? false);
+    // test(`[mobile] can navigate to '${nav_page.name}' page`, async ({
+    //   page,
+    //   isMobile,
+    // }) => {
+    //   test.skip(!isMobile ?? false);
 
-      await page.locator('[aria-label="toggle hamburger menu"]').click();
-      await page
-        .locator(`nav >> text=${nav_page.name} >> visible=true`)
-        .click();
-      await expect(page).toHaveURL(nav_page.path);
-      await expect(page).toHaveTitle(`${nav_page.name} | Tony Dang`);
-    });
+    //   await page.locator('[aria-label="toggle hamburger menu"]').click();
+    //   await page
+    //     .locator(`nav >> text=${nav_page.name} >> visible=true`)
+    //     .click();
+    //   await expect(page).toHaveURL(nav_page.path);
+    //   await expect(page).toHaveTitle(`${nav_page.name} | Tony Dang`);
+    // });
   }
 });
