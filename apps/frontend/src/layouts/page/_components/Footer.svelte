@@ -20,7 +20,7 @@
       Tony Dang |
       <a href="/rss.xml"><abbr title="Really Simple Syndication">RSS</abbr></a>
       <br />
-      Built w/
+      Built with
       <a href="https://astro.build">Astro</a>,
       <a href="https://svelte.dev/">Svelte</a>, &amp;
       <a href="https://workers.cloudflare.com">Cloudflare Workers</a>
