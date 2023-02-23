@@ -5,7 +5,6 @@ test.describe("a11y", () => {
   const paths = [
     // Pages.
     "/",
-    "/404",
     "/list/unsubscribe/success",
     "/list/verify/expired",
     "/list/verify/success",

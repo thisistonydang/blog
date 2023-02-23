@@ -3,7 +3,7 @@
 </script>
 
 <div class="text-center">
-  <div class="text-8xl my-20">(◑_◑)</div>
+  <div class="my-20 text-8xl">(◑_◑)</div>
   {#if message}
     <p class="text-lg">{message}</p>
   {/if}
