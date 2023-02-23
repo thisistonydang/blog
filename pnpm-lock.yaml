@@ -73,12 +73,12 @@ importers:
 
   apps/frontend:
     specifiers:
-      '@astrojs/image': ^0.15.0
-      '@astrojs/mdx': ^0.17.0
+      '@astrojs/image': ^0.15.1
+      '@astrojs/mdx': ^0.17.2
       '@astrojs/prefetch': ^0.1.2
       '@astrojs/react': ^2.0.2
       '@astrojs/rss': ^2.1.1
-      '@astrojs/sitemap': ^1.0.1
+      '@astrojs/sitemap': ^1.1.0
       '@astrojs/svelte': ^2.0.2
       '@astrojs/tailwind': ^3.0.1
       '@fec/remark-a11y-emoji': ^3.1.0
@@ -92,7 +92,7 @@ importers:
       '@types/plotly.js-dist-min': ^2.3.1
       '@types/react': ^18.0.28
       '@types/three': ^0.149.0
-      astro: ^2.0.14
+      astro: ^2.0.15
       astro-seo: ^0.7.1
       cannon-es: ^0.20.0
       d3: ^7.8.2
@@ -116,14 +116,14 @@ importers:
       vite-plugin-glsl: ^1.1.2
       zustand: ^4.3.3
     dependencies:
-      '@astrojs/image': 0.15.0_astro@2.0.14+sharp@0.31.3
-      '@astrojs/mdx': 0.17.0_astro@2.0.14
+      '@astrojs/image': 0.15.1_astro@2.0.15+sharp@0.31.3
+      '@astrojs/mdx': 0.17.2_astro@2.0.15
       '@astrojs/prefetch': 0.1.2
       '@astrojs/react': 2.0.2_zula6vjvt3wdocc4mwcxqa6nzi
       '@astrojs/rss': 2.1.1
-      '@astrojs/sitemap': 1.0.1
-      '@astrojs/svelte': 2.0.2_astro@2.0.14+svelte@3.55.1
-      '@astrojs/tailwind': 3.0.1_hf2kjfio2dr6w52rh4mpociq2u
+      '@astrojs/sitemap': 1.1.0
+      '@astrojs/svelte': 2.0.2_astro@2.0.15+svelte@3.55.1
+      '@astrojs/tailwind': 3.0.1_enl5tymeuxlslzmmdrwlr7zkvy
       '@fec/remark-a11y-emoji': 3.1.0
       '@react-three/drei': 9.56.26_r3uulfqxckh2hgimy2cqxlhxjm
       '@react-three/fiber': 8.11.5_ute6kgba6tjflznmd5zvq2zrly
@@ -131,7 +131,7 @@ importers:
       '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
       '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
       '@tonydangblog/error-handling': link:../../packages/error-handling
-      astro: 2.0.14
+      astro: 2.0.15
       astro-seo: 0.7.1
       cannon-es: 0.20.0
       d3: 7.8.2
@@ -184,17 +184,17 @@ packages:
   /@astrojs/compiler/1.1.2:
     resolution: {integrity: sha512-L3/JrdNwBFKcoDeStmRgJWvI2t/5nNJm7HnGjDy4e8BH3qKv8iQYdpvuQjeYRA00k6I1lxZGBm/0wU+Lg7HPiQ==}
 
-  /@astrojs/image/0.15.0_astro@2.0.14+sharp@0.31.3:
-    resolution: {integrity: sha512-Dw47TNCF1dkX3gM1jEmtov4aLR/N5XNzTyToRv99OJZmAAY7J19DN+FUaCHYj3gsiF9N5FekhgOeKu1v4A5DgA==}
+  /@astrojs/image/0.15.1_astro@2.0.15+sharp@0.31.3:
+    resolution: {integrity: sha512-5+ZBHEfwcx8BbJbAatnW1fyFLWQW4n6jUkDRB5eLbo+yKZv8gwlpPBPpo7cqiY6kUtEisZHVsVYdCTe22KDZgQ==}
     peerDependencies:
-      astro: ^2.0.12
+      astro: ^2.0.15
       sharp: '>=0.31.0'
     peerDependenciesMeta:
       sharp:
         optional: true
     dependencies:
       '@altano/tiny-async-pool': 1.0.2
-      astro: 2.0.14
+      astro: 2.0.15
       http-cache-semantics: 4.1.1
       image-size: 1.0.2
       kleur: 4.1.5
@@ -221,13 +221,13 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdown-remark/2.0.1_astro@2.0.14:
+  /@astrojs/markdown-remark/2.0.1_astro@2.0.15:
     resolution: {integrity: sha512-xQF1rXGJN18m+zZucwRRtmNehuhPMMhZhi6HWKrtpEAKnHSPk8lqf1GXgKH7/Sypglu8ivdECZ+EGs6kOYVasQ==}
     peerDependencies:
       astro: ^2.0.2
     dependencies:
       '@astrojs/prism': 2.0.0
-      astro: 2.0.14
+      astro: 2.0.15
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.1
       rehype-raw: 6.1.1
@@ -244,16 +244,16 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.17.0_astro@2.0.14:
-    resolution: {integrity: sha512-vy4m/mwzdfDK4jC9wraFLMVwx13eXBPC8r7nkO5s8YlcFX6IDcl2LKPurP3+/ibpTei9IPQLIZOufXRDO96SYg==}
+  /@astrojs/mdx/0.17.2_astro@2.0.15:
+    resolution: {integrity: sha512-mol57cw1jJMcQgKMRGn7p6cewajq6JTNtqj5aAZgROWam/phVDSOCbXj/WU3O9+3qFnyKtpczoufQKwJTQltAw==}
     engines: {node: '>=16.12.0'}
     dependencies:
-      '@astrojs/markdown-remark': 2.0.1_astro@2.0.14
+      '@astrojs/markdown-remark': 2.0.1_astro@2.0.15
       '@astrojs/prism': 2.0.0
       '@mdx-js/mdx': 2.3.0
       '@mdx-js/rollup': 2.3.0
       acorn: 8.8.2
-      es-module-lexer: 0.10.5
+      es-module-lexer: 1.2.0
       estree-util-visit: 1.2.1
       github-slugger: 1.5.0
       gray-matter: 4.0.3
@@ -309,14 +309,14 @@ packages:
       kleur: 4.1.5
     dev: false
 
-  /@astrojs/sitemap/1.0.1:
-    resolution: {integrity: sha512-qexepZPH6/dLToI/njxr2FjvyxJU0HBAnQRNzEggF0ok811oSNC6su1DkyW2VKp0TNPbWoujuSbcb1yFOjnAqA==}
+  /@astrojs/sitemap/1.1.0:
+    resolution: {integrity: sha512-JnKZcbD0WdFxw2VAj3qXb0cYKuvk6nwBYPfUy+plSa9TC9hikQrDFpd7yapOPTRf3AdmUittzFckoTw/nUilCw==}
     dependencies:
       sitemap: 7.1.1
       zod: 3.20.6
     dev: false
 
-  /@astrojs/svelte/2.0.2_astro@2.0.14+svelte@3.55.1:
+  /@astrojs/svelte/2.0.2_astro@2.0.15+svelte@3.55.1:
     resolution: {integrity: sha512-EkJT7Roft6v9CkI3/Hga8XQbmmI6kKcpOAx6E0gfepuJuqI68xLqnEl3TSJ9uH3dwJt8ThscB1TGxsc8B4JUdg==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
@@ -324,7 +324,7 @@ packages:
       svelte: ^3.54.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.0.3_svelte@3.55.1
-      astro: 2.0.14
+      astro: 2.0.15
       svelte: 3.55.1
       svelte2tsx: 0.5.23_svelte@3.55.1
     transitivePeerDependencies:
@@ -333,14 +333,14 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind/3.0.1_hf2kjfio2dr6w52rh4mpociq2u:
+  /@astrojs/tailwind/3.0.1_enl5tymeuxlslzmmdrwlr7zkvy:
     resolution: {integrity: sha512-QSYh/xmz454j1yZU9rjw2J24PpH7j3h2ClesqMaAniOtcuL8RfP7KYCnCrk01xvjwqqO+QBpZNDD/SUhHNtFFg==}
     peerDependencies:
       astro: ^2.0.4
       tailwindcss: ^3.0.24
     dependencies:
       '@proload/core': 0.3.3
-      astro: 2.0.14
+      astro: 2.0.15
       autoprefixer: 10.4.13_postcss@8.4.21
       postcss: 8.4.21
       postcss-load-config: 4.0.1_postcss@8.4.21
@@ -2514,14 +2514,14 @@ packages:
     resolution: {integrity: sha512-8Yo1nQrl2iB5zj+VUAHrvGIck8bZ4WAmXQgJOeF9FuAZGQD5qK6DtSZaRbpBXsFfZYHA6tE8pjs3btHhLbC1zQ==}
     dev: false
 
-  /astro/2.0.14:
-    resolution: {integrity: sha512-BiXnHyK3rj5Uz45V5p9jRi0xtJc/zxhCxnXYAekHHF1bVvvoa3aXMwl0GZ3Bc0mxP6vPLmbRcjNKdqfyZn1B3Q==}
+  /astro/2.0.15:
+    resolution: {integrity: sha512-CUJNrcdgcSjASValRNEesTgXSefgQ8Z9GHrZXckmTivatoBlVkYb8G8tmk7dgRt6JF+bwfOsA6cGdv7+G7hCbA==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 1.1.2
       '@astrojs/language-server': 0.28.3
-      '@astrojs/markdown-remark': 2.0.1_astro@2.0.14
+      '@astrojs/markdown-remark': 2.0.1_astro@2.0.15
       '@astrojs/telemetry': 2.0.0
       '@astrojs/webapi': 2.0.1
       '@babel/core': 7.21.0
@@ -3712,10 +3712,6 @@ packages:
       isarray: 2.0.5
       stop-iteration-iterator: 1.0.0
     dev: true
-
-  /es-module-lexer/0.10.5:
-    resolution: {integrity: sha512-+7IwY/kiGAacQfY+YBhKMvEmyAJnw5grTUgjG85Pe7vcUI/6b7pZjZG8nQ7+48YhzEAEqrEgD2dCz/JIK+AYvw==}
-    dev: false
 
   /es-module-lexer/1.2.0:
     resolution: {integrity: sha512-2BMfqBDeVCcOlLaL1ZAfp+D868SczNpKArrTM3dhpd7dK/OVlogzY15qpUngt+LMTq5UC/csb9vVQAgupucSbA==}
