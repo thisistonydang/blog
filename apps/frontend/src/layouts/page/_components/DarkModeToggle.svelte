@@ -1,3 +1,7 @@
+<script context="module" lang="ts">
+  export const THEME_TOGGLED_EVENT = "dark_mode_toggle-theme_toggled";
+</script>
+
 <script lang="ts">
   import { onMount } from "svelte";
 
@@ -20,16 +24,14 @@
     }
   }
 
-  const theme_toggled_event = new CustomEvent("theme-toggled");
-
   $: if (mounted && clicked && toggled) {
     document.documentElement.classList.add("dark");
     localStorage.theme = "dark";
-    dispatchEvent(theme_toggled_event);
+    dispatchEvent(new CustomEvent(THEME_TOGGLED_EVENT));
   } else if (mounted && clicked && !toggled) {
     document.documentElement.classList.remove("dark");
     localStorage.theme = "light";
-    dispatchEvent(theme_toggled_event);
+    dispatchEvent(new CustomEvent(THEME_TOGGLED_EVENT));
   }
 
   onMount((): void => {

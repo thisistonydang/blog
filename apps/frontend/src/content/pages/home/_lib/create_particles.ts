@@ -5,6 +5,7 @@ import {
   Points,
   ShaderMaterial,
 } from "three";
+import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.svelte";
 import vertexShader from "../_shaders/particle/vertex.glsl";
 import fragmentShader from "../_shaders/particle/fragment.glsl";
 
@@ -52,7 +53,7 @@ export function create_particles(): {
     if (u_pixel_ratio) u_pixel_ratio.value = Math.min(devicePixelRatio, 2);
   });
 
-  addEventListener("theme-toggled", () => {
+  addEventListener(THEME_TOGGLED_EVENT, () => {
     const u_mix_percentage = material.uniforms.u_mix_percentage;
     if (u_mix_percentage)
       u_mix_percentage.value = localStorage.theme === "dark" ? 1 : 0;
