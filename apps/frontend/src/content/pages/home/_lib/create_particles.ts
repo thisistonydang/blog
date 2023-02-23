@@ -5,8 +5,14 @@ import {
   Points,
   ShaderMaterial,
 } from "three";
+
+// @ts-expect-error svelte import
 import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.svelte";
+
+// @ts-expect-error glsl import
 import vertexShader from "../_shaders/particle/vertex.glsl";
+
+// @ts-expect-error glsl import
 import fragmentShader from "../_shaders/particle/fragment.glsl";
 
 export function create_particles(): {
