@@ -20,12 +20,16 @@
     }
   }
 
+  const theme_toggled_event = new CustomEvent("theme-toggled");
+
   $: if (mounted && clicked && toggled) {
     document.documentElement.classList.add("dark");
     localStorage.theme = "dark";
+    dispatchEvent(theme_toggled_event);
   } else if (mounted && clicked && !toggled) {
     document.documentElement.classList.remove("dark");
     localStorage.theme = "light";
+    dispatchEvent(theme_toggled_event);
   }
 
   onMount((): void => {

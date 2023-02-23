@@ -40,9 +40,7 @@ export function create_particles(): {
     uniforms: {
       u_elapsed_time: { value: 0 },
       u_pixel_ratio: { value: Math.min(devicePixelRatio, 2) },
-      u_mix_percentage: {
-        value: document.documentElement.classList.contains("dark") ? 1 : 0,
-      },
+      u_mix_percentage: { value: localStorage.theme === "dark" ? 1 : 0 },
     },
     transparent: true,
     depthWrite: false,
@@ -54,14 +52,10 @@ export function create_particles(): {
     if (u_pixel_ratio) u_pixel_ratio.value = Math.min(devicePixelRatio, 2);
   });
 
-  addEventListener("toggle-theme", () => {
+  addEventListener("theme-toggled", () => {
     const u_mix_percentage = material.uniforms.u_mix_percentage;
     if (u_mix_percentage)
-      u_mix_percentage.value = document.documentElement.classList.contains(
-        "dark"
-      )
-        ? 1
-        : 0;
+      u_mix_percentage.value = localStorage.theme === "dark" ? 1 : 0;
   });
 
   return {
