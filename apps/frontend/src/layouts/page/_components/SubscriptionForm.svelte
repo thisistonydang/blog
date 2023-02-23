@@ -99,7 +99,7 @@
       autocomplete="name"
       required
       {disabled}
-      width={"28vw"}
+      width={"33vw"}
       invalid={name_is_invalid}
       helper_text={name_helper_text}
     />
@@ -112,7 +112,7 @@
       autocomplete="email"
       required
       {disabled}
-      width={"28vw"}
+      width={"33vw"}
       invalid={email_is_invalid}
       helper_text={email_helper_text}
     />

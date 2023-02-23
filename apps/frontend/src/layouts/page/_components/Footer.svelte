@@ -11,7 +11,7 @@
   });
 </script>
 
-<footer class="xxs:mr-14 mt-24">
+<footer class="mt-24">
   <SubscriptionForm />
   <div class="mt-20 flex items-center">
     <EasterEgg />
