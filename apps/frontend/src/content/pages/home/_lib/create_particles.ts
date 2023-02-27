@@ -10,10 +10,10 @@ import {
 import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.svelte";
 
 // @ts-expect-error glsl import
-import vertexShader from "../_shaders/particle/vertex.glsl";
+import vertexShader from "@lib/shaders/particle/vertex.glsl";
 
 // @ts-expect-error glsl import
-import fragmentShader from "../_shaders/particle/fragment.glsl";
+import fragmentShader from "@lib/shaders/particle/fragment.glsl";
 
 export function create_particles(): {
   points: Points;
