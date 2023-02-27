@@ -12,7 +12,7 @@ export function create_perspective_camera(
     0.1,
     2000
   );
-  camera.position.set(0, 0, 3);
+  camera.position.set(0, 0, 5);
 
   return camera;
 }
