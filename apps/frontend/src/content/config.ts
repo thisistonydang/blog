@@ -18,5 +18,5 @@ const post_schema = {
 export const collections = {
   pages: defineCollection({ schema: z.object(page_schema) }),
   posts: defineCollection({ schema: z.object(post_schema) }),
-  projects: defineCollection({ schema: z.object(page_schema) }),
+  projects: defineCollection({ schema: z.object(post_schema) }),
 };
