@@ -1,5 +1,6 @@
 export const nav_pages = [
-  { name: "posts", path: "/posts", prefetch: true },
+  { name: "posts", path: "/posts/", prefetch: true },
+  { name: "projects", path: "/projects/", prefetch: true },
   // { name: "about", path: "/about", prefetch: true },
   // { name: "now", path: "/now", prefetch: true },
   // { name: "contact", path: "/contact", prefetch: false },
