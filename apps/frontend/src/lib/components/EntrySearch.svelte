@@ -55,7 +55,7 @@
       {#each filteredPosts as entry (entry.slug)}
         <li
           class="
-            bg-surface border-surface xs:w-[49%] hover:border-heading
+            bg-surface/30 border-surface xs:w-[49%] hover:border-heading
             rounded border
           "
         >
