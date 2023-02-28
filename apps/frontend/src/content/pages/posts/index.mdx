@@ -4,9 +4,9 @@ description: Listing of all blog posts on tonydang.blog
 draft: false
 ---
 
-import PostSearch from "./_components/PostSearch.astro";
+import EntrySearch from "@lib/components/EntrySearch.astro";
 export const __ = undefined;
 
 # Posts
 
-<PostSearch />
+<EntrySearch collection="posts" />
