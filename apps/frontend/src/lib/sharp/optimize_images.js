@@ -19,6 +19,8 @@ function optimize_img(img, width) {
   const filename = img.match(/[\dA-Za-z-]+\.jpg/)[0];
   const output = `public/${directory}/dist/${width}/${filename}`;
 
+  // TODO: clean dist folder before writing new files
+
   sharp(img)
     .resize({ width })
     .toFile(output, function (err) {
