@@ -1,0 +1,31 @@
+---
+title: Particles
+description: Floating particles around a central nucleus.
+image: true
+alt: Image of floating particles generated with three.js
+pubDate: 2023-03-01
+tags: []
+draft: false
+---
+
+import FixedHeader from "@layouts/page/_components/FixedHeader.astro";
+import Info from "@lib/components/Info.astro";
+import App from "./_components/App";
+export const __ = undefined;
+
+<App client:load />
+
+<FixedHeader />
+
+<Info>
+# Particles
+
+Floating particles around a central nucleus. Loosely inspired by the structure
+of an atom, the <a href="https://reactjs.org/">react</a> logo, and fireflies.
+
+Created using custom WebGL shaders and rendered with <a
+href="https://threejs.org/">three.js</a> and <a
+href="https://docs.pmnd.rs/react-three-fiber/getting-started/introduction">
+react-three-fiber</a>.
+
+</Info>
