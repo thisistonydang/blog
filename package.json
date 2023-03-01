@@ -5,6 +5,7 @@
     "preinstall": "npx only-allow pnpm",
     "frontend:dev": "pnpm -F @blog/frontend run dev",
     "backend:dev": "pnpm -F @blog/backend run dev",
+    "opt-img": "pnpm -F @blog/frontend run opt-img",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "codegen": "playwright codegen",
