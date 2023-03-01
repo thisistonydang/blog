@@ -63,8 +63,8 @@
             <div class="aspect-[1200/630]">
               <img
                 src={entry.data.image
-                  ? `/og/${entry.slug}.jpg`
-                  : "/og/tony-dang.jpg"}
+                  ? `/og/dist/960/${entry.slug}.jpg`
+                  : "/og/dist/960/tony-dang.jpg"}
                 alt={entry.data.image ? entry.data.alt : "Photo of Tony Dang"}
                 loading="lazy"
                 class="rounded-t"
