@@ -9,19 +9,19 @@ export interface Props {
     | CollectionEntry<"pages">
     | CollectionEntry<"posts">
     | CollectionEntry<"projects">;
-  has_classes?: boolean;
+  rm_classes?: boolean;
 }
 
-const { entry, has_classes = true } = Astro.props;
+const { entry, rm_classes = false } = Astro.props;
 ---
 
 <html
   id="root"
   lang="en"
   class:list={[
+    "bg-bg",
     {
-      "bg-bg overflow-y-scroll scroll-smooth p-4 sm:pl-8 caret-accent":
-        has_classes,
+      "overflow-y-scroll scroll-smooth p-4 sm:pl-8 caret-accent": !rm_classes,
     },
   ]}
 >
