@@ -1,6 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
+
 import BaseLayout from "@layouts/base/BaseLayout.astro";
+import Prose from "@lib/components/Prose.astro";
+
 import Footer from "./_components/Footer.svelte";
 import Header from "./_components/Header.astro";
 import OnlineStatus from "./_components/OnlineStatus.svelte";
@@ -17,12 +20,12 @@ const { entry } = Astro.props;
   <OnlineStatus client:load />
   <SkipToMain />
   <Header />
-  <div
-    class="prose dark:prose-invert prose-a:text-accent prose-a:underline-offset-4 hover:prose-a:no-underline prose-headings:font-normal m-auto max-w-[700px]"
-  >
-    <main id="main-content">
-      <slot />
-    </main>
-    <Footer client:visible />
+  <div class="m-auto max-w-[700px]">
+    <Prose>
+      <main id="main-content">
+        <slot />
+      </main>
+      <Footer client:visible />
+    </Prose>
   </div>
 </BaseLayout>

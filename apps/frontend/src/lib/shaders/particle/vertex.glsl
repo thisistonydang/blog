@@ -1,5 +1,7 @@
 uniform float u_elapsed_time;
 uniform float u_pixel_ratio;
+uniform float u_particle_size;
+uniform float u_mix_percentage;
 
 attribute float a_scale;
 
@@ -25,7 +27,7 @@ void main() {
  */
 
   // Set base particle size
-  gl_PointSize = 150.0;
+  gl_PointSize = u_particle_size;
 
   // Multiply by random scale to vary particle sizes
   gl_PointSize = gl_PointSize * a_scale;

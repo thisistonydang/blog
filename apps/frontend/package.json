@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
+    "opt-img": "node src/lib/sharp/optimize_images.js",
     "type-check": "astro check && tsc --noEmit --skipLibCheck",
     "link-check": "linkinator http://localhost:3000 -r -s adidas,butora,linkedin",
     "a11y-check": "pa11y-ci --sitemap https://tonydang.blog/sitemap-index.xml --sitemap-find https://tonydang.blog --sitemap-replace http://localhost:3000",
@@ -20,13 +21,13 @@
     "@astrojs/svelte": "^2.0.2",
     "@astrojs/tailwind": "^3.0.1",
     "@fec/remark-a11y-emoji": "^3.1.0",
-    "@react-three/drei": "^9.56.26",
+    "@react-three/drei": "^9.56.27",
     "@react-three/fiber": "^8.11.5",
     "@react-three/rapier": "^0.13.2",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
     "@tonydangblog/error-handling": "workspace:1.0.0",
-    "astro": "^2.0.15",
+    "astro": "^2.0.16",
     "astro-seo": "^0.7.1",
     "cannon-es": "^0.20.0",
     "d3": "^7.8.2",
@@ -43,15 +44,16 @@
     "sharp": "^0.31.3",
     "svelte": "^3.55.1",
     "tailwindcss": "^3.2.7",
-    "three": "^0.150.0",
+    "three": "^0.150.1",
     "vite-plugin-glsl": "^1.1.2",
-    "zustand": "^4.3.3"
+    "zustand": "^4.3.4"
   },
   "devDependencies": {
     "@types/d3": "^7.4.0",
     "@types/plotly.js-dist-min": "^2.3.1",
     "@types/react": "^18.0.28",
     "@types/three": "^0.149.0",
+    "glob": "^9.1.0",
     "linkinator": "^4.1.2",
     "pa11y-ci": "^3.0.1",
     "stats.js": "^0.17.0"

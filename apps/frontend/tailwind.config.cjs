@@ -29,6 +29,10 @@ module.exports = {
     extend: {
       keyframes: {
         "fade-in": { from: { opacity: 0 }, to: { opacity: 1 } },
+        "fly-up": {
+          from: { transform: "translate3d(0, 50px, 0)" },
+          to: { transform: "translate3d(0, 0, 0)" },
+        },
         shake: {
           "10%, 90%": { transform: "translate3d(-1px, 0, 0)" },
           "20%, 80%": { transform: "translate3d(2px, 0, 0)" },

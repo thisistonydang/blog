@@ -10,10 +10,10 @@ import {
 import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.svelte";
 
 // @ts-expect-error glsl import
-import vertexShader from "../_shaders/particle/vertex.glsl";
+import vertexShader from "@lib/shaders/particle/vertex.glsl";
 
 // @ts-expect-error glsl import
-import fragmentShader from "../_shaders/particle/fragment.glsl";
+import fragmentShader from "@lib/shaders/particle/fragment.glsl";
 
 export function create_particles(): {
   points: Points;
@@ -29,9 +29,13 @@ export function create_particles(): {
   const scales = new Float32Array(particle_count * 1);
 
   for (let i = 0; i < particle_count; i++) {
-    positions[i * 3 + 0] = Math.random() - 0.5;
-    positions[i * 3 + 1] = Math.random() - 0.5;
-    positions[i * 3 + 2] = Math.random() - 0.5;
+    // Set magnitude so that 75% of particles are in the center.
+    const magnitude = i < 0.75 * particle_count ? 0.1 : 1;
+
+    positions[i * 3 + 0] = (Math.random() - 0.5) * magnitude;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * magnitude;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * magnitude;
+
     scales[i] = Math.random();
   }
 
@@ -47,6 +51,7 @@ export function create_particles(): {
     uniforms: {
       u_elapsed_time: { value: 0 },
       u_pixel_ratio: { value: Math.min(devicePixelRatio, 2) },
+      u_particle_size: { value: 100 },
       u_mix_percentage: { value: localStorage.theme === "dark" ? 1 : 0 },
     },
     transparent: true,

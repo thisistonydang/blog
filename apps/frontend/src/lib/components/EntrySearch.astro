@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import EntrySearch from "@lib/components/EntrySearch.svelte";
+
+type Entry = CollectionEntry<"posts"> | CollectionEntry<"projects">;
+
+export interface Props {
+  collection: "posts" | "projects";
+}
+
+const { collection } = Astro.props;
+
+const entries = await getCollection(
+  collection,
+  (entry: Entry) => !entry.data.draft
+);
+
+entries.sort(
+  (a: Entry, b: Entry) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+---
+
+<EntrySearch entries={entries} client:load />

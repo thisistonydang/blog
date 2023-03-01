@@ -30,6 +30,7 @@ our
 Pantera
 planche
 Scarpa
+shaders
 SUV
 Tenaya
 UnParallel
