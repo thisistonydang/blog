@@ -36,8 +36,9 @@ export default function Info({ children }: { children: React.ReactNode }) {
           className={`
             text-bg bg-text
             fixed bottom-8 left-8 h-10 w-10
-            rounded-full
-            font-serif text-2xl drop-shadow
+            animate-[fly-up_0.25s] animate-[fade-in_0.25s]
+            rounded-full font-serif
+            text-2xl drop-shadow
             ${mounted ? "cursor-help" : "cursor-not-allowed"}
           `}
           aria-label={is_opened ? "Hide info." : "Show Info."}
