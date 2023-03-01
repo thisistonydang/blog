@@ -1,0 +1,10 @@
+---
+import Prose from "./Prose.astro";
+import Info from "./Info";
+---
+
+<Prose>
+  <Info client:load>
+    <slot />
+  </Info>
+</Prose>
