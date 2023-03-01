@@ -20,12 +20,12 @@ const { entry } = Astro.props;
   <OnlineStatus client:load />
   <SkipToMain />
   <Header />
-  <Prose>
-    <div class="m-auto max-w-[700px]">
+  <div class="m-auto max-w-[700px]">
+    <Prose>
       <main id="main-content">
         <slot />
       </main>
       <Footer client:visible />
-    </div>
-  </Prose>
+    </Prose>
+  </div>
 </BaseLayout>
