@@ -4,7 +4,9 @@
   import TextField from "@lib/components/TextField.svelte";
   import Whoops from "@lib/components/Whoops.svelte";
 
-  export let entries: CollectionEntry<"posts">[];
+  type Entry = CollectionEntry<"posts"> | CollectionEntry<"projects">;
+
+  export let entries: Entry[];
 
   let mounted = false;
   let search_string = "";
