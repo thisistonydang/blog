@@ -16,6 +16,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "react-app",
     "plugin:astro/recommended",
     "plugin:astro/jsx-a11y-recommended",
     "prettier",
