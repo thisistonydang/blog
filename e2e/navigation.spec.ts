@@ -13,7 +13,8 @@ test.describe("navigation", () => {
   });
 
   const nav_pages = [
-    { name: "Posts", path: "/posts" },
+    { name: "Posts", path: "/posts/" },
+    { name: "Projects", path: "/projects/" },
     // { name: "About", path: "/about" },
     // { name: "Now", path: "/now" },
     // { name: "Contact", path: "/contact" },
