@@ -16,24 +16,19 @@
     error?: string;
   }
 
+  let status: "unmounted" | "typing" | "submitting" = "unmounted";
   let name = "";
-  let name_is_invalid = false;
   let name_helper_text = "";
   let email = "";
-  let email_is_invalid = false;
   let email_helper_text = "";
-  let disabled = true;
-  let loading = false;
   let message = "";
 
   function success_handler(data: Data): void {
     if (data.name) {
-      name_is_invalid = true;
       name_helper_text = data.name;
     }
 
     if (data.email) {
-      email_is_invalid = true;
       email_helper_text = data.email;
     }
 
@@ -53,11 +48,8 @@
   }
 
   async function handle_submit(): Promise<void> {
-    disabled = true;
-    loading = true;
-    name_is_invalid = false;
+    status = "submitting";
     name_helper_text = "";
-    email_is_invalid = false;
     email_helper_text = "";
     message = "";
     try {
@@ -78,13 +70,12 @@
     } catch (error: unknown) {
       message = get_error_message(error);
     } finally {
-      disabled = false;
-      loading = false;
+      status = "typing";
     }
   }
 
   onMount(() => {
-    disabled = false;
+    status = "typing";
   });
 </script>
 
@@ -98,9 +89,9 @@
       bind:value={name}
       autocomplete="name"
       required
-      {disabled}
+      disabled={status !== "typing"}
       width={"33vw"}
-      invalid={name_is_invalid}
+      invalid={name_helper_text !== ""}
       helper_text={name_helper_text}
     />
 
@@ -111,16 +102,34 @@
       bind:value={email}
       autocomplete="email"
       required
-      {disabled}
+      disabled={status !== "typing"}
       width={"33vw"}
-      invalid={email_is_invalid}
+      invalid={email_helper_text !== ""}
       helper_text={email_helper_text}
     />
 
-    <Button width="76px" {disabled} {loading}>SUBMIT</Button>
+    <Button
+      width="76px"
+      disabled={status !== "typing"}
+      loading={status === "submitting"}
+    >
+      SUBMIT
+    </Button>
   </div>
 </form>
 
 {#if message}
-  <p transition:fly={{ y: -20 }} class="bg-surface p-4">{message}</p>
+  <div
+    class="bg-surface my-3 flex w-fit items-center gap-5 rounded p-4"
+    in:fly={{ y: -20 }}
+  >
+    <p class="m-0">{message}</p>
+    <button
+      aria-label="Dismiss."
+      class="cursor-pointer text-2xl"
+      on:click={() => (message = "")}
+    >
+      &times
+    </button>
+  </div>
 {/if}
