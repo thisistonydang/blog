@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
+import { useMounted } from "@lib/hooks/useMounted";
 
 export default function Info({ children }: { children: React.ReactNode }) {
-  const [mounted, set_mounted] = useState(false);
+  const mounted = useMounted();
   const [is_opened, set_is_opened] = useState(true);
-
-  useEffect(() => set_mounted(true), []);
 
   useEffect(() => {
     const hide_info = () => set_is_opened(false);
