@@ -5,6 +5,10 @@ export function useMounted(): boolean {
 
   useEffect(() => {
     set_mounted(true);
+
+    return () => {
+      set_mounted(false);
+    };
   }, []);
 
   return mounted;
