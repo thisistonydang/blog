@@ -1,4 +1,4 @@
-import { Camera, Scene, WebGLRenderer } from "three";
+import { Camera, Clock, Scene, WebGLRenderer } from "three";
 import { create_perspective_camera } from "./create_perspective_camera";
 import { create_renderer } from "./create_renderer";
 import { add_resize_listener } from "./add_resize_listener";
@@ -10,6 +10,7 @@ export function setup_three(id: string): {
   scene: Scene;
   camera: Camera;
   renderer: WebGLRenderer;
+  clock: Clock;
 } {
   // Get parent container div by id.
   const container = document.getElementById(id) as HTMLDivElement;
@@ -25,8 +26,11 @@ export function setup_three(id: string): {
   const renderer = create_renderer(container);
   container.appendChild(renderer.domElement);
 
+  // Create clock.
+  const clock = new Clock();
+
   // Add resize listener.
   add_resize_listener(container, camera, renderer);
 
-  return { scene, camera, renderer };
+  return { scene, camera, renderer, clock };
 }
