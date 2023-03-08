@@ -1,7 +1,6 @@
 uniform float u_elapsed_time;
 uniform float u_pixel_ratio;
 uniform float u_particle_size;
-uniform float u_mix_percentage;
 
 attribute float a_scale;
 
