@@ -5,18 +5,27 @@
   import { setup_three } from "@lib/three/setup_three";
   import { create_particles } from "../_lib/create_particles";
 
+  const controls = {
+    count: 100,
+    size: 125,
+    rotation: 0.05,
+    oscillation: 0.5,
+    light_color: { r: 22, g: 78, b: 99 },
+    dark_color: { r: 103, g: 232, b: 249 },
+  };
+
   /**
    * Setup three.js scene
    */
   const { scene, camera, renderer } = setup_three("three-particles");
-  camera.position.set(0, 0, 2);
+  camera.position.set(0, 0, 2.5);
 
   /**
    * Add meshes
    */
 
   // Add particles
-  const particles = create_particles();
+  const particles = create_particles(controls);
   scene.add(particles.points);
 
   /**
@@ -30,11 +39,11 @@
 
     // Send elapsed time as uniform to particle shader
     const u_elapsed_time = particles.material.uniforms.u_elapsed_time;
-    if (u_elapsed_time) u_elapsed_time.value = elapsed_time;
+    if (u_elapsed_time)
+      u_elapsed_time.value = elapsed_time * controls.oscillation;
 
     // Rotate all particles
-    particles.points.rotation.x = elapsed_time * 0.1;
-    particles.points.rotation.y = elapsed_time * 0.12;
+    particles.points.rotation.y = elapsed_time * controls.rotation;
 
     // Render
     renderer.render(scene, camera);
