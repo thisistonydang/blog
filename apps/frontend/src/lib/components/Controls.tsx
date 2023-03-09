@@ -1,6 +1,15 @@
+import { useEffect } from "react";
 import { Leva } from "leva";
 
 export default function Controls() {
+  // Temp a11y fix. TODO: Make PR to Leva.
+  useEffect(() => {
+    const input = document.querySelector(
+      'input[placeholder="[Open filter with CMD+SHIFT+L]"]'
+    );
+    if (input) input.ariaLabel = "Search";
+  }, []);
+
   return (
     <div
       className="
