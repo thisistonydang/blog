@@ -13,10 +13,8 @@ export default function Particles() {
     rotation: { value: 0.05, min: -1, max: 1, step: 0.01 },
   });
 
-  useFrame(({ clock }) => {
-    if (particles.current) {
-      particles.current.rotation.y = clock.getElapsedTime() * rotation;
-    }
+  useFrame((_state, delta) => {
+    if (particles.current) particles.current.rotation.y += delta * rotation;
   });
 
   return (
