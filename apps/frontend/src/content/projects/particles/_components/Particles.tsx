@@ -20,7 +20,7 @@ export default function Particles() {
   return (
     <points ref={particles}>
       <ParticlesGeometry />
-      <ParticlesMaterial />
+      <ParticlesMaterial key={rotation} />
     </points>
   );
 }

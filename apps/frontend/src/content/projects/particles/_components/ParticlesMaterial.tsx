@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 
@@ -35,6 +35,11 @@ export default function ParticlesMaterial() {
     })
   );
 
+  const key = useMemo(
+    () => JSON.stringify({ size, oscillation, light_color, dark_color }),
+    [size, oscillation, light_color, dark_color]
+  );
+
   useEffect(() => {
     function handle_theme_toggle() {
       if (
@@ -66,7 +71,7 @@ export default function ParticlesMaterial() {
 
   return (
     <shaderMaterial
-      key={Math.random()}
+      key={key}
       ref={particlesMaterial}
       vertexShader={vertexShader}
       fragmentShader={fragmentShader}
