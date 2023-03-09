@@ -32,7 +32,8 @@ export function create_particles_material(controls: Controls): ShaderMaterial {
 
   window.addEventListener("resize", () => {
     const u_pixel_ratio = material.uniforms.u_pixel_ratio;
-    if (u_pixel_ratio) u_pixel_ratio.value = Math.min(devicePixelRatio, 2);
+    if (u_pixel_ratio)
+      u_pixel_ratio.value = Math.min(window.devicePixelRatio, 2);
   });
 
   window.addEventListener(THEME_TOGGLED_EVENT, () => {
