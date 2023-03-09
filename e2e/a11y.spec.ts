@@ -9,6 +9,7 @@ test.describe("a11y", () => {
     "/list/verify/expired",
     "/list/verify/success",
     "/posts",
+    "/projects",
     "/whoops",
     // Posts
     "/bee-snapped",
@@ -17,6 +18,8 @@ test.describe("a11y", () => {
     "/ifsc-shoes",
     "/relay-results",
     "/subielife",
+    // Projects
+    "/particles",
   ];
 
   for (const path of paths) {
