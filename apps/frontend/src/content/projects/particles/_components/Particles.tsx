@@ -10,7 +10,7 @@ export default function Particles() {
   const particles = useRef<Points>(null);
 
   const { rotation } = useControls({
-    rotation: { value: 0.05, min: -1, max: 1, step: 0.01 },
+    rotation: { value: 0.1, min: -1, max: 1, step: 0.1 },
   });
 
   useFrame((_state, delta) => {
