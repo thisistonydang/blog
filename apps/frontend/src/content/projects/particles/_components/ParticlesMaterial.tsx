@@ -1,9 +1,8 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 
-import { AdditiveBlending } from "three";
-import type { ShaderMaterial } from "three";
+import { AdditiveBlending, ShaderMaterial } from "three";
 
 // @ts-expect-error svelte import
 import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.svelte";
@@ -12,6 +11,20 @@ import { rgb_to_vec3 } from "@lib/colors/rgb_to_vec3";
 import vertexShader from "@lib/shaders/particle/vertex.glsl";
 // @ts-expect-error glsl import
 import fragmentShader from "@lib/shaders/particle/fragment.glsl";
+
+const material = new ShaderMaterial({
+  vertexShader,
+  fragmentShader,
+  uniforms: {
+    u_elapsed_time: { value: 0 },
+    u_pixel_ratio: { value: null },
+    u_particle_size: { value: null },
+    u_color: { value: null },
+  },
+  transparent: true,
+  depthWrite: false,
+  blending: AdditiveBlending,
+});
 
 export default function ParticlesMaterial() {
   const particlesMaterial = useRef<ShaderMaterial>(null);
@@ -33,11 +46,6 @@ export default function ParticlesMaterial() {
         render: (get) => get("theme") === "dark",
       },
     })
-  );
-
-  const key = useMemo(
-    () => JSON.stringify({ size, oscillation, light_color, dark_color }),
-    [size, oscillation, light_color, dark_color]
   );
 
   useEffect(() => {
@@ -71,23 +79,13 @@ export default function ParticlesMaterial() {
 
   return (
     <shaderMaterial
-      key={key}
       ref={particlesMaterial}
-      vertexShader={vertexShader}
-      fragmentShader={fragmentShader}
-      uniforms={{
-        u_elapsed_time: { value: 0 },
-        u_pixel_ratio: { value: Math.min(devicePixelRatio, 2) },
-        u_particle_size: { value: size },
-        u_color: {
-          value: rgb_to_vec3(
-            localStorage.theme === "dark" ? dark_color : light_color
-          ),
-        },
-      }}
-      transparent={true}
-      depthWrite={false}
-      blending={AdditiveBlending}
+      {...material}
+      uniforms-u_pixel_ratio-value={Math.min(window.devicePixelRatio, 2)}
+      uniforms-u_particle_size-value={size}
+      uniforms-u_color-value={rgb_to_vec3(
+        localStorage.theme === "dark" ? dark_color : light_color
+      )}
     />
   );
 }
