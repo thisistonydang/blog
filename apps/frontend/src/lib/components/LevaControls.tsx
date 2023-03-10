@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Leva } from "leva";
 
-export default function Controls() {
+export default function LevaControls() {
   // Temp a11y fix. TODO: Make PR to Leva.
   useEffect(() => {
     const input = document.querySelector(

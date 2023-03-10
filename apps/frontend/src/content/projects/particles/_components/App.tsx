@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { Canvas } from "@react-three/fiber";
 // import { Perf } from "r3f-perf";
 
-import Controls from "@lib/components/Controls";
+import LevaControls from "@lib/components/LevaControls";
 import Loading from "@lib/components/Loading";
 import { useMounted } from "@lib/hooks/useMounted";
 
@@ -25,7 +25,7 @@ export default function App() {
             <Experience />
             {/* <Perf position="bottom-right" /> */}
           </Canvas>
-          <Controls />
+          <LevaControls />
         </main>
       ) : (
         <Loading />
