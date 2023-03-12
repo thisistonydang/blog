@@ -21,7 +21,7 @@ export default function App() {
               cursor-grab active:cursor-grabbing
             "
         >
-          <Canvas camera={{ position: [0, 0, 4] }}>
+          <Canvas gl={{ antialias: false }} camera={{ position: [0, 0, 4] }}>
             <Experience />
             {/* <Perf position="bottom-right" /> */}
           </Canvas>
