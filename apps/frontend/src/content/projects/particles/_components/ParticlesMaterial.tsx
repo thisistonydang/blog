@@ -28,6 +28,8 @@ const material = new ShaderMaterial({
 
 export default function ParticlesMaterial() {
   const particlesMaterial = useRef<ShaderMaterial>(null);
+  const width = useRef(window.innerWidth);
+  const height = useRef(window.innerHeight);
 
   const [{ size, oscillation, light_color, dark_color }, set] = useControls(
     () => ({
@@ -47,6 +49,31 @@ export default function ParticlesMaterial() {
       },
     })
   );
+
+  useEffect(() => {
+    function update_pixel_ratio() {
+      const new_width = window.innerWidth;
+      const new_height = window.innerHeight;
+
+      if (new_width === width.current && new_height === height.current) return;
+
+      width.current = new_width;
+      height.current = new_height;
+      if (
+        particlesMaterial.current &&
+        particlesMaterial.current.uniforms.u_pixel_ratio
+      ) {
+        particlesMaterial.current.uniforms.u_pixel_ratio.value = Math.min(
+          window.devicePixelRatio,
+          2
+        );
+      }
+    }
+
+    window.addEventListener("resize", update_pixel_ratio);
+
+    return () => window.removeEventListener("resize", update_pixel_ratio);
+  }, []);
 
   useEffect(() => {
     function handle_theme_toggle() {
