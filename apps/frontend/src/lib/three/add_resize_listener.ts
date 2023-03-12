@@ -8,7 +8,7 @@ export function add_resize_listener(
   camera: PerspectiveCamera,
   renderer: WebGLRenderer
 ): void {
-  addEventListener("resize", () => {
+  window.addEventListener("resize", () => {
     // Update camera
     camera.aspect = container.offsetWidth / container.offsetHeight;
     camera.updateProjectionMatrix();
@@ -16,6 +16,6 @@ export function add_resize_listener(
     // Update renderer size and pixel ratio. Pixel ratio may change when moving
     // across different monitors.
     renderer.setSize(container.offsetWidth, container.offsetHeight);
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   });
 }
