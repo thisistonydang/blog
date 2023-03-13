@@ -5,7 +5,7 @@ export default function Experience() {
   return (
     <>
       <Particles />
-      <TrackballControls />
+      <TrackballControls noPan />
     </>
   );
 }
