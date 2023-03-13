@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMounted } from "@lib/hooks/useMounted";
+import Ping from "./Ping";
 
 export default function Info({
   title,
@@ -9,7 +10,13 @@ export default function Info({
   children: React.ReactNode;
 }) {
   const mounted = useMounted();
+  const show_ping = useRef(true);
   const [is_opened, set_is_opened] = useState(false);
+
+  function handle_click(): void {
+    show_ping.current = false;
+    set_is_opened(!is_opened);
+  }
 
   useEffect(() => {
     const hide_info = () => set_is_opened(false);
@@ -50,11 +57,16 @@ export default function Info({
             ${mounted ? "cursor-help" : "cursor-not-allowed"}
           `}
           aria-label={is_opened ? "Hide info." : "Show Info."}
-          onClick={() => set_is_opened(!is_opened)}
+          onClick={handle_click}
         >
           {is_opened ? <span className="text-3xl">&times;</span> : "i"}
         </button>
         <h1 className="text-heading text-3xl">{title}</h1>
+        {show_ping.current && (
+          <div className="absolute bottom-8 left-8">
+            <Ping />
+          </div>
+        )}
       </div>
     </aside>
   );
