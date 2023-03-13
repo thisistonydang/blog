@@ -13,23 +13,25 @@ export default function App() {
 
   return (
     <StrictMode>
-      {mounted ? (
-        <main
-          className="
+      <main>
+        {mounted ? (
+          <div
+            className="
               h-screen w-screen
               animate-[fade-in_10s]
               cursor-grab active:cursor-grabbing
             "
-        >
-          <Canvas gl={{ antialias: false }} camera={{ position: [0, 0, 4] }}>
-            <Experience />
-            {/* <Perf position="bottom-right" /> */}
-          </Canvas>
-          <LevaControls />
-        </main>
-      ) : (
-        <Loading />
-      )}
+          >
+            <Canvas gl={{ antialias: false }} camera={{ position: [0, 0, 4] }}>
+              <Experience />
+              {/* <Perf position="bottom-right" /> */}
+            </Canvas>
+            <LevaControls />
+          </div>
+        ) : (
+          <Loading />
+        )}
+      </main>
     </StrictMode>
   );
 }

@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <main className="h-screen w-screen">
+    <div className="h-screen w-screen">
       <svg
         className="
           fill-text
@@ -25,6 +25,6 @@ export default function Loading() {
         "
         />
       </svg>
-    </main>
+    </div>
   );
 }

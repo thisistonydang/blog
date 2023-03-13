@@ -21,7 +21,7 @@ export default function Info({
   useEffect(() => {
     const hide_info = () => set_is_opened(false);
 
-    const canvas = document.querySelector("canvas");
+    const canvas = document.querySelector("main");
     canvas?.addEventListener("mousedown", hide_info);
 
     return () => canvas?.removeEventListener("mousedown", hide_info);
