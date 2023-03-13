@@ -33,7 +33,7 @@ export default function ParticlesMaterial() {
 
   const [{ size, oscillation, light_color, dark_color }, set] = useControls(
     () => ({
-      size: { value: 150, min: 0, max: 300, step: 1 },
+      size: { value: 100, min: 0, max: 300, step: 1 },
       oscillation: { value: 1, min: 0, max: 10, step: 0.1 },
       theme: {
         value: localStorage.theme === "dark" ? "dark" : "light",
