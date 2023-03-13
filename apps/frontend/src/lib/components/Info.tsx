@@ -61,12 +61,12 @@ export default function Info({
         >
           {is_opened ? <span className="text-3xl">&times;</span> : "i"}
         </button>
-        <h1 className="text-heading text-3xl">{title}</h1>
         {show_ping.current && (
           <div className="absolute bottom-8 left-8">
             <Ping />
           </div>
         )}
+        <h1 className="text-heading text-3xl">{title}</h1>
       </div>
     </aside>
   );
