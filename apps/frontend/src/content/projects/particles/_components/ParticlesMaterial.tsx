@@ -4,9 +4,8 @@ import { useControls } from "leva";
 
 import { AdditiveBlending, ShaderMaterial } from "three";
 
-// @ts-expect-error svelte import
-import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.svelte";
 import { rgb_to_vec3 } from "@lib/colors/rgb_to_vec3";
+import { useTheme } from "@lib/hooks/useTheme";
 // @ts-expect-error glsl import
 import vertexShader from "@lib/shaders/particle/vertex.glsl";
 // @ts-expect-error glsl import
@@ -30,15 +29,13 @@ export default function ParticlesMaterial() {
   const particlesMaterial = useRef<ShaderMaterial>(null);
   const width = useRef(window.innerWidth);
   const height = useRef(window.innerHeight);
+  const theme = useTheme();
 
   const [{ size, oscillation, light_color, dark_color }, set] = useControls(
     () => ({
       size: { value: 100, min: 0, max: 300, step: 1 },
       oscillation: { value: 1, min: 0, max: 10, step: 0.1 },
-      theme: {
-        value: localStorage.theme === "dark" ? "dark" : "light",
-        render: () => false,
-      },
+      theme: { value: theme, render: () => false },
       light_color: {
         value: { r: 22, g: 78, b: 99 },
         render: (get) => get("theme") === "light",
@@ -49,6 +46,8 @@ export default function ParticlesMaterial() {
       },
     })
   );
+
+  useEffect(() => set({ theme }), [theme, set]);
 
   useEffect(() => {
     function update_pixel_ratio() {
@@ -75,25 +74,6 @@ export default function ParticlesMaterial() {
     return () => window.removeEventListener("resize", update_pixel_ratio);
   }, []);
 
-  useEffect(() => {
-    function handle_theme_toggle() {
-      if (
-        particlesMaterial.current &&
-        particlesMaterial.current.uniforms.u_color
-      ) {
-        particlesMaterial.current.uniforms.u_color.value = rgb_to_vec3(
-          localStorage.theme === "dark" ? dark_color : light_color
-        );
-        set({ theme: localStorage.theme === "dark" ? "dark" : "light" });
-      }
-    }
-
-    window.addEventListener(THEME_TOGGLED_EVENT, handle_theme_toggle);
-
-    return () =>
-      window.removeEventListener(THEME_TOGGLED_EVENT, handle_theme_toggle);
-  }, [dark_color, light_color, set]);
-
   useFrame((_state, delta) => {
     if (
       particlesMaterial.current &&
@@ -111,7 +91,7 @@ export default function ParticlesMaterial() {
       uniforms-u_pixel_ratio-value={Math.min(window.devicePixelRatio, 2)}
       uniforms-u_particle_size-value={size}
       uniforms-u_color-value={rgb_to_vec3(
-        localStorage.theme === "dark" ? dark_color : light_color
+        theme === "dark" ? dark_color : light_color
       )}
     />
   );
