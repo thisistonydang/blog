@@ -9,25 +9,23 @@ draft: false
 ---
 
 import FixedHeader from "@layouts/page/_components/FixedHeader.astro";
-import Info from "@lib/components/Info.astro";
 import App from "./_components/App";
 export const __ = undefined;
 
-<App client:load />
-
 <FixedHeader />
+<App client:load>
+    # Particles
 
-<Info title="Particles">
-  Floating particles around a central nucleus. Loosely inspired by the structure
-  of an atom.
+    Floating particles around a central nucleus. Loosely inspired by the
+    structure of an atom.
 
-  Drag to rotate, pinch/scroll to zoom.
+    Drag to rotate, pinch/scroll to zoom.
 
-  <small>
-    Created using custom WebGL shaders and rendered with
-    [three.js](https://threejs.org/) and
-    [react-three-fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction).
+    <small>
+      Created using custom WebGL shaders and rendered with
+      [three.js](https://threejs.org/) and
+      [react-three-fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction).
 
-    **Code:** [Github](https://github.com/tonydangblog/blog/tree/main/apps/frontend/src/content/projects/particles/_components)
-  </small>
-</Info>
+      **Code:** [Github](https://github.com/tonydangblog/blog/tree/main/apps/frontend/src/content/projects/particles/_components)
+    </small>
+</App>
