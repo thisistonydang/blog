@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 // import { Perf } from "r3f-perf";
 
@@ -7,9 +7,13 @@ import Loading from "@lib/components/Loading";
 import { useMounted } from "@lib/hooks/useMounted";
 
 import Experience from "./Experience";
+import Interface from "./Interface";
 
-export default function App() {
+export default function App({ children }: { children: React.ReactNode }) {
   const mounted = useMounted();
+
+  const [showInfo, setShowInfo] = useState(false);
+  const [hasPing, setHasPing] = useState(true);
 
   return (
     <StrictMode>
@@ -22,7 +26,11 @@ export default function App() {
               cursor-grab active:cursor-grabbing
             "
           >
-            <Canvas gl={{ antialias: false }} camera={{ position: [0, 0, 4] }}>
+            <Canvas
+              gl={{ antialias: false }}
+              camera={{ position: [0, 0, 4] }}
+              onClick={() => setShowInfo(false)}
+            >
               <Experience />
               {/* <Perf position="bottom-right" /> */}
             </Canvas>
@@ -32,6 +40,16 @@ export default function App() {
           <Loading />
         )}
       </main>
+      <Interface
+        isOpened={showInfo}
+        hasPing={hasPing}
+        onClick={() => {
+          setHasPing(false);
+          setShowInfo(!showInfo);
+        }}
+      >
+        {children}
+      </Interface>
     </StrictMode>
   );
 }
