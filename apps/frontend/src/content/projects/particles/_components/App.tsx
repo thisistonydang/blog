@@ -26,7 +26,7 @@ export default function App() {
               <Experience />
               {/* <Perf position="bottom-right" /> */}
             </Canvas>
-            <LevaControls />
+            <LevaControls collapsed />
           </div>
         ) : (
           <Loading />
