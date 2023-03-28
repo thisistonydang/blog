@@ -31,7 +31,7 @@ export default function IconButton({
         aria-label={isToggled ? ariaLabelToggled : ariaLabel}
         onClick={onClick}
       >
-        {isToggled ? <span className="text-3xl">&times;</span> : children}
+        {isToggled ? <>&times;</> : children}
       </button>
       {hasPing && (
         <div className="absolute bottom-8 left-8">
