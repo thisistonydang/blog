@@ -4,7 +4,12 @@ import SiteNav from "./SiteNav.svelte";
 ---
 
 <header class="text-heading relative mb-10 flex items-center">
-  <a class="text-3xl" href="/" rel="prefetch" aria-label="Return to home page.">
+  <a
+    class="pointer-events-auto text-3xl"
+    href="/"
+    rel="prefetch"
+    aria-label="Return to home page."
+  >
     Td
   </a>
   <SiteNav current_path={Astro.url.pathname} />

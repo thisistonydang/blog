@@ -52,6 +52,7 @@
     before:duration-100
     hover:opacity-95
     dark:before:left-6
+    pointer-events-auto
   "
   class:cursor-not-allowed={!mounted}
   disabled={!mounted}

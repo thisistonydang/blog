@@ -6,9 +6,10 @@
 <a
   class="
     text-heading after:bg-accent
-    opacity-90 after:block after:h-0.5
-    after:w-0
-    after:transition-[width] after:duration-200 after:hover:w-full
+    pointer-events-auto opacity-90 after:block
+    after:h-0.5
+    after:w-0 after:transition-[width] after:duration-200
+    after:hover:w-full
   "
   class:after:w-full={current_path === page.path}
   href={page.path}
