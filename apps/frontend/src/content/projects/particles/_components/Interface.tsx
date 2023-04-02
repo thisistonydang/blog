@@ -28,7 +28,7 @@ export default function Interface({
           hasPing={hasPing}
           onClick={onClick}
         >
-          <span className="font-serif">i</span>
+          i
         </IconButton>
         {!isOpened && (
           <Prose>
