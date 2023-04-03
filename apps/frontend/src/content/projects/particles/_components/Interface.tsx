@@ -24,6 +24,7 @@ export default function Interface({
         <IconButton
           ariaLabel="Show Info."
           ariaLabelToggled="Hide Info."
+          toggledText={<>&times;</>}
           isToggled={isOpened}
           hasPing={hasPing}
           onClick={onClick}
