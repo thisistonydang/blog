@@ -8,6 +8,7 @@ export default function IconButton({
   isToggled = false,
   hasPing = false,
   isPill = false,
+  fixedWidth,
   onClick,
   children,
 }: {
@@ -17,6 +18,7 @@ export default function IconButton({
   isToggled?: boolean;
   hasPing?: boolean;
   isPill?: boolean;
+  fixedWidth?: number;
   onClick: () => void;
   children: React.ReactNode;
 }) {
@@ -26,10 +28,12 @@ export default function IconButton({
     <>
       <button
         className={`
-          text-bg bg-text h-10 min-w-[40px] rounded-full drop-shadow
+          text-bg bg-text h-10 rounded-full drop-shadow
           ${isPill ? "text-bold px-3 font-sans" : "font-serif text-2xl"}
+          ${!fixedWidth && "min-w-[40px]"}
           ${!mounted && "cursor-not-allowed"}
         `}
+        style={{ width: fixedWidth }}
         aria-label={isToggled ? ariaLabelToggled : ariaLabel}
         onClick={onClick}
       >
