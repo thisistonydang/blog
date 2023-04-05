@@ -1,5 +1,6 @@
 import { useMounted } from "@lib/hooks/useMounted";
 import Ping from "./Ping";
+import Prose from "./Prose";
 
 export default function IconButton({
   ariaLabel,
@@ -28,8 +29,7 @@ export default function IconButton({
     <>
       <button
         className={`
-          text-bg bg-text h-10 rounded-full drop-shadow
-          ${isPill ? "text-bold px-3 font-sans" : "font-serif text-2xl"}
+          bg-text h-10 rounded-full drop-shadow
           ${!fixedWidth && "min-w-[40px]"}
           ${!mounted && "cursor-not-allowed"}
         `}
@@ -37,7 +37,13 @@ export default function IconButton({
         aria-label={isToggled ? ariaLabelToggled : ariaLabel}
         onClick={onClick}
       >
-        {isToggled ? toggledText : children}
+        <Prose>
+          <span
+            className={`text-bg ${isPill ? "px-3" : "font-serif text-2xl"}`}
+          >
+            {isToggled ? toggledText : children}
+          </span>
+        </Prose>
       </button>
       {hasPing && (
         <div className="absolute bottom-8 left-8">
