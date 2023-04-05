@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { BoardAngleContext } from "../_context/BoardAngleContext";
 import { BoardWidthContext } from "../_context/BoardWidthContext";
@@ -49,7 +49,6 @@ export default function ContextProvider({
   );
 
   useSyncLocalStorage(setBoardAngle, setBoardWidth, setCurrentProblem);
-  useEffect(() => setControlsMode("opened"), []);
 
   return (
     <BoardAngleContext.Provider
