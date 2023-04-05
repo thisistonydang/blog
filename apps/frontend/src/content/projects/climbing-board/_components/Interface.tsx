@@ -23,7 +23,7 @@ export default function Interface() {
         <div
           className="
             fixed bottom-8 left-8 flex
-            animate-[fly-up_0.25s] animate-[fade-in_0.25s]
+            animate-[fly-right_0.25s] animate-[fade-in_0.25s]
             items-center gap-4
           "
         >
