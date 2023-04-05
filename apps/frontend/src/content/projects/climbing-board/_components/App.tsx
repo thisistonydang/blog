@@ -6,11 +6,13 @@ import Interface from "./Interface";
 
 export default function App() {
   return (
-    <StrictMode>
-      <ContextProvider>
-        <Experience />
-        <Interface />
-      </ContextProvider>
-    </StrictMode>
+    <main>
+      <StrictMode>
+        <ContextProvider>
+          <Experience />
+          <Interface />
+        </ContextProvider>
+      </StrictMode>
+    </main>
   );
 }
