@@ -39,11 +39,9 @@ export default function ContextProvider({
   const [controlsMode, setControlsMode] = useState<ControlsMode>("closed");
 
   // Set inital problem.
-  const tres = allProblems.find((problem) => {
-    return problem.width === INTIAL_WIDTH && problem.name === "Tres";
-  });
+  const problem = allProblems.find((problem) => problem.width === INTIAL_WIDTH);
   const [currentProblem, setCurrentProblem] = useState<Problem>(
-    tres ? tres : unSetProblem
+    problem ? problem : unSetProblem
   );
 
   useSyncLocalStorage(setBoardAngle, setBoardWidth, setCurrentProblem);
