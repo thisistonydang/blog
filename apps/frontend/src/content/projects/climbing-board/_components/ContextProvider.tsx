@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import { BoardAngleContext } from "../_context/BoardAngleContext";
 import { BoardWidthContext } from "../_context/BoardWidthContext";
@@ -29,9 +29,7 @@ export default function ContextProvider({
   children: React.ReactNode;
 }) {
   // Set inital board angle.
-  const INTIAL_ANGLE = 40;
-  const [boardAngle, setBoardAngle] = useState<BoardAngle>(INTIAL_ANGLE);
-  const prevBoardAngle = useRef<BoardAngle>(INTIAL_ANGLE);
+  const [boardAngle, setBoardAngle] = useState<BoardAngle>(40);
 
   // Set initial board width.
   const INTIAL_WIDTH = 12;
@@ -51,9 +49,7 @@ export default function ContextProvider({
   useSyncLocalStorage(setBoardAngle, setBoardWidth, setCurrentProblem);
 
   return (
-    <BoardAngleContext.Provider
-      value={{ boardAngle, setBoardAngle, prevBoardAngle }}
-    >
+    <BoardAngleContext.Provider value={{ boardAngle, setBoardAngle }}>
       <BoardWidthContext.Provider value={{ boardWidth, setBoardWidth }}>
         <ControlsModeContext.Provider value={{ controlsMode, setControlsMode }}>
           <CurrentProblemContext.Provider
