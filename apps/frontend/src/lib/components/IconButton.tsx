@@ -13,7 +13,7 @@ export default function IconButton({
   onClick,
   children,
 }: {
-  ariaLabel: string;
+  ariaLabel?: string;
   ariaLabelToggled?: string;
   toggledText?: React.ReactNode;
   isToggled?: boolean;
