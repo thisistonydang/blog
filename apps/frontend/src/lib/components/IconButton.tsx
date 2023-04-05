@@ -7,6 +7,7 @@ export default function IconButton({
   ariaLabelToggled,
   toggledText,
   isToggled = false,
+  disabled = false,
   hasPing = false,
   isPill = false,
   fixedWidth,
@@ -17,6 +18,7 @@ export default function IconButton({
   ariaLabelToggled?: string;
   toggledText?: React.ReactNode;
   isToggled?: boolean;
+  disabled?: boolean;
   hasPing?: boolean;
   isPill?: boolean;
   fixedWidth?: number;
@@ -30,11 +32,13 @@ export default function IconButton({
       <button
         className={`
           bg-text h-10 rounded-full drop-shadow
+          disabled:cursor-not-allowed disabled:opacity-75
           ${!fixedWidth && "min-w-[40px]"}
           ${!mounted && "cursor-not-allowed"}
         `}
         style={{ width: fixedWidth }}
         aria-label={isToggled ? ariaLabelToggled : ariaLabel}
+        disabled={disabled}
         onClick={onClick}
       >
         <Prose>
