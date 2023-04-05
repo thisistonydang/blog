@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { Dispatch, MutableRefObject, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 export type BoardAngle =
   | 0
@@ -30,6 +30,5 @@ export const BoardAngleContext = createContext(
   {} as {
     boardAngle: BoardAngle;
     setBoardAngle: Dispatch<SetStateAction<BoardAngle>>;
-    prevBoardAngle: MutableRefObject<BoardAngle>;
   }
 );
