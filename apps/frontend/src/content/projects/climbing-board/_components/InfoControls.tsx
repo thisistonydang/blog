@@ -26,7 +26,7 @@ export default function InfoControls() {
         </li>
       </ControlsList>
 
-      <ControlsDialog isProse>
+      <ControlsDialog isProse hasPadding>
         <h1>Climbing Board</h1>
         <p>Concept training board app for climbing. Features include:</p>
         <ul>
