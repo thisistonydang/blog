@@ -48,12 +48,12 @@ export default function IconButton({
             {isToggled ? toggledText : children}
           </span>
         </Prose>
+        {hasPing && (
+          <div className="absolute bottom-8 left-8">
+            <Ping />
+          </div>
+        )}
       </button>
-      {hasPing && (
-        <div className="absolute bottom-8 left-8">
-          <Ping />
-        </div>
-      )}
     </>
   );
 }
