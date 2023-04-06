@@ -1,15 +1,15 @@
 import { StrictMode } from "react";
 
 import ContextProvider from "./ContextProvider";
-import Experience from "./Experience";
 import Interface from "./Interface";
+import World from "./World";
 
 export default function App() {
   return (
     <main>
       <StrictMode>
         <ContextProvider>
-          <Experience />
+          <World />
           <Interface />
         </ContextProvider>
       </StrictMode>
