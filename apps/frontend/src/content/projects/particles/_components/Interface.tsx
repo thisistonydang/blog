@@ -1,3 +1,4 @@
+import ControlsDialog from "@lib/components/ControlsDialog";
 import IconButton from "@lib/components/IconButton";
 import Prose from "@lib/components/Prose";
 
@@ -37,18 +38,7 @@ export default function Interface({
           </Prose>
         )}
       </div>
-      {isOpened && (
-        <div
-          className="
-            bg-surface/80
-            fixed bottom-14 m-8 max-h-[50%] max-w-2xl
-            animate-[fly-up_0.25s] animate-[fade-in_0.25s]
-            overflow-y-auto rounded p-3 drop-shadow
-          "
-        >
-          <Prose>{children}</Prose>
-        </div>
-      )}
+      {isOpened && <ControlsDialog isProse>{children}</ControlsDialog>}
     </aside>
   );
 }
