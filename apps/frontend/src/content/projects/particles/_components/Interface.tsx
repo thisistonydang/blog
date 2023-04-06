@@ -38,7 +38,11 @@ export default function Interface({
           </Prose>
         )}
       </div>
-      {isOpened && <ControlsDialog isProse>{children}</ControlsDialog>}
+      {isOpened && (
+        <ControlsDialog isProse hasPadding>
+          {children}
+        </ControlsDialog>
+      )}
     </aside>
   );
 }
