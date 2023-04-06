@@ -5,7 +5,7 @@ export default function Experience() {
   return (
     <>
       <Particles />
-      <TrackballControls noPan />
+      <TrackballControls noPan dynamicDampingFactor={0.05} />
     </>
   );
 }
