@@ -17,7 +17,7 @@ import ControlsDisplay from "./ControlsDisplay";
 import ControlsList from "./ControlsList";
 import { unSetProblem } from "./ContextProvider";
 
-export default function AngleControls() {
+export default function WidthControls() {
   const { boardWidth, setBoardWidth } = useContext(BoardWidthContext);
   const { setControlsMode } = useContext(ControlsModeContext);
   const { setCurrentProblem } = useContext(CurrentProblemContext);
