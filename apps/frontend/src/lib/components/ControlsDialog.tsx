@@ -11,8 +11,8 @@ export default function ControlsDialog({
     <dialog
       open
       className="
-        bg-surface/80
-        fixed bottom-14 m-8 max-h-[50%] max-w-2xl
+        bg-surface/90 fixed
+        bottom-24 z-50 mx-8 max-h-[calc(100vh-96px-96px-96px)] max-w-2xl
         animate-[fly-up_0.25s] animate-[fade-in_0.25s]
         overflow-y-auto rounded p-5 drop-shadow
       "
