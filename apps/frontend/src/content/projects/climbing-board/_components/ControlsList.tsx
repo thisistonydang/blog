@@ -21,8 +21,8 @@ export default function ControlsList({
             ? "animate-[fly-up_0.25s] flex-col-reverse"
             : "animate-[fly-right_0.25s]"
         }
-        ${shiftUp ? "bottom-20" : "bottom-8"}
-        ${shiftRight ? "left-20" : "left-8"}
+        ${shiftUp ? "bottom-24" : "bottom-8"}
+        ${shiftRight ? "left-24" : "left-8"}
       `}
     >
       {children}
