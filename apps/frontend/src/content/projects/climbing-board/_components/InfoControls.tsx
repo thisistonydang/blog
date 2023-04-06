@@ -3,9 +3,12 @@ import { useContext } from "react";
 import ControlsDialog from "@lib/components/ControlsDialog";
 import IconButton from "@lib/components/IconButton";
 
+import { ALLOWED_ANGLES } from "../_context/BoardAngleContext";
+import { ALLOWED_WIDTHS } from "../_context/BoardWidthContext";
 import { ControlsModeContext } from "../_context/ControlsModeContext";
 
 import ControlsList from "./ControlsList";
+import InAppLink from "./InAppLink";
 
 export default function InfoControls() {
   const { setControlsMode } = useContext(ControlsModeContext);
@@ -27,10 +30,26 @@ export default function InfoControls() {
         <h1>Climbing Board</h1>
         <p>Concept training board app for climbing. Features include:</p>
         <ul>
-          <li>Board width adjustment from 8 to 12 ft</li>
-          <li>Board angle adjustment from 0 to 70&deg;</li>
-          <li>Problem selection from list of psuedo problems</li>
-          <li>Custom problem setting</li>
+          <li>
+            Board <InAppLink controlsMode="width">width adjustment</InAppLink>{" "}
+            from {ALLOWED_WIDTHS[0]} to {ALLOWED_WIDTHS.at(-1)} ft
+          </li>
+          <li>
+            Board <InAppLink controlsMode="angle">angle adjustment</InAppLink>{" "}
+            from {ALLOWED_ANGLES[0]} to {ALLOWED_ANGLES.at(-1)}&deg;
+          </li>
+          <li>
+            <InAppLink controlsMode="transitioning_to_browse">
+              Problem selection
+            </InAppLink>{" "}
+            from list of psuedo problems
+          </li>
+          <li>
+            Custom{" "}
+            <InAppLink controlsMode="transitioning_to_edit">
+              problem setting
+            </InAppLink>
+          </li>
         </ul>
         <p>
           Inspired by the{" "}
