@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import IconButton from "@lib/components/IconButton";
 import Prose from "@lib/components/Prose";
@@ -13,6 +13,7 @@ import WidthControls from "./WidthControls";
 
 export default function Interface() {
   const { controlsMode, setControlsMode } = useContext(ControlsModeContext);
+  const [showInfoPing, setShowInfoPing] = useState(true);
 
   // Open controls on mount.
   useEffect(() => setControlsMode("opened"), [setControlsMode]);
@@ -43,7 +44,12 @@ export default function Interface() {
           </Prose>
         </div>
       )}
-      {controlsMode === "opened" && <OpenedControls />}
+      {controlsMode === "opened" && (
+        <OpenedControls
+          showInfoPing={showInfoPing}
+          setShowInfoPing={setShowInfoPing}
+        />
+      )}
       {controlsMode === "info" && <InfoControls />}
       {controlsMode === "width" && <WidthControls />}
       {controlsMode === "angle" && <AngleControls />}

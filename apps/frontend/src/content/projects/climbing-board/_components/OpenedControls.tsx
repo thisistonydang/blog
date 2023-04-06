@@ -9,7 +9,15 @@ import { CurrentProblemContext } from "../_context/CurrentProblemContext";
 
 import ControlsList from "./ControlsList";
 
-export default function OpenedControls() {
+import type { Dispatch, SetStateAction } from "react";
+
+export default function OpenedControls({
+  showInfoPing,
+  setShowInfoPing,
+}: {
+  showInfoPing: boolean;
+  setShowInfoPing: Dispatch<SetStateAction<boolean>>;
+}) {
   const { boardAngle } = useContext(BoardAngleContext);
   const { boardWidth } = useContext(BoardWidthContext);
   const { setControlsMode } = useContext(ControlsModeContext);
@@ -53,7 +61,11 @@ export default function OpenedControls() {
       <li>
         <IconButton
           ariaLabel="Show Info."
-          onClick={() => setControlsMode("info")}
+          hasPing={showInfoPing}
+          onClick={() => {
+            setShowInfoPing(false);
+            setControlsMode("info");
+          }}
         >
           <span className="font-sans text-xl">?</span>
         </IconButton>
