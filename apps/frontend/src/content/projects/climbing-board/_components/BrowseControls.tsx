@@ -30,7 +30,7 @@ export default function BrowseControls() {
         <ControlsDialog>
           <ul>
             {filteredProblems.map((problem) => (
-              <li key={problem.name}>
+              <li key={problem.name} className="px-2 first:pt-2 last:pb-2">
                 <button
                   onClick={() => {
                     updateLocalStorage(["problem", problem]);
