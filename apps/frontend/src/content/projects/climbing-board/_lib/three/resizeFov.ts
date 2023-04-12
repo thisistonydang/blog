@@ -11,7 +11,7 @@ import type { PerspectiveCamera } from "three";
  *                           above the minAspectRatio
  * @param minAspectRatio - Minimum aspect ratio
  */
-export function setFov(
+export function resizeFov(
   camera: PerspectiveCamera,
   defaultCameraFov: number,
   minAspectRatio: number
