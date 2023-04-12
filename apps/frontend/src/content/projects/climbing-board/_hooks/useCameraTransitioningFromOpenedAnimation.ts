@@ -17,7 +17,6 @@ export function useCameraTransitioningFromOpenedAnimation(
   const { controlsMode, setControlsMode } = useContext(ControlsModeContext);
 
   useFrame(({ camera, invalidate }) => {
-    console.log("camera.position:", camera.position);
     if (!(camera instanceof PerspectiveCamera)) return;
 
     const finalCameraPosition = {
