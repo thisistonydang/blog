@@ -2,24 +2,19 @@ import { RoundedBox } from "@react-three/drei";
 import { useContext } from "react";
 
 import { BoardWidthContext } from "../_context/BoardWidthContext";
-import { MAX_BOARD_HEIGHT } from "../_lib/constants/constants.js";
-
-// Dev
-// import { useControls } from "leva";
+import {
+  CRASH_PAD_DEPTH,
+  MAX_BOARD_HEIGHT,
+} from "../_lib/constants/constants.js";
 
 export default function CrashPad() {
   const { boardWidth } = useContext(BoardWidthContext);
-  const CRASH_PAD_HEIGHT = 10 / 12;
-
-  // const { height, radius } = useControls("pad", {
-  //   height: { value: 10 / 12, min: 0, max: 15, step: 0.01 },
-  //   radius: { value: 0.4, min: 0, max: 0.5, step: 0.01 },
-  // });
+  const CRASH_PAD_HEIGHT = MAX_BOARD_HEIGHT / 12; // 1" per feet of max height
 
   return (
     <RoundedBox
-      args={[boardWidth + 8, CRASH_PAD_HEIGHT, MAX_BOARD_HEIGHT]}
-      radius={0.4}
+      args={[boardWidth + 8, CRASH_PAD_HEIGHT, CRASH_PAD_DEPTH]}
+      radius={0.6}
       position={[0, CRASH_PAD_HEIGHT / 2, 0]}
     >
       <meshStandardMaterial color="#000000" />
