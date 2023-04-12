@@ -42,7 +42,7 @@ export default function InfoControls() {
             <InAppLink controlsMode="transitioning_to_browse">
               Problem selection
             </InAppLink>{" "}
-            from list of psuedo problems
+            from list of pseudo problems
           </li>
           <li>
             Custom{" "}
