@@ -12,7 +12,7 @@ export const KICK_BOARD_HEIGHT = MAX_BOARD_HEIGHT - MAIN_BOARD_HEIGHT;
 export const MAIN_BOARD_ROWS = Math.floor(MAIN_BOARD_HEIGHT / HOLD_SPACING - 1);
 export const KICK_BOARD_ROWS = 2;
 
-export const alphabet = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"]; // Max columns
+export const ALPHABET = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"]; // Max columns
 export const NUM_GRIP_TYPES = 4;
 
 // Crash pad
