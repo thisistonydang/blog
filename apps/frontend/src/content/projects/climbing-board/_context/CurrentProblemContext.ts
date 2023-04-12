@@ -4,10 +4,10 @@ import type { Dispatch, SetStateAction } from "react";
 export interface Problem {
   name: string;
   grade: number;
-  start: number[];
-  middle: number[];
-  footOnly: number[];
-  finish: number[];
+  start: string[];
+  middle: string[];
+  footOnly: string[];
+  finish: string[];
 }
 
 export const CurrentProblemContext = createContext(
