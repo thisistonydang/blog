@@ -1,5 +1,5 @@
 import { useThree } from "@react-three/fiber";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { PerspectiveCamera } from "three";
 
 import { ALLOWED_WIDTHS } from "../_context/BoardWidthContext";
@@ -13,7 +13,7 @@ export function useFovResizer() {
   const { camera } = useThree();
 
   // Update FOV on resize events.
-  useEffect(() => {
+  useLayoutEffect(() => {
     function setFov() {
       const MAX_BOARD_WIDTH = ALLOWED_WIDTHS.at(-1);
       if (!(camera instanceof PerspectiveCamera) || !MAX_BOARD_WIDTH) return;

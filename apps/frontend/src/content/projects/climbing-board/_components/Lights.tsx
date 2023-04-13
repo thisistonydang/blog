@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { MathUtils } from "three";
 import {
   MAIN_BOARD_HEIGHT,
@@ -17,7 +17,7 @@ export default function Lights() {
   const target = useRef<Object3D>(null);
 
   // Set spotLight target.
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!spotLight.current || !target.current) return;
     spotLight.current.target = target.current;
   }, []);
