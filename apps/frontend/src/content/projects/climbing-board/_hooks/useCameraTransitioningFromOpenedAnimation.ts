@@ -66,10 +66,10 @@ export function useCameraTransitioningFromOpenedAnimation(
           finalCameraPosition.z
         );
 
-        if (controlsMode === "transitioning_to_edit") {
-          setControlsMode("edit");
-        } else if (controlsMode === "transitioning_to_browse") {
+        if (controlsMode === "transitioning_to_browse") {
           setControlsMode("browse");
+        } else if (controlsMode === "transitioning_to_edit") {
+          setControlsMode("edit");
         }
       }
 
