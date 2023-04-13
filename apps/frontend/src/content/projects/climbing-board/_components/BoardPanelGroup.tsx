@@ -2,10 +2,7 @@ import { useContext, useState } from "react";
 
 import { ControlsModeContext } from "../_context/ControlsModeContext";
 
-import {
-  BOARD_THICKNESS,
-  NUM_GRIP_TYPES,
-} from "../_lib/constants/constants.js";
+import { BOARD_THICKNESS } from "../_lib/constants/constants.js";
 
 import BoardPanel from "./BoardPanel";
 import Holds from "./Holds";
@@ -18,12 +15,14 @@ import type { Hold } from "../_lib/types/Hold";
 export default function BoardPanelGroup({
   groupPosition,
   panelHeight,
+  gripTypes,
   holds,
   xStart,
   yStart,
 }: {
   groupPosition: [number, number, number];
   panelHeight: number;
+  gripTypes: number[];
   holds: Hold[];
   xStart: number;
   yStart: number;
@@ -39,7 +38,7 @@ export default function BoardPanelGroup({
     <group position={groupPosition}>
       <BoardPanel height={panelHeight} />
 
-      {[...Array(NUM_GRIP_TYPES).keys()].map((gripType) => (
+      {gripTypes.map((gripType) => (
         <Holds
           key={gripType}
           gripType={gripType}

@@ -10,6 +10,7 @@ import {
   KICK_BOARD_HEIGHT,
   MAIN_BOARD_HEIGHT,
   MAIN_BOARD_ROWS,
+  NUM_GRIP_TYPES,
 } from "../_lib/constants/constants.js";
 
 import allHolds from "../_data/holds.json";
@@ -56,6 +57,7 @@ export default function KickBoardPanelGroup() {
         -CRASH_PAD_DEPTH / 2 - BOARD_TO_PAD_GAP,
       ]}
       panelHeight={KICK_BOARD_HEIGHT}
+      gripTypes={[NUM_GRIP_TYPES - 1]}
       holds={holds}
       xStart={xStart}
       yStart={yStart}

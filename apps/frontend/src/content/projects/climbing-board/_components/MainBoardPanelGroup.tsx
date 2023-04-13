@@ -7,6 +7,7 @@ import {
   HOLD_SPACING,
   MAIN_BOARD_HEIGHT,
   MAIN_BOARD_ROWS,
+  NUM_GRIP_TYPES,
 } from "../_lib/constants/constants.js";
 
 import allHolds from "../_data/holds.json";
@@ -49,6 +50,7 @@ export default function MainBoardPanelGroup() {
     <BoardPanelGroup
       groupPosition={[0, MAIN_BOARD_HEIGHT / 2, 0]}
       panelHeight={MAIN_BOARD_HEIGHT}
+      gripTypes={[...Array(NUM_GRIP_TYPES).keys()]}
       holds={holds}
       xStart={xStart}
       yStart={yStart}
