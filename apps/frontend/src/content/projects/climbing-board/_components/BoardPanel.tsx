@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { BoardWidthContext } from "../_context/BoardWidthContext";
 
 import { BOARD_THICKNESS } from "../_lib/constants/constants.js";
-import { boxGeometry } from "../_lib/geometries";
+import { BOX_GEOMETRY_SCALE, boxGeometry } from "../_lib/geometries";
 import { boardMaterial } from "../_lib/materials";
 
 export default function BoardPanel({ height }: { height: number }) {
@@ -13,7 +13,11 @@ export default function BoardPanel({ height }: { height: number }) {
     <mesh
       geometry={boxGeometry}
       material={boardMaterial}
-      scale={[boardWidth, height, BOARD_THICKNESS]}
+      scale={[
+        boardWidth * BOX_GEOMETRY_SCALE,
+        height * BOX_GEOMETRY_SCALE,
+        BOARD_THICKNESS * BOX_GEOMETRY_SCALE,
+      ]}
     ></mesh>
   );
 }

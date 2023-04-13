@@ -8,6 +8,7 @@ import {
   BOARD_THICKNESS,
   NUM_GRIP_TYPES,
 } from "../_lib/constants/constants.js";
+import { boxGeometry } from "../_lib/geometries";
 
 import type { InstancedMesh } from "three";
 import type { Hold } from "../_lib/types/Hold";
@@ -69,7 +70,11 @@ export default function Holds({
   return (
     <instancedMesh
       ref={instancedMesh}
-      args={[undefined, undefined, filteredHolds.length]}
+      args={[
+        gripType === NUM_GRIP_TYPES - 1 ? boxGeometry : undefined,
+        undefined,
+        filteredHolds.length,
+      ]}
     >
       {/* Jug */}
       {gripType === 0 && (
@@ -116,11 +121,6 @@ export default function Holds({
             Math.PI, // thetaLength
           ]}
         />
-      )}
-
-      {/* Foot Chip */}
-      {gripType === NUM_GRIP_TYPES - 1 && (
-        <boxGeometry args={[1 / 12, 1 / 12, 1 / 12]} />
       )}
 
       <meshStandardMaterial flatShading />
