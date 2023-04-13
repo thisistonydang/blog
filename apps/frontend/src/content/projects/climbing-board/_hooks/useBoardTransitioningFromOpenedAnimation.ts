@@ -8,12 +8,12 @@ import type { RefObject } from "react";
 import type { Group } from "three";
 
 export function useBoardTransitioningFromOpenedAnimation(
-  mainBoard: RefObject<Group>
+  group: RefObject<Group>
 ) {
   const { controlsMode } = useContext(ControlsModeContext);
 
   useFrame(({ invalidate }) => {
-    if (!mainBoard.current) return;
+    if (!group.current) return;
 
     const FINAL_BOARD_ANGLE = 0;
     const INTERPOLATION_FACTOR = 0.1;
@@ -22,8 +22,8 @@ export function useBoardTransitioningFromOpenedAnimation(
       controlsMode === "transitioning_to_browse" ||
       controlsMode === "transitioning_to_edit"
     ) {
-      mainBoard.current.rotation.x = MathUtils.lerp(
-        mainBoard.current.rotation.x,
+      group.current.rotation.x = MathUtils.lerp(
+        group.current.rotation.x,
         FINAL_BOARD_ANGLE,
         INTERPOLATION_FACTOR
       );
@@ -32,7 +32,7 @@ export function useBoardTransitioningFromOpenedAnimation(
     }
 
     if (controlsMode === "browse" || controlsMode === "edit") {
-      mainBoard.current.rotation.x = FINAL_BOARD_ANGLE;
+      group.current.rotation.x = FINAL_BOARD_ANGLE;
     }
   });
 }
