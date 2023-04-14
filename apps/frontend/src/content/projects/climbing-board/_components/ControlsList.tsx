@@ -12,10 +12,7 @@ export default function ControlsList({
   return (
     <ul
       className={`
-        fixed flex
-        animate-[fade-in_0.25s]
-        gap-2
-        rounded drop-shadow
+        pointer-events-none fixed flex animate-[fade-in_0.25s] gap-2
         ${
           isVertical
             ? "animate-[fly-up_0.25s] flex-col-reverse"
