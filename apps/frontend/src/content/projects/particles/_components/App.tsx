@@ -29,7 +29,7 @@ export default function App({ children }: { children: React.ReactNode }) {
             <Canvas
               gl={{ antialias: false }}
               camera={{ position: [0, 0, 4] }}
-              onClick={() => setShowInfo(false)}
+              onMouseDown={() => setShowInfo(false)}
             >
               <Experience />
               {/* <Perf position="bottom-right" /> */}
