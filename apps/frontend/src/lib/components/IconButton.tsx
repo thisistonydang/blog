@@ -31,7 +31,8 @@ export default function IconButton({
     <>
       <button
         className={`
-          bg-text h-10 rounded-full drop-shadow
+          bg-text pointer-events-auto
+          h-10 rounded-full drop-shadow
           disabled:cursor-not-allowed disabled:opacity-75
           ${!fixedWidth && "min-w-[40px]"}
           ${!mounted && "cursor-not-allowed"}
