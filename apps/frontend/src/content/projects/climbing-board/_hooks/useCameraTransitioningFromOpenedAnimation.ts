@@ -53,7 +53,7 @@ export function useCameraTransitioningFromOpenedAnimation(
         INTERPOLATION_FACTOR
       );
 
-      const TOLERANCE = 0.001;
+      const TOLERANCE = 0.01;
 
       if (
         Math.abs(camera.position.x - finalCameraPosition.x) < TOLERANCE &&
