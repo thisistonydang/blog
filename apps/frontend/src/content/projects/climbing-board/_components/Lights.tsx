@@ -1,5 +1,4 @@
 import { useLayoutEffect, useRef } from "react";
-import { MathUtils } from "three";
 import {
   MAIN_BOARD_HEIGHT,
   MAX_BOARD_HEIGHT,
@@ -24,17 +23,10 @@ export default function Lights() {
 
   // useHelper(spotLight, SpotLightHelper);
 
-  // const { sIntensity, sY, sZ, angle, penumbra } = useControls("spotlight", {
-  //   sIntensity: { value: 7.5, min: 0, max: 50, step: 0.1 },
+  // const { sIntensity, sY, sZ } = useControls("spotlight", {
+  //   sIntensity: { value: 2, min: 0, max: 50, step: 0.1 },
   //   sY: { value: MAX_BOARD_HEIGHT / 2, min: -100, max: 100, step: 0.1 },
   //   sZ: { value: 12, min: -100, max: 100, step: 0.1 },
-  //   angle: {
-  //     value: MathUtils.degToRad(75),
-  //     min: 0,
-  //     max: Math.PI / 2,
-  //     step: 0.1,
-  //   },
-  //   penumbra: { value: 0.5, min: 0, max: 1, step: 0.1 },
   // });
 
   // const { targetY, targetZ } = useControls("target", {
@@ -51,10 +43,8 @@ export default function Lights() {
     <>
       <spotLight
         ref={spotLight}
-        intensity={10}
+        intensity={2}
         position={[0, MAX_BOARD_HEIGHT / 2, 12]}
-        angle={MathUtils.degToRad(75)}
-        penumbra={0.5}
       />
       <object3D
         ref={target}
