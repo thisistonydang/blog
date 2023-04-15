@@ -1,3 +1,4 @@
+import { useTexture } from "@react-three/drei";
 import { useContext, useLayoutEffect, useRef } from "react";
 import { Euler, Matrix4, Shape, Vector3 } from "three";
 
@@ -6,7 +7,6 @@ import {
   BOARD_THICKNESS,
   MAIN_BOARD_HEIGHT,
 } from "../_lib/constants/constants.js";
-import { boardMaterial } from "../_lib/materials";
 
 import type { InstancedMesh } from "three";
 
@@ -30,6 +30,7 @@ shape.lineTo(0, 0);
 export default function Stiffeners() {
   const { boardWidth } = useContext(BoardWidthContext);
   const instancedMesh = useRef<InstancedMesh>(null);
+  const matcap = useTexture("/matcaps/64/3B3B3B_C7C7C7_878787_A4A4A4-64px.png");
   const STIFFENERS_COUNT = 2;
 
   useLayoutEffect(() => {
@@ -52,7 +53,7 @@ export default function Stiffeners() {
   return (
     <instancedMesh
       ref={instancedMesh}
-      args={[undefined, boardMaterial, STIFFENERS_COUNT]}
+      args={[undefined, undefined, STIFFENERS_COUNT]}
     >
       <extrudeGeometry
         args={[
@@ -63,6 +64,7 @@ export default function Stiffeners() {
           },
         ]}
       />
+      <meshMatcapMaterial matcap={matcap} />
     </instancedMesh>
   );
 }
