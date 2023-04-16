@@ -3,6 +3,7 @@ export const DEFAULT_CAMERA_FOV = 50;
 
 // Board
 export const BOARD_THICKNESS = 2 / 12; // Arbitrary thickness for aesthetics
+export const HORIZONTAL_STIFFENER_SIZE = 4 / 12; // 4" Square tube
 export const HOLD_SPACING = 0.65625; // Moonboard hold spacing
 
 export const MAX_BOARD_HEIGHT = 15; // 15 ft max for safety
