@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef } from "react";
-import { Matrix4, Vector3 } from "three";
+import { Matrix4 } from "three";
 
 import { CurrentProblemContext } from "../_context/CurrentProblemContext";
 import { updateLocalStorage } from "../_hooks/useSyncLocalStorage";
@@ -10,7 +10,6 @@ import type { Dispatch, SetStateAction } from "react";
 import type { InstancedMesh } from "three";
 import type { Hold } from "../_lib/types/Hold";
 
-const vector3 = new Vector3();
 const matrix4 = new Matrix4();
 
 export default function InteractivePlanes({
@@ -46,12 +45,11 @@ export default function InteractivePlanes({
     holds.forEach((hold, index) => {
       if (!instancedMesh.current) return;
 
-      vector3.set(
+      matrix4.setPosition(
         xStart + hold.xOffset,
         yStart + hold.yOffset,
         BOARD_THICKNESS / 2
       );
-      matrix4.setPosition(vector3);
       instancedMesh.current.setMatrixAt(index, matrix4);
       instancedMesh.current.instanceMatrix.needsUpdate = true;
     });
