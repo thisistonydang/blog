@@ -47,13 +47,14 @@ export default function MainBoardPanelGroup() {
   }, [boardWidth]);
 
   return (
-    <BoardPanelGroup
-      groupPosition={[0, MAIN_BOARD_HEIGHT / 2, 0]}
-      panelHeight={MAIN_BOARD_HEIGHT}
-      gripTypes={[...Array(NUM_GRIP_TYPES).keys()]}
-      holds={holds}
-      xStart={xStart}
-      yStart={yStart}
-    />
+    <group position={[0, MAIN_BOARD_HEIGHT / 2, 0]}>
+      <BoardPanelGroup
+        panelHeight={MAIN_BOARD_HEIGHT}
+        gripTypes={[...Array(NUM_GRIP_TYPES).keys()]}
+        holds={holds}
+        xStart={xStart}
+        yStart={yStart}
+      />
+    </group>
   );
 }
