@@ -17,6 +17,7 @@ export default function CrashPad() {
       args={[boardWidth + 8, CRASH_PAD_HEIGHT, CRASH_PAD_DEPTH]}
       radius={0.2}
       position={[0, CRASH_PAD_HEIGHT / 2, 0]}
+      castShadow
     >
       <meshMatcapMaterial matcap={matcap} />
     </RoundedBox>
