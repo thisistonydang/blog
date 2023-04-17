@@ -10,8 +10,9 @@ import {
 import { useBoardTransitioningFromOpenedAnimation } from "../_hooks/useBoardTransitioningFromOpenedAnimation";
 import { useBoardTransitioningToOpenedAnimation } from "../_hooks/useBoardTransitioningToOpenedAnimation";
 
+import MainBoardHorizonalStiffeners from "./MainBoardHorzontalStiffeners";
 import MainBoardPanelGroup from "./MainBoardPanelGroup";
-import Stiffeners from "./Stiffeners";
+import MainBoardVerticalStiffeners from "./MainBoardVerticalStiffeners";
 
 import type { Group } from "three";
 
@@ -33,7 +34,8 @@ export default function MainBoardRotationGroup() {
       rotation={[MathUtils.degToRad(boardAngle), 0, 0]}
     >
       <MainBoardPanelGroup />
-      <Stiffeners />
+      <MainBoardVerticalStiffeners />
+      <MainBoardHorizonalStiffeners />
     </group>
   );
 }
