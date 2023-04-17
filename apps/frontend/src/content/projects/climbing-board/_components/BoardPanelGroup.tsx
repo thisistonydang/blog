@@ -8,19 +8,18 @@ import BoardPanel from "./BoardPanel";
 import Holds from "./Holds";
 import HoverIndicator from "./HoverIndicator";
 import InteractivePlanes from "./InteractivePlanes";
+import Nuts from "./Nuts";
 import PositionTypeMarkers from "./PositionTypeMarkers";
 
 import type { Hold } from "../_lib/types/Hold";
 
 export default function BoardPanelGroup({
-  groupPosition,
   panelHeight,
   gripTypes,
   holds,
   xStart,
   yStart,
 }: {
-  groupPosition: [number, number, number];
   panelHeight: number;
   gripTypes: number[];
   holds: Hold[];
@@ -35,8 +34,10 @@ export default function BoardPanelGroup({
   });
 
   return (
-    <group position={groupPosition}>
+    <>
       <BoardPanel height={panelHeight} />
+      <Nuts holds={holds} xStart={xStart} yStart={yStart} />
+      <PositionTypeMarkers holds={holds} xStart={xStart} yStart={yStart} />
 
       {gripTypes.map((gripType) => (
         <Holds
@@ -47,8 +48,6 @@ export default function BoardPanelGroup({
           yStart={yStart}
         />
       ))}
-
-      <PositionTypeMarkers holds={holds} xStart={xStart} yStart={yStart} />
 
       {controlsMode === "edit" && (
         <>
@@ -69,6 +68,6 @@ export default function BoardPanelGroup({
           />
         </>
       )}
-    </group>
+    </>
   );
 }
