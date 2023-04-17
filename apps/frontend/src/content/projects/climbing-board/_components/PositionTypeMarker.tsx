@@ -1,13 +1,11 @@
 import { useLayoutEffect, useRef } from "react";
-import { Euler, Matrix4, Vector3 } from "three";
+import { Matrix4 } from "three";
 
 import { BOARD_THICKNESS } from "../_lib/constants/constants.js";
 
 import type { InstancedMesh } from "three";
 import type { Hold } from "../_lib/types/Hold";
 
-const euler = new Euler();
-const vector3 = new Vector3();
 const matrix4 = new Matrix4();
 
 export default function PositionTypeMarker({
@@ -31,14 +29,12 @@ export default function PositionTypeMarker({
     holds.forEach((hold, index) => {
       if (!instancedMesh.current) return;
 
-      euler.set(0, 0, rotation);
-      vector3.set(
+      matrix4.makeRotationZ(rotation);
+      matrix4.setPosition(
         xStart + hold.xOffset,
         yStart + hold.yOffset,
         BOARD_THICKNESS / 2 + 0.001
       );
-      matrix4.makeRotationFromEuler(euler);
-      matrix4.setPosition(vector3);
       instancedMesh.current.setMatrixAt(index, matrix4);
       instancedMesh.current.instanceMatrix.needsUpdate = true;
     });
