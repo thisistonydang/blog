@@ -1,10 +1,13 @@
 import { useFrame } from "@react-three/fiber";
 import { MathUtils } from "three";
 
-import type { RefObject } from "react";
+import type { Dispatch, RefObject, SetStateAction } from "react";
 import type { Group } from "three";
 
-export function useRotationAnimation(group: RefObject<Group>) {
+export function useRotationAnimation(
+  group: RefObject<Group>,
+  setModelRotated: Dispatch<SetStateAction<boolean>>
+) {
   useFrame(({ invalidate }) => {
     const FINAL_ROTATION = 2 * Math.PI * 3; // Three full rotations
     const INTERPOLATION_FACTOR = 0.1;
@@ -20,6 +23,7 @@ export function useRotationAnimation(group: RefObject<Group>) {
 
       if (Math.abs(group.current.rotation.y - FINAL_ROTATION) < TOLERANCE) {
         group.current.rotation.y = FINAL_ROTATION;
+        setModelRotated(true);
       }
 
       invalidate();

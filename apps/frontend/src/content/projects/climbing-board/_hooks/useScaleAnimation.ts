@@ -1,10 +1,13 @@
 import { useFrame } from "@react-three/fiber";
 import { MathUtils } from "three";
 
-import type { RefObject } from "react";
+import type { Dispatch, RefObject, SetStateAction } from "react";
 import type { Group } from "three";
 
-export function useScaleAnimation(group: RefObject<Group>) {
+export function useScaleAnimation(
+  group: RefObject<Group>,
+  setModelScaled: Dispatch<SetStateAction<boolean>>
+) {
   useFrame(({ invalidate }) => {
     const FINAL_SCALE = 1;
     const INTERPOLATION_FACTOR = 0.1;
@@ -41,6 +44,7 @@ export function useScaleAnimation(group: RefObject<Group>) {
         group.current.scale.x = FINAL_SCALE;
         group.current.scale.y = FINAL_SCALE;
         group.current.scale.z = FINAL_SCALE;
+        setModelScaled(true);
       }
 
       invalidate();
