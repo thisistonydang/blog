@@ -16,6 +16,7 @@ import {
 import allHolds from "../_data/holds.json";
 
 import BoardPanelGroup from "./BoardPanelGroup";
+import KickBoardVerticalStiffeners from "./KickBoardVerticalStiffeners";
 
 import type { Hold } from "../_lib/types/Hold";
 
@@ -50,17 +51,21 @@ export default function KickBoardPanelGroup() {
   }, [boardWidth]);
 
   return (
-    <BoardPanelGroup
-      groupPosition={[
+    <group
+      position={[
         0,
         KICK_BOARD_HEIGHT / 2,
         -CRASH_PAD_DEPTH / 2 - BOARD_TO_PAD_GAP,
       ]}
-      panelHeight={KICK_BOARD_HEIGHT}
-      gripTypes={[NUM_GRIP_TYPES - 1]}
-      holds={holds}
-      xStart={xStart}
-      yStart={yStart}
-    />
+    >
+      <BoardPanelGroup
+        panelHeight={KICK_BOARD_HEIGHT}
+        gripTypes={[NUM_GRIP_TYPES - 1]}
+        holds={holds}
+        xStart={xStart}
+        yStart={yStart}
+      />
+      <KickBoardVerticalStiffeners />
+    </group>
   );
 }
