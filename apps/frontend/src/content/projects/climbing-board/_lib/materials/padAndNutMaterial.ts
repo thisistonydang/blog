@@ -4,4 +4,4 @@
 
 import { MeshMatcapMaterial } from "three";
 
-export const padAndNutMaterial = new MeshMatcapMaterial();
+export const padAndNutMaterial = new MeshMatcapMaterial({ flatShading: true });
