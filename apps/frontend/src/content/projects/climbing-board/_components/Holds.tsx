@@ -1,5 +1,5 @@
 import { useContext, useLayoutEffect, useRef } from "react";
-import { Color, Matrix4 } from "three";
+import { Color, Matrix4, MeshLambertMaterial } from "three";
 
 import { bright } from "@lib/colors/paul-tol";
 
@@ -15,6 +15,7 @@ import type { Hold } from "../_lib/types/Hold";
 
 const matrix4 = new Matrix4();
 const color = new Color();
+const holdMaterial = new MeshLambertMaterial({ flatShading: true });
 
 export default function Holds({
   gripType,
@@ -70,7 +71,7 @@ export default function Holds({
       ref={instancedMesh}
       args={[
         gripType === NUM_GRIP_TYPES - 1 ? boxGeometry : undefined,
-        undefined,
+        holdMaterial,
         filteredHolds.length,
       ]}
     >
@@ -120,8 +121,6 @@ export default function Holds({
           ]}
         />
       )}
-
-      <meshStandardMaterial flatShading />
     </instancedMesh>
   );
 }
