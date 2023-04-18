@@ -1,9 +1,15 @@
 import { useContext } from "react";
+import { RingGeometry } from "three";
 
+import { bright } from "@lib/colors/paul-tol";
 import { CurrentProblemContext } from "../_context/CurrentProblemContext";
+import { ringGeometry } from "../_lib/geometries/ringGeometry.js";
 import PositionTypeMarker from "./PositionTypeMarker";
 
 import type { Hold } from "../_lib/types/Hold";
+
+const triangleRingGeometry = new RingGeometry(0.3, 0.4, 3);
+const squareRingGeometry = new RingGeometry(0.3, 0.4, 4);
 
 export default function PositionTypeMarkers({
   holds,
@@ -20,44 +26,48 @@ export default function PositionTypeMarkers({
     <>
       {currentProblem.start.length ? (
         <PositionTypeMarker
-          position="start"
+          geometry={squareRingGeometry}
+          rotation={Math.PI * 0.25}
+          markerColor={bright.green}
           holds={holds.filter(({ id }) => currentProblem.start.includes(id))}
           xStart={xStart}
           yStart={yStart}
-          rotation={Math.PI * 0.25}
         />
       ) : (
         <></>
       )}
       {currentProblem.middle.length ? (
         <PositionTypeMarker
-          position="middle"
+          geometry={ringGeometry}
+          rotation={0}
+          markerColor={bright.blue}
           holds={holds.filter(({ id }) => currentProblem.middle.includes(id))}
           xStart={xStart}
           yStart={yStart}
-          rotation={0}
         />
       ) : (
         <></>
       )}
       {currentProblem.footOnly.length ? (
         <PositionTypeMarker
-          position="footOnly"
+          geometry={squareRingGeometry}
+          rotation={0}
+          markerColor={bright.yellow}
           holds={holds.filter(({ id }) => currentProblem.footOnly.includes(id))}
           xStart={xStart}
           yStart={yStart}
-          rotation={0}
         />
       ) : (
         <></>
       )}
       {currentProblem.finish.length ? (
         <PositionTypeMarker
-          position="finish"
+          geometry={triangleRingGeometry}
+          rotation={Math.PI * -0.165}
+          markerColor={bright.purple}
           holds={holds.filter(({ id }) => currentProblem.finish.includes(id))}
           xStart={xStart}
           yStart={yStart}
-          rotation={Math.PI * -0.165}
         />
       ) : (
         <></>
