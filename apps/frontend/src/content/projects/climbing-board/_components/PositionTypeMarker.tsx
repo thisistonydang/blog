@@ -1,39 +1,31 @@
 import { useLayoutEffect, useRef } from "react";
-import { Matrix4, RingGeometry } from "three";
+import { Color, Matrix4, MeshBasicMaterial, RingGeometry } from "three";
 
 import { BOARD_THICKNESS } from "../_lib/constants/constants.js";
-import { ringGeometry } from "../_lib/geometries/ringGeometry.js";
 
 import type { InstancedMesh } from "three";
 import type { Hold } from "../_lib/types/Hold";
 
 const matrix4 = new Matrix4();
-const triangleRingGeometry = new RingGeometry(0.3, 0.4, 3);
-const squareRingGeometry = new RingGeometry(0.3, 0.4, 4);
+const color = new Color();
+const material = new MeshBasicMaterial();
 
 export default function PositionTypeMarker({
+  geometry,
+  rotation,
+  markerColor,
   holds,
   xStart,
   yStart,
-  color,
-  rotation,
-  segments,
 }: {
+  geometry: RingGeometry;
+  rotation: number;
+  markerColor: string;
   holds: Hold[];
   xStart: number;
   yStart: number;
-  color: string;
-  rotation: number;
-  segments: number;
 }) {
   const instancedMesh = useRef<InstancedMesh>(null);
-
-  const geometry =
-    segments === 3
-      ? triangleRingGeometry
-      : segments === 4
-      ? squareRingGeometry
-      : ringGeometry;
 
   useLayoutEffect(() => {
     holds.forEach((hold, index) => {
@@ -47,15 +39,18 @@ export default function PositionTypeMarker({
       );
       instancedMesh.current.setMatrixAt(index, matrix4);
       instancedMesh.current.instanceMatrix.needsUpdate = true;
+
+      instancedMesh.current.setColorAt(index, color.set(`#${markerColor}`));
+      if (instancedMesh.current.instanceColor) {
+        instancedMesh.current.instanceColor.needsUpdate = true;
+      }
     });
-  }, [holds, xStart, yStart, rotation]);
+  }, [markerColor, holds, xStart, yStart, rotation]);
 
   return (
     <instancedMesh
       ref={instancedMesh}
-      args={[geometry, undefined, holds.length]}
-    >
-      <meshBasicMaterial color={`#${color}`} />
-    </instancedMesh>
+      args={[geometry, material, holds.length]}
+    ></instancedMesh>
   );
 }
