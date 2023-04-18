@@ -1,7 +1,8 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-
 import { MathUtils } from "three";
+
+import { planeGeometry } from "../_lib/geometries/planeGeometry";
 
 import type { ShadowMaterial } from "three";
 
@@ -37,12 +38,12 @@ export default function ShadowPlane({
 
   return (
     <mesh
+      geometry={planeGeometry}
       rotation={[-Math.PI * 0.5, 0, 0]}
       position={[0, -1, 0]}
-      scale={[30, 30, 30]}
+      scale={[30, 30, 1]}
       receiveShadow
     >
-      <planeGeometry />
       <shadowMaterial ref={material} transparent={true} opacity={0} />
     </mesh>
   );
