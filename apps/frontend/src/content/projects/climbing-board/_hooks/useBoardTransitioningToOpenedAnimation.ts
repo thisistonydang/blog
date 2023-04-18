@@ -30,7 +30,10 @@ export function useBoardTransitioningToOpenedAnimation(
       invalidate();
     }
 
-    if (controlsMode === "opened") {
+    if (
+      controlsMode === "opened" &&
+      group.current.rotation.x !== FINAL_BOARD_ANGLE
+    ) {
       group.current.rotation.x = FINAL_BOARD_ANGLE;
     }
   });

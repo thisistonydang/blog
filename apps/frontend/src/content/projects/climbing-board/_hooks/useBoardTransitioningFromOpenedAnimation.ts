@@ -31,7 +31,10 @@ export function useBoardTransitioningFromOpenedAnimation(
       invalidate();
     }
 
-    if (controlsMode === "browse" || controlsMode === "edit") {
+    if (
+      (controlsMode === "browse" || controlsMode === "edit") &&
+      group.current.rotation.x !== FINAL_BOARD_ANGLE
+    ) {
       group.current.rotation.x = FINAL_BOARD_ANGLE;
     }
   });
