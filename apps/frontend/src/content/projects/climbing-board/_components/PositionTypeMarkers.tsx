@@ -1,6 +1,5 @@
 import { useContext } from "react";
 
-import { bright } from "@lib/colors/paul-tol";
 import { CurrentProblemContext } from "../_context/CurrentProblemContext";
 import PositionTypeMarker from "./PositionTypeMarker";
 
@@ -21,48 +20,44 @@ export default function PositionTypeMarkers({
     <>
       {currentProblem.start.length ? (
         <PositionTypeMarker
+          position="start"
           holds={holds.filter(({ id }) => currentProblem.start.includes(id))}
           xStart={xStart}
           yStart={yStart}
-          color={bright.green}
           rotation={Math.PI * 0.25}
-          segments={4}
         />
       ) : (
         <></>
       )}
       {currentProblem.middle.length ? (
         <PositionTypeMarker
+          position="middle"
           holds={holds.filter(({ id }) => currentProblem.middle.includes(id))}
           xStart={xStart}
           yStart={yStart}
-          color={bright.blue}
           rotation={0}
-          segments={32}
         />
       ) : (
         <></>
       )}
       {currentProblem.footOnly.length ? (
         <PositionTypeMarker
+          position="footOnly"
           holds={holds.filter(({ id }) => currentProblem.footOnly.includes(id))}
           xStart={xStart}
           yStart={yStart}
-          color={bright.yellow}
           rotation={0}
-          segments={4}
         />
       ) : (
         <></>
       )}
       {currentProblem.finish.length ? (
         <PositionTypeMarker
+          position="finish"
           holds={holds.filter(({ id }) => currentProblem.finish.includes(id))}
           xStart={xStart}
           yStart={yStart}
-          color={bright.purple}
           rotation={Math.PI * -0.165}
-          segments={3}
         />
       ) : (
         <></>
