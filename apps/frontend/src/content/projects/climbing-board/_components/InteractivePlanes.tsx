@@ -4,6 +4,7 @@ import { Matrix4 } from "three";
 import { CurrentProblemContext } from "../_context/CurrentProblemContext";
 import { updateLocalStorage } from "../_hooks/useSyncLocalStorage";
 import { BOARD_THICKNESS, HOLD_SPACING } from "../_lib/constants/constants.js";
+import { planeGeometry } from "../_lib/geometries/planeGeometry";
 
 import type { ThreeEvent } from "@react-three/fiber";
 import type { Dispatch, SetStateAction } from "react";
@@ -45,6 +46,7 @@ export default function InteractivePlanes({
     holds.forEach((hold, index) => {
       if (!instancedMesh.current) return;
 
+      matrix4.makeScale(HOLD_SPACING, HOLD_SPACING, 1);
       matrix4.setPosition(
         xStart + hold.xOffset,
         yStart + hold.yOffset,
@@ -125,7 +127,7 @@ export default function InteractivePlanes({
   return (
     <instancedMesh
       ref={instancedMesh}
-      args={[undefined, undefined, holds.length]}
+      args={[planeGeometry, undefined, holds.length]}
       visible={false}
       onClick={handleClick}
       onPointerEnter={(e) => {
@@ -150,8 +152,6 @@ export default function InteractivePlanes({
           yPosition: yStart + hold.yOffset,
         });
       }}
-    >
-      <planeGeometry args={[HOLD_SPACING, HOLD_SPACING]} />
-    </instancedMesh>
+    ></instancedMesh>
   );
 }
