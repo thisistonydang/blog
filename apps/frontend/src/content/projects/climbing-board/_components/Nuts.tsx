@@ -1,6 +1,6 @@
 import { useTexture } from "@react-three/drei";
 import { useLayoutEffect, useRef } from "react";
-import { Matrix4 } from "three";
+import { CylinderGeometry, Matrix4 } from "three";
 
 import { BOARD_THICKNESS } from "../_lib/constants/constants.js";
 
@@ -8,6 +8,8 @@ import type { InstancedMesh } from "three";
 import type { Hold } from "../_lib/types/Hold";
 
 const matrix4 = new Matrix4();
+const NUT_HEIGHT = 0.5 / 12;
+const nutGeometry = new CylinderGeometry(0.5 / 12, 0.5 / 12, NUT_HEIGHT, 6);
 
 export default function Nuts({
   holds,
@@ -20,7 +22,6 @@ export default function Nuts({
 }) {
   const matcap = useTexture("/matcaps/64/1B1B1B_999999_575757_747474-64px.png");
   const instancedMesh = useRef<InstancedMesh>(null);
-  const NUT_HEIGHT = 0.5 / 12;
 
   useLayoutEffect(() => {
     holds.forEach((hold, index) => {
@@ -35,14 +36,13 @@ export default function Nuts({
       instancedMesh.current.setMatrixAt(index, matrix4);
       instancedMesh.current.instanceMatrix.needsUpdate = true;
     });
-  }, [NUT_HEIGHT, holds, xStart, yStart]);
+  }, [holds, xStart, yStart]);
 
   return (
     <instancedMesh
       ref={instancedMesh}
-      args={[undefined, undefined, holds.length]}
+      args={[nutGeometry, undefined, holds.length]}
     >
-      <cylinderGeometry args={[0.5 / 12, 0.5 / 12, NUT_HEIGHT, 6]} />
       <meshMatcapMaterial matcap={matcap} />
     </instancedMesh>
   );
