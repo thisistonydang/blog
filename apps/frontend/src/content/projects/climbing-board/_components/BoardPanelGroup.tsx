@@ -59,12 +59,12 @@ export default function BoardPanelGroup({
           />
 
           <HoverIndicator
+            visible={hoverIndicator.visible}
             position={[
               hoverIndicator.xPosition,
               hoverIndicator.yPosition,
               BOARD_THICKNESS / 2 + 0.002,
             ]}
-            material-opacity={hoverIndicator.visible ? 0.5 : 0}
           />
         </>
       )}
