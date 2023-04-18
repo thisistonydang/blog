@@ -8,10 +8,11 @@ export function useScaleAnimation(
   group: RefObject<Group>,
   setModelScaled: Dispatch<SetStateAction<boolean>>
 ) {
-  useFrame(({ invalidate }) => {
-    const FINAL_SCALE = 1;
-    const INTERPOLATION_FACTOR = 0.1;
+  const FINAL_SCALE = 1;
+  const INTERPOLATION_FACTOR = 0.1;
+  const TOLERANCE = 0.001;
 
+  useFrame(({ invalidate }) => {
     if (
       group.current &&
       group.current.scale.x !== FINAL_SCALE &&
@@ -33,8 +34,6 @@ export function useScaleAnimation(
         FINAL_SCALE,
         INTERPOLATION_FACTOR
       );
-
-      const TOLERANCE = 0.001;
 
       if (
         Math.abs(group.current.scale.x - FINAL_SCALE) < TOLERANCE &&
