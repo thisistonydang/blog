@@ -15,16 +15,16 @@ export function useCameraTransitioningFromOpenedAnimation(
 ) {
   const { boardWidth } = useContext(BoardWidthContext);
   const { controlsMode, setControlsMode } = useContext(ControlsModeContext);
+  const finalCameraPosition = {
+    x: 0,
+    y: browseEditCameraHeight,
+    z: 10,
+  };
+  const INTERPOLATION_FACTOR = 0.1;
+  const TOLERANCE = 0.01;
 
   useFrame(({ camera, invalidate }) => {
     if (!(camera instanceof PerspectiveCamera)) return;
-
-    const finalCameraPosition = {
-      x: 0,
-      y: browseEditCameraHeight,
-      z: 10,
-    };
-    const INTERPOLATION_FACTOR = 0.1;
 
     if (
       controlsMode === "transitioning_to_browse" ||
@@ -52,8 +52,6 @@ export function useCameraTransitioningFromOpenedAnimation(
         finalCameraPosition.z,
         INTERPOLATION_FACTOR
       );
-
-      const TOLERANCE = 0.01;
 
       if (
         Math.abs(camera.position.x - finalCameraPosition.x) < TOLERANCE &&

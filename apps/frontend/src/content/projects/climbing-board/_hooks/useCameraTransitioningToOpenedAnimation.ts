@@ -21,11 +21,12 @@ export function useCameraTransitioningToOpenedAnimation() {
     z: camera.position.z,
   });
 
-  useFrame(({ camera, invalidate }) => {
-    const MAX_BOARD_WIDTH = ALLOWED_WIDTHS.at(-1);
-    if (!(camera instanceof PerspectiveCamera) || !MAX_BOARD_WIDTH) return;
+  const MAX_BOARD_WIDTH = ALLOWED_WIDTHS.at(-1);
+  const INTERPOLATION_FACTOR = 0.1;
+  const TOLERANCE = 0.01;
 
-    const INTERPOLATION_FACTOR = 0.1;
+  useFrame(({ camera, invalidate }) => {
+    if (!(camera instanceof PerspectiveCamera) || !MAX_BOARD_WIDTH) return;
 
     if (controlsMode === "transitioning_to_opened") {
       // Reset FOV.
@@ -51,8 +52,6 @@ export function useCameraTransitioningToOpenedAnimation() {
         defaultCameraPosition.current.z,
         INTERPOLATION_FACTOR
       );
-
-      const TOLERANCE = 0.01;
 
       if (
         Math.abs(camera.position.x - defaultCameraPosition.current.x) <
