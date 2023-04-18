@@ -11,7 +11,7 @@ import {
 // import { CameraHelper, DirectionalLight } from "three";
 // import { DirectionalLightHelper } from "three";
 
-export default function ShadowLight() {
+export default function ShadowDirectionalLight() {
   // const directionalLight = useRef<DirectionalLight>(null);
 
   // const c = useControls("directionalLight", {

@@ -11,7 +11,7 @@ import type { Object3D, SpotLight } from "three";
 // import { useControls } from "leva";
 // import { SpotLightHelper } from "three";
 
-export default function MainLight() {
+export default function MainSpotLight() {
   const spotLight = useRef<SpotLight>(null);
   const target = useRef<Object3D>(null);
 
