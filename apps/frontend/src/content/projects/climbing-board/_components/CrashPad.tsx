@@ -6,6 +6,7 @@ import {
   CRASH_PAD_DEPTH,
   CRASH_PAD_HEIGHT,
 } from "../_lib/constants/constants.js";
+import { padAndNutMaterial } from "../_lib/materials/padAndNutMaterial";
 
 export default function CrashPad() {
   const { boardWidth } = useContext(BoardWidthContext);
@@ -15,10 +16,10 @@ export default function CrashPad() {
     <RoundedBox
       args={[boardWidth + 8, CRASH_PAD_HEIGHT, CRASH_PAD_DEPTH]}
       radius={0.2}
+      material={padAndNutMaterial}
+      material-matcap={matcap}
       position={[0, CRASH_PAD_HEIGHT / 2, 0]}
       castShadow
-    >
-      <meshMatcapMaterial matcap={matcap} />
-    </RoundedBox>
+    ></RoundedBox>
   );
 }
