@@ -1,7 +1,5 @@
 /**
- * Shared planeGeometry
- *
- * Used for shadow and interactive planes.
+ * Shared PlaneGeometry for shadow and interactive planes.
  */
 
 import { PlaneGeometry } from "three";

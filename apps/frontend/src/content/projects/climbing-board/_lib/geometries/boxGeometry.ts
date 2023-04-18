@@ -1,7 +1,5 @@
 /**
- * Shared boxGeometry
- *
- * Used for board panels, stiffeners, and foot chips.
+ * Shared BoxGeometry for board panels, stiffeners, and foot chips.
  */
 
 import { BoxGeometry } from "three";

@@ -1,7 +1,5 @@
 /**
- * Shared ringGeometry
- *
- * Used for hover indicator and middle position type marker.
+ * Shared RingGeometry for hover indicator and middle position type marker.
  */
 
 import { RingGeometry } from "three";
