@@ -11,12 +11,11 @@ export function useBoardTransitioningFromOpenedAnimation(
   group: RefObject<Group>
 ) {
   const { controlsMode } = useContext(ControlsModeContext);
+  const FINAL_BOARD_ANGLE = 0;
+  const INTERPOLATION_FACTOR = 0.1;
 
   useFrame(({ invalidate }) => {
     if (!group.current) return;
-
-    const FINAL_BOARD_ANGLE = 0;
-    const INTERPOLATION_FACTOR = 0.1;
 
     if (
       controlsMode === "transitioning_to_browse" ||

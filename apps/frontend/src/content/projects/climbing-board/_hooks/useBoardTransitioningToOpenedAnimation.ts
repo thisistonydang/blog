@@ -13,12 +13,11 @@ export function useBoardTransitioningToOpenedAnimation(
 ) {
   const { boardAngle } = useContext(BoardAngleContext);
   const { controlsMode } = useContext(ControlsModeContext);
+  const FINAL_BOARD_ANGLE = MathUtils.degToRad(boardAngle);
+  const INTERPOLATION_FACTOR = 0.1;
 
   useFrame(({ invalidate }) => {
     if (!group.current) return;
-
-    const FINAL_BOARD_ANGLE = MathUtils.degToRad(boardAngle);
-    const INTERPOLATION_FACTOR = 0.1;
 
     if (controlsMode === "transitioning_to_opened") {
       group.current.rotation.x = MathUtils.lerp(
