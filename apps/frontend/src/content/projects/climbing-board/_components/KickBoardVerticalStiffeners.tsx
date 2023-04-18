@@ -1,4 +1,3 @@
-import { useTexture } from "@react-three/drei";
 import { useContext, useLayoutEffect, useRef } from "react";
 import { Matrix4 } from "three";
 
@@ -9,6 +8,7 @@ import {
 } from "../_lib/constants/constants.js";
 import { BoardWidthContext } from "../_context/BoardWidthContext";
 import { boxGeometry } from "../_lib/geometries/boxGeometry";
+import { boardMaterial } from "../_lib/materials/boardMaterial";
 
 import type { InstancedMesh } from "three";
 
@@ -17,7 +17,6 @@ const matrix4 = new Matrix4();
 export default function KickBoardVerticalStiffeners() {
   const { boardWidth } = useContext(BoardWidthContext);
   const instancedMesh = useRef<InstancedMesh>(null);
-  const matcap = useTexture("/matcaps/64/3B3B3B_C7C7C7_878787_A4A4A4-64px.png");
   const STIFFENERS_COUNT = 2;
 
   useLayoutEffect(() => {
@@ -47,9 +46,7 @@ export default function KickBoardVerticalStiffeners() {
   return (
     <instancedMesh
       ref={instancedMesh}
-      args={[boxGeometry, undefined, STIFFENERS_COUNT]}
-    >
-      <meshMatcapMaterial matcap={matcap} />
-    </instancedMesh>
+      args={[boxGeometry, boardMaterial, STIFFENERS_COUNT]}
+    ></instancedMesh>
   );
 }
