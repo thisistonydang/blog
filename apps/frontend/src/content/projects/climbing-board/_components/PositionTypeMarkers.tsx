@@ -22,50 +22,63 @@ export default function PositionTypeMarkers({
 }) {
   const { currentProblem } = useContext(CurrentProblemContext);
 
+  const startHolds = holds.filter(({ id }) =>
+    currentProblem.start.includes(id)
+  );
+  const middleHolds = holds.filter(({ id }) =>
+    currentProblem.middle.includes(id)
+  );
+  const footOnlyHolds = holds.filter(({ id }) =>
+    currentProblem.footOnly.includes(id)
+  );
+  const finishHolds = holds.filter(({ id }) =>
+    currentProblem.finish.includes(id)
+  );
+
   return (
     <>
-      {currentProblem.start.length ? (
+      {startHolds.length ? (
         <PositionTypeMarker
           geometry={squareRingGeometry}
           rotation={Math.PI * 0.25}
           markerColor={bright.green}
-          holds={holds.filter(({ id }) => currentProblem.start.includes(id))}
+          holds={startHolds}
           xStart={xStart}
           yStart={yStart}
         />
       ) : (
         <></>
       )}
-      {currentProblem.middle.length ? (
+      {middleHolds.length ? (
         <PositionTypeMarker
           geometry={ringGeometry}
           rotation={0}
           markerColor={bright.blue}
-          holds={holds.filter(({ id }) => currentProblem.middle.includes(id))}
+          holds={middleHolds}
           xStart={xStart}
           yStart={yStart}
         />
       ) : (
         <></>
       )}
-      {currentProblem.footOnly.length ? (
+      {footOnlyHolds.length ? (
         <PositionTypeMarker
           geometry={squareRingGeometry}
           rotation={0}
           markerColor={bright.yellow}
-          holds={holds.filter(({ id }) => currentProblem.footOnly.includes(id))}
+          holds={footOnlyHolds}
           xStart={xStart}
           yStart={yStart}
         />
       ) : (
         <></>
       )}
-      {currentProblem.finish.length ? (
+      {finishHolds.length ? (
         <PositionTypeMarker
           geometry={triangleRingGeometry}
           rotation={Math.PI * -0.165}
           markerColor={bright.purple}
-          holds={holds.filter(({ id }) => currentProblem.finish.includes(id))}
+          holds={finishHolds}
           xStart={xStart}
           yStart={yStart}
         />
