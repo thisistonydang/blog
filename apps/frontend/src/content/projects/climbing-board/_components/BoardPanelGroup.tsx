@@ -63,7 +63,7 @@ export default function BoardPanelGroup({
             position={[
               hoverIndicator.xPosition,
               hoverIndicator.yPosition,
-              BOARD_THICKNESS / 2 + 0.002,
+              BOARD_THICKNESS / 2 + 0.005,
             ]}
           />
         </>
