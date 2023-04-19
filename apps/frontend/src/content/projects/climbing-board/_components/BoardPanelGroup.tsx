@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 
-import { ControlsModeContext } from "../_context/ControlsModeContext";
+import { useHasTouchScreen } from "@lib/hooks/useHasTouchScreen";
 
+import { ControlsModeContext } from "../_context/ControlsModeContext";
 import { BOARD_THICKNESS } from "../_lib/constants/constants.js";
 
 import BoardPanel from "./BoardPanel";
@@ -26,6 +27,7 @@ export default function BoardPanelGroup({
   xStart: number;
   yStart: number;
 }) {
+  const hasTouchScreen = useHasTouchScreen();
   const { controlsMode } = useContext(ControlsModeContext);
   const [hoverIndicator, setHoverIndicator] = useState({
     visible: false,
@@ -58,14 +60,16 @@ export default function BoardPanelGroup({
             setHoverIndicator={setHoverIndicator}
           />
 
-          <HoverIndicator
-            visible={hoverIndicator.visible}
-            position={[
-              hoverIndicator.xPosition,
-              hoverIndicator.yPosition,
-              BOARD_THICKNESS / 2 + 0.005,
-            ]}
-          />
+          {!hasTouchScreen && (
+            <HoverIndicator
+              visible={hoverIndicator.visible}
+              position={[
+                hoverIndicator.xPosition,
+                hoverIndicator.yPosition,
+                BOARD_THICKNESS / 2 + 0.005,
+              ]}
+            />
+          )}
         </>
       )}
     </>
