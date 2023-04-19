@@ -11,13 +11,13 @@ import {
 import { resizeFov } from "../_lib/three/resizeFov";
 
 export function useCameraTransitioningFromOpenedAnimation(
-  browseEditCameraHeight: number
+  browseAndEditCameraHeight: number
 ) {
   const { boardWidth } = useContext(BoardWidthContext);
   const { controlsMode, setControlsMode } = useContext(ControlsModeContext);
   const finalCameraPosition = {
     x: 0,
-    y: browseEditCameraHeight,
+    y: browseAndEditCameraHeight,
     z: 10,
   };
   const INTERPOLATION_FACTOR = 0.1;
@@ -36,7 +36,7 @@ export function useCameraTransitioningFromOpenedAnimation(
         boardRatio < 12 / MAX_BOARD_HEIGHT ? 12 / MAX_BOARD_HEIGHT : boardRatio;
       resizeFov(camera, DEFAULT_CAMERA_FOV, minAspectRatio);
 
-      camera.lookAt(0, browseEditCameraHeight, 0);
+      camera.lookAt(0, browseAndEditCameraHeight, 0);
       camera.position.x = MathUtils.lerp(
         camera.position.x,
         finalCameraPosition.x,
