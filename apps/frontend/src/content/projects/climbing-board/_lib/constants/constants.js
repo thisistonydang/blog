@@ -19,4 +19,5 @@ export const NUM_GRIP_TYPES = 4;
 // Crash pad
 export const CRASH_PAD_DEPTH = MAX_BOARD_HEIGHT;
 export const CRASH_PAD_HEIGHT = MAX_BOARD_HEIGHT / 12; // 1" per feet of max height
+export const CRASH_PAD_PADDING = 4;
 export const BOARD_TO_PAD_GAP = 1 / 12;
