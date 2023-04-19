@@ -63,7 +63,7 @@ export default function Scene({
       {["closed", "opened", "info", "width", "angle"].includes(
         controlsMode
       ) && (
-        <OrbitControls maxDistance={maxOrbitControlsDistance} minDistance={1} />
+        <OrbitControls maxDistance={maxOrbitControlsDistance} minDistance={5} />
       )}
 
       {controlsMode === "edit" && (
