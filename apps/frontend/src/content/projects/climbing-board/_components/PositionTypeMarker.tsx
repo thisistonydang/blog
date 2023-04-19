@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { Color, Matrix4, MeshBasicMaterial, RingGeometry } from "three";
 
-import { BOARD_THICKNESS } from "../_lib/constants/constants.js";
+import { ALPHABET, BOARD_THICKNESS } from "../_lib/constants/constants.js";
 
 import type { InstancedMesh } from "three";
 import type { Hold } from "../_lib/types/Hold";
@@ -31,11 +31,22 @@ export default function PositionTypeMarker({
     holds.forEach((hold, index) => {
       if (!instancedMesh.current) return;
 
+      function isEven(n: number): boolean {
+        return n % 2 === 0;
+      }
+
+      let zOffset;
+      if (isEven(ALPHABET.indexOf(hold.column))) {
+        zOffset = isEven(hold.row) ? 0.001 : 0.002;
+      } else {
+        zOffset = isEven(hold.row) ? 0.003 : 0.004;
+      }
+
       matrix4.makeRotationZ(rotation);
       matrix4.setPosition(
         xStart + hold.xOffset,
         yStart + hold.yOffset,
-        BOARD_THICKNESS / 2 + 0.001
+        BOARD_THICKNESS / 2 + zOffset
       );
       instancedMesh.current.setMatrixAt(index, matrix4);
       instancedMesh.current.instanceMatrix.needsUpdate = true;
