@@ -15,17 +15,6 @@ export default function InfoControls() {
 
   return (
     <>
-      <ControlsList>
-        <li>
-          <IconButton
-            ariaLabel="Hide info."
-            onClick={() => setControlsMode("opened")}
-          >
-            &#x2714;
-          </IconButton>
-        </li>
-      </ControlsList>
-
       <ControlsDialog isProse hasPadding>
         <h1>Climbing Board</h1>
         <p>Concept training board app for climbing. Features include:</p>
@@ -72,6 +61,17 @@ export default function InfoControls() {
           </a>
         </small>
       </ControlsDialog>
+
+      <ControlsList>
+        <li>
+          <IconButton
+            ariaLabel="Hide info."
+            onClick={() => setControlsMode("opened")}
+          >
+            &#x2714;
+          </IconButton>
+        </li>
+      </ControlsList>
     </>
   );
 }
