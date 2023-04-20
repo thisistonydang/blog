@@ -1,26 +1,22 @@
-import Prose from "@lib/components/Prose";
+import Dialog from "./Dialog";
 
-export default function ControlsDialog({
-  isProse = false,
-  hasPadding = false,
-  children,
-}: {
+import type { MouseEventHandler, ReactNode } from "react";
+
+export default function ControlsDialog(props: {
+  isModal?: boolean;
   isProse?: boolean;
   hasPadding?: boolean;
-  children: React.ReactNode;
+  buttonText?: string;
+  onButtonClick?: MouseEventHandler<HTMLButtonElement>;
+  children: ReactNode;
 }) {
   return (
-    <dialog
-      open
-      className={`
-        bg-surface/90 fixed
-        bottom-24 z-50 mx-8 max-h-[calc(100vh-96px-96px-96px)] max-w-2xl
-        animate-[fly-up_0.25s] animate-[fade-in_0.25s]
-        overflow-y-auto rounded drop-shadow
-        ${hasPadding ? "p-5" : "p-0"}
-      `}
+    <div
+      className="
+        fixed bottom-24 mx-8 max-h-[calc(100vh-96px-96px-96px)] max-w-2xl
+      "
     >
-      {isProse ? <Prose>{children}</Prose> : children}
-    </dialog>
+      <Dialog {...props}>{props.children}</Dialog>
+    </div>
   );
 }
