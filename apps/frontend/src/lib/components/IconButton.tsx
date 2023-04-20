@@ -50,7 +50,7 @@ export default function IconButton({
           </span>
         </Prose>
         {hasPing && (
-          <div className="absolute bottom-8 left-8">
+          <div className="relative bottom-8 left-8">
             <Ping />
           </div>
         )}
