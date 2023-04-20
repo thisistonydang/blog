@@ -19,6 +19,7 @@ test.describe("a11y", () => {
     "/relay-results",
     "/subielife",
     // Projects
+    "/climbing-board",
     "/particles",
   ];
 
