@@ -27,11 +27,10 @@
   class:cursor-wait={cursor === "wait"}
   class:cursor-not-allowed={cursor === "not-allowed"}
   class="
-    bg-heading
-    text-bg hover:bg-bg
-    hover:text-heading hover:border-heading
+    bg-heading text-bg
+    hover:bg-bg hover:text-heading hover:border-heading
     group h-[41px]
-    px-3 text-center text-sm hover:border
+    rounded px-3 text-center text-sm hover:border
   "
 >
   {#if loading}
