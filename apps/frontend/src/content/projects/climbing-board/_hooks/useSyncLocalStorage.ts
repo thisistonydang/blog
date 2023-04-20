@@ -8,8 +8,8 @@ import type { BoardAngle } from "../_context/BoardAngleContext";
 import type { BoardWidth } from "../_context/BoardWidthContext";
 import type { Problem } from "../_context/CurrentProblemContext";
 
-const LOCAL_STORAGE_KEY = "climbing_board";
-const LOCAL_STORAGE_VERSION = "2023-04-05";
+export const LOCAL_STORAGE_KEY = "climbing_board";
+export const LOCAL_STORAGE_VERSION = "2023-04-05";
 
 /**
  * Sync app state with localStorage.
@@ -34,7 +34,8 @@ export function useSyncLocalStorage(
 export function updateLocalStorage([objectKey, newValue]:
   | ["angle", BoardAngle]
   | ["width", BoardWidth]
-  | ["problem", Problem]): void {
+  | ["problem", Problem]
+  | ["visited", boolean]): void {
   const data = getParsedValue(LOCAL_STORAGE_KEY, LOCAL_STORAGE_VERSION);
 
   // Update stored data object with new value.
