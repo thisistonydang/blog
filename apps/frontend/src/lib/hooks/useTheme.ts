@@ -7,7 +7,7 @@ import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.sv
  * Return the current theme in localStorage.
  */
 export function useTheme(): "light" | "dark" {
-  const theme = useSyncExternalStore(subscribe, getSnapshot);
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   return theme;
 }
 
@@ -21,4 +21,8 @@ function subscribe(callback: () => void): () => void {
 
 function getSnapshot(): "light" | "dark" {
   return localStorage.theme === "dark" ? "dark" : "light";
+}
+
+function getServerSnapshot(): "light" {
+  return "light";
 }
