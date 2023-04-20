@@ -25,7 +25,7 @@ export default function FirstVisitModal() {
     } else {
       setHasVisited(false);
     }
-  }, [setControlsMode]);
+  }, [hasVisited, setControlsMode]);
 
   function handleButtonClick(e: MouseEvent): void {
     e.preventDefault();
