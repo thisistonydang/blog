@@ -1,23 +1,41 @@
+import { useEffect, useState } from "react";
+
 import Dialog from "./Dialog";
 
-import type { MouseEventHandler, ReactNode } from "react";
+import type { ReactNode } from "react";
 
-export default function ControlsDialog(props: {
-  isModal?: boolean;
-  isProse?: boolean;
-  hasPadding?: boolean;
-  buttonText?: string;
-  onButtonClick?: MouseEventHandler<HTMLButtonElement>;
+export default function ControlsDialog({
+  minWindowHeight,
+  children,
+}: {
+  minWindowHeight: number;
   children: ReactNode;
 }) {
+  const [overflowY, setOverflowY] = useState(false);
+
+  useEffect(() => {
+    function checkOverflow() {
+      if (window.innerHeight < minWindowHeight) {
+        setOverflowY(true);
+      } else {
+        setOverflowY(false);
+      }
+    }
+
+    checkOverflow();
+    window.addEventListener("resize", checkOverflow);
+
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [minWindowHeight]);
+
   return (
     <div
-      className="
-        fixed bottom-24 mx-8 max-h-[calc(100vh-96px-96px-96px)] max-w-2xl
-        overflow-y-auto
-      "
+      className={`
+        fixed bottom-24 mx-8 max-w-2xl
+        ${overflowY && "h-1/2 overflow-y-auto"}
+    `}
     >
-      <Dialog {...props}>{props.children}</Dialog>
+      <Dialog>{children}</Dialog>
     </div>
   );
 }
