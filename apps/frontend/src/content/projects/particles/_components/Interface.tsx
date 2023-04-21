@@ -37,7 +37,10 @@ export default function Interface({ children }: { children: React.ReactNode }) {
           isProse
           hasPadding
           buttonText="CLOSE"
-          onButtonClick={() => setShowInfo(false)}
+          onButtonClick={(e) => {
+            e.preventDefault();
+            setShowInfo(false);
+          }}
         >
           <div className="mb-5">{children}</div>
         </Dialog>
