@@ -33,7 +33,7 @@ export default function OpenedControls({
           isPill
           onClick={() => setControlsMode("transitioning_to_browse")}
         >
-          {name} {grade}
+          {name} {grade && <>&nbsp;{grade}</>}
         </IconButton>
         <IconButton
           isPill
