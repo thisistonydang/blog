@@ -40,7 +40,7 @@ export default function BrowseControls() {
                   <Prose>
                     <div
                       className={`
-                        flex w-28 justify-between rounded border py-1 px-3
+                        flex w-32 justify-between rounded border px-3 py-1
                         ${
                           currentProblem.name === problem.name
                             ? "border-text"
