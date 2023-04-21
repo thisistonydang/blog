@@ -1,47 +1,46 @@
-import ControlsDialog from "@lib/components/ControlsDialog";
+import { useState } from "react";
+
+import Dialog from "@lib/components/Dialog";
 import IconButton from "@lib/components/IconButton";
 import Prose from "@lib/components/Prose";
 
-export default function Interface({
-  isOpened,
-  hasPing,
-  onClick,
-  children,
-}: {
-  isOpened: boolean;
-  hasPing: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
+export default function Interface({ children }: { children: React.ReactNode }) {
+  const [hasPing, setHasPing] = useState(true);
+  const [showInfo, setShowInfo] = useState(false);
+
   return (
     <aside>
       <div
         className="
           fixed bottom-8 left-8 flex
-          animate-[fly-up_0.25s] animate-[fade-in_0.25s]
+          animate-[fade-in_0.25s] animate-[fly-up_0.25s]
           items-center gap-4
         "
       >
         <IconButton
           ariaLabel="Show Info."
-          ariaLabelToggled="Hide Info."
-          toggledText={<>&times;</>}
-          isToggled={isOpened}
           hasPing={hasPing}
-          onClick={onClick}
+          onClick={() => {
+            setHasPing(false);
+            setShowInfo(true);
+          }}
         >
           i
         </IconButton>
-        {!isOpened && (
-          <Prose>
-            <h1>Particles</h1>
-          </Prose>
-        )}
+        <Prose>
+          <h1>Particles</h1>
+        </Prose>
       </div>
-      {isOpened && (
-        <ControlsDialog isProse hasPadding>
-          {children}
-        </ControlsDialog>
+      {showInfo && (
+        <Dialog
+          isModal
+          isProse
+          hasPadding
+          buttonText="CLOSE"
+          onButtonClick={() => setShowInfo(false)}
+        >
+          <div className="mb-5">{children}</div>
+        </Dialog>
       )}
     </aside>
   );
