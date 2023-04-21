@@ -38,8 +38,8 @@ export default function Dialog({
       ref={ref}
       className={`
         bg-surface/95 border-text relative z-50
-        animate-[fly-up_0.25s] animate-[fade-in_0.25s]
-        overflow-y-auto rounded border drop-shadow
+        animate-[fade-in_0.25s] animate-[fly-up_0.25s]
+        rounded border drop-shadow
         ${hasPadding ? "p-5" : "p-0"}
       `}
     >

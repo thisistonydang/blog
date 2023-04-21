@@ -14,6 +14,7 @@ export default function ControlsDialog(props: {
     <div
       className="
         fixed bottom-24 mx-8 max-h-[calc(100vh-96px-96px-96px)] max-w-2xl
+        overflow-y-auto
       "
     >
       <Dialog {...props}>{props.children}</Dialog>
