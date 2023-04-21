@@ -1,21 +1,28 @@
 import { useContext } from "react";
 
-import ControlsDialog from "@lib/components/ControlsDialog";
-import IconButton from "@lib/components/IconButton";
+import Dialog from "@lib/components/Dialog";
 
 import { ALLOWED_ANGLES } from "../_context/BoardAngleContext";
 import { ALLOWED_WIDTHS } from "../_context/BoardWidthContext";
 import { ControlsModeContext } from "../_context/ControlsModeContext";
 
-import ControlsList from "./ControlsList";
 import InAppLink from "./InAppLink";
 
 export default function InfoControls() {
   const { setControlsMode } = useContext(ControlsModeContext);
 
   return (
-    <>
-      <ControlsDialog isProse hasPadding>
+    <Dialog
+      isModal
+      isProse
+      hasPadding
+      buttonText="CLOSE"
+      onButtonClick={(e) => {
+        e.preventDefault();
+        setControlsMode("opened");
+      }}
+    >
+      <div className="mb-5">
         <h1>Climbing Board</h1>
         <p>Concept training board app for climbing. Features include:</p>
         <ul>
@@ -60,18 +67,7 @@ export default function InfoControls() {
             Github
           </a>
         </small>
-      </ControlsDialog>
-
-      <ControlsList>
-        <li>
-          <IconButton
-            ariaLabel="Hide info."
-            onClick={() => setControlsMode("opened")}
-          >
-            &#x2714;
-          </IconButton>
-        </li>
-      </ControlsList>
-    </>
+      </div>
+    </Dialog>
   );
 }
