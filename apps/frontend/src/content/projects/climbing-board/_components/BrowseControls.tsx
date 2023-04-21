@@ -27,7 +27,7 @@ export default function BrowseControls() {
   return (
     <>
       {showProblemsList && (
-        <ControlsDialog>
+        <ControlsDialog minWindowHeight={330}>
           <ul>
             {filteredProblems.map((problem) => (
               <li key={problem.name} className="px-2 first:pt-2 last:pb-2">
