@@ -21,7 +21,7 @@
     "@astrojs/svelte": "^2.1.0",
     "@astrojs/tailwind": "^3.1.1",
     "@fec/remark-a11y-emoji": "^3.1.0",
-    "@react-three/drei": "^9.65.4",
+    "@react-three/drei": "^9.65.5",
     "@react-three/fiber": "^8.12.2",
     "@react-three/postprocessing": "^2.7.1",
     "@react-three/rapier": "^0.15.0",
@@ -52,7 +52,7 @@
   "devDependencies": {
     "@types/d3": "^7.4.0",
     "@types/plotly.js-dist-min": "^2.3.1",
-    "@types/react": "^18.0.37",
+    "@types/react": "^18.0.38",
     "@types/three": "^0.150.2",
     "glob": "^10.2.1",
     "linkinator": "^4.1.2",
