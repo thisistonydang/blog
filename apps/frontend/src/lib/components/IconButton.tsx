@@ -44,7 +44,10 @@ export default function IconButton({
       >
         <Prose>
           <span
-            className={`text-bg ${isPill ? "px-3" : "font-serif text-2xl"}`}
+            className={`
+              text-bg flex justify-center
+              ${isPill ? "px-3" : "font-serif text-2xl"}
+            `}
           >
             {isToggled ? toggledText : children}
           </span>
