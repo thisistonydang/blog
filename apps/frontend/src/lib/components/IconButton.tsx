@@ -31,7 +31,7 @@ export default function IconButton({
     <>
       <button
         className={`
-          bg-text pointer-events-auto
+          bg-text pointer-events-auto relative
           h-10 rounded-full drop-shadow
           disabled:cursor-not-allowed disabled:opacity-75
           ${!fixedWidth && "min-w-[40px]"}
@@ -50,7 +50,7 @@ export default function IconButton({
           </span>
         </Prose>
         {hasPing && (
-          <div className="relative bottom-8 left-8">
+          <div className="absolute bottom-8 left-8">
             <Ping />
           </div>
         )}
