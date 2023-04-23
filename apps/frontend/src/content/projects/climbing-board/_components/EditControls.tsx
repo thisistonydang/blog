@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import IconButton from "@lib/components/IconButton";
+import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
 
 import { ControlsModeContext } from "../_context/ControlsModeContext";
 import { CurrentProblemContext } from "../_context/CurrentProblemContext";
@@ -41,7 +42,7 @@ export default function EditControls() {
             setControlsMode("transitioning_to_opened");
           }}
         >
-          &#x2714;
+          <CheckMarkIcon />
         </IconButton>
       </li>
     </ControlsList>
