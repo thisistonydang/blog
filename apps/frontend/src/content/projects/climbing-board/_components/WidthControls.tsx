@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import IconButton from "@lib/components/IconButton";
+import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
 
 import {
   ALLOWED_WIDTHS,
@@ -65,7 +66,7 @@ export default function WidthControls() {
           ariaLabel="Hide width controls."
           onClick={() => setControlsMode("opened")}
         >
-          &#x2714;
+          <CheckMarkIcon />
         </IconButton>
       </li>
     </ControlsList>
