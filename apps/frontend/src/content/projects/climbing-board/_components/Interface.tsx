@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 
 import IconButton from "@lib/components/IconButton";
 import Prose from "@lib/components/Prose";
+import HamburgerMenuIcon from "@lib/svg/HamburgerMenuIcon";
+import XIcon from "@lib/svg/XIcon";
 
 import { ControlsModeContext } from "../_context/ControlsModeContext";
 import AngleControls from "./AngleControls";
@@ -24,14 +26,14 @@ export default function Interface() {
           <div
             className="
               fixed bottom-8 left-8 flex
-              animate-[fly-right_0.25s] animate-[fade-in_0.25s]
+              animate-[fade-in_0.25s] animate-[fly-right_0.25s]
               items-center gap-4
             "
           >
             <IconButton
               ariaLabel="Show controls."
               ariaLabelToggled="Hide controls."
-              toggledText={<>&times;</>}
+              toggledText={<XIcon width={20} height={20} />}
               isToggled={controlsMode === "opened"}
               onClick={() => {
                 setControlsMode(
@@ -39,7 +41,7 @@ export default function Interface() {
                 );
               }}
             >
-              &#x2B;
+              <HamburgerMenuIcon width={30} height={30} />
             </IconButton>
             <Prose>
               <h1 className="xxs:text-4xl text-2xl">Climbing Board</h1>
