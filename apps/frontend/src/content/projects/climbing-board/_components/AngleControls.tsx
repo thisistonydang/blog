@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import IconButton from "@lib/components/IconButton";
+import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
 
 import {
   ALLOWED_ANGLES,
@@ -55,7 +56,7 @@ export default function AngleControls() {
           ariaLabel="Hide angle controls."
           onClick={() => setControlsMode("opened")}
         >
-          &#x2714;
+          <CheckMarkIcon />
         </IconButton>
       </li>
     </ControlsList>
