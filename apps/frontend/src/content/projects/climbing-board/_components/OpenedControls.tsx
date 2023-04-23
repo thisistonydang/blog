@@ -67,7 +67,7 @@ export default function OpenedControls({
             setControlsMode("info");
           }}
         >
-          <span className="font-sans text-xl">?</span>
+          i
         </IconButton>
       </li>
     </ControlsList>
