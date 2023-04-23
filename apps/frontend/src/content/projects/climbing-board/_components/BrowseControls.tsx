@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import ControlsDialog from "@lib/components/ControlsDialog";
 import IconButton from "@lib/components/IconButton";
 import Prose from "@lib/components/Prose";
+import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
 
 import { BoardWidthContext } from "../_context/BoardWidthContext";
 import { ControlsModeContext } from "../_context/ControlsModeContext";
@@ -76,7 +77,7 @@ export default function BrowseControls() {
             ariaLabel="Hide browse controls."
             onClick={() => setControlsMode("transitioning_to_opened")}
           >
-            &#x2714;
+            <CheckMarkIcon />
           </IconButton>
         </li>
       </ControlsList>
