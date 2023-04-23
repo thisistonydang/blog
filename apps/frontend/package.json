@@ -54,7 +54,7 @@
     "@types/plotly.js-dist-min": "^2.3.1",
     "@types/react": "^18.0.38",
     "@types/three": "^0.150.2",
-    "glob": "^10.2.1",
+    "glob": "^10.2.2",
     "linkinator": "^4.1.2",
     "pa11y-ci": "^3.0.1",
     "stats.js": "^0.17.0"
