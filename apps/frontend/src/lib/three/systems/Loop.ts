@@ -2,6 +2,7 @@ import { Clock } from "three";
 
 import type { Camera, Mesh, Scene, WebGLRenderer } from "three";
 import type { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import type { TrackballControls } from "three/examples/jsm/controls/TrackballControls";
 
 type Tick = (delta: number) => void;
 
@@ -13,7 +14,14 @@ export interface UpdatableOrbitControls extends OrbitControls {
   tick: Tick;
 }
 
-type UpdatableObject = UpdatableMesh | UpdatableOrbitControls;
+export interface UpdatableTrackballControls extends TrackballControls {
+  tick: Tick;
+}
+
+type UpdatableObject =
+  | UpdatableMesh
+  | UpdatableOrbitControls
+  | UpdatableTrackballControls;
 
 const clock = new Clock();
 
