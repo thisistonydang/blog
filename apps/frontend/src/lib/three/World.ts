@@ -5,6 +5,10 @@ import { createScene } from "./components/scene";
 import { Loop } from "./systems/Loop";
 import { Resizer } from "./systems/Resizer";
 import { createRenderer } from "./systems/renderer";
+import { createTrackballControls } from "./systems/trackball-controls";
+
+import { createAxesHelper } from "./helpers/axes-helper";
+import { createGridHelper } from "./helpers/grid-helper";
 
 import type { PerspectiveCamera, Scene, WebGLRenderer } from "three";
 
@@ -21,13 +25,16 @@ export class World {
     loop = new Loop(scene, camera, renderer);
     container.append(renderer.domElement);
 
+    const controls = createTrackballControls(camera, renderer.domElement);
     const cube = createBasicCube();
 
-    loop.updatables.push(cube);
-
+    loop.updatables.push(controls, cube);
     scene.add(cube);
 
     new Resizer(container, camera, renderer);
+
+    // Helpers
+    scene.add(createAxesHelper(), createGridHelper());
   }
 
   render() {
