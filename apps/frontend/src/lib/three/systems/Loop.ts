@@ -1,10 +1,19 @@
 import { Clock } from "three";
 
 import type { Camera, Mesh, Scene, WebGLRenderer } from "three";
+import type { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
+type Tick = (delta: number) => void;
 
 export interface UpdatableMesh extends Mesh {
-  tick: (delta: number) => void;
+  tick: Tick;
 }
+
+export interface UpdatableOrbitControls extends OrbitControls {
+  tick: Tick;
+}
+
+type UpdatableObject = UpdatableMesh | UpdatableOrbitControls;
 
 const clock = new Clock();
 
@@ -12,7 +21,7 @@ export class Loop {
   scene: Scene;
   camera: Camera;
   renderer: WebGLRenderer;
-  updatables: UpdatableMesh[];
+  updatables: UpdatableObject[];
 
   constructor(scene: Scene, camera: Camera, renderer: WebGLRenderer) {
     this.scene = scene;
