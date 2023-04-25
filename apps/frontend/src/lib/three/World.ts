@@ -4,6 +4,7 @@ import { createScene } from "./components/scene";
 
 import { Loop } from "./systems/Loop";
 import { Resizer } from "./systems/Resizer";
+import { createGui } from "./systems/gui";
 import { createRenderer } from "./systems/renderer";
 import { createTrackballControls } from "./systems/trackball-controls";
 
@@ -33,8 +34,9 @@ export class World {
 
     new Resizer(container, camera, renderer);
 
-    // Helpers
+    // Dev
     scene.add(createAxesHelper(), createGridHelper());
+    createGui([cube]);
   }
 
   render() {
