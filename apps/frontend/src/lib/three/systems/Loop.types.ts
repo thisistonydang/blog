@@ -5,19 +5,19 @@ import type { TrackballControls } from "three/examples/jsm/controls/TrackballCon
 type Tick = (delta: number) => void;
 
 export interface UpdatableInstancedMesh extends InstancedMesh {
-  tick: Tick;
+  tick?: Tick;
 }
 
 export interface UpdatableMesh extends Mesh {
-  tick: Tick;
+  tick?: Tick;
 }
 
 export interface UpdatableOrbitControls extends OrbitControls {
-  tick: Tick;
+  tick?: Tick;
 }
 
 export interface UpdatableTrackballControls extends TrackballControls {
-  tick: Tick;
+  tick?: Tick;
 }
 
 export type UpdatableObject =
