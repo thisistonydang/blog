@@ -1,28 +1,8 @@
 import { Clock } from "three";
 import { Statistics } from "./Statistics";
 
-import type { Camera, Mesh, Scene, WebGLRenderer } from "three";
-import type { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import type { TrackballControls } from "three/examples/jsm/controls/TrackballControls";
-
-type Tick = (delta: number) => void;
-
-export interface UpdatableMesh extends Mesh {
-  tick: Tick;
-}
-
-export interface UpdatableOrbitControls extends OrbitControls {
-  tick: Tick;
-}
-
-export interface UpdatableTrackballControls extends TrackballControls {
-  tick: Tick;
-}
-
-type UpdatableObject =
-  | UpdatableMesh
-  | UpdatableOrbitControls
-  | UpdatableTrackballControls;
+import type { Camera, Scene, WebGLRenderer } from "three";
+import type { UpdatableObject } from "./Loop.types";
 
 const clock = new Clock();
 
@@ -37,12 +17,13 @@ export class Loop {
     scene: Scene,
     camera: Camera,
     renderer: WebGLRenderer,
+    updatables: UpdatableObject[],
     stats = false
   ) {
     this.scene = scene;
     this.camera = camera;
     this.renderer = renderer;
-    this.updatables = [];
+    this.updatables = updatables;
     this.statistics = stats ? new Statistics(this.renderer) : null;
   }
 
