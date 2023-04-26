@@ -1,14 +1,15 @@
 import GUI from "lil-gui";
-import type { Mesh } from "three";
+import type { TweakableObject } from "./gui.types";
 
-export interface TweakableMesh extends Mesh {
-  updateGui: (gui: GUI) => void;
-}
-
-export function createGui(tweakables: TweakableMesh[]): void {
+/**
+ * Create GUI and update it with tweaks from each tweakable object.
+ */
+export function createGui(tweakables: TweakableObject[]): void {
   const gui = new GUI();
 
-  for (const object of tweakables) {
-    object.updateGui(gui);
-  }
+  tweakables.forEach((tweakableObject) => {
+    if ("updateGui" in tweakableObject) {
+      tweakableObject.updateGui(gui);
+    }
+  });
 }
