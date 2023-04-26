@@ -1,7 +1,7 @@
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 import type { Camera } from "three";
-import type { UpdatableOrbitControls } from "./Loop";
+import type { UpdatableOrbitControls } from "./Loop.types";
 
 export function createOrbitControls(
   camera: Camera,
