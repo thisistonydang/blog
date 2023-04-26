@@ -23,7 +23,7 @@ export class World {
     scene = createScene();
     camera = createPerspectiveCamera();
     renderer = createRenderer();
-    loop = new Loop(scene, camera, renderer);
+    loop = new Loop(scene, camera, renderer, true);
     container.append(renderer.domElement);
 
     const controls = createTrackballControls(camera, renderer.domElement);

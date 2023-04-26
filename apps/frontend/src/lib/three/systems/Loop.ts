@@ -1,4 +1,5 @@
 import { Clock } from "three";
+import { Statistics } from "./Statistics";
 
 import type { Camera, Mesh, Scene, WebGLRenderer } from "three";
 import type { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -30,21 +31,33 @@ export class Loop {
   camera: Camera;
   renderer: WebGLRenderer;
   updatables: UpdatableObject[];
+  statistics: Statistics | null;
 
-  constructor(scene: Scene, camera: Camera, renderer: WebGLRenderer) {
+  constructor(
+    scene: Scene,
+    camera: Camera,
+    renderer: WebGLRenderer,
+    stats = false
+  ) {
     this.scene = scene;
     this.camera = camera;
     this.renderer = renderer;
     this.updatables = [];
+    this.statistics = stats ? new Statistics(this.renderer) : null;
   }
 
   start() {
     this.renderer.setAnimationLoop(() => {
+      this.statistics?.begin();
+
       // Tell every animated object to tick forward one frame
       this.tick();
 
       // Render a frame
       this.renderer.render(this.scene, this.camera);
+
+      this.statistics?.end();
+      this.statistics?.updateCustomPanels();
     });
   }
 
