@@ -8,15 +8,10 @@ export class EventsListener {
   raycaster = new Raycaster();
   mouse = new Vector2(2, 2); // Set initial x and y to be > 1 so ray doesn't hit canvas on start up.
   camera: Camera;
-  objectsToTest: Object3D[];
+  objectsToTest: Object3D[] = [];
 
-  constructor(
-    canvas: HTMLCanvasElement,
-    camera: Camera,
-    objectsToTest: Object3D[]
-  ) {
+  constructor(canvas: HTMLCanvasElement, camera: Camera) {
     this.camera = camera;
-    this.objectsToTest = objectsToTest;
 
     // Track mouse position on canvas
     canvas.addEventListener("mousemove", (e) => {
