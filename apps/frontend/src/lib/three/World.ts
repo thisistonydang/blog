@@ -2,6 +2,7 @@ import { createBasicCube } from "./components/basic-cube";
 import { createPerspectiveCamera } from "./components/perspective-camera";
 import { createScene } from "./components/scene";
 
+import { EventsListener } from "./systems/EventsListener";
 import { Loop } from "./systems/Loop";
 import { Resizer } from "./systems/Resizer";
 import { createGui } from "./systems/gui";
@@ -23,16 +24,15 @@ export class World {
     scene = createScene();
     camera = createPerspectiveCamera();
     renderer = createRenderer();
-    loop = new Loop(scene, camera, renderer, true);
     container.append(renderer.domElement);
+    new Resizer(container, camera, renderer);
 
     const controls = createTrackballControls(camera, renderer.domElement);
     const cube = createBasicCube();
 
-    loop.updatables.push(controls, cube);
     scene.add(cube);
-
-    new Resizer(container, camera, renderer);
+    new EventsListener(renderer.domElement, camera, [cube]);
+    loop = new Loop(scene, camera, renderer, [controls, cube], true);
 
     // Dev
     scene.add(createAxesHelper(), createGridHelper());
