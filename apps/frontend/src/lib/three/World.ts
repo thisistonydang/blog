@@ -3,21 +3,23 @@ import { createPerspectiveCamera } from "./components/perspective-camera";
 import { createScene } from "./components/scene";
 
 import { EventsListener } from "./systems/EventsListener";
+import { Gui } from "./systems/Gui";
 import { Loop } from "./systems/Loop";
 import { Resizer } from "./systems/Resizer";
-import { createGui } from "./systems/gui";
 import { createRenderer } from "./systems/renderer";
 import { createTrackballControls } from "./systems/trackball-controls";
 
 import { createAxesHelper } from "./helpers/axes-helper";
 import { createGridHelper } from "./helpers/grid-helper";
 
-import type { PerspectiveCamera, Scene, WebGLRenderer } from "three";
+import type { Object3D, PerspectiveCamera, Scene, WebGLRenderer } from "three";
 
 let scene: Scene;
 let camera: PerspectiveCamera;
 let renderer: WebGLRenderer;
+let eventsListener: EventsListener;
 let loop: Loop;
+let gui: Gui;
 
 export class World {
   constructor(container: HTMLDivElement) {
@@ -26,28 +28,45 @@ export class World {
     renderer = createRenderer();
     container.append(renderer.domElement);
     new Resizer(container, camera, renderer);
+    eventsListener = new EventsListener(renderer.domElement, camera);
+    loop = new Loop(scene, camera, renderer, true);
+    gui = new Gui(true);
+    createTrackballControls(camera, renderer.domElement, loop);
 
-    const controls = createTrackballControls(camera, renderer.domElement);
     const cube = createCube();
 
-    scene.add(cube);
-    new EventsListener(renderer.domElement, camera, [cube]);
-    loop = new Loop(scene, camera, renderer, [controls, cube], true);
-
-    // Dev
-    scene.add(createAxesHelper(), createGridHelper());
-    createGui([cube]);
+    this.add([createAxesHelper(), createGridHelper(), cube]);
+    gui.init();
   }
 
-  render() {
+  add(objects: Object3D[]): void {
+    for (const object of objects) {
+      scene.add(object);
+      if (
+        "onClick" in object ||
+        "onPointerEnter" in object ||
+        "onPointerLeave" in object
+      ) {
+        eventsListener.objectsToTest.push(object);
+      }
+      if ("tick" in object) {
+        loop.tickables.push(object);
+      }
+      if ("updateGui" in object) {
+        gui.tweakables.push(object);
+      }
+    }
+  }
+
+  render(): void {
     renderer.render(scene, camera);
   }
 
-  start() {
+  start(): void {
     loop.start();
   }
 
-  stop() {
+  stop(): void {
     loop.stop();
   }
 }
