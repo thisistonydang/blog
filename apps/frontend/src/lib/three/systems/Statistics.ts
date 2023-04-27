@@ -32,15 +32,15 @@ export class Statistics {
     document.body.appendChild(this.stats.dom);
   }
 
-  begin() {
+  begin(): void {
     this.stats.begin();
   }
 
-  end() {
+  end(): void {
     this.stats.end();
   }
 
-  updateCustomPanels() {
+  updateCustomPanels(): void {
     customPanels.geometries?.update(this.renderer.info.memory.geometries, 50);
     customPanels.textures?.update(this.renderer.info.memory.textures, 10);
     customPanels.programs?.update(this.renderer.info.programs?.length ?? 0, 50);
