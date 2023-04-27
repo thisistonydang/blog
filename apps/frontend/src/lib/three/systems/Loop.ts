@@ -18,20 +18,18 @@ export class Loop {
   scene: Scene;
   camera: Camera;
   renderer: WebGLRenderer;
-  tickables: Tickable[];
+  tickables: Tickable[] = [];
   statistics: Statistics | null;
 
   constructor(
     scene: Scene,
     camera: Camera,
     renderer: WebGLRenderer,
-    tickables: Tickable[],
     showStats = false
   ) {
     this.scene = scene;
     this.camera = camera;
     this.renderer = renderer;
-    this.tickables = tickables;
     this.statistics = showStats ? new Statistics(this.renderer) : null;
   }
 
