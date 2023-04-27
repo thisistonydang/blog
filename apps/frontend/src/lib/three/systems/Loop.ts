@@ -35,7 +35,7 @@ export class Loop {
     this.statistics = showStats ? new Statistics(this.renderer) : null;
   }
 
-  start() {
+  start(): void {
     this.renderer.setAnimationLoop(() => {
       this.statistics?.begin();
 
@@ -50,11 +50,11 @@ export class Loop {
     });
   }
 
-  stop() {
+  stop(): void {
     this.renderer.setAnimationLoop(null);
   }
 
-  tick() {
+  tick(): void {
     const delta = clock.getDelta();
 
     this.tickables.forEach((tickable) => {
