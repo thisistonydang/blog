@@ -4,7 +4,7 @@ import { BoxGeometry, MathUtils, Mesh, MeshMatcapMaterial } from "three";
 import type GUI from "lil-gui";
 import type { Patched } from "../types/Patched";
 
-export function createBasicCube(): Mesh & Patched {
+export function createCube(): Mesh & Patched {
   // Tweakable controls
   const c = {
     color: 0x00ffff,

@@ -1,4 +1,4 @@
-import { createBasicCube } from "./components/basic-cube";
+import { createCube } from "./components/cube";
 import { createPerspectiveCamera } from "./components/perspective-camera";
 import { createScene } from "./components/scene";
 
@@ -28,7 +28,7 @@ export class World {
     new Resizer(container, camera, renderer);
 
     const controls = createTrackballControls(camera, renderer.domElement);
-    const cube = createBasicCube();
+    const cube = createCube();
 
     scene.add(cube);
     new EventsListener(renderer.domElement, camera, [cube]);
