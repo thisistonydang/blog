@@ -2,10 +2,12 @@ import { TrackballControls } from "three/examples/jsm/controls/TrackballControls
 
 import type { Camera } from "three";
 import type { Patched } from "../types/Patched";
+import type { Loop } from "./Loop";
 
 export function createTrackballControls(
   camera: Camera,
-  canvas: HTMLCanvasElement
+  canvas: HTMLCanvasElement,
+  loop: Loop
 ): TrackballControls & Patched {
   const controls: TrackballControls & Patched = new TrackballControls(
     camera,
@@ -15,6 +17,8 @@ export function createTrackballControls(
   controls.tick = (): void => {
     controls.update();
   };
+
+  loop.tickables.push(controls);
 
   return controls;
 }
