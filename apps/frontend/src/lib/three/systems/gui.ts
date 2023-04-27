@@ -1,15 +1,17 @@
 import GUI from "lil-gui";
-import type { TweakableObject } from "./gui.types";
+import { isPatched } from "../types/Patched";
+
+import type { Object3D } from "three";
 
 /**
  * Create GUI and update it with tweaks from each tweakable object.
  */
-export function createGui(tweakables: TweakableObject[]): void {
+export function createGui(tweakableObjects: Object3D[]): void {
   const gui = new GUI();
 
-  tweakables.forEach((tweakableObject) => {
-    if ("updateGui" in tweakableObject) {
-      tweakableObject.updateGui(gui);
+  tweakableObjects.forEach((object) => {
+    if (isPatched(object) && "updateGui" in object) {
+      object.updateGui(gui);
     }
   });
 }
