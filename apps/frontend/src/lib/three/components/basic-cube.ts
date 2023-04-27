@@ -2,10 +2,9 @@ import gsap from "gsap";
 import { BoxGeometry, MathUtils, Mesh, MeshMatcapMaterial } from "three";
 
 import type GUI from "lil-gui";
-import type { UpdatableMesh } from "../systems/Loop";
-import type { TweakableMesh } from "../systems/gui";
+import type { Patched } from "../types/Patched";
 
-export function createBasicCube(): UpdatableMesh & TweakableMesh {
+export function createBasicCube(): Mesh & Patched {
   // Tweakable controls
   const c = {
     color: 0x00ffff,
@@ -21,10 +20,28 @@ export function createBasicCube(): UpdatableMesh & TweakableMesh {
   // Create mesh
   const geometry = new BoxGeometry();
   const material = new MeshMatcapMaterial({ color: c.color });
-  const cube = new Mesh(geometry, material) as unknown as UpdatableMesh &
-    TweakableMesh;
+  const cube: Mesh & Patched = new Mesh(geometry, material);
   cube.scale.set(c.width, c.height, c.depth);
   cube.visible = c.visible;
+
+  // Add event handlers
+  cube.onClick = () => {
+    if (cube.scale.x === 1) {
+      cube.scale.set(2, 2, 2);
+    } else {
+      cube.scale.set(1, 1, 1);
+    }
+  };
+
+  cube.onPointerEnter = () => {
+    material.color.set(0xff00ff);
+    document.body.style.cursor = "pointer";
+  };
+
+  cube.onPointerLeave = () => {
+    document.body.style.cursor = "default";
+    material.color.set(c.color);
+  };
 
   // Add animation behavior
   const radiansPerSecond = MathUtils.degToRad(30);
