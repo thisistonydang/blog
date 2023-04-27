@@ -1,8 +1,16 @@
 import { Clock } from "three";
+import { isPatched } from "../types/Patched";
 import { Statistics } from "./Statistics";
 
-import type { Camera, Scene, WebGLRenderer } from "three";
-import type { TickableObject } from "./Loop.types";
+import type {
+  Camera,
+  EventDispatcher,
+  Object3D,
+  Scene,
+  WebGLRenderer,
+} from "three";
+
+type Tickable = EventDispatcher | Object3D;
 
 const clock = new Clock();
 
@@ -10,14 +18,14 @@ export class Loop {
   scene: Scene;
   camera: Camera;
   renderer: WebGLRenderer;
-  tickables: TickableObject[];
+  tickables: Tickable[];
   statistics: Statistics | null;
 
   constructor(
     scene: Scene,
     camera: Camera,
     renderer: WebGLRenderer,
-    tickables: TickableObject[],
+    tickables: Tickable[],
     showStats = false
   ) {
     this.scene = scene;
@@ -49,9 +57,9 @@ export class Loop {
   tick() {
     const delta = clock.getDelta();
 
-    this.tickables.forEach((tickableObject) => {
-      if ("tick" in tickableObject) {
-        tickableObject.tick(delta);
+    this.tickables.forEach((tickable) => {
+      if (isPatched(tickable) && "tick" in tickable) {
+        tickable.tick(delta);
       }
     });
   }
