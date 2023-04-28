@@ -21,7 +21,8 @@ export class Gui {
     });
   }
 
-  createFolder = (name: string, showFolder: boolean): GUI => {
+  // Note: Arrow function is used to keep context of "this".
+  createFolder = (name: string, showFolder = false): GUI => {
     // Create folder
     const folder = this.gui.addFolder(name);
     folder.show(showFolder);
