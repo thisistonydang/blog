@@ -2,7 +2,7 @@ import { createPerspectiveCamera } from "./components-core/perspective-camera";
 import { createRenderer } from "./components-core/renderer";
 import { createScene } from "./components-core/scene";
 
-import { EventsListener } from "./systems/EventsListener";
+import { Events } from "./systems/Events";
 import { Gui } from "./systems/Gui";
 import { Loop } from "./systems/Loop";
 import { Resizer } from "./systems/Resizer";
@@ -13,7 +13,7 @@ export class World {
   scene: Scene;
   camera: PerspectiveCamera;
   renderer: WebGLRenderer;
-  eventsListener: EventsListener;
+  events: Events;
   loop: Loop;
   gui: Gui;
 
@@ -26,10 +26,7 @@ export class World {
 
     // Initialize systems
     new Resizer(container, this.camera, this.renderer);
-    this.eventsListener = new EventsListener(
-      this.renderer.domElement,
-      this.camera
-    );
+    this.events = new Events(this.renderer.domElement, this.camera);
     this.loop = new Loop(this.scene, this.camera, this.renderer, showStats);
     this.gui = new Gui(showGui);
   }
@@ -45,7 +42,7 @@ export class World {
         "onPointerEnter" in object ||
         "onPointerLeave" in object
       ) {
-        this.eventsListener.objectsToTest.push(object);
+        this.events.objectsToTest.push(object);
       }
       if ("tick" in object) {
         this.loop.tickables.push(object);
