@@ -13,8 +13,8 @@
     "@supabase/supabase-js": "^2.21.0",
     "@tonydangblog/error-handling": "workspace:1.0.0",
     "itty-router": "^3.0.12",
-    "jose": "^4.14.1",
-    "stripe": "^12.2.0",
+    "jose": "^4.14.3",
+    "stripe": "^12.3.0",
     "zod": "^3.21.4"
   }
 }
