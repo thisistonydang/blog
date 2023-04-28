@@ -1,12 +1,9 @@
 import { isPatched } from "../types/Patched";
-import type { EventsListener } from "./EventsListener";
+import type { Events } from "./Events";
 
-export function clickListener(
-  eventsListener: EventsListener,
-  canvas: HTMLCanvasElement
-): void {
+export function clickListener(events: Events, canvas: HTMLCanvasElement): void {
   canvas.addEventListener("click", () => {
-    const intersects = eventsListener.castRay();
+    const intersects = events.castRay();
 
     for (const intersect of intersects) {
       const object = intersect.object;
