@@ -3,10 +3,14 @@ import { BoxGeometry, MathUtils, Mesh, MeshMatcapMaterial } from "three";
 
 import type { Patched } from "../types/Patched";
 
-export function createCube(): Mesh & Patched {
+export function createCube({
+  position = [0, 0, 0],
+}: {
+  position: [number, number, number];
+}): Mesh & Patched {
   // Tweakable controls
   const c = {
-    color: 0x00ffff,
+    color: 0xffff00,
     width: 1,
     height: 1,
     depth: 1,
@@ -20,6 +24,7 @@ export function createCube(): Mesh & Patched {
   const geometry = new BoxGeometry();
   const material = new MeshMatcapMaterial({ color: c.color });
   const cube: Mesh & Patched = new Mesh(geometry, material);
+  cube.position.set(...position);
   cube.scale.set(c.width, c.height, c.depth);
   cube.visible = c.visible;
 
@@ -33,7 +38,7 @@ export function createCube(): Mesh & Patched {
   };
 
   cube.onPointerEnter = () => {
-    material.color.set(0xff00ff);
+    material.color.set(0xff0000);
     document.body.style.cursor = "pointer";
   };
 
