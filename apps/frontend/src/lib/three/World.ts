@@ -15,7 +15,7 @@ export class World {
   renderer: WebGLRenderer;
   events: Events;
   loop: Loop;
-  gui: Gui;
+  gui: Gui | null = null;
 
   constructor(container: HTMLDivElement, showStats = false, showGui = false) {
     // Create core components
@@ -28,7 +28,7 @@ export class World {
     new Resizer(container, this.camera, this.renderer);
     this.events = new Events(this.renderer.domElement, this.camera);
     this.loop = new Loop(this.scene, this.camera, this.renderer, showStats);
-    this.gui = new Gui(showGui);
+    showGui && (this.gui = new Gui());
   }
 
   /**
@@ -48,7 +48,7 @@ export class World {
         this.loop.tickables.push(object);
       }
       if ("updateGui" in object) {
-        this.gui.tweakables.push(object);
+        this.gui?.tweakables.push(object);
       }
     }
   }
