@@ -1,5 +1,5 @@
-import type GUI from "lil-gui";
 import type { EventDispatcher, Intersection, Object3D } from "three";
+import type { Gui } from "../systems/Gui";
 
 /**
  * Handler for intersection events. If handler returns void, propagation stops.
@@ -12,7 +12,7 @@ export interface Patched {
   onPointerEnter?: IntersectionEventHandler;
   onPointerLeave?: IntersectionEventHandler;
   tick?: (delta: number) => void;
-  updateGui?: (gui: GUI) => void;
+  updateGui?: (createFolder: Gui["createFolder"]) => void;
 }
 
 export function isPatched(
