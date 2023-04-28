@@ -1,7 +1,6 @@
 import gsap from "gsap";
 import { BoxGeometry, MathUtils, Mesh, MeshMatcapMaterial } from "three";
 
-import type GUI from "lil-gui";
 import type { Patched } from "../types/Patched";
 
 export function createCube(): Mesh & Patched {
@@ -45,7 +44,7 @@ export function createCube(): Mesh & Patched {
 
   // Add animation behavior
   const radiansPerSecond = MathUtils.degToRad(30);
-  cube.tick = (delta: number): void => {
+  cube.tick = (delta) => {
     // Increase the cube's rotation each frame
     cube.rotation.z += radiansPerSecond * delta;
     cube.rotation.x += radiansPerSecond * delta;
@@ -53,8 +52,8 @@ export function createCube(): Mesh & Patched {
   };
 
   // Add tweaks
-  cube.updateGui = (gui: GUI): void => {
-    const folder = gui.addFolder("cube");
+  cube.updateGui = (createFolder) => {
+    const folder = createFolder("cube");
 
     folder.addColor(c, "color").onChange((v: string) => material.color.set(v));
     folder.add(c, "width", 1, 3, 1).onChange((v: number) => (cube.scale.x = v));
