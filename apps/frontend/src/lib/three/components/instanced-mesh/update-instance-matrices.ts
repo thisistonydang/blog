@@ -1,4 +1,4 @@
-import { Euler, MathUtils, Matrix4, Quaternion, Vector3 } from "three";
+import { Euler, Matrix4, Quaternion, Vector3 } from "three";
 
 import type { InstancedMesh } from "three";
 import type { Instance } from "./instances";
@@ -19,17 +19,9 @@ export function updateInstanceMatrices(
 
     // Set rotation
     if (rotation) {
-      euler.set(
-        MathUtils.degToRad(rotation),
-        MathUtils.degToRad(rotation),
-        MathUtils.degToRad(rotation)
-      );
+      euler.set(rotation, rotation, rotation);
     } else {
-      euler.set(
-        MathUtils.degToRad(0),
-        MathUtils.degToRad(0),
-        MathUtils.degToRad(0)
-      );
+      euler.set(0, 0, 0);
     }
     quaternion.setFromEuler(euler);
 
