@@ -32,24 +32,31 @@ export class World {
   }
 
   /**
-   * Add objects to scene and relevant systems
+   * Add objects to root scene and relevant systems
    */
-  add(objects: Object3D[]): void {
-    for (const object of objects) {
+  addObjects(objects: Object3D[]): void {
+    objects.forEach((object) => {
       this.scene.add(object);
-      if (
-        "onClick" in object ||
-        "onPointerEnter" in object ||
-        "onPointerLeave" in object
-      ) {
-        this.events.objectsToTest.push(object);
-      }
-      if ("tick" in object) {
-        this.loop.tickables.push(object);
-      }
-      if ("updateGui" in object) {
-        this.gui?.tweakables.push(object);
-      }
+      this.updateSystems(object);
+    });
+  }
+
+  /**
+   * Add an object to relevant systems
+   */
+  updateSystems(object: Object3D): void {
+    if (
+      "onClick" in object ||
+      "onPointerEnter" in object ||
+      "onPointerLeave" in object
+    ) {
+      this.events.objectsToTest.push(object);
+    }
+    if ("tick" in object) {
+      this.loop.tickables.push(object);
+    }
+    if ("updateGui" in object) {
+      this.gui?.tweakables.push(object);
     }
   }
 
