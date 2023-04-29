@@ -1,7 +1,7 @@
 export interface Instance {
   id: string;
   position: { x: number; y: number };
-  rotation?: number; // in degrees
+  rotation?: number; // in radians
   scale?: { x: number; y: number; z: number };
   color?: number;
 }
