@@ -1,5 +1,7 @@
 import gsap from "gsap";
-import { BoxGeometry, InstancedMesh, MeshMatcapMaterial } from "three";
+import { InstancedMesh, MeshMatcapMaterial } from "three";
+
+import { boxGeometry } from "../../geometries/box";
 
 import { addOnClickHandler } from "./add-on-click-handler";
 import { addOnHoverHandler } from "./add-on-hover-handler";
@@ -21,10 +23,9 @@ export function createInstancedMesh(): InstancedMesh & Patched {
   };
 
   // Create mesh
-  const geometry = new BoxGeometry();
   const material = new MeshMatcapMaterial();
   const mesh: InstancedMesh & Patched = new InstancedMesh(
-    geometry,
+    boxGeometry,
     material,
     4
   );

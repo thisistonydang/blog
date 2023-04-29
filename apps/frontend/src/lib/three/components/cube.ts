@@ -1,5 +1,6 @@
 import gsap from "gsap";
-import { BoxGeometry, MathUtils, Mesh, MeshMatcapMaterial } from "three";
+import { MathUtils, Mesh, MeshMatcapMaterial } from "three";
+import { boxGeometry } from "../geometries/box";
 
 import type { Patched } from "../types/Patched";
 
@@ -21,9 +22,8 @@ export function createCube({
   };
 
   // Create mesh
-  const geometry = new BoxGeometry();
   const material = new MeshMatcapMaterial({ color: c.color });
-  const cube: Mesh & Patched = new Mesh(geometry, material);
+  const cube: Mesh & Patched = new Mesh(boxGeometry, material);
   cube.position.set(...position);
   cube.scale.set(c.width, c.height, c.depth);
   cube.visible = c.visible;
