@@ -1,8 +1,8 @@
 import { TrackballControls } from "three/examples/jsm/controls/TrackballControls.js";
 
 import type { Camera } from "three";
+import type { Loop } from "../systems/Loop";
 import type { Patched } from "../types/Patched";
-import type { Loop } from "./Loop";
 
 export function createTrackballControls(
   camera: Camera,
