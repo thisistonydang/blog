@@ -29,8 +29,8 @@ export class Events {
 
   castRay = (): Intersection[] => {
     this.raycaster.setFromCamera(this.mouse, this.world.camera);
-    const intersects = this.raycaster.intersectObjects(this.objectsToTest);
+    const intersections = this.raycaster.intersectObjects(this.objectsToTest);
 
-    return intersects;
+    return intersections;
   };
 }
