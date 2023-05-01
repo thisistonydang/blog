@@ -6,18 +6,18 @@ import type { InstancedMesh } from "three";
 import type { Patched } from "@lib/three/types/Patched";
 
 export function addOnHoverHandler(mesh: InstancedMesh & Patched): void {
-  mesh.onPointerEnter = (e) => {
+  mesh.onPointerEnter = ({ intersection }) => {
     document.body.style.cursor = "pointer";
-    const instance = getInstance(e);
+    const instance = getInstance(intersection);
     if (!instance) return;
 
     instance.color = 0xff00ff;
     updateInstanceColors(mesh, instances);
   };
 
-  mesh.onPointerLeave = (e) => {
+  mesh.onPointerLeave = ({ intersection }) => {
     document.body.style.cursor = "default";
-    const instance = getInstance(e);
+    const instance = getInstance(intersection);
     if (!instance) return;
 
     instance.color = 0x00ffff;
