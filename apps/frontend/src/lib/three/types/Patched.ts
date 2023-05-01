@@ -1,5 +1,6 @@
 import type { EventDispatcher, Intersection, Object3D } from "three";
 import type { Gui } from "../systems/Gui";
+import type { Frameloop } from "../systems/Loop";
 import type { World } from "../World";
 
 /**
@@ -18,7 +19,13 @@ export interface Patched {
   onClick?: IntersectionEventHandler;
   onPointerEnter?: IntersectionEventHandler;
   onPointerLeave?: IntersectionEventHandler;
-  tick?: (delta: number) => void;
+  tick?: ({
+    delta,
+    frameloop,
+  }: {
+    delta: number;
+    frameloop: Frameloop;
+  }) => void;
   updateGui?: (gui: Gui) => void;
 }
 
