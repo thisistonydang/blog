@@ -7,15 +7,17 @@ import type { InstancedMesh } from "three";
 import type { Patched } from "@lib/three/types/Patched";
 
 export function addTick(mesh: InstancedMesh & Patched): void {
-  mesh.tick = (delta) => {
-    instances.forEach((instance) => {
-      if (instance.rotation !== undefined) {
-        instance.rotation += MathUtils.degToRad(15) * delta;
-      } else {
-        instance.rotation = 0;
-      }
-    });
+  mesh.tick = ({ delta, frameloop }) => {
+    if (frameloop === "always") {
+      instances.forEach((instance) => {
+        if (instance.rotation === undefined) {
+          instance.rotation = 0;
+        } else {
+          instance.rotation += MathUtils.degToRad(15) * delta;
+        }
+      });
 
-    updateInstanceMatrices(mesh, instances);
+      updateInstanceMatrices(mesh, instances);
+    }
   };
 }
