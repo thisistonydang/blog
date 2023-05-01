@@ -40,11 +40,13 @@ export class Loop {
     this.renderRequested = true;
 
     const render = (): void => {
+      // Reset renderRequested when a frame finally renders. This must be set
+      // BEFORE calling tick so that OrbitControls' tick function can request
+      // additional renders for damping.
+      this.renderRequested = false;
+
       this.tick();
       this.renderer.render(this.scene, this.camera);
-
-      // Reset renderRequested when a frame finally renders.
-      this.renderRequested = false;
     };
     requestAnimationFrame(render);
   };
