@@ -2,26 +2,36 @@ import GUI from "lil-gui";
 import { isPatched } from "../types/Patched";
 
 import type { Object3D } from "three";
+import type { World } from "../World";
+import type { Loop } from "./Loop";
+import type { Statistics } from "./Statistics";
 
 export class Gui {
+  world: World;
   gui = new GUI();
-  togglesFolder: GUI;
   folders: { [key: string]: boolean } = {};
-  tweakables: Object3D[] = [];
+  togglesFolder: GUI;
+  devFolder: GUI;
+  tweakables: (Loop | Object3D | Statistics)[] = [];
 
-  constructor() {
-    this.togglesFolder = this.gui.addFolder("folder toggles");
+  constructor(world: World) {
+    this.world = world;
+    this.togglesFolder = this.gui.addFolder("folders");
+    this.devFolder = this.createFolder("dev");
+
+    // Add Loop and Statistics systems as tweakables objects
+    this.tweakables.push(world.loop);
+    world.loop.statistics && this.tweakables.push(world.loop.statistics);
   }
 
   init(): void {
     this.tweakables.forEach((object) => {
       if (isPatched(object) && "updateGui" in object) {
-        object.updateGui(this.createFolder);
+        object.updateGui(this);
       }
     });
   }
 
-  // Note: Arrow function is used to keep context of "this".
   createFolder = (name: string, showFolder = false): GUI => {
     // Create folder
     const folder = this.gui.addFolder(name);
