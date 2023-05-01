@@ -12,6 +12,7 @@ import type {
 import type { World } from "../World";
 import type { Gui } from "./Gui";
 
+export type Frameloop = "always" | "demand";
 type Tickable = EventDispatcher | Object3D;
 
 const clock = new Clock();
@@ -22,7 +23,7 @@ export class Loop {
   renderer: WebGLRenderer;
   tickables: Tickable[] = [];
   statistics: Statistics | null = null;
-  frameloop: "always" | "demand" = "demand";
+  frameloop: Frameloop = "demand";
   renderRequested = false;
 
   constructor({ scene, camera, renderer }: World) {
@@ -74,7 +75,7 @@ export class Loop {
 
     this.tickables.forEach((tickable) => {
       if (isPatched(tickable) && "tick" in tickable) {
-        tickable.tick(delta);
+        tickable.tick({ delta, frameloop: this.frameloop });
       }
     });
   }
@@ -82,7 +83,7 @@ export class Loop {
   updateGui({ devFolder }: Gui): void {
     devFolder
       .add(this, "frameloop", ["always", "demand"])
-      .onChange((frameloop: "always" | "demand") => {
+      .onChange((frameloop: Frameloop) => {
         frameloop === "always" ? this.start() : this.stop();
       });
   }
