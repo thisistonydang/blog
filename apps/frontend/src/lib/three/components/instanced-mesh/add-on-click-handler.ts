@@ -6,8 +6,8 @@ import type { InstancedMesh } from "three";
 import type { Patched } from "@lib/three/types/Patched";
 
 export function addOnClickHandler(mesh: InstancedMesh & Patched): void {
-  mesh.onClick = (e) => {
-    const instance = getInstance(e);
+  mesh.onClick = ({ intersection }) => {
+    const instance = getInstance(intersection);
     if (!instance) return;
 
     if (!instance.scale || (instance.scale && instance.scale.x === 1)) {
