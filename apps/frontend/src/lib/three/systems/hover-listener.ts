@@ -6,42 +6,50 @@ import { isPatched } from "../types/Patched";
 import type { Intersection } from "three";
 import type { Events } from "./Events";
 
-export function hoverListener(events: Events, canvas: HTMLCanvasElement): void {
+export function hoverListener({ castRay, world }: Events): void {
   if (hasTouchScreen()) return; // Don't listen for hover events on touch devices.
 
-  let prevIntersect: Intersection | undefined = undefined;
-  let newIntersect: Intersection | undefined = undefined;
+  let prevIntersection: Intersection | undefined = undefined;
+  let newIntersection: Intersection | undefined = undefined;
 
   function runPrevIntersectOnPointerLeave() {
     if (
-      prevIntersect &&
-      isPatched(prevIntersect.object) &&
-      "onPointerLeave" in prevIntersect.object
+      prevIntersection &&
+      isPatched(prevIntersection.object) &&
+      "onPointerLeave" in prevIntersection.object
     ) {
-      prevIntersect.object.onPointerLeave(prevIntersect);
+      prevIntersection.object.onPointerLeave({
+        intersection: prevIntersection,
+        world,
+      });
+      world.requestRender();
     }
   }
 
   function runNewIntersectOnPointerEnter() {
     if (
-      newIntersect &&
-      isPatched(newIntersect.object) &&
-      "onPointerEnter" in newIntersect.object
+      newIntersection &&
+      isPatched(newIntersection.object) &&
+      "onPointerEnter" in newIntersection.object
     ) {
-      newIntersect.object.onPointerEnter(newIntersect);
+      newIntersection.object.onPointerEnter({
+        intersection: newIntersection,
+        world,
+      });
+      world.requestRender();
     }
   }
 
-  canvas.addEventListener("mousemove", () => {
-    const intersects = events.castRay();
-    newIntersect = intersects[0];
+  world.renderer.domElement.addEventListener("mousemove", () => {
+    const intersections = castRay();
+    newIntersection = intersections[0];
 
     // If no object is hovered, run previous object's onPointerLeave if
     // applicable, else do nothing.
-    if (!newIntersect) {
-      if (prevIntersect) {
+    if (!newIntersection) {
+      if (prevIntersection) {
         runPrevIntersectOnPointerLeave();
-        prevIntersect = undefined;
+        prevIntersection = undefined;
       }
       return;
     }
@@ -49,9 +57,9 @@ export function hoverListener(events: Events, canvas: HTMLCanvasElement): void {
     // If object hovered is different than previous object, run previous
     // object's onPointerLeave if applicable then run the new object's
     // onPointerEnter.
-    if (newIntersect.object !== prevIntersect?.object) {
+    if (newIntersection.object !== prevIntersection?.object) {
       runPrevIntersectOnPointerLeave();
-      prevIntersect = newIntersect;
+      prevIntersection = newIntersection;
       runNewIntersectOnPointerEnter();
       return;
     }
@@ -60,11 +68,11 @@ export function hoverListener(events: Events, canvas: HTMLCanvasElement): void {
     // changed. If so, run the previous instance's onPointerLeave if
     // applicable then run the new instance's onPointerEnter.
     if (
-      newIntersect.object instanceof InstancedMesh &&
-      newIntersect.instanceId !== prevIntersect?.instanceId
+      newIntersection.object instanceof InstancedMesh &&
+      newIntersection.instanceId !== prevIntersection?.instanceId
     ) {
       runPrevIntersectOnPointerLeave();
-      prevIntersect = newIntersect;
+      prevIntersection = newIntersection;
       runNewIntersectOnPointerEnter();
       return;
     }
