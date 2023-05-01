@@ -1,11 +1,18 @@
 import type { EventDispatcher, Intersection, Object3D } from "three";
 import type { Gui } from "../systems/Gui";
+import type { World } from "../World";
 
 /**
  * Handler for intersection events. If handler returns void, propagation stops.
  * If returns true, event will continue to propagate.
  */
-type IntersectionEventHandler = (e: Intersection) => void | true;
+type IntersectionEventHandler = ({
+  intersection,
+  world,
+}: {
+  intersection: Intersection;
+  world: World;
+}) => void | true;
 
 export interface Patched {
   onClick?: IntersectionEventHandler;
