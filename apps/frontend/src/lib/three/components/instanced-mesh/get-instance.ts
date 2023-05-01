@@ -8,11 +8,12 @@ export const INSTANCE_IDS_KEY = "instance_ids";
 /**
  * Get instance given intersection from raycaster.
  */
-export function getInstance(e: Intersection): Instance | undefined {
-  if (e.instanceId === undefined) {
+export function getInstance(intersection: Intersection): Instance | undefined {
+  if (intersection.instanceId === undefined) {
     return undefined;
   }
 
-  const id = e.object.userData[INSTANCE_IDS_KEY][e.instanceId];
+  const id =
+    intersection.object.userData[INSTANCE_IDS_KEY][intersection.instanceId];
   return instances.find((instance) => instance.id === id);
 }
