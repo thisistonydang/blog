@@ -33,7 +33,7 @@ export class Loop {
   }
 
   requestRender = (): void => {
-    if (this.renderRequested) return;
+    if (this.frameloop === "always" || this.renderRequested) return;
 
     // Set renderRequested = true to prevent more than one render from being
     // requested at a time.
