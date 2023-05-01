@@ -9,6 +9,8 @@ import type {
   Scene,
   WebGLRenderer,
 } from "three";
+import type { World } from "../World";
+import type { Gui } from "./Gui";
 
 type Tickable = EventDispatcher | Object3D;
 
@@ -20,27 +22,39 @@ export class Loop {
   renderer: WebGLRenderer;
   tickables: Tickable[] = [];
   statistics: Statistics | null = null;
+  frameloop: "always" | "demand" = "demand";
+  renderRequested = false;
 
-  constructor(
-    scene: Scene,
-    camera: Camera,
-    renderer: WebGLRenderer,
-    showStats: boolean
-  ) {
+  constructor({ scene, camera, renderer }: World) {
     this.scene = scene;
     this.camera = camera;
     this.renderer = renderer;
-    showStats && (this.statistics = new Statistics(this.renderer));
+    this.statistics = new Statistics(this.renderer);
   }
 
+  requestRender = (): void => {
+    if (this.renderRequested) return;
+
+    // Set renderRequested = true to prevent more than one render from being
+    // requested at a time.
+    this.renderRequested = true;
+
+    const render = (): void => {
+      this.tick();
+      this.renderer.render(this.scene, this.camera);
+
+      // Reset renderRequested when a frame finally renders.
+      this.renderRequested = false;
+    };
+    requestAnimationFrame(render);
+  };
+
   start(): void {
+    this.frameloop = "always";
     this.renderer.setAnimationLoop(() => {
       this.statistics?.begin();
 
-      // Tell every tickable object to tick forward one frame
       this.tick();
-
-      // Render a frame
       this.renderer.render(this.scene, this.camera);
 
       this.statistics?.end();
@@ -49,6 +63,7 @@ export class Loop {
   }
 
   stop(): void {
+    this.frameloop = "demand";
     this.renderer.setAnimationLoop(null);
   }
 
@@ -60,5 +75,13 @@ export class Loop {
         tickable.tick(delta);
       }
     });
+  }
+
+  updateGui({ devFolder }: Gui): void {
+    devFolder
+      .add(this, "frameloop", ["always", "demand"])
+      .onChange((frameloop: "always" | "demand") => {
+        frameloop === "always" ? this.start() : this.stop();
+      });
   }
 }
