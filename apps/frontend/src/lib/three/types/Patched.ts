@@ -12,7 +12,7 @@ export interface Patched {
   onPointerEnter?: IntersectionEventHandler;
   onPointerLeave?: IntersectionEventHandler;
   tick?: (delta: number) => void;
-  updateGui?: (createFolder: Gui["createFolder"]) => void;
+  updateGui?: (gui: Gui) => void;
 }
 
 export function isPatched(
