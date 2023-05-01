@@ -17,7 +17,7 @@ export class World {
   loop: Loop;
   gui: Gui | null = null;
 
-  constructor(container: HTMLDivElement, showStats = false, showGui = false) {
+  constructor(container: HTMLDivElement) {
     // Create core components
     this.scene = createScene();
     this.camera = createPerspectiveCamera();
@@ -25,10 +25,10 @@ export class World {
     container.append(this.renderer.domElement);
 
     // Initialize systems
-    new Resizer(container, this.camera, this.renderer);
-    this.events = new Events(this.renderer.domElement, this.camera);
-    this.loop = new Loop(this.scene, this.camera, this.renderer, showStats);
-    showGui && (this.gui = new Gui());
+    new Resizer(this, container);
+    this.events = new Events(this);
+    this.loop = new Loop(this);
+    this.gui = new Gui(this);
   }
 
   /**
@@ -60,8 +60,8 @@ export class World {
     }
   }
 
-  render(): void {
-    this.renderer.render(this.scene, this.camera);
+  requestRender(): void {
+    this.loop.requestRender();
   }
 
   start(): void {
