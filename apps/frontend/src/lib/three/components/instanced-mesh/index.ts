@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { InstancedMesh, MeshMatcapMaterial } from "three";
-import { approxEq } from "@lib/math/approxEq";
 
+import { approxEq } from "@lib/math/approxEq";
 import { boxGeometry } from "../../geometries/box";
 
 import { instances } from "./instances";
