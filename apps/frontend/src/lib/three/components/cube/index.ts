@@ -25,7 +25,7 @@ export interface Controls {
   spin: () => void;
 }
 
-export function createCube({
+export function cube({
   world,
   position = [0, 0, 0],
 }: {
