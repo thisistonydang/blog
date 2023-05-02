@@ -52,6 +52,25 @@ export class Loop {
     requestAnimationFrame(render);
   };
 
+  /**
+   * Run animation loop while the given condition is true.
+   *
+   * @param condition - A function that is evaluated with each render to see if
+   * requestAnimationFrame should be called again.
+   */
+  runWhile(condition: () => boolean): void {
+    if (this.frameloop === "always") return;
+
+    const tick = () => {
+      if (condition()) {
+        this.requestRender();
+        requestAnimationFrame(tick);
+      }
+    };
+
+    tick();
+  }
+
   start(): void {
     this.frameloop = "always";
     this.renderer.setAnimationLoop(() => {
