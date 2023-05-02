@@ -1,11 +1,11 @@
-import { getInstance } from "./get-instance";
+import { getInstance } from "./getInstance";
 import { instances } from "./instances";
-import { updateInstanceColors } from "./update-instance-colors";
+import { updateInstanceColors } from "./updateInstanceColors";
 
 import type { InstancedMesh } from "three";
 import type { Patched } from "@lib/three/types/Patched";
 
-export function addOnHoverHandler(mesh: InstancedMesh & Patched): void {
+export function onHover({ mesh }: { mesh: InstancedMesh & Patched }): void {
   mesh.onPointerEnter = ({ intersection }) => {
     document.body.style.cursor = "pointer";
     const instance = getInstance(intersection);
