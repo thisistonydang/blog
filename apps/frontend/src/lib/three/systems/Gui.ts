@@ -7,7 +7,6 @@ import type { Loop } from "./Loop";
 import type { Statistics } from "./Statistics";
 
 export class Gui {
-  world: World;
   gui = new GUI();
   folders: { [key: string]: boolean } = {};
   foldersFolder: GUI;
@@ -15,8 +14,6 @@ export class Gui {
   tweakables: (Loop | Object3D | Statistics)[] = [];
 
   constructor(world: World) {
-    this.world = world;
-
     // Create "folders" and "dev" folders
     this.foldersFolder = this.gui.addFolder("folders");
     this.devFolder = this.createFolder("dev");
