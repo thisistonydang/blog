@@ -22,6 +22,9 @@ export class Gui {
     this.tweakables.push(world.loop);
     world.loop.statistics && this.tweakables.push(world.loop.statistics);
 
+    // State with GUI collapsed
+    this.gui.close();
+
     // Request a render with every change on the GUI
     this.gui.onChange(() => world.requestRender());
   }
