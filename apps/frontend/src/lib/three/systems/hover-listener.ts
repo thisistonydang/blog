@@ -20,7 +20,6 @@ export function hoverListener({ castRay, world }: Events): void {
     ) {
       prevIntersection.object.onPointerLeave({
         intersection: prevIntersection,
-        world,
       });
       world.requestRender();
     }
@@ -34,7 +33,6 @@ export function hoverListener({ castRay, world }: Events): void {
     ) {
       newIntersection.object.onPointerEnter({
         intersection: newIntersection,
-        world,
       });
       world.requestRender();
     }
