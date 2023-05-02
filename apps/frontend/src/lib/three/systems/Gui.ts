@@ -10,18 +10,23 @@ export class Gui {
   world: World;
   gui = new GUI();
   folders: { [key: string]: boolean } = {};
-  togglesFolder: GUI;
+  foldersFolder: GUI;
   devFolder: GUI;
   tweakables: (Loop | Object3D | Statistics)[] = [];
 
   constructor(world: World) {
     this.world = world;
-    this.togglesFolder = this.gui.addFolder("folders");
+
+    // Create "folders" and "dev" folders
+    this.foldersFolder = this.gui.addFolder("folders");
     this.devFolder = this.createFolder("dev");
 
     // Add Loop and Statistics systems as tweakables objects
     this.tweakables.push(world.loop);
     world.loop.statistics && this.tweakables.push(world.loop.statistics);
+
+    // Request a render with every change on the GUI
+    this.gui.onChange(() => world.requestRender());
   }
 
   init(): void {
@@ -39,7 +44,7 @@ export class Gui {
 
     // Create folder toggle
     this.folders[name] = showFolder;
-    this.togglesFolder
+    this.foldersFolder
       .add(this.folders, name)
       .onChange(() => folder.show(folder._hidden));
 
