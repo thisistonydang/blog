@@ -1,7 +1,7 @@
 import { MathUtils } from "three";
 
 import { createInstancedMesh } from "../components/instanced-mesh/instanced-mesh";
-import { createCube } from "../components/cube";
+import { createCube } from "../components/cube/cube";
 import { BaseGroup } from "../systems/BaseGroup";
 
 import type { Gui } from "../systems/Gui";
