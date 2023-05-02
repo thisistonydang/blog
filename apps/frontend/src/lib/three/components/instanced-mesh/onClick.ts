@@ -1,11 +1,11 @@
-import { getInstance } from "./get-instance";
+import { getInstance } from "./getInstance";
 import { instances } from "./instances";
-import { updateInstanceMatrices } from "./update-instance-matrices";
+import { updateInstanceMatrices } from "./updateInstanceMatrices";
 
 import type { InstancedMesh } from "three";
 import type { Patched } from "@lib/three/types/Patched";
 
-export function addOnClickHandler(mesh: InstancedMesh & Patched): void {
+export function onClick({ mesh }: { mesh: InstancedMesh & Patched }): void {
   mesh.onClick = ({ intersection }) => {
     const instance = getInstance(intersection);
     if (!instance) return;
