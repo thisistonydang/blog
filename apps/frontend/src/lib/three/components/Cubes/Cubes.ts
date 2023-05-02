@@ -2,7 +2,7 @@ import { MathUtils } from "three";
 
 import { BaseGroup } from "../../systems/BaseGroup";
 import { createCube } from "../cube";
-import { createInstancedMesh } from "../instanced-mesh";
+import { createInstancedMesh } from "../instancedMesh";
 
 import type { Gui } from "../../systems/Gui";
 import type { World } from "../../World";
