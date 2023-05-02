@@ -1,6 +1,6 @@
 import { MathUtils } from "three";
 
-import { createInstancedMesh } from "../instanced-mesh/instanced-mesh";
+import { createInstancedMesh } from "../instanced-mesh";
 import { createCube } from "../cube/cube";
 import { BaseGroup } from "../../systems/BaseGroup";
 
