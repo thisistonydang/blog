@@ -1,11 +1,11 @@
 import { MathUtils } from "three";
 
-import { createInstancedMesh } from "../components/instanced-mesh/instanced-mesh";
-import { createCube } from "../components/cube/cube";
-import { BaseGroup } from "../systems/BaseGroup";
+import { createInstancedMesh } from "../instanced-mesh/instanced-mesh";
+import { createCube } from "../cube/cube";
+import { BaseGroup } from "../../systems/BaseGroup";
 
-import type { Gui } from "../systems/Gui";
-import type { World } from "../World";
+import type { Gui } from "../../systems/Gui";
+import type { World } from "../../World";
 
 export class Cubes extends BaseGroup {
   // Tweakable controls
