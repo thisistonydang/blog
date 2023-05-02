@@ -19,9 +19,9 @@ export class Cubes extends BaseGroup {
     super();
 
     this.addObjects(world, [
-      createCube({ position: [-0.8, 0, 0] }),
-      createCube({ position: [0.8, 0, 0] }),
-      createInstancedMesh(),
+      createCube({ world, position: [-0.8, 0, 0] }),
+      createCube({ world, position: [0.8, 0, 0] }),
+      createInstancedMesh({ world }),
     ]);
     this.visible = this.c.visible;
   }
@@ -34,7 +34,7 @@ export class Cubes extends BaseGroup {
   }
 
   // Add tweaks
-  updateGui(createFolder: Gui["createFolder"]) {
+  updateGui({ createFolder }: Gui) {
     const folder = createFolder("cubes");
 
     folder.add(this.c, "visible").onChange((v: boolean) => (this.visible = v));
