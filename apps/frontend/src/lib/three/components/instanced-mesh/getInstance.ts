@@ -1,9 +1,8 @@
+import { INSTANCE_IDS_KEY } from "./index";
 import { instances } from "./instances";
 
 import type { Intersection } from "three";
 import type { Instance } from "./instances";
-
-export const INSTANCE_IDS_KEY = "instance_ids";
 
 /**
  * Get instance given intersection from raycaster.
