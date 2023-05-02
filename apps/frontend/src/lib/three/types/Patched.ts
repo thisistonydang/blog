@@ -1,7 +1,6 @@
 import type { EventDispatcher, Intersection, Object3D } from "three";
 import type { Gui } from "../systems/Gui";
 import type { Frameloop } from "../systems/Loop";
-import type { World } from "../World";
 
 /**
  * Handler for intersection events. If handler returns void, propagation stops.
@@ -9,10 +8,8 @@ import type { World } from "../World";
  */
 type IntersectionEventHandler = ({
   intersection,
-  world,
 }: {
   intersection: Intersection;
-  world: World;
 }) => void | true;
 
 export interface Patched {

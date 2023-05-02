@@ -9,7 +9,7 @@ export function clickListener({ world, castRay }: Events): void {
       const object = intersection.object;
 
       if (isPatched(object) && "onClick" in object) {
-        const propagate = object.onClick({ intersection, world });
+        const propagate = object.onClick({ intersection });
         world.requestRender();
 
         if (!propagate) break;
