@@ -4,9 +4,9 @@ import { hasTouchScreen } from "@lib/hooks/hasTouchScreen";
 import { isPatched } from "../types/Patched";
 
 import type { Intersection } from "three";
-import type { Events } from "./Events";
+import type { Pointer } from "./Pointer";
 
-export function hoverListener({ castRay, world }: Events): void {
+export function hoverListener({ castRay, world }: Pointer): void {
   if (hasTouchScreen()) return; // Don't listen for hover events on touch devices.
 
   let prevIntersection: Intersection | undefined = undefined;

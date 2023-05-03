@@ -2,9 +2,9 @@ import { createPerspectiveCamera } from "./components-core/perspective-camera";
 import { createRenderer } from "./components-core/renderer";
 import { createScene } from "./components-core/scene";
 
-import { Events } from "./systems/Events";
 import { Gui } from "./systems/Gui";
 import { Loop } from "./systems/Loop";
+import { Pointer } from "./systems/Pointer";
 import { Resizer } from "./systems/Resizer";
 
 import type { Object3D, PerspectiveCamera, Scene, WebGLRenderer } from "three";
@@ -13,7 +13,7 @@ export class World {
   scene: Scene;
   camera: PerspectiveCamera;
   renderer: WebGLRenderer;
-  events: Events;
+  pointer: Pointer;
   loop: Loop;
   gui: Gui | null = null;
 
@@ -26,7 +26,7 @@ export class World {
 
     // Initialize systems
     new Resizer(this, container);
-    this.events = new Events(this);
+    this.pointer = new Pointer(this);
     this.loop = new Loop(this);
     this.gui = new Gui(this);
   }
@@ -50,7 +50,7 @@ export class World {
       "onPointerEnter" in object ||
       "onPointerLeave" in object
     ) {
-      this.events.objectsToTest.push(object);
+      this.pointer.objectsToTest.push(object);
     }
     if ("tick" in object) {
       this.loop.tickables.push(object);

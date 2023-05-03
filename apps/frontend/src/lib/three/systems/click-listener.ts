@@ -1,7 +1,7 @@
 import { isPatched } from "../types/Patched";
-import type { Events } from "./Events";
+import type { Pointer } from "./Pointer";
 
-export function clickListener({ world, castRay }: Events): void {
+export function clickListener({ world, castRay }: Pointer): void {
   world.renderer.domElement.addEventListener("click", () => {
     const intersections = castRay();
 

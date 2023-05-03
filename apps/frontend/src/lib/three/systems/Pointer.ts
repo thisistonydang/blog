@@ -5,7 +5,7 @@ import { hoverListener } from "./hover-listener";
 import type { Intersection, Object3D } from "three";
 import type { World } from "../World";
 
-export class Events {
+export class Pointer {
   raycaster = new Raycaster();
   mouse = new Vector2(2, 2); // Set initial x and y to be > 1 so ray doesn't hit canvas on start up.
   world: World;
