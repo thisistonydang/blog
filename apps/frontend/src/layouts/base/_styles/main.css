@@ -49,14 +49,4 @@
   :root {
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
-
-  .lil-gui {
-    --font-size: 12px;
-    --input-font-size: 12px;
-    --padding: 10px;
-    --spacing: 5px;
-    --slider-knob-width: 4px;
-    --slider-input-min-width: 50px;
-    --color-input-min-width: 50px;
-  }
 }
