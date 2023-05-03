@@ -7,13 +7,18 @@ import type { Loop } from "./Loop";
 import type { Statistics } from "./Statistics";
 
 export class Gui {
-  gui = new GUI();
+  gui: GUI;
   folders: { [key: string]: boolean } = {};
   foldersFolder: GUI;
   devFolder: GUI;
   tweakables: (Loop | Object3D | Statistics)[] = [];
 
   constructor(world: World) {
+    // Create GUI
+    const container = document.getElementById("lil-gui");
+    const options = container ? { container } : {};
+    this.gui = new GUI({ ...options, title: "CONTROLS" });
+
     // Create "folders" and "dev" folders
     this.foldersFolder = this.gui.addFolder("folders");
     this.devFolder = this.createFolder("dev");
