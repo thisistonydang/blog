@@ -1,0 +1,26 @@
+<div
+  id="lil-gui"
+  class="xs:right-[calc(15px+16px)] fixed right-4 top-[calc(16px+36px+40px-20px)] z-50 bg-transparent"
+>
+</div>
+
+<style is:global>
+  .lil-gui {
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+    --input-min-width: 47px;
+
+    /* Official CSS variables that lil-gui exposes */
+    --font-family: var(--font-mono);
+    --font-family-mono: var(--font-mono);
+    --padding: 10px;
+    --spacing: 5px;
+    --name-width: 50%;
+    --slider-knob-width: 4px;
+    --slider-input-min-width: var(--input-min-width);
+    --color-input-min-width: var(--input-min-width);
+
+    max-height: calc(100vh - (16px + 36px + 40px - 20px));
+    opacity: 95%;
+  }
+</style>
