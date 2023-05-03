@@ -39,10 +39,14 @@ export class Statistics {
       this.stats.addPanel(panel)
     );
 
-    // Add stats panel to DOM
+    // Update panel styles
     this.stats.dom.style.display = this.c.showStats ? "block" : "none";
+    this.stats.dom.style.position = "absolute";
+
+    // Add stats panel to DOM
     this.stats.showPanel(this.c.statsPanel);
-    document.body.appendChild(this.stats.dom);
+    const container = document.getElementById("stats") ?? document.body;
+    container.appendChild(this.stats.dom);
   }
 
   /**
