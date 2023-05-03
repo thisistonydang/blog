@@ -197,6 +197,9 @@ importers:
       sharp:
         specifier: ^0.32.1
         version: 0.32.1
+      stats.js:
+        specifier: ^0.17.0
+        version: 0.17.0
       svelte:
         specifier: ^3.58.0
         version: 3.58.0
@@ -234,9 +237,6 @@ importers:
       pa11y-ci:
         specifier: ^3.0.1
         version: 3.0.1
-      stats.js:
-        specifier: ^0.17.0
-        version: 0.17.0
 
   packages/error-handling: {}
 
@@ -9350,6 +9350,7 @@ packages:
 
   /stats.js@0.17.0:
     resolution: {integrity: sha512-hNKz8phvYLPEcRkeG1rsGmV5ChMjKDAWU7/OJJdDErPBNChQXxCo3WZurGpnWc6gZhAzEPFad1aVgyOANH1sMw==}
+    dev: false
 
   /std-env@3.3.2:
     resolution: {integrity: sha512-uUZI65yrV2Qva5gqE0+A7uVAvO40iPo6jGhs7s8keRfHCmtg+uB2X6EiLGCI9IgL1J17xGhvoOqSz79lzICPTA==}
