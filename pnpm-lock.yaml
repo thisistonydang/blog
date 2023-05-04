@@ -128,7 +128,7 @@ importers:
       '@astrojs/tailwind':
         specifier: ^3.1.1
         version: 3.1.1(astro@2.3.2)(tailwindcss@3.3.2)
-      '@dimforge/rapier3d':
+      '@dimforge/rapier2d-compat':
         specifier: ^0.11.2
         version: 0.11.2
       '@dimforge/rapier3d-compat':
@@ -1809,12 +1809,12 @@ packages:
     resolution: {integrity: sha512-fG3oaJX1icfsGV74nhx1+AC6opvZsGqnpx6FvrcVqQaBmCNkjKNqDRFrpasXWFiOIvysBXHKQAzsAJkBZgnM+A==}
     dev: true
 
-  /@dimforge/rapier3d-compat@0.11.2:
-    resolution: {integrity: sha512-vdWmlkpS3G8nGAzLuK7GYTpNdrkn/0NKCe0l1Jqxc7ZZOB3N0q9uG/Ap9l9bothWuAvxscIt0U97GVLr0lXWLg==}
+  /@dimforge/rapier2d-compat@0.11.2:
+    resolution: {integrity: sha512-HOyo/akJqvZhgB4iaIzeysBiXrewpIHVDpf71HDxC6UwfjL5hFS8CKoW4Lex30KD+ntA865Yz3664e24QJPpqA==}
     dev: false
 
-  /@dimforge/rapier3d@0.11.2:
-    resolution: {integrity: sha512-B+AKkPmtJxED3goMTGU8v0ju8hUAUQGLgghzCos4G4OeN9X+mJ5lfN2xtNA0n8tJRJk2YfsMk9BOj/6AN89Acg==}
+  /@dimforge/rapier3d-compat@0.11.2:
+    resolution: {integrity: sha512-vdWmlkpS3G8nGAzLuK7GYTpNdrkn/0NKCe0l1Jqxc7ZZOB3N0q9uG/Ap9l9bothWuAvxscIt0U97GVLr0lXWLg==}
     dev: false
 
   /@emmetio/abbreviation@2.3.1:
