@@ -7,7 +7,7 @@ import { boxGeometry } from "../../geometries/box";
 import { instances } from "./instances";
 import { onClick } from "./onClick";
 import { onHover } from "./onHover";
-import { tick } from "./tick";
+import { tickOnWorldStart } from "./tickOnWorldStart";
 import { updateGui } from "./updateGui";
 import { updateInstanceColors } from "./updateInstanceColors";
 import { updateInstanceMatrices } from "./updateInstanceMatrices";
@@ -27,7 +27,6 @@ export function instancedMesh({
 }: {
   world: World;
 }): InstancedMesh & Patched {
-  // Controls
   const c: Controls = {
     visible: true,
     spin: () => {
@@ -53,8 +52,8 @@ export function instancedMesh({
   onClick({ mesh });
   onHover({ mesh });
 
-  // Add tick function
-  tick({ mesh });
+  // Add tick on world start
+  tickOnWorldStart({ mesh });
 
   // Add tweaks
   updateGui({ c, mesh });
