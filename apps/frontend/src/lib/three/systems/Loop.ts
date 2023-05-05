@@ -15,7 +15,7 @@ import type { World } from "../World";
 import type { Physics2D } from "./Physics2D";
 import type { Physics3D } from "./Physics3D";
 
-export type Frameloop = "always" | "demand";
+type Frameloop = "always" | "demand";
 
 const clock = new Clock();
 
@@ -44,11 +44,12 @@ export class Loop {
 
     const render = (): void => {
       // Reset renderRequested when a frame finally renders. This must be set
-      // BEFORE calling tick so that OrbitControls' tick function can request
-      // additional renders for damping.
+      // BEFORE calling tickOnRenderRequest so that OrbitControls'
+      // tickOnRenderRequest function can request additional renders for
+      // damping.
       this.renderRequested = false;
 
-      this.tick();
+      this.tickOnRenderRequest();
       this.renderer.render(this.scene, this.camera);
     };
     requestAnimationFrame(render);
@@ -85,7 +86,7 @@ export class Loop {
     this.renderer.setAnimationLoop(() => {
       this.statistics?.begin();
 
-      this.tick();
+      this.tickOnWorldStart();
       this.renderer.render(this.scene, this.camera);
 
       this.statistics?.end();
@@ -98,12 +99,22 @@ export class Loop {
     this.renderer.setAnimationLoop(null);
   }
 
-  tick(): void {
+  tickOnRenderRequest(): void {
     const delta = clock.getDelta();
 
     this.tickables.forEach((tickable) => {
-      if (isPatched(tickable) && "tick" in tickable) {
-        tickable.tick({ delta, frameloop: this.frameloop });
+      if (isPatched(tickable) && "tickOnRenderRequest" in tickable) {
+        tickable.tickOnRenderRequest({ delta });
+      }
+    });
+  }
+
+  tickOnWorldStart(): void {
+    const delta = clock.getDelta();
+
+    this.tickables.forEach((tickable) => {
+      if (isPatched(tickable) && "tickOnWorldStart" in tickable) {
+        tickable.tickOnWorldStart({ delta });
       }
     });
   }
