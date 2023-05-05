@@ -13,7 +13,6 @@ interface Controls {
 }
 
 export class Cubes extends BaseGroup {
-  // Controls
   c: Controls = {
     visible: true,
     rotate: false,
@@ -31,9 +30,9 @@ export class Cubes extends BaseGroup {
     this.visible = this.c.visible;
   }
 
-  // Add tick function
-  tick: Tick = ({ delta, frameloop }) => {
-    if (frameloop === "always" && this.c.rotate) {
+  // Add tick on world start
+  tickOnWorldStart: Tick = ({ delta }) => {
+    if (this.c.rotate) {
       this.rotation.y += MathUtils.degToRad(30) * delta;
     }
   };
