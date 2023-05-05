@@ -4,12 +4,17 @@ import { BaseGroup } from "../../systems/BaseGroup";
 import { cube } from "../cube";
 import { createInstancedMesh } from "../instancedMesh";
 
-import type { Gui } from "../../systems/Gui";
+import type { Tick, UpdateGui } from "../../types/Patched";
 import type { World } from "../../World";
 
+interface Controls {
+  visible: boolean;
+  rotate: boolean;
+}
+
 export class Cubes extends BaseGroup {
-  // Tweakable controls
-  c = {
+  // Controls
+  c: Controls = {
     visible: true,
     rotate: false,
   };
@@ -27,17 +32,17 @@ export class Cubes extends BaseGroup {
   }
 
   // Add tick function
-  tick(delta: number) {
-    if (this.c.rotate) {
+  tick: Tick = ({ delta, frameloop }) => {
+    if (frameloop === "always" && this.c.rotate) {
       this.rotation.y += MathUtils.degToRad(30) * delta;
     }
-  }
+  };
 
   // Add tweaks
-  updateGui({ createFolder }: Gui) {
-    const folder = createFolder("cubes");
+  updateGui: UpdateGui = ({ createFolder }) => {
+    const folder = createFolder("Cubes");
 
     folder.add(this.c, "visible").onChange((v: boolean) => (this.visible = v));
     folder.add(this.c, "rotate");
-  }
+  };
 }
