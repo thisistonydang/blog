@@ -1,10 +1,15 @@
 import Stats from "stats.js";
 import type { WebGLRenderer } from "three";
-import type { Gui } from "./Gui";
+import type { UpdateGui } from "../types/Patched";
+
+interface Controls {
+  showStats: boolean;
+  statsPanel: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+}
 
 export class Statistics {
-  // Tweakable controls
-  c = {
+  // Controls
+  c: Controls = {
     showStats: true,
     statsPanel: 0,
   };
@@ -77,7 +82,7 @@ export class Statistics {
     this.customPanels.triangles?.update(rendererInfo.render.triangles, 999999);
   }
 
-  updateGui({ devFolder }: Gui): void {
+  updateGui: UpdateGui = ({ devFolder }) => {
     // Add display toggle for stats panel
     devFolder.add(this.c, "showStats").onChange((showStats: boolean) => {
       this.stats.dom.style.display = showStats ? "block" : "none";
@@ -93,5 +98,5 @@ export class Statistics {
     devFolder.add(this.c, "statsPanel", options).onChange((panel: number) => {
       this.stats.showPanel(panel);
     });
-  }
+  };
 }
