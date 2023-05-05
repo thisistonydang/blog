@@ -1,7 +1,7 @@
 import GUI from "lil-gui";
 import { isPatched } from "../types/Patched";
 
-import type { Object3D } from "three";
+import type { EventDispatcher, Object3D } from "three";
 import type { World } from "../World";
 import type { Loop } from "./Loop";
 import type { Statistics } from "./Statistics";
@@ -11,7 +11,7 @@ export class Gui {
   folders: { [key: string]: boolean } = {};
   foldersFolder: GUI;
   devFolder: GUI;
-  tweakables: (Loop | Object3D | Statistics)[] = [];
+  tweakables: (EventDispatcher | Loop | Object3D | Statistics)[] = [];
 
   constructor(world: World) {
     // Create GUI
