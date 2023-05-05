@@ -1,7 +1,7 @@
 import { MathUtils } from "three";
 
 import { BaseGroup } from "../../systems/BaseGroup";
-import { cube } from "../cube";
+import { cube } from "../cube/cube";
 import { instancedMesh } from "../instancedMesh/instancedMesh";
 
 import type { Tick, UpdateGui } from "../../types/Patched";

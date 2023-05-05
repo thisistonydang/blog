@@ -3,7 +3,7 @@ import { loopWhileExpandingOrContracting } from "./loopWhileExpandingOrContracti
 import type { Mesh } from "three";
 import type { Patched } from "../../types/Patched";
 import type { World } from "../../World";
-import type { Controls } from "./index";
+import type { Controls } from "./cube";
 
 export function onClick({
   world,

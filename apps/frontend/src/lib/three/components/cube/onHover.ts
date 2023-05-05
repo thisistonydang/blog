@@ -1,6 +1,6 @@
 import type { Mesh, MeshMatcapMaterial } from "three";
 import type { Patched } from "../../types/Patched";
-import type { Controls } from "./index";
+import type { Controls } from "./cube";
 
 export function onHover({
   c,

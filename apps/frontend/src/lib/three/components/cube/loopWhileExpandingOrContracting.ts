@@ -4,7 +4,7 @@ import { approxEq } from "@lib/math/approxEq";
 import type { Mesh } from "three";
 import type { World } from "../../World";
 import type { Patched } from "../../types/Patched";
-import type { Controls } from "./index";
+import type { Controls } from "./cube";
 
 export function loopWhileExpandingOrContracting(
   world: World,
