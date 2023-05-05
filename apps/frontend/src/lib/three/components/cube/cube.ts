@@ -6,7 +6,7 @@ import { boxGeometry } from "../../geometries/box";
 
 import { onClick } from "./onClick";
 import { onHover } from "./onHover";
-import { tick } from "./tick";
+import { tickOnWorldStart } from "./tickOnWorldStart";
 import { updateGui } from "./updateGui";
 
 import type { Patched } from "../../types/Patched";
@@ -32,7 +32,6 @@ export function cube({
   world: World;
   position: [number, number, number];
 }): Mesh & Patched {
-  // Controls
   const c: Controls = {
     color: 0xffff00,
     positionX: position[0],
@@ -61,8 +60,8 @@ export function cube({
   onClick({ world, c, mesh });
   onHover({ c, material, mesh });
 
-  // Add tick function
-  tick({ mesh });
+  // Add tick on world start
+  tickOnWorldStart({ mesh });
 
   // Add tweaks
   updateGui({ world, c, material, mesh });
