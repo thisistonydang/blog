@@ -87,7 +87,7 @@ export class World {
       }
     }
 
-    if ("tick" in object) {
+    if ("tickOnRenderRequest" in object || "tickOnWorldStart" in object) {
       this.loop.tickables.push(object);
     }
 
