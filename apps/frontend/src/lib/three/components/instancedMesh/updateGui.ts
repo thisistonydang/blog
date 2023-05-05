@@ -1,6 +1,6 @@
 import type { InstancedMesh } from "three";
 import type { Patched } from "@lib/three/types/Patched";
-import type { Controls } from "./index";
+import type { Controls } from "./instancedMesh";
 
 export function updateGui({
   c,

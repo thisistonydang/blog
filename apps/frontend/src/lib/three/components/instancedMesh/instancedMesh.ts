@@ -22,7 +22,7 @@ export interface Controls {
 
 export const INSTANCE_IDS_KEY = "instance_ids";
 
-export function createInstancedMesh({
+export function instancedMesh({
   world,
 }: {
   world: World;

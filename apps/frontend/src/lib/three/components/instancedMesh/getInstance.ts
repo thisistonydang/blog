@@ -1,4 +1,4 @@
-import { INSTANCE_IDS_KEY } from "./index";
+import { INSTANCE_IDS_KEY } from "./instancedMesh";
 import { instances } from "./instances";
 
 import type { Intersection } from "three";

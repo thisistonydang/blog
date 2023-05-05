@@ -2,7 +2,7 @@ import { MathUtils } from "three";
 
 import { BaseGroup } from "../../systems/BaseGroup";
 import { cube } from "../cube";
-import { createInstancedMesh } from "../instancedMesh";
+import { instancedMesh } from "../instancedMesh/instancedMesh";
 
 import type { Tick, UpdateGui } from "../../types/Patched";
 import type { World } from "../../World";
@@ -26,7 +26,7 @@ export class Cubes extends BaseGroup {
     this.addObjects(world, [
       cube({ world, position: [-0.8, 0, 0] }),
       cube({ world, position: [0.8, 0, 0] }),
-      createInstancedMesh({ world }),
+      instancedMesh({ world }),
     ]);
     this.visible = this.c.visible;
   }
