@@ -9,11 +9,13 @@ import type {
   Scene,
   WebGLRenderer,
 } from "three";
+
+import type { UpdateGui } from "../types/Patched";
 import type { World } from "../World";
-import type { Gui } from "./Gui";
+import type { Physics2D } from "./Physics2D";
+import type { Physics3D } from "./Physics3D";
 
 export type Frameloop = "always" | "demand";
-type Tickable = EventDispatcher | Object3D;
 
 const clock = new Clock();
 
@@ -21,7 +23,7 @@ export class Loop {
   scene: Scene;
   camera: Camera;
   renderer: WebGLRenderer;
-  tickables: Tickable[] = [];
+  tickables: (EventDispatcher | Object3D | Physics2D | Physics3D)[] = [];
   statistics: Statistics | null = null;
   frameloop: Frameloop = "demand";
   renderRequested = false;
@@ -106,11 +108,11 @@ export class Loop {
     });
   }
 
-  updateGui({ devFolder }: Gui): void {
+  updateGui: UpdateGui = ({ devFolder }) => {
     devFolder
       .add(this, "frameloop", ["always", "demand"])
       .onChange((frameloop: Frameloop) => {
         frameloop === "always" ? this.start() : this.stop();
       });
-  }
+  };
 }
