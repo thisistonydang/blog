@@ -1,7 +1,6 @@
 import type { EventDispatcher, Intersection, Object3D } from "three";
 
 import type { Gui } from "../systems/Gui";
-import type { Frameloop } from "../systems/Loop";
 import type { Physics2D } from "../systems/Physics2D";
 import type { Physics3D } from "../systems/Physics3D";
 
@@ -17,13 +16,7 @@ export type IntersectionEventHandler = ({
   intersection: Intersection;
 }) => void | true;
 
-export type Tick = ({
-  delta,
-  frameloop,
-}: {
-  delta: number;
-  frameloop: Frameloop;
-}) => void;
+export type Tick = ({ delta }: { delta: number }) => void;
 
 export type UpdateGui = (gui: Gui) => void;
 
@@ -32,19 +25,21 @@ export interface Patched {
   onClick?: IntersectionEventHandler;
   onPointerEnter?: IntersectionEventHandler;
   onPointerLeave?: IntersectionEventHandler;
-  tick?: Tick;
+  tickOnRenderRequest?: Tick;
+  tickOnWorldStart?: Tick;
   updateGui?: UpdateGui;
 }
 
 export function isPatched(
-  object: EventDispatcher | Object3D | Patched
+  object: EventDispatcher | Object3D | Patched | Physics2D | Physics3D
 ): object is Patched {
   const patchedProperties = [
     "addPhysics",
     "onClick",
     "onPointerEnter",
     "onPointerLeave",
-    "tick",
+    "tickOnRenderRequest",
+    "tickOnWorldStart",
     "updateGui",
   ];
 
