@@ -37,7 +37,7 @@ export function createOrbitControls({
   });
 
   controls.updateGui = ({ createFolder }) => {
-    const folder = createFolder("camera");
+    const folder = createFolder("orbit controls");
     folder.add(c, "enableDamping").onChange((enableDamping: boolean) => {
       controls.enableDamping = enableDamping;
     });
