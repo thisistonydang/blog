@@ -16,25 +16,20 @@ export function createOrbitControls({
     enableDamping: true,
   };
 
-  // Create controls
+  // Create controls.
   const controls: OrbitControls & Patched = new OrbitControls(
     camera,
     renderer.domElement
   );
   controls.enableDamping = c.enableDamping;
 
-  // Update controls each tick to allow damping
-  controls.tick = () => {
-    controls.update();
-  };
+  // Update controls each tick to allow damping.
+  controls.tickOnRenderRequest = () => controls.update();
+  controls.tickOnWorldStart = () => controls.update();
 
   // When rendering on demand, request a render on change events if a render has
   // not already been requested.
-  controls.addEventListener("change", () => {
-    if (loop.frameloop === "demand") {
-      loop.requestRender();
-    }
-  });
+  controls.addEventListener("change", loop.requestRender);
 
   controls.updateGui = ({ createFolder }) => {
     const folder = createFolder("orbit controls");
