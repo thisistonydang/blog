@@ -16,7 +16,7 @@ export function createOrbitControls({
   controls.enableDamping = true;
 
   // Update controls each tick to allow damping
-  controls.tick = (): void => {
+  controls.tick = () => {
     controls.update();
   };
   loop.tickables.push(controls);

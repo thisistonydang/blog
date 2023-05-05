@@ -15,7 +15,7 @@ export function createTrackballControls({
   );
 
   // Update controls each tick
-  controls.tick = (): void => {
+  controls.tick = () => {
     controls.update();
   };
   loop.tickables.push(controls);
