@@ -14,9 +14,7 @@ export function createTrackballControls({
   );
 
   // Update controls each tick
-  controls.tick = () => {
-    controls.update();
-  };
+  controls.tickOnWorldStart = () => controls.update();
 
   return controls;
 }
