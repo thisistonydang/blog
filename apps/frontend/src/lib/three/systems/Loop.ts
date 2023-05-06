@@ -49,8 +49,13 @@ export class Loop {
       // damping.
       this.renderRequested = false;
 
+      this.statistics?.begin();
+
       this.tickOnRenderRequest();
       this.renderer.render(this.scene, this.camera);
+
+      this.statistics?.end();
+      this.statistics?.updateCustomPanels();
     };
     requestAnimationFrame(render);
   };
