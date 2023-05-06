@@ -74,7 +74,7 @@ export class World {
    */
   updateSystems(object: EventDispatcher | Object3D): void {
     if (object instanceof Object3D) {
-      if ("addPhysics" in object) {
+      if ("addPhysics2D" in object || "addPhysics3D" in object) {
         this.physics?.objects.push(object);
       }
 
@@ -98,6 +98,10 @@ export class World {
 
   requestRender(): void {
     this.loop.requestRender();
+  }
+
+  runWhileAwake(): void {
+    this.physics?.runWhileAwake();
   }
 
   start(): void {
