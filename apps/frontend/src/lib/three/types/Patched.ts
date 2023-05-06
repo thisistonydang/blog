@@ -4,7 +4,8 @@ import type { Gui } from "../systems/Gui";
 import type { Physics2D } from "../systems/Physics2D";
 import type { Physics3D } from "../systems/Physics3D";
 
-export type AddPhysics = (physics: Physics2D | Physics3D) => void;
+export type AddPhysics2D = (physics: Physics2D) => void;
+export type AddPhysics3D = (physics: Physics3D) => void;
 
 /**
  * Handler for intersection events. If handler returns void, propagation stops.
@@ -21,7 +22,8 @@ export type Tick = ({ delta }: { delta: number }) => void;
 export type UpdateGui = (gui: Gui) => void;
 
 export interface Patched {
-  addPhysics?: AddPhysics;
+  addPhysics2D?: AddPhysics2D;
+  addPhysics3D?: AddPhysics3D;
   onClick?: IntersectionEventHandler;
   onPointerEnter?: IntersectionEventHandler;
   onPointerLeave?: IntersectionEventHandler;
@@ -34,7 +36,8 @@ export function isPatched(
   object: EventDispatcher | Object3D | Patched | Physics2D | Physics3D
 ): object is Patched {
   const patchedProperties = [
-    "addPhysics",
+    "addPhysics2D",
+    "addPhysics3D",
     "onClick",
     "onPointerEnter",
     "onPointerLeave",
