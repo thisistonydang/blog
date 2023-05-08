@@ -2,7 +2,7 @@ import { INSTANCE_IDS_KEY } from "./instancedMesh";
 import { instances } from "./instances";
 
 import type { Intersection } from "three";
-import type { Instance } from "./instances";
+import type { Instance } from "@lib/three/types/Instance";
 
 /**
  * Get instance given intersection from raycaster.
