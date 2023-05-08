@@ -1,7 +1,7 @@
 import { Color } from "three";
 
 import type { InstancedMesh } from "three";
-import type { Instance } from "./instances";
+import type { Instance } from "../../types/Instance";
 
 const color = new Color();
 

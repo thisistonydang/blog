@@ -1,7 +1,7 @@
 import { Euler, Matrix4, Quaternion, Vector3 } from "three";
 
 import type { InstancedMesh } from "three";
-import type { Instance } from "./instances";
+import type { Instance } from "../../types/Instance";
 
 const positionVector = new Vector3();
 const euler = new Euler();
