@@ -6,14 +6,14 @@ import type { Instance } from "../../types/Instance";
 const color = new Color();
 
 export function updateInstanceColors(
-  mesh: InstancedMesh,
+  instanceMesh: InstancedMesh,
   instances: Instance[]
 ): void {
   instances.forEach((instance, index) => {
-    mesh.setColorAt(index, color.set(instance.color));
+    instanceMesh.setColorAt(index, color.set(instance.color));
   });
 
-  if (mesh.instanceColor) {
-    mesh.instanceColor.needsUpdate = true;
+  if (instanceMesh.instanceColor) {
+    instanceMesh.instanceColor.needsUpdate = true;
   }
 }
