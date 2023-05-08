@@ -12,8 +12,8 @@ import type {
 
 import type { UpdateGui } from "../types/Patched";
 import type { World } from "../World";
-import type { Physics2D } from "./Physics2D";
-import type { Physics3D } from "./Physics3D";
+import type { Physics2D } from "./Physics/Physics2D";
+import type { Physics3D } from "./Physics/Physics3D";
 
 type Frameloop = "always" | "demand";
 
