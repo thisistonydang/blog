@@ -1,7 +1,7 @@
 import type { ColliderDesc } from "@dimforge/rapier3d-compat";
 import type { BoxGeometry, InstancedMesh, Mesh } from "three";
 
-import type { PhysicsInstance, Rapier3D } from "@lib/three/types/Rapier3D";
+import type { Rapier3D } from "@lib/three/types/Rapier3D";
 
 export function hasCuboidGeometry(
   mesh: Mesh | InstancedMesh
@@ -12,7 +12,7 @@ export function hasCuboidGeometry(
 export function cuboidColliderDesc(
   RAPIER: Rapier3D,
   mesh: Mesh<BoxGeometry> | InstancedMesh<BoxGeometry>,
-  instance?: PhysicsInstance
+  instanceScale?: { x: number; y: number; z: number }
 ): ColliderDesc {
   const parameters = mesh.geometry.parameters;
   const scale = mesh.scale;
@@ -21,10 +21,10 @@ export function cuboidColliderDesc(
   let hy = (parameters.height * scale.y) / 2;
   let hz = (parameters.depth * scale.z) / 2;
 
-  if (instance) {
-    hx = hx * instance.scale.x;
-    hy = hy * instance.scale.y;
-    hz = hz * instance.scale.z;
+  if (instanceScale) {
+    hx = hx * instanceScale.x;
+    hy = hy * instanceScale.y;
+    hz = hz * instanceScale.z;
   }
 
   const colliderDesc = RAPIER.ColliderDesc.cuboid(hx, hy, hz);
