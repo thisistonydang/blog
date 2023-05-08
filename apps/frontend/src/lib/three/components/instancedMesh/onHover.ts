@@ -1,6 +1,6 @@
+import { updateInstanceColors } from "@lib/three/utils/instances/updateInstanceColors";
 import { getInstance } from "./getInstance";
 import { instances } from "./instances";
-import { updateInstanceColors } from "./updateInstanceColors";
 
 import type { InstancedMesh } from "three";
 import type { Patched } from "@lib/three/types/Patched";
