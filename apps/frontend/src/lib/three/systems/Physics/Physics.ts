@@ -2,8 +2,8 @@ import type { World as PhysicsWorld2D } from "@dimforge/rapier2d-compat";
 import type { World as PhysicsWorld3D } from "@dimforge/rapier3d-compat";
 import type { Object3D } from "three";
 
-import type { Tick } from "../types/Patched";
-import type { World } from "../World";
+import type { Tick } from "../../types/Patched";
+import type { World } from "../../World";
 
 export abstract class Physics {
   world: World;
