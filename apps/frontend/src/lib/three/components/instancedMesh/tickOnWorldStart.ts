@@ -12,12 +12,12 @@ export function tickOnWorldStart({
   mesh: InstancedMesh & Patched;
 }): void {
   mesh.tickOnWorldStart = ({ delta }) => {
+    const radiansPerSecond = MathUtils.degToRad(15);
+
     instances.forEach((instance) => {
-      if (instance.rotation === undefined) {
-        instance.rotation = 0;
-      } else {
-        instance.rotation += MathUtils.degToRad(15) * delta;
-      }
+      instance.rotation.x += radiansPerSecond * delta;
+      instance.rotation.y += radiansPerSecond * delta;
+      instance.rotation.z += radiansPerSecond * delta;
     });
 
     updateInstanceMatrices(mesh, instances);
