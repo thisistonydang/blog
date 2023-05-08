@@ -2,13 +2,13 @@ import gsap from "gsap";
 import { BoxGeometry, Mesh, MeshMatcapMaterial } from "three";
 
 import { approxEq } from "@lib/math/approxEq";
-import { boxGeometry } from "../../geometries/box";
+import { boxGeometry } from "@lib/three/geometries/box";
 
 import { updateGui } from "./updateGui";
 import { addPhysics3D } from "./addPhysics3D";
 
-import type { Patched } from "../../types/Patched";
-import type { World } from "../../World";
+import type { Patched } from "@lib/three/types/Patched";
+import type { World } from "@lib/three/World";
 
 export interface Controls {
   color: number;
