@@ -17,7 +17,8 @@ import type {
   Scene,
   WebGLRenderer,
 } from "three";
-import type { Rapier2D, Rapier3D } from "./types/Rapier";
+import type { Rapier2D } from "./types/Rapier2D";
+import type { Rapier3D } from "./types/Rapier3D";
 
 export class World {
   scene: Scene;
