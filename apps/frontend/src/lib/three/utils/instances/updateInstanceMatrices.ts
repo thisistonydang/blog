@@ -10,7 +10,7 @@ const scaleVector = new Vector3();
 const matrix = new Matrix4();
 
 export function updateInstanceMatrices(
-  mesh: InstancedMesh,
+  instanceMesh: InstancedMesh,
   instances: Instance[]
 ): void {
   instances.forEach(({ position, rotation, scale }, index) => {
@@ -26,8 +26,8 @@ export function updateInstanceMatrices(
 
     // Update instance matrix
     matrix.compose(positionVector, quaternion, scaleVector);
-    mesh.setMatrixAt(index, matrix);
+    instanceMesh.setMatrixAt(index, matrix);
   });
 
-  mesh.instanceMatrix.needsUpdate = true;
+  instanceMesh.instanceMatrix.needsUpdate = true;
 }
