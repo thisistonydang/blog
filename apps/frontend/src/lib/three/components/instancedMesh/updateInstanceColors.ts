@@ -10,13 +10,10 @@ export function updateInstanceColors(
   instances: Instance[]
 ): void {
   instances.forEach((instance, index) => {
-    mesh.setColorAt(
-      index,
-      color.set(instance.color ? instance.color : 0x00ffff)
-    );
-
-    if (mesh.instanceColor) {
-      mesh.instanceColor.needsUpdate = true;
-    }
+    mesh.setColorAt(index, color.set(instance.color));
   });
+
+  if (mesh.instanceColor) {
+    mesh.instanceColor.needsUpdate = true;
+  }
 }
