@@ -15,26 +15,19 @@ export function updateInstanceMatrices(
 ): void {
   instances.forEach(({ position, rotation, scale }, index) => {
     // Set position
-    positionVector.set(position.x, position.y, 0);
+    positionVector.set(position.x, position.y, position.z);
 
     // Set rotation
-    if (rotation) {
-      euler.set(rotation, rotation, rotation);
-    } else {
-      euler.set(0, 0, 0);
-    }
+    euler.set(rotation.x, rotation.y, rotation.z);
     quaternion.setFromEuler(euler);
 
     // Set scale
-    if (scale) {
-      scaleVector.set(scale.x, scale.y, scale.z);
-    } else {
-      scaleVector.set(1, 1, 1);
-    }
+    scaleVector.set(scale.x, scale.y, scale.z);
 
     // Update instance matrix
     matrix.compose(positionVector, quaternion, scaleVector);
     mesh.setMatrixAt(index, matrix);
-    mesh.instanceMatrix.needsUpdate = true;
   });
+
+  mesh.instanceMatrix.needsUpdate = true;
 }
