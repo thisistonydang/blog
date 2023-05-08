@@ -6,8 +6,8 @@ import { createScene } from "./components-core/scene";
 
 import { Gui } from "./systems/Gui";
 import { Loop } from "./systems/Loop";
-import { Physics2D } from "./systems/Physics2D";
-import { Physics3D } from "./systems/Physics3D";
+import { Physics2D } from "./systems/Physics/Physics2D";
+import { Physics3D } from "./systems/Physics/Physics3D";
 import { Pointer } from "./systems/Pointer";
 import { Resizer } from "./systems/Resizer";
 
