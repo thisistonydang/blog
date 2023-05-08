@@ -12,8 +12,8 @@ import { onHover } from "./onHover";
 import { tickOnWorldStart } from "./tickOnWorldStart";
 import { updateGui } from "./updateGui";
 
-import type { Patched } from "../../types/Patched";
-import type { World } from "../../World";
+import type { Patched } from "@lib/three/types/Patched";
+import type { World } from "@lib/three/World";
 
 export interface Controls {
   visible: boolean;
@@ -30,33 +30,33 @@ export function instancedMesh({
   const c: Controls = {
     visible: true,
     spin: () => {
-      const end = mesh.rotation.y + Math.PI * 2;
-      gsap.to(mesh.rotation, { duration: 1, y: end });
-      world.loop.runWhile(() => !approxEq(mesh.rotation.y, end));
+      const end = instancedMesh.rotation.y + Math.PI * 2;
+      gsap.to(instancedMesh.rotation, { duration: 1, y: end });
+      world.loop.runWhile(() => !approxEq(instancedMesh.rotation.y, end));
     },
   };
 
-  // Create mesh
+  // Create instanced mesh
   const material = new MeshMatcapMaterial();
-  const mesh: InstancedMesh & Patched = new InstancedMesh(
+  const instancedMesh: InstancedMesh & Patched = new InstancedMesh(
     boxGeometry,
     material,
     4
   );
-  mesh.visible = c.visible;
-  mesh.userData[INSTANCE_IDS_KEY] = instances.map(({ id }) => id);
-  updateInstanceMatrices(mesh, instances);
-  updateInstanceColors(mesh, instances);
+  instancedMesh.visible = c.visible;
+  instancedMesh.userData[INSTANCE_IDS_KEY] = instances.map(({ id }) => id);
+  updateInstanceMatrices(instancedMesh, instances);
+  updateInstanceColors(instancedMesh, instances);
 
   // Add event handlers
-  onClick({ mesh });
-  onHover({ mesh });
+  onClick({ instancedMesh });
+  onHover({ instancedMesh });
 
   // Add tick on world start
-  tickOnWorldStart({ mesh });
+  tickOnWorldStart({ instancedMesh });
 
   // Add tweaks
-  updateGui({ c, mesh });
+  updateGui({ c, instancedMesh });
 
-  return mesh;
+  return instancedMesh;
 }

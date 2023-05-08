@@ -5,8 +5,12 @@ import { instances } from "./instances";
 import type { InstancedMesh } from "three";
 import type { Patched } from "@lib/three/types/Patched";
 
-export function onClick({ mesh }: { mesh: InstancedMesh & Patched }): void {
-  mesh.onClick = ({ intersection }) => {
+export function onClick({
+  instancedMesh,
+}: {
+  instancedMesh: InstancedMesh & Patched;
+}): void {
+  instancedMesh.onClick = ({ intersection }) => {
     const instance = getInstance(intersection);
     if (!instance) return;
 
@@ -16,6 +20,6 @@ export function onClick({ mesh }: { mesh: InstancedMesh & Patched }): void {
       instance.scale = { x: 1, y: 1, z: 1 };
     }
 
-    updateInstanceMatrices(mesh, instances);
+    updateInstanceMatrices(instancedMesh, instances);
   };
 }

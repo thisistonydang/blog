@@ -7,11 +7,11 @@ import type { InstancedMesh } from "three";
 import type { Patched } from "@lib/three/types/Patched";
 
 export function tickOnWorldStart({
-  mesh,
+  instancedMesh,
 }: {
-  mesh: InstancedMesh & Patched;
+  instancedMesh: InstancedMesh & Patched;
 }): void {
-  mesh.tickOnWorldStart = ({ delta }) => {
+  instancedMesh.tickOnWorldStart = ({ delta }) => {
     const radiansPerSecond = MathUtils.degToRad(15);
 
     instances.forEach((instance) => {
@@ -20,6 +20,6 @@ export function tickOnWorldStart({
       instance.rotation.z += radiansPerSecond * delta;
     });
 
-    updateInstanceMatrices(mesh, instances);
+    updateInstanceMatrices(instancedMesh, instances);
   };
 }

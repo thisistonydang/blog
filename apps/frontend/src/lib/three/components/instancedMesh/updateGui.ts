@@ -4,15 +4,17 @@ import type { Controls } from "./instancedMesh";
 
 export function updateGui({
   c,
-  mesh,
+  instancedMesh,
 }: {
   c: Controls;
-  mesh: InstancedMesh & Patched;
+  instancedMesh: InstancedMesh & Patched;
 }): void {
-  mesh.updateGui = ({ createFolder }) => {
-    const folder = createFolder("instanced mesh");
+  instancedMesh.updateGui = ({ createFolder }) => {
+    const folder = createFolder("instanced instancedMesh");
 
-    folder.add(c, "visible").onChange((v: boolean) => (mesh.visible = v));
+    folder
+      .add(c, "visible")
+      .onChange((v: boolean) => (instancedMesh.visible = v));
     folder.add(c, "spin");
   };
 }
