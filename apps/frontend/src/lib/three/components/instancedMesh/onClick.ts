@@ -1,6 +1,6 @@
+import { updateInstanceMatrices } from "@lib/three/utils/instances/updateInstanceMatrices";
 import { getInstance } from "./getInstance";
 import { instances } from "./instances";
-import { updateInstanceMatrices } from "./updateInstanceMatrices";
 
 import type { InstancedMesh } from "three";
 import type { Patched } from "@lib/three/types/Patched";
