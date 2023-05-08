@@ -2,15 +2,15 @@ import gsap from "gsap";
 import { Mesh, MeshMatcapMaterial } from "three";
 
 import { approxEq } from "@lib/math/approxEq";
-import { boxGeometry } from "../../geometries/box";
+import { boxGeometry } from "@lib/three/geometries/box";
 
 import { onClick } from "./onClick";
 import { onHover } from "./onHover";
 import { tickOnWorldStart } from "./tickOnWorldStart";
 import { updateGui } from "./updateGui";
 
-import type { Patched } from "../../types/Patched";
-import type { World } from "../../World";
+import type { Patched } from "@lib/three/types/Patched";
+import type { World } from "@lib/three/World";
 
 export interface Controls {
   color: number;

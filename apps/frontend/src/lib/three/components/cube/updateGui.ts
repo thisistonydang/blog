@@ -1,8 +1,8 @@
 import { loopWhileExpandingOrContracting } from "./loopWhileExpandingOrContracting";
 
 import type { Mesh, MeshMatcapMaterial } from "three";
-import type { Patched } from "../../types/Patched";
-import type { World } from "../../World";
+import type { Patched } from "@lib/three/types/Patched";
+import type { World } from "@lib/three/World";
 import type { Controls } from "./cube";
 
 export function updateGui({
