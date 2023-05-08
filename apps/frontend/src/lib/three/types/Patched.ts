@@ -1,8 +1,8 @@
 import type { EventDispatcher, Intersection, Object3D } from "three";
 
 import type { Gui } from "../systems/Gui";
-import type { Physics2D } from "../systems/Physics2D";
-import type { Physics3D } from "../systems/Physics3D";
+import type { Physics2D } from "../systems/Physics/Physics2D";
+import type { Physics3D } from "../systems/Physics/Physics3D";
 
 export type AddPhysics2D = (physics: Physics2D) => void;
 export type AddPhysics3D = (physics: Physics3D) => void;
