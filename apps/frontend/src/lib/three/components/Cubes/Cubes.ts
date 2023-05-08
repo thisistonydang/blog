@@ -1,11 +1,11 @@
 import { MathUtils } from "three";
 
-import { BaseGroup } from "../../systems/BaseGroup";
+import { BaseGroup } from "@lib/three/systems/BaseGroup";
 import { cube } from "../cube/cube";
 import { instancedMesh } from "../instancedMesh/instancedMesh";
 
-import type { Tick, UpdateGui } from "../../types/Patched";
-import type { World } from "../../World";
+import type { Tick, UpdateGui } from "@lib/three/types/Patched";
+import type { World } from "@lib/three/World";
 
 interface Controls {
   visible: boolean;
