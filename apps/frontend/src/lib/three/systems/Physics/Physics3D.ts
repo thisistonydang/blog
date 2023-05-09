@@ -1,4 +1,6 @@
+import RAPIER from "@dimforge/rapier3d-compat";
 import { InstancedMesh, Matrix4, Quaternion, Vector3 } from "three";
+
 import { isPatched } from "../../types/Patched";
 import { Physics } from "./Physics";
 
@@ -7,7 +9,7 @@ import type {
   World as PhysicsWorld3D,
 } from "@dimforge/rapier3d-compat";
 
-import type { PhysicsBody, Rapier3D } from "../../types/Rapier3D";
+import type { PhysicsBody } from "../../types/Rapier3D";
 import type { World } from "../../World";
 
 const positionVector = new Vector3();
@@ -17,11 +19,9 @@ const matrix = new Matrix4();
 
 export class Physics3D extends Physics {
   physicsWorld: PhysicsWorld3D;
-  RAPIER: Rapier3D;
 
-  constructor(world: World, RAPIER: Rapier3D) {
+  constructor(world: World) {
     super(world);
-    this.RAPIER = RAPIER;
 
     const gravity = { x: 0.0, y: -9.81, z: 0.0 };
     this.physicsWorld = new RAPIER.World(gravity);
