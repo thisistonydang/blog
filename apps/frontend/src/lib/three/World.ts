@@ -43,9 +43,9 @@ export class World {
 
     if (RAPIER !== undefined) {
       if ("Vector2" in RAPIER) {
-        this.physics = new Physics2D(this, RAPIER);
+        this.physics = new Physics2D(this);
       } else if ("Vector3" in RAPIER) {
-        this.physics = new Physics3D(this, RAPIER);
+        this.physics = new Physics3D(this);
       }
 
       if (this.physics) {
