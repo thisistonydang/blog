@@ -25,7 +25,7 @@ export function addInstancedMesh({
   const physicsBodies: PhysicsBody[] = [];
 
   instances.forEach(
-    ({ id, position, rotation, scale, rigidBodyDesc, restitution }) => {
+    ({ id, position, rotation, rigidBodyDesc, colliderDesc, restitution }) => {
       // Describe rigid body
       rigidBodyDesc
         .setTranslation(position.x, position.y, position.z)
@@ -37,14 +37,7 @@ export function addInstancedMesh({
       const rigidBody = physicsWorld.createRigidBody(rigidBodyDesc);
 
       // Describe collider
-      let colliderDesc;
-
-      if (hasCuboidGeometry(instancedMesh)) {
-        colliderDesc = cuboidColliderDesc(instancedMesh, scale);
-      }
-
-      if (!colliderDesc) throw new Error("Failed to create a colliderDesc.");
-
+      if (!colliderDesc) throw new Error("No colliderDesc set on instance.");
       restitution && colliderDesc.setRestitution(restitution);
 
       // Create collider

@@ -2,6 +2,7 @@ import type RAPIER from "@dimforge/rapier3d-compat";
 
 import type {
   Collider,
+  ColliderDesc,
   RigidBody,
   RigidBodyDesc,
 } from "@dimforge/rapier3d-compat";
@@ -12,6 +13,7 @@ export type Rapier3D = typeof RAPIER;
 
 export interface PhysicsInstance extends Instance {
   rigidBodyDesc: RigidBodyDesc;
+  colliderDesc?: ColliderDesc;
   restitution?: number;
 }
 
