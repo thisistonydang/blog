@@ -8,10 +8,7 @@ import {
 import type { World as PhysicsWorld } from "@dimforge/rapier3d-compat";
 import type { InstancedMesh } from "three";
 
-import type {
-  PhysicsBody,
-  PhysicsInstance,
-} from "../../../types/Rapier3D";
+import type { PhysicsBody, PhysicsInstance } from "../../../types/Rapier3D";
 
 const euler = new Euler();
 const quaternion = new Quaternion();
@@ -28,7 +25,7 @@ export function addInstancedMesh({
   const physicsBodies: PhysicsBody[] = [];
 
   instances.forEach(
-    ({ position, rotation, scale, rigidBodyDesc, restitution }) => {
+    ({ id, position, rotation, scale, rigidBodyDesc, restitution }) => {
       // Describe rigid body
       rigidBodyDesc
         .setTranslation(position.x, position.y, position.z)
@@ -53,7 +50,7 @@ export function addInstancedMesh({
       // Create collider
       const collider = physicsWorld.createCollider(colliderDesc, rigidBody);
 
-      physicsBodies.push({ rigidBody, collider });
+      physicsBodies.push({ id, rigidBody, collider });
     }
   );
 
