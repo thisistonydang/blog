@@ -8,6 +8,7 @@ import type { World } from "../../World";
 export abstract class Physics {
   world: World;
   objects: Object3D[] = [];
+  movableObjects: Object3D[] = [];
   abstract physicsWorld: PhysicsWorld2D | PhysicsWorld3D;
 
   constructor(world: World) {
