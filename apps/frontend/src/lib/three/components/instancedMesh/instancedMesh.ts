@@ -3,6 +3,7 @@ import { InstancedMesh, MeshMatcapMaterial } from "three";
 
 import { approxEq } from "@lib/math/approxEq";
 import { boxGeometry } from "@lib/three/geometries/box";
+import { setInstanceIds } from "@lib/three/utils/instances/setInstanceIds";
 import { updateInstanceColors } from "@lib/three/utils/instances/updateInstanceColors";
 import { updateInstanceMatrices } from "@lib/three/utils/instances/updateInstanceMatrices";
 
@@ -19,8 +20,6 @@ export interface Controls {
   visible: boolean;
   spin: () => void;
 }
-
-export const INSTANCE_IDS_KEY = "instance_ids";
 
 export function instancedMesh({
   world,
@@ -44,7 +43,7 @@ export function instancedMesh({
     4
   );
   instancedMesh.visible = c.visible;
-  instancedMesh.userData[INSTANCE_IDS_KEY] = instances.map(({ id }) => id);
+  setInstanceIds(instancedMesh, instances);
   updateInstanceMatrices(instancedMesh, instances);
   updateInstanceColors(instancedMesh, instances);
 
