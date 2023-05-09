@@ -41,6 +41,9 @@ export class Physics3D extends Physics {
         const physicsBodies: PhysicsBody[] = mesh.userData.physicsBodies;
 
         physicsBodies.forEach(({ rigidBody }, index) => {
+          // Do nothing if instance is fixed
+          if (rigidBody.isFixed()) return;
+
           // Get position from physics world
           const position = rigidBody.translation();
           positionVector.set(position.x, position.y, position.z);
