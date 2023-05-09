@@ -10,7 +10,7 @@ export function updateGui({
   instancedMesh: InstancedMesh & Patched;
 }): void {
   instancedMesh.updateGui = ({ createFolder }) => {
-    const folder = createFolder("instanced instancedMesh");
+    const folder = createFolder("instanced mesh");
 
     folder
       .add(c, "visible")
