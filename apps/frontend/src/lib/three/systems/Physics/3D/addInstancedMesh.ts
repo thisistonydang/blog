@@ -1,10 +1,5 @@
 import { Euler, Quaternion } from "three";
 
-import {
-  cuboidColliderDesc,
-  hasCuboidGeometry,
-} from "../3D/cuboidColliderDesc";
-
 import type { World as PhysicsWorld } from "@dimforge/rapier3d-compat";
 import type { InstancedMesh } from "three";
 

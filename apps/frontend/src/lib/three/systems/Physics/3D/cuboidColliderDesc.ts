@@ -3,12 +3,6 @@ import RAPIER from "@dimforge/rapier3d-compat";
 import type { ColliderDesc } from "@dimforge/rapier3d-compat";
 import type { BoxGeometry, InstancedMesh, Mesh } from "three";
 
-export function hasCuboidGeometry(
-  mesh: Mesh | InstancedMesh
-): mesh is Mesh<BoxGeometry> | InstancedMesh<BoxGeometry> {
-  return mesh.geometry.type === "BoxGeometry";
-}
-
 export function cuboidColliderDesc(
   mesh: Mesh<BoxGeometry> | InstancedMesh<BoxGeometry>,
   instanceScale?: { x: number; y: number; z: number }
