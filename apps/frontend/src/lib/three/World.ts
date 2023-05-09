@@ -1,6 +1,5 @@
 import { Object3D } from "three";
 
-import { createPerspectiveCamera } from "./components-core/perspective-camera";
 import { createRenderer } from "./components-core/renderer";
 import { createScene } from "./components-core/scene";
 
@@ -21,18 +20,22 @@ import type { Rapier2D } from "./types/Rapier2D";
 import type { Rapier3D } from "./types/Rapier3D";
 
 export class World {
-  scene: Scene;
   camera: PerspectiveCamera;
+  scene: Scene;
   renderer: WebGLRenderer;
   pointer: Pointer;
   loop: Loop;
   physics: Physics2D | Physics3D | null = null;
   gui: Gui | null = null;
 
-  constructor(container: HTMLDivElement, RAPIER?: Rapier2D | Rapier3D) {
+  constructor(
+    camera: PerspectiveCamera,
+    container: HTMLDivElement,
+    RAPIER?: Rapier2D | Rapier3D
+  ) {
     // Create core components
+    this.camera = camera;
     this.scene = createScene();
-    this.camera = createPerspectiveCamera();
     this.renderer = createRenderer();
     container.append(this.renderer.domElement);
 
@@ -54,6 +57,7 @@ export class World {
     }
 
     this.gui = new Gui(this);
+    this.gui?.tweakables.push(camera);
   }
 
   addObjects(objects: (EventDispatcher | Object3D)[]): void {
