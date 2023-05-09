@@ -11,19 +11,16 @@ import type { InstancedMesh } from "three";
 import type {
   PhysicsBody,
   PhysicsInstance,
-  Rapier3D,
 } from "../../../types/Rapier3D";
 
 const euler = new Euler();
 const quaternion = new Quaternion();
 
 export function addInstancedMesh({
-  RAPIER,
   physicsWorld,
   instancedMesh,
   instances,
 }: {
-  RAPIER: Rapier3D;
   physicsWorld: PhysicsWorld;
   instancedMesh: InstancedMesh;
   instances: PhysicsInstance[];
@@ -46,7 +43,7 @@ export function addInstancedMesh({
       let colliderDesc;
 
       if (hasCuboidGeometry(instancedMesh)) {
-        colliderDesc = cuboidColliderDesc(RAPIER, instancedMesh, scale);
+        colliderDesc = cuboidColliderDesc(instancedMesh, scale);
       }
 
       if (!colliderDesc) throw new Error("Failed to create a colliderDesc.");
