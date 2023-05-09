@@ -1,6 +1,6 @@
-import RAPIER from "@dimforge/rapier3d-compat";
+import RAPIER from "@dimforge/rapier2d-compat";
 
-import type { PhysicsInstance } from "@lib/three/types/Rapier3D";
+import type { PhysicsInstance } from "@lib/three/types/Rapier2D";
 
 export const rawInstances = [
   { id: "A", position: { x: -1.5, y: -1.5 } },
