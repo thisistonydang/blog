@@ -1,3 +1,5 @@
+import RAPIER from "@dimforge/rapier3d-compat";
+
 import { addMesh } from "@lib/three/systems/Physics/3D/addMesh";
 import { cuboidColliderDesc } from "@lib/three/systems/Physics/3D/cuboidColliderDesc";
 
@@ -9,12 +11,12 @@ export function addPhysics3D({
 }: {
   mesh: Mesh<BoxGeometry> & Patched;
 }): void {
-  mesh.addPhysics3D = ({ RAPIER, physicsWorld }) => {
+  mesh.addPhysics3D = ({ physicsWorld }) => {
     addMesh({
       physicsWorld,
       mesh,
       rigidBodyDesc: RAPIER.RigidBodyDesc.fixed(),
-      colliderDesc: cuboidColliderDesc(RAPIER, mesh),
+      colliderDesc: cuboidColliderDesc(mesh),
     });
   };
 }
