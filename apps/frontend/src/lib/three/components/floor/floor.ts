@@ -4,8 +4,9 @@ import { BoxGeometry, Mesh, MeshMatcapMaterial } from "three";
 import { approxEq } from "@lib/math/approxEq";
 import { boxGeometry } from "@lib/three/geometries/box";
 
-import { updateGui } from "./updateGui";
+import { addPhysics2D } from "./addPhysics2D";
 import { addPhysics3D } from "./addPhysics3D";
+import { updateGui } from "./updateGui";
 
 import type { Patched } from "@lib/three/types/Patched";
 import type { World } from "@lib/three/World";
@@ -53,6 +54,7 @@ export function floor({
   mesh.visible = c.visible;
 
   // Add physics
+  addPhysics2D({ mesh });
   addPhysics3D({ mesh });
 
   // Add tweaks
