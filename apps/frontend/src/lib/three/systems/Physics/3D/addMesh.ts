@@ -1,19 +1,16 @@
-import type {
-  ColliderDesc,
-  RigidBodyDesc,
-  World as PhysicsWorld,
-} from "@dimforge/rapier3d-compat";
+import type { ColliderDesc, RigidBodyDesc } from "@dimforge/rapier3d-compat";
 
 import type { Mesh } from "three";
+import type { Physics3D } from "../Physics3D";
 
 export function addMesh({
-  physicsWorld,
+  physics,
   mesh,
   rigidBodyDesc,
   colliderDesc,
   restitution = 0,
 }: {
-  physicsWorld: PhysicsWorld;
+  physics: Physics3D;
   mesh: Mesh;
   rigidBodyDesc: RigidBodyDesc;
   colliderDesc: ColliderDesc;
@@ -28,15 +25,20 @@ export function addMesh({
     .setRotation(quaternion);
 
   // Create rigid body
-  const rigidBody = physicsWorld.createRigidBody(rigidBodyDesc);
+  const rigidBody = physics.physicsWorld.createRigidBody(rigidBodyDesc);
 
   // Describe collider
   colliderDesc.setRestitution(restitution);
 
   // Create collider
-  const collider = physicsWorld.createCollider(colliderDesc, rigidBody);
+  const collider = physics.physicsWorld.createCollider(colliderDesc, rigidBody);
 
   // Store rigidBody and collider in mesh userData
   mesh.userData.rigidBody = rigidBody;
   mesh.userData.collider = collider;
+
+  // Add mesh to movableObjects if not a fixed body
+  if (!rigidBody.isFixed()) {
+    physics.movableObjects.push(mesh);
+  }
 }
