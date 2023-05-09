@@ -4,6 +4,7 @@ import { BoxGeometry, Mesh, MeshMatcapMaterial } from "three";
 import { approxEq } from "@lib/math/approxEq";
 import { boxGeometry } from "@lib/three/geometries/box";
 
+import { addPhysics2D } from "./addPhysics2D";
 import { addPhysics3D } from "./addPhysics3D";
 import { onClick } from "./onClick";
 import { onHover } from "./onHover";
@@ -55,6 +56,7 @@ export function physicalCube({
   mesh.visible = c.visible;
 
   // Add physics
+  addPhysics2D({ mesh });
   addPhysics3D({ mesh });
 
   // Add event handlers
