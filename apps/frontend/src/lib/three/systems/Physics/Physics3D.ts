@@ -36,7 +36,7 @@ export class Physics3D extends Physics {
   }
 
   updateThreeJsObjects(): void {
-    this.objects.forEach((mesh) => {
+    this.movableObjects.forEach((mesh) => {
       if (mesh instanceof InstancedMesh) {
         const physicsBodies: PhysicsBody[] = mesh.userData.physicsBodies;
 
