@@ -1,13 +1,13 @@
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
-import type { Patched } from "../types/Patched";
-import type { World } from "../World";
+import type { Patched } from "../../types/Patched";
+import type { World } from "../../World";
 
 interface Controls {
   enableDamping: boolean;
 }
 
-export function createOrbitControls({
+export function orbitControls({
   camera,
   renderer,
   loop,
