@@ -59,6 +59,7 @@ export class Physics3D extends Physics {
         });
 
         mesh.instanceMatrix.needsUpdate = true;
+        mesh.computeBoundingSphere();
       } else {
         const rigidBody: RigidBody = mesh.userData.rigidBody;
 
