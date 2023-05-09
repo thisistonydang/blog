@@ -1,5 +1,6 @@
+import { getInstance } from "@lib/three/utils/instances/getInstance";
 import { updateInstanceMatrices } from "@lib/three/utils/instances/updateInstanceMatrices";
-import { getInstance } from "./getInstance";
+
 import { instances } from "./instances";
 
 import type { InstancedMesh } from "three";
@@ -11,7 +12,7 @@ export function onClick({
   instancedMesh: InstancedMesh & Patched;
 }): void {
   instancedMesh.onClick = ({ intersection }) => {
-    const instance = getInstance(intersection);
+    const instance = getInstance(intersection, instances);
     if (!instance) return;
 
     if (instance.scale.x === 1) {
