@@ -11,9 +11,9 @@ export function addPhysics3D({
 }: {
   mesh: Mesh<BoxGeometry> & Patched;
 }): void {
-  mesh.addPhysics3D = ({ physicsWorld }) => {
+  mesh.addPhysics3D = (physics) => {
     addMesh({
-      physicsWorld,
+      physics,
       mesh,
       rigidBodyDesc: RAPIER.RigidBodyDesc.fixed(),
       colliderDesc: cuboidColliderDesc(mesh),
