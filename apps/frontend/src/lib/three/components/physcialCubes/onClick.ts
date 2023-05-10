@@ -1,4 +1,4 @@
-import { getPhysics3DBody } from "@lib/three/utils/instances/getPhysics3DBody";
+import { getPhysics2DBody } from "@lib/three/utils/instances/getPhysics2DBody";
 import { instances } from "./instances";
 
 import type { InstancedMesh } from "three";
@@ -13,14 +13,14 @@ export function onClick({
   instancedMesh: InstancedMesh & Patched;
 }): void {
   instancedMesh.onClick = ({ intersection }) => {
-    const physicsBody = getPhysics3DBody(
+    const physicsBody = getPhysics2DBody(
+      world,
       intersection,
       instances,
       instancedMesh
     );
-    if (!physicsBody) return;
 
-    physicsBody.rigidBody.applyImpulse({ x: 0.0, y: 1.0, z: 0.0 }, true);
+    physicsBody?.rigidBody.applyImpulse({ x: 0.0, y: 1.0 }, true);
     world.runWhileAwake();
   };
 }
