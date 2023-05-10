@@ -29,11 +29,17 @@ export class World {
   physics: Physics2D | Physics3D | null = null;
   gui: Gui | null = null;
 
-  constructor(
-    camera: OrthographicCamera | PerspectiveCamera,
-    container: HTMLDivElement,
-    RAPIER?: Rapier2D | Rapier3D
-  ) {
+  constructor({
+    camera,
+    container,
+    minAspectRatio = 1,
+    RAPIER,
+  }: {
+    camera: OrthographicCamera | PerspectiveCamera;
+    container: HTMLDivElement;
+    minAspectRatio?: number;
+    RAPIER?: Rapier2D | Rapier3D;
+  }) {
     // Create core components
     this.camera = camera;
     this.scene = createScene();
@@ -41,7 +47,7 @@ export class World {
     container.append(this.renderer.domElement);
 
     // Create systems
-    new Resizer(this, container);
+    new Resizer(this, container, minAspectRatio);
     this.pointer = new Pointer(this);
     this.loop = new Loop(this);
 
