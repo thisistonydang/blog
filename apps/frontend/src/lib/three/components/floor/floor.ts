@@ -22,13 +22,14 @@ export interface Controls {
   spin: () => void;
 }
 
-export function floor({
-  world,
-  position = [0, 0, 0],
-}: {
-  world: World;
-  position?: [number, number, number];
-}) {
+export function floor(
+  world: World,
+  {
+    position = [0, 0, 0],
+  }: {
+    position?: [number, number, number];
+  }
+) {
   const c: Controls = {
     color: 0xffffff,
     positionX: position[0],
