@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { BoxGeometry, InstancedMesh, MeshMatcapMaterial } from "three";
+import { InstancedMesh, MeshMatcapMaterial } from "three";
 
 import { approxEq } from "@lib/math/approxEq";
 import { boxGeometry } from "@lib/three/geometries/box";
@@ -14,7 +14,6 @@ import { onClick } from "./onClick";
 import { onHover } from "./onHover";
 import { updateGui } from "./updateGui";
 
-import type { Patched } from "@lib/three/types/Patched";
 import type { World } from "@lib/three/World";
 
 export interface Controls {
@@ -22,11 +21,7 @@ export interface Controls {
   spin: () => void;
 }
 
-export function physicalCubes({
-  world,
-}: {
-  world: World;
-}): InstancedMesh<BoxGeometry> & Patched {
+export function physicalCubes({ world }: { world: World }) {
   const c: Controls = {
     visible: true,
     spin: () => {
@@ -38,11 +33,7 @@ export function physicalCubes({
 
   // Create instancedMesh
   const material = new MeshMatcapMaterial();
-  const instancedMesh: InstancedMesh<BoxGeometry> & Patched = new InstancedMesh(
-    boxGeometry,
-    material,
-    4
-  );
+  const instancedMesh = new InstancedMesh(boxGeometry, material, 4);
   instancedMesh.visible = c.visible;
   setInstanceIds(instancedMesh, instances);
   updateInstanceMatrices(instancedMesh, instances);
