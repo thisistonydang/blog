@@ -20,7 +20,7 @@ export interface Controls {
   spin: () => void;
 }
 
-export function instancedMesh({ world }: { world: World }) {
+export function instancedMesh(world: World) {
   const c: Controls = {
     visible: true,
     spin: () => {

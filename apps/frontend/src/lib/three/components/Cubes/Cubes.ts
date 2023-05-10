@@ -23,9 +23,9 @@ export class Cubes extends BaseGroup {
     super();
 
     this.addObjects(world, [
-      cube({ world, position: [-0.8, 0, 0] }),
-      cube({ world, position: [0.8, 0, 0] }),
-      instancedMesh({ world }),
+      cube(world, { position: [-0.8, 0, 0] }),
+      cube(world, { position: [0.8, 0, 0] }),
+      instancedMesh(world),
     ]);
     this.visible = this.c.visible;
   }
