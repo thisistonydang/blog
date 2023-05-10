@@ -20,7 +20,7 @@ export function perspectiveCamera({
   near?: number;
   far?: number;
   position?: [number, number, number];
-}): PerspectiveCamera {
+}) {
   const c: Controls = {
     fov,
     near,
