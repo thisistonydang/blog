@@ -20,11 +20,7 @@ export interface Controls {
   spin: () => void;
 }
 
-export function instancedMesh({
-  world,
-}: {
-  world: World;
-}) {
+export function instancedMesh({ world }: { world: World }) {
   const c: Controls = {
     visible: true,
     spin: () => {
@@ -36,11 +32,7 @@ export function instancedMesh({
 
   // Create instanced mesh
   const material = new MeshMatcapMaterial();
-  const instancedMesh = new InstancedMesh(
-    boxGeometry,
-    material,
-    4
-  );
+  const instancedMesh = new InstancedMesh(boxGeometry, material, 4);
   instancedMesh.visible = c.visible;
   setInstanceIds(instancedMesh, instances);
   updateInstanceMatrices(instancedMesh, instances);
