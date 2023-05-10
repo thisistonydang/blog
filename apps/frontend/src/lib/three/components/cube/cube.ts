@@ -9,7 +9,6 @@ import { onHover } from "./onHover";
 import { tickOnWorldStart } from "./tickOnWorldStart";
 import { updateGui } from "./updateGui";
 
-import type { Patched } from "@lib/three/types/Patched";
 import type { World } from "@lib/three/World";
 
 export interface Controls {
@@ -31,7 +30,7 @@ export function cube({
 }: {
   world: World;
   position: [number, number, number];
-}): Mesh & Patched {
+}): Mesh {
   const c: Controls = {
     color: 0xffff00,
     positionX: position[0],
@@ -51,7 +50,7 @@ export function cube({
 
   // Create mesh
   const material = new MeshMatcapMaterial({ color: c.color });
-  const mesh: Mesh & Patched = new Mesh(boxGeometry, material);
+  const mesh = new Mesh(boxGeometry, material);
   mesh.position.set(c.positionX, c.positionY, c.positionZ);
   mesh.scale.set(c.width, c.height, c.depth);
   mesh.visible = c.visible;
