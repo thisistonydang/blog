@@ -5,16 +5,16 @@ import type { Physics2D } from "../Physics2D";
 export function addInstancedMesh({
   physics,
   instancedMesh,
-  instances,
+  physicsInstances,
 }: {
   physics: Physics2D;
   instancedMesh: InstancedMesh;
-  instances: PhysicsInstance[];
+  physicsInstances: PhysicsInstance[];
 }): void {
   const physicsBodies: PhysicsBody[] = [];
   let allInstancesAreFixed = true;
 
-  instances.forEach(
+  physicsInstances.forEach(
     ({ id, position, rotation, rigidBodyDesc, colliderDesc, restitution }) => {
       // Describe rigid body
       rigidBodyDesc
