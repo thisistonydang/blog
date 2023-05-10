@@ -24,13 +24,14 @@ export interface Controls {
   spin: () => void;
 }
 
-export function physicalCube({
-  world,
-  position = [0, 0, 0],
-}: {
-  world: World;
-  position?: [number, number, number];
-}) {
+export function physicalCube(
+  world: World,
+  {
+    position = [0, 0, 0],
+  }: {
+    position?: [number, number, number];
+  }
+) {
   const c: Controls = {
     color: 0x00ffff,
     positionX: position[0],
