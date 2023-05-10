@@ -2,15 +2,15 @@ import { getInstance } from "./getInstance";
 
 import type { InstancedMesh, Intersection } from "three";
 
-import type { Physics3D } from "@lib/three/systems/Physics/Physics3D";
+import type { Physics2D } from "@lib/three/systems/Physics/Physics2D";
 import type { Instance } from "@lib/three/types/Instance";
-import type { PhysicsBody } from "@lib/three/types/Rapier3D";
+import type { PhysicsBody } from "@lib/three/types/Rapier2D";
 import type { World } from "@lib/three/World";
 
 /**
  * Get physics body from raycaster intersection.
  */
-export function getPhysics3DBody(
+export function getPhysics2DBody(
   { physics }: World,
   intersection: Intersection,
   instances: Instance[],
@@ -21,7 +21,7 @@ export function getPhysics3DBody(
     return undefined;
   }
 
-  const physicsBodies = (physics as Physics3D).instanceMeshMap.get(
+  const physicsBodies = (physics as Physics2D).instanceMeshMap.get(
     instancedMesh
   );
   const physicsBody = physicsBodies?.find(({ id }) => id === instance.id);
