@@ -8,7 +8,7 @@ import { updateInstanceColors } from "@lib/three/utils/instances/updateInstanceC
 import { updateInstanceMatrices } from "@lib/three/utils/instances/updateInstanceMatrices";
 
 import { addPhysics2D } from "./addPhysics2D";
-// import { addPhysics3D } from "./addPhysics3D";
+import { addPhysics3D } from "./addPhysics3D";
 import { instances } from "./instances";
 import { onClick } from "./onClick";
 import { onHover } from "./onHover";
@@ -41,7 +41,7 @@ export function physicalCubes({ world }: { world: World }) {
 
   // Physics
   addPhysics2D({ instancedMesh });
-  // addPhysics3D({ instancedMesh });
+  addPhysics3D({ instancedMesh });
 
   // Add event handlers
   onClick({ world, instancedMesh });
