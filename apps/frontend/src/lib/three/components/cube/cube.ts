@@ -30,7 +30,7 @@ export function cube({
 }: {
   world: World;
   position: [number, number, number];
-}): Mesh {
+}) {
   const c: Controls = {
     color: 0xffff00,
     positionX: position[0],
