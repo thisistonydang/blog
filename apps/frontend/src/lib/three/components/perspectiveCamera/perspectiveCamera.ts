@@ -1,6 +1,8 @@
 import { PerspectiveCamera } from "three";
 import { updateGui } from "./updateGui";
 
+import type { World } from "@lib/three/World";
+
 export interface Controls {
   fov: number;
   near: number;
@@ -10,17 +12,20 @@ export interface Controls {
   positionZ: number;
 }
 
-export function perspectiveCamera({
-  fov = 50,
-  near = 0.1,
-  far = 2000,
-  position = [0, 0, 10],
-}: {
-  fov?: number;
-  near?: number;
-  far?: number;
-  position?: [number, number, number];
-}) {
+export function perspectiveCamera(
+  world: World,
+  {
+    fov = 50,
+    near = 0.1,
+    far = 2000,
+    position = [0, 0, 10],
+  }: {
+    fov?: number;
+    near?: number;
+    far?: number;
+    position?: [number, number, number];
+  }
+) {
   const c: Controls = {
     fov,
     near,
@@ -30,12 +35,14 @@ export function perspectiveCamera({
     positionZ: position[2],
   };
 
-  const camera = new PerspectiveCamera(
-    c.fov,
-    1, // Dummy value for aspect ratio. Will be set in Resizer.
-    c.near,
-    c.far
-  );
+  const camera = world.camera;
+  if (!(camera instanceof PerspectiveCamera)) {
+    throw Error("Camera is not a PerspectiveCamera.");
+  }
+
+  camera.fov = c.fov;
+  camera.near = c.near;
+  camera.far = c.far;
   camera.position.set(c.positionX, c.positionY, c.positionZ);
 
   // Add tweaks
