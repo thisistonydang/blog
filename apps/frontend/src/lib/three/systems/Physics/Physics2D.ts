@@ -1,13 +1,17 @@
 import RAPIER from "@dimforge/rapier2d-compat";
-import { Euler, InstancedMesh, Matrix4, Quaternion, Vector3 } from "three";
+import {
+  Euler,
+  InstancedMesh,
+  Matrix4,
+  Mesh,
+  Quaternion,
+  Vector3,
+} from "three";
 
 import { isPatched } from "../../types/Patched";
 import { Physics } from "./Physics";
 
-import type {
-  RigidBody,
-  World as PhysicsWorld2D,
-} from "@dimforge/rapier2d-compat";
+import type { World as PhysicsWorld2D } from "@dimforge/rapier2d-compat";
 
 import type { PhysicsBody } from "../../types/Rapier2D";
 import type { World } from "../../World";
@@ -20,6 +24,8 @@ const matrix = new Matrix4();
 
 export class Physics2D extends Physics {
   physicsWorld: PhysicsWorld2D;
+  meshMap = new WeakMap<Mesh, PhysicsBody>();
+  instanceMeshMap = new WeakMap<InstancedMesh, PhysicsBody[]>();
 
   constructor(world: World) {
     super(world);
@@ -39,9 +45,9 @@ export class Physics2D extends Physics {
   updateThreeJsObjects(): void {
     this.movableObjects.forEach((mesh) => {
       if (mesh instanceof InstancedMesh) {
-        const physicsBodies: PhysicsBody[] = mesh.userData.physicsBodies;
+        const physicsBodies = this.instanceMeshMap.get(mesh);
 
-        physicsBodies.forEach(({ rigidBody }, index) => {
+        physicsBodies?.forEach(({ rigidBody }, index) => {
           // Do nothing if instance is fixed
           if (rigidBody.isFixed()) return;
 
@@ -64,8 +70,9 @@ export class Physics2D extends Physics {
 
         mesh.instanceMatrix.needsUpdate = true;
         mesh.computeBoundingSphere();
-      } else {
-        const rigidBody: RigidBody = mesh.userData.rigidBody;
+      } else if (mesh instanceof Mesh) {
+        const rigidBody = this.meshMap.get(mesh)?.rigidBody;
+        if (!rigidBody) return;
 
         const position = rigidBody.translation();
         mesh.position.x = position.x;
