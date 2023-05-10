@@ -12,6 +12,7 @@ import { Resizer } from "./systems/Resizer";
 
 import type {
   EventDispatcher,
+  OrthographicCamera,
   PerspectiveCamera,
   Scene,
   WebGLRenderer,
@@ -20,7 +21,7 @@ import type { Rapier2D } from "./types/Rapier2D";
 import type { Rapier3D } from "./types/Rapier3D";
 
 export class World {
-  camera: PerspectiveCamera;
+  camera: OrthographicCamera | PerspectiveCamera;
   scene: Scene;
   renderer: WebGLRenderer;
   pointer: Pointer;
@@ -29,7 +30,7 @@ export class World {
   gui: Gui | null = null;
 
   constructor(
-    camera: PerspectiveCamera,
+    camera: OrthographicCamera | PerspectiveCamera,
     container: HTMLDivElement,
     RAPIER?: Rapier2D | Rapier3D
   ) {
@@ -57,7 +58,6 @@ export class World {
     }
 
     this.gui = new Gui(this);
-    this.gui?.tweakables.push(camera);
   }
 
   addObjects(objects: (EventDispatcher | Object3D)[]): void {
