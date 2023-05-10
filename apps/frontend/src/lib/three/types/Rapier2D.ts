@@ -18,7 +18,7 @@ export interface PhysicsInstance extends Instance {
 }
 
 export interface PhysicsBody {
-  id: string;
+  id?: string;
   rigidBody: RigidBody;
   collider: Collider;
 }
