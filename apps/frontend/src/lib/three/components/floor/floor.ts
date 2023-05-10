@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { BoxGeometry, Mesh, MeshMatcapMaterial } from "three";
+import { Mesh, MeshMatcapMaterial } from "three";
 
 import { approxEq } from "@lib/math/approxEq";
 import { boxGeometry } from "@lib/three/geometries/box";
@@ -8,7 +8,6 @@ import { addPhysics2D } from "./addPhysics2D";
 import { addPhysics3D } from "./addPhysics3D";
 import { updateGui } from "./updateGui";
 
-import type { Patched } from "@lib/three/types/Patched";
 import type { World } from "@lib/three/World";
 
 export interface Controls {
@@ -29,7 +28,7 @@ export function floor({
 }: {
   world: World;
   position?: [number, number, number];
-}): Mesh<BoxGeometry> & Patched {
+}) {
   const c: Controls = {
     color: 0xffffff,
     positionX: position[0],
@@ -48,7 +47,7 @@ export function floor({
 
   // Create mesh
   const material = new MeshMatcapMaterial({ color: c.color });
-  const mesh: Mesh<BoxGeometry> & Patched = new Mesh(boxGeometry, material);
+  const mesh = new Mesh(boxGeometry, material);
   mesh.position.set(c.positionX, c.positionY, c.positionZ);
   mesh.scale.set(c.width, c.height, c.depth);
   mesh.visible = c.visible;
