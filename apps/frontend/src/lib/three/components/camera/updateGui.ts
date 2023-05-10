@@ -1,6 +1,6 @@
 import type { PerspectiveCamera } from "three";
 import type { Patched } from "@lib/three/types/Patched";
-import type { Controls } from "./perspectiveCamera";
+import type { Controls } from "./camera";
 
 export function updateGui({
   c,
