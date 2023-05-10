@@ -21,7 +21,7 @@ export interface Controls {
   spin: () => void;
 }
 
-export function physicalCubes({ world }: { world: World }) {
+export function physicalCubes(world: World) {
   const c: Controls = {
     visible: true,
     spin: () => {
