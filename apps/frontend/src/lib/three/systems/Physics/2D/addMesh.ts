@@ -30,9 +30,8 @@ export function addMesh({
   // Create collider
   const collider = physics.physicsWorld.createCollider(colliderDesc, rigidBody);
 
-  // Store rigidBody and collider in mesh userData
-  mesh.userData.rigidBody = rigidBody;
-  mesh.userData.collider = collider;
+  // Store rigidBody and collider in meshMap
+  physics.meshMap.set(mesh, { rigidBody, collider });
 
   // Add mesh to movableObjects if not a fixed body
   if (!rigidBody.isFixed()) {

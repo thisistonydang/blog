@@ -16,13 +16,10 @@ export function addMesh({
   colliderDesc: ColliderDesc;
   restitution?: number;
 }): void {
-  const position = mesh.position;
-  const quaternion = mesh.quaternion;
-
   // Describe rigid body
   rigidBodyDesc
-    .setTranslation(position.x, position.y, position.z)
-    .setRotation(quaternion);
+    .setTranslation(mesh.position.x, mesh.position.y, mesh.position.z)
+    .setRotation(mesh.quaternion);
 
   // Create rigid body
   const rigidBody = physics.physicsWorld.createRigidBody(rigidBodyDesc);
@@ -33,9 +30,8 @@ export function addMesh({
   // Create collider
   const collider = physics.physicsWorld.createCollider(colliderDesc, rigidBody);
 
-  // Store rigidBody and collider in mesh userData
-  mesh.userData.rigidBody = rigidBody;
-  mesh.userData.collider = collider;
+  // Store rigidBody and collider in meshMap
+  physics.meshMap.set(mesh, { rigidBody, collider });
 
   // Add mesh to movableObjects if not a fixed body
   if (!rigidBody.isFixed()) {
