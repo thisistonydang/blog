@@ -11,6 +11,7 @@ export class Gui {
   folders: { [key: string]: boolean } = {};
   foldersFolder: GUI;
   devFolder: GUI;
+  cameraFolder: GUI;
   tweakables: (EventDispatcher | Loop | Object3D | Statistics)[] = [];
 
   constructor(world: World) {
@@ -19,9 +20,10 @@ export class Gui {
     const options = container ? { container } : {};
     this.gui = new GUI({ ...options, title: "CONTROLS" });
 
-    // Create "folders" and "dev" folders
+    // Create folders
     this.foldersFolder = this.gui.addFolder("folders");
     this.devFolder = this.createFolder("dev");
+    this.cameraFolder = this.createFolder("camera");
 
     // Add Loop and Statistics systems as tweakables objects
     this.tweakables.push(world.loop);
