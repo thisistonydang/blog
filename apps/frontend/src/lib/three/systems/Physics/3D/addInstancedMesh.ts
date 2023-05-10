@@ -49,8 +49,8 @@ export function addInstancedMesh({
     }
   );
 
-  // Store rigidBody and collider in instancedMesh userData
-  instancedMesh.userData.physicsBodies = physicsBodies;
+  // Store rigid bodies and colliders in instancedMeshMap
+  physics.instanceMeshMap.set(instancedMesh, physicsBodies);
 
   // Add instancedMesh to movableObjects if not all instances are fixed
   if (!allInstancesAreFixed) {
