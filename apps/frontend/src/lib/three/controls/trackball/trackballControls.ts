@@ -1,12 +1,12 @@
 import { TrackballControls } from "three/examples/jsm/controls/TrackballControls.js";
 
-import type { Patched } from "../types/Patched";
-import type { World } from "../World";
+import type { Patched } from "../../types/Patched";
+import type { World } from "../../World";
 
 export function createTrackballControls({
   camera,
   renderer,
-}: World): TrackballControls & Patched {
+}: World): TrackballControls {
   // Create controls
   const controls: TrackballControls & Patched = new TrackballControls(
     camera,
