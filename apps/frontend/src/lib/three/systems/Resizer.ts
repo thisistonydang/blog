@@ -1,3 +1,4 @@
+import { PerspectiveCamera } from "three";
 import type { World } from "../World";
 
 export class Resizer {
@@ -18,7 +19,9 @@ export class Resizer {
 
   setSize({ camera, renderer }: World, container: HTMLDivElement): void {
     // Set the camera's aspect ratio.
-    camera.aspect = container.clientWidth / container.clientHeight;
+    if (camera instanceof PerspectiveCamera) {
+      camera.aspect = container.clientWidth / container.clientHeight;
+    }
 
     // Update the camera's frustum.
     camera.updateProjectionMatrix();
