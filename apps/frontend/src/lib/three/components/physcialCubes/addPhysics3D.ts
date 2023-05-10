@@ -1,21 +1,29 @@
-// import { addInstancedMesh } from "@lib/three/systems/Physics/3D/addInstancedMesh";
-// import { cuboidColliderDesc } from "@lib/three/systems/Physics/3D/cuboidColliderDesc";
-// import { instances } from "./instances";
+import RAPIER from "@dimforge/rapier3d-compat";
 
-// import type { BoxGeometry, InstancedMesh } from "three";
-// import type { Patched } from "@lib/three/types/Patched";
+import { addInstancedMesh } from "@lib/three/systems/Physics/3D/addInstancedMesh";
+import { cuboidColliderDesc } from "@lib/three/systems/Physics/3D/cuboidColliderDesc";
+import { instances } from "./instances";
 
-// export function addPhysics3D({
-//   instancedMesh,
-// }: {
-//   instancedMesh: InstancedMesh<BoxGeometry> & Patched;
-// }): void {
-//   // Add a collider description to each instance
-//   instances.forEach((instance) => {
-//     instance.colliderDesc = cuboidColliderDesc(instancedMesh, instance.scale);
-//   });
+import type { BoxGeometry, InstancedMesh } from "three";
+import type { Patched } from "@lib/three/types/Patched";
+import type { PhysicsInstance } from "@lib/three/types/Rapier3D";
 
-//   instancedMesh.addPhysics3D = (physics) => {
-//     addInstancedMesh({ physics, instancedMesh, instances });
-//   };
-// }
+export function addPhysics3D({
+  instancedMesh,
+}: {
+  instancedMesh: InstancedMesh<BoxGeometry> & Patched;
+}): void {
+  // Add physics description to each instance
+  const physicsInstances: PhysicsInstance[] = instances.map((instance) => {
+    return {
+      ...instance,
+      rigidBodyDesc: RAPIER.RigidBodyDesc.dynamic(),
+      colliderDesc: cuboidColliderDesc(instancedMesh, instance.scale),
+      restitution: 1,
+    };
+  });
+
+  instancedMesh.addPhysics3D = (physics) => {
+    addInstancedMesh({ physics, instancedMesh, physicsInstances });
+  };
+}
