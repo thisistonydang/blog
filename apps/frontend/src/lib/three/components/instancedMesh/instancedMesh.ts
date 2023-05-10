@@ -13,7 +13,6 @@ import { onHover } from "./onHover";
 import { tickOnWorldStart } from "./tickOnWorldStart";
 import { updateGui } from "./updateGui";
 
-import type { Patched } from "@lib/three/types/Patched";
 import type { World } from "@lib/three/World";
 
 export interface Controls {
@@ -25,7 +24,7 @@ export function instancedMesh({
   world,
 }: {
   world: World;
-}): InstancedMesh & Patched {
+}) {
   const c: Controls = {
     visible: true,
     spin: () => {
@@ -37,7 +36,7 @@ export function instancedMesh({
 
   // Create instanced mesh
   const material = new MeshMatcapMaterial();
-  const instancedMesh: InstancedMesh & Patched = new InstancedMesh(
+  const instancedMesh = new InstancedMesh(
     boxGeometry,
     material,
     4
