@@ -20,7 +20,15 @@ export function addInstancedMesh({
   let allInstancesAreFixed = true;
 
   physicsInstances.forEach(
-    ({ id, position, rotation, rigidBodyDesc, colliderDesc, restitution }) => {
+    ({
+      id,
+      position,
+      rotation,
+      rigidBodyDesc,
+      colliderDesc,
+      activeEvents,
+      restitution,
+    }) => {
       // Describe rigid body
       rigidBodyDesc
         .setTranslation(position.x, position.y, position.z)
@@ -33,6 +41,7 @@ export function addInstancedMesh({
 
       // Describe collider
       if (!colliderDesc) throw new Error("No colliderDesc set on instance.");
+      activeEvents && colliderDesc.setActiveEvents(activeEvents);
       restitution && colliderDesc.setRestitution(restitution);
 
       // Create collider
