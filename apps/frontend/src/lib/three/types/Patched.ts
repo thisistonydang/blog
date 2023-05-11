@@ -7,6 +7,8 @@ import type { Physics3D } from "../systems/Physics/Physics3D";
 export type AddPhysics2D = (physics: Physics2D) => void;
 export type AddPhysics3D = (physics: Physics3D) => void;
 
+export type PhysicsEventHandler = ({ id }: { id?: string | undefined }) => void;
+
 /**
  * Handler for intersection events. If handler returns void, propagation stops.
  * If returns true, event will continue to propagate.
@@ -24,6 +26,10 @@ export type UpdateGui = (gui: Gui) => void;
 export interface Patched {
   addPhysics2D?: AddPhysics2D;
   addPhysics3D?: AddPhysics3D;
+  onCollisionEnter?: PhysicsEventHandler;
+  onCollisionExit?: PhysicsEventHandler;
+  onSleep?: PhysicsEventHandler;
+  onWake?: PhysicsEventHandler;
   onClick?: IntersectionEventHandler;
   onPointerEnter?: IntersectionEventHandler;
   onPointerLeave?: IntersectionEventHandler;
@@ -38,6 +44,10 @@ export function isPatched(
   const patchedProperties = [
     "addPhysics2D",
     "addPhysics3D",
+    "onCollisionEnter",
+    "onCollisionExit",
+    "onSleep",
+    "onWake",
     "onClick",
     "onPointerEnter",
     "onPointerLeave",
