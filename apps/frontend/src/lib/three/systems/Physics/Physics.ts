@@ -8,6 +8,9 @@ import type { World } from "../../World";
 export abstract class Physics {
   world: World;
   objects: Object3D[] = [];
+  collisionEnterObjects: Object3D[] = [];
+  collisionExitObjects: Object3D[] = [];
+  sleepAndWakeObjects: Object3D[] = [];
   movableObjects: Object3D[] = [];
   abstract physicsWorld: PhysicsWorld2D | PhysicsWorld3D;
 
@@ -15,11 +18,16 @@ export abstract class Physics {
     this.world = world;
   }
 
+  abstract stepPhysicsWorld(): void;
   abstract updateThreeJsObjects(): void;
+  abstract handleSleepAndWake(): void;
+  abstract handleCollisions(): void;
 
   stepWorld(): void {
-    this.physicsWorld.step();
+    this.stepPhysicsWorld();
     this.updateThreeJsObjects();
+    this.handleSleepAndWake();
+    this.handleCollisions();
   }
 
   tickOnWorldStart: Tick = () => {
