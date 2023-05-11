@@ -1,5 +1,6 @@
 import type { ColliderDesc, RigidBodyDesc } from "@dimforge/rapier3d-compat";
 
+import type RAPIER from "@dimforge/rapier3d-compat";
 import type { Mesh } from "three";
 import type { Physics3D } from "../Physics3D";
 
@@ -8,12 +9,16 @@ export function addMesh({
   mesh,
   rigidBodyDesc,
   colliderDesc,
-  restitution = 0,
+  activeEvents,
+  restitution,
 }: {
   physics: Physics3D;
   mesh: Mesh;
   rigidBodyDesc: RigidBodyDesc;
   colliderDesc: ColliderDesc;
+  activeEvents?:
+    | RAPIER.ActiveEvents.COLLISION_EVENTS
+    | RAPIER.ActiveEvents.CONTACT_FORCE_EVENTS;
   restitution?: number;
 }): void {
   // Describe rigid body
@@ -25,7 +30,8 @@ export function addMesh({
   const rigidBody = physics.physicsWorld.createRigidBody(rigidBodyDesc);
 
   // Describe collider
-  colliderDesc.setRestitution(restitution);
+  activeEvents && colliderDesc.setActiveEvents(activeEvents);
+  restitution && colliderDesc.setRestitution(restitution);
 
   // Create collider
   const collider = physics.physicsWorld.createCollider(colliderDesc, rigidBody);
