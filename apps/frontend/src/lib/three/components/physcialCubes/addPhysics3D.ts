@@ -12,13 +12,14 @@ export function addPhysics3D({
   instancedMesh,
 }: {
   instancedMesh: InstancedMesh<BoxGeometry> & Patched;
-}): void {
+}): PhysicsInstance[] {
   // Add physics description to each instance
   const physicsInstances: PhysicsInstance[] = instances.map((instance) => {
     return {
       ...instance,
       rigidBodyDesc: RAPIER.RigidBodyDesc.dynamic(),
       colliderDesc: cuboidColliderDesc(instancedMesh, instance.scale),
+      activeEvents: RAPIER.ActiveEvents.COLLISION_EVENTS,
       restitution: 1,
     };
   });
@@ -26,4 +27,6 @@ export function addPhysics3D({
   instancedMesh.addPhysics3D = (physics) => {
     addInstancedMesh({ physics, instancedMesh, physicsInstances });
   };
+
+  return physicsInstances;
 }
