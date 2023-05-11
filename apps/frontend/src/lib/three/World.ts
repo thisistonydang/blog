@@ -89,6 +89,16 @@ export class World {
         this.physics?.objects.push(object);
       }
 
+      if ("onCollisionEnter" in object) {
+        this.physics?.collisionEnterObjects.push(object);
+      }
+      if ("onCollisionExit" in object) {
+        this.physics?.collisionExitObjects.push(object);
+      }
+      if ("onSleep" in object || "onWake" in object) {
+        this.physics?.sleepAndWakeObjects.push(object);
+      }
+
       if (
         "onClick" in object ||
         "onPointerEnter" in object ||
