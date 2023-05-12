@@ -16,6 +16,7 @@ const matrix = new Matrix4();
 
 export class Physics3D extends Physics {
   physicsWorld: PhysicsWorld3D;
+  eventQueue = new RAPIER.EventQueue(true);
   meshMap = new WeakMap<Mesh, PhysicsBody>();
   instanceMeshMap = new WeakMap<InstancedMesh, PhysicsBody[]>();
 
@@ -32,6 +33,10 @@ export class Physics3D extends Physics {
         object.addPhysics3D(this);
       }
     });
+  }
+
+  stepPhysicsWorld(): void {
+    this.physicsWorld.step(this.eventQueue);
   }
 
   updateThreeJsObjects(): void {
