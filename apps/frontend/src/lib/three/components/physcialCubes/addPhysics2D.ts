@@ -12,7 +12,7 @@ export function addPhysics2D({
   instancedMesh,
 }: {
   instancedMesh: InstancedMesh<BoxGeometry> & Patched;
-}): PhysicsInstance[] {
+}) {
   // Add physics description to each instance
   const physicsInstances: PhysicsInstance[] = instances.map((instance) => {
     return {
@@ -27,6 +27,4 @@ export function addPhysics2D({
   instancedMesh.addPhysics2D = (physics) => {
     addInstancedMesh({ physics, instancedMesh, physicsInstances });
   };
-
-  return physicsInstances;
 }
