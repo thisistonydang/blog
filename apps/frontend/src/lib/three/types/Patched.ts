@@ -3,11 +3,15 @@ import type { EventDispatcher, Intersection, Object3D } from "three";
 import type { Gui } from "../systems/Gui";
 import type { Physics2D } from "../systems/Physics/Physics2D";
 import type { Physics3D } from "../systems/Physics/Physics3D";
+import type { PhysicsBody as Physics2DBody } from "./Rapier2D";
+import type { PhysicsBody as Physics3DBody } from "./Rapier3D";
 
 export type AddPhysics2D = (physics: Physics2D) => void;
 export type AddPhysics3D = (physics: Physics3D) => void;
 
-export type PhysicsEventHandler = ({ id }: { id?: string | undefined }) => void;
+export type PhysicsEventHandler = (
+  physicsBody: Physics2DBody | Physics3DBody
+) => void;
 
 /**
  * Handler for intersection events. If handler returns void, propagation stops.
