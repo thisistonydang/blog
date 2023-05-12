@@ -14,7 +14,6 @@ export type Rapier3D = typeof RAPIER;
 export interface PhysicsInstance extends Instance {
   // Rigid Body
   rigidBodyDesc: RigidBodyDesc;
-  isSleeping?: boolean;
 
   // Collider
   colliderDesc?: ColliderDesc;
@@ -28,4 +27,5 @@ export interface PhysicsBody {
   id?: string;
   rigidBody: RigidBody;
   collider: Collider;
+  isSleeping?: boolean;
 }
