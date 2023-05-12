@@ -39,6 +39,46 @@ export class Physics3D extends Physics {
     this.physicsWorld.step(this.eventQueue);
   }
 
+  handleSleepAndWake(): void {
+    function handleSleepAndWakeEvents(
+      mesh: Mesh | InstancedMesh,
+      physicsBody: PhysicsBody
+    ) {
+      if (physicsBody.rigidBody.isSleeping()) {
+        // If already sleeping, do nothing.
+        if (physicsBody.isSleeping === true) return;
+
+        // Else set isSleeping to true and handle onSleep event
+        physicsBody.isSleeping = true;
+        if (isPatched(mesh) && "onSleep" in mesh) mesh.onSleep(physicsBody);
+      } else {
+        // If already awake, do nothing. Note: isSleeping is undefined at the
+        // beginning of a simulation, which means all onWake event handlers will
+        // fire once at the beginning of the simulation.
+        if (physicsBody.isSleeping === false) return;
+
+        // Else set isSleeping to false and handle onWake event
+        physicsBody.isSleeping = false;
+        if (isPatched(mesh) && "onWake" in mesh) mesh.onWake(physicsBody);
+      }
+    }
+
+    this.sleepAndWakeObjects.forEach((object) => {
+      if (object instanceof InstancedMesh) {
+        const physicsBodies = this.instanceMeshMap.get(object);
+
+        physicsBodies?.forEach((physicsBody) => {
+          handleSleepAndWakeEvents(object, physicsBody);
+        });
+      } else if (object instanceof Mesh) {
+        const physicsBody = this.meshMap.get(object);
+        if (!physicsBody) return;
+
+        handleSleepAndWakeEvents(object, physicsBody);
+      }
+    });
+  }
+
   updateThreeJsObjects(): void {
     this.movableObjects.forEach((mesh) => {
       if (mesh instanceof InstancedMesh) {
