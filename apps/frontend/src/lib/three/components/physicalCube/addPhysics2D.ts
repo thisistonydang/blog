@@ -17,6 +17,7 @@ export function addPhysics2D({
       mesh,
       rigidBodyDesc: RAPIER.RigidBodyDesc.dynamic(),
       colliderDesc: cuboidColliderDesc(mesh),
+      activeEvents: RAPIER.ActiveEvents.COLLISION_EVENTS,
       restitution: 1,
     });
   };
