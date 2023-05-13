@@ -11,7 +11,9 @@ import { addPhysics2D } from "./addPhysics2D";
 import { addPhysics3D } from "./addPhysics3D";
 import { instances } from "./instances";
 import { onClick } from "./onClick";
+import { onCollision } from "./onCollision";
 import { onHover } from "./onHover";
+import { onSleepAndWake } from "./onSleepAndWake";
 import { updateGui } from "./updateGui";
 
 import type { World } from "@lib/three/World";
@@ -44,6 +46,8 @@ export function physicalCubes(world: World) {
   addPhysics3D({ instancedMesh });
 
   // Add event handlers
+  onCollision({ world, instancedMesh });
+  onSleepAndWake({ world, instancedMesh });
   onClick({ world, instancedMesh });
   onHover({ instancedMesh });
 
