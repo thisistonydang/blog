@@ -46,8 +46,8 @@ export function physicalCubes(world: World) {
   addPhysics3D({ instancedMesh });
 
   // Add event handlers
-  onCollision({ world, instancedMesh });
   onSleepAndWake({ world, instancedMesh });
+  onCollision({ world, instancedMesh });
   onClick({ world, instancedMesh });
   onHover({ instancedMesh });
 

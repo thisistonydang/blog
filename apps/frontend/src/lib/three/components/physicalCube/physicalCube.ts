@@ -7,7 +7,9 @@ import { boxGeometry } from "@lib/three/geometries/box";
 import { addPhysics2D } from "./addPhysics2D";
 import { addPhysics3D } from "./addPhysics3D";
 import { onClick } from "./onClick";
+import { onCollision } from "./onCollision";
 import { onHover } from "./onHover";
+import { onSleepAndWake } from "./onSleepAndWake";
 import { updateGui } from "./updateGui";
 
 import type { World } from "@lib/three/World";
@@ -60,8 +62,10 @@ export function physicalCube(
   addPhysics3D({ mesh });
 
   // Add event handlers
+  onSleepAndWake({ world, c, material, mesh });
+  onCollision({ world, material, mesh });
   onClick({ world, mesh });
-  onHover({ c, material, mesh });
+  onHover({ mesh });
 
   // Add tweaks
   updateGui({ c, material, mesh });
