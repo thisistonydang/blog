@@ -128,4 +128,60 @@ export class Physics2D extends Physics {
       }
     });
   }
+
+  handleCollisions(): void {
+    this.eventQueue.drainCollisionEvents((handle1, handle2, started) => {
+      if (started) {
+        this.collisionEnterObjects.forEach((object) => {
+          // Handle onCollisionEnter on instanced meshes
+          if (object instanceof InstancedMesh) {
+            const physicsBodies = this.instanceMeshMap.get(object);
+
+            physicsBodies?.forEach((physicsBody) => {
+              if ([handle1, handle2].includes(physicsBody.collider.handle)) {
+                if (isPatched(object) && "onCollisionEnter" in object) {
+                  object.onCollisionEnter(physicsBody);
+                }
+              }
+            });
+            // Handle onCollisionEnter on meshes
+          } else if (object instanceof Mesh) {
+            const physicsBody = this.meshMap.get(object);
+            if (!physicsBody) return;
+
+            if ([handle1, handle2].includes(physicsBody.collider.handle)) {
+              if (isPatched(object) && "onCollisionEnter" in object) {
+                object.onCollisionEnter(physicsBody);
+              }
+            }
+          }
+        });
+      } else {
+        this.collisionExitObjects.forEach((object) => {
+          // Handle onCollisionExit on instanced meshes
+          if (object instanceof InstancedMesh) {
+            const physicsBodies = this.instanceMeshMap.get(object);
+
+            physicsBodies?.forEach((physicsBody) => {
+              if ([handle1, handle2].includes(physicsBody.collider.handle)) {
+                if (isPatched(object) && "onCollisionExit" in object) {
+                  object.onCollisionExit(physicsBody);
+                }
+              }
+            });
+            // Handle onCollisionExit on meshes
+          } else if (object instanceof Mesh) {
+            const physicsBody = this.meshMap.get(object);
+            if (!physicsBody) return;
+
+            if ([handle1, handle2].includes(physicsBody.collider.handle)) {
+              if (isPatched(object) && "onCollisionExit" in object) {
+                object.onCollisionExit(physicsBody);
+              }
+            }
+          }
+        });
+      }
+    });
+  }
 }
