@@ -14,6 +14,7 @@ export type Rapier2D = typeof RAPIER;
 export interface PhysicsInstance extends Instance {
   // Rigid Body
   rigidBodyDesc: RigidBodyDesc;
+  lockRotations?: boolean;
 
   // Collider
   colliderDesc?: ColliderDesc;
@@ -21,6 +22,7 @@ export interface PhysicsInstance extends Instance {
     | RAPIER.ActiveEvents.COLLISION_EVENTS
     | RAPIER.ActiveEvents.CONTACT_FORCE_EVENTS;
   restitution?: number;
+  friction?: number;
 }
 
 export interface PhysicsBody {
