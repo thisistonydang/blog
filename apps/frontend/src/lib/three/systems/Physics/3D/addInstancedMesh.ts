@@ -25,9 +25,11 @@ export function addInstancedMesh({
       position,
       rotation,
       rigidBodyDesc,
+      lockRotations,
       colliderDesc,
       activeEvents,
       restitution,
+      friction,
     }) => {
       // Describe rigid body
       rigidBodyDesc
@@ -35,6 +37,7 @@ export function addInstancedMesh({
         .setRotation(
           quaternion.setFromEuler(euler.set(rotation.x, rotation.y, rotation.z))
         );
+      lockRotations && rigidBodyDesc.lockRotations();
 
       // Create rigid body
       const rigidBody = physics.physicsWorld.createRigidBody(rigidBodyDesc);
@@ -43,6 +46,7 @@ export function addInstancedMesh({
       if (!colliderDesc) throw new Error("No colliderDesc set on instance.");
       activeEvents && colliderDesc.setActiveEvents(activeEvents);
       restitution && colliderDesc.setRestitution(restitution);
+      friction && colliderDesc.setFriction(friction);
 
       // Create collider
       const collider = physics.physicsWorld.createCollider(
