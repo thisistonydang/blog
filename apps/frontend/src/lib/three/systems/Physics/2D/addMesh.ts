@@ -7,6 +7,7 @@ import type { Physics2D } from "../Physics2D";
 export function addMesh({
   physics,
   mesh,
+  id,
   rigidBodyDesc,
   lockRotations,
   colliderDesc,
@@ -16,6 +17,7 @@ export function addMesh({
 }: {
   physics: Physics2D;
   mesh: Mesh;
+  id: string;
   rigidBodyDesc: RigidBodyDesc;
   lockRotations?: boolean;
   colliderDesc: ColliderDesc;
@@ -26,6 +28,7 @@ export function addMesh({
   friction?: number;
 }): void {
   // Describe rigid body
+  rigidBodyDesc.userData = { id };
   rigidBodyDesc
     .setTranslation(mesh.position.x, mesh.position.y)
     .setRotation(mesh.rotation.z);
@@ -43,7 +46,7 @@ export function addMesh({
   const collider = physics.physicsWorld.createCollider(colliderDesc, rigidBody);
 
   // Store rigidBody and collider in meshMap
-  physics.meshMap.set(mesh, { rigidBody, collider });
+  physics.meshMap.set(mesh, { id, rigidBody, collider });
 
   // Add mesh to movableObjects if not a fixed body
   if (!rigidBody.isFixed()) {
