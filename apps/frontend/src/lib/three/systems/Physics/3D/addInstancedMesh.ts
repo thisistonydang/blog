@@ -32,6 +32,7 @@ export function addInstancedMesh({
       friction,
     }) => {
       // Describe rigid body
+      rigidBodyDesc.userData = { id };
       rigidBodyDesc
         .setTranslation(position.x, position.y, position.z)
         .setRotation(
