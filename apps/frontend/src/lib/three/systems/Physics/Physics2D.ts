@@ -11,7 +11,7 @@ import {
 import { isPatched } from "../../types/Patched";
 import { Physics } from "./Physics";
 
-import type { World as PhysicsWorld2D } from "@dimforge/rapier2d-compat";
+import type { World as Physics2DWorld } from "@dimforge/rapier2d-compat";
 
 import type { PhysicsBody } from "../../types/Rapier2D";
 import type { World } from "../../World";
@@ -23,7 +23,7 @@ const scaleVector = new Vector3();
 const matrix = new Matrix4();
 
 export class Physics2D extends Physics {
-  physicsWorld: PhysicsWorld2D;
+  physicsWorld: Physics2DWorld;
   eventQueue = new RAPIER.EventQueue(true);
   meshMap = new WeakMap<Mesh, PhysicsBody>();
   instanceMeshMap = new WeakMap<InstancedMesh, PhysicsBody[]>();
@@ -130,6 +130,32 @@ export class Physics2D extends Physics {
   }
 
   handleCollisions(): void {
+    function handleCollisionEvent(
+      physicsWorld: Physics2DWorld,
+      handle1: number,
+      handle2: number,
+      object: Mesh | InstancedMesh,
+      physicsBody: PhysicsBody,
+      method: "onCollisionEnter" | "onCollisionExit"
+    ) {
+      if ([handle1, handle2].includes(physicsBody.collider.handle)) {
+        // Get the other physicsBody involved in the collision
+        const otherHandle =
+          physicsBody.collider.handle === handle1 ? handle2 : handle1;
+        const rigidBody = physicsWorld.getRigidBody(otherHandle);
+        const id = (rigidBody.userData as { id: string }).id;
+        const collider = physicsWorld.getCollider(otherHandle);
+
+        // Handle the collision event
+        if (isPatched(object) && method in object) {
+          const handler = object[method];
+          if (handler) {
+            handler(physicsBody, { id, rigidBody, collider });
+          }
+        }
+      }
+    }
+
     this.eventQueue.drainCollisionEvents((handle1, handle2, started) => {
       if (started) {
         this.collisionEnterObjects.forEach((object) => {
@@ -138,22 +164,29 @@ export class Physics2D extends Physics {
             const physicsBodies = this.instanceMeshMap.get(object);
 
             physicsBodies?.forEach((physicsBody) => {
-              if ([handle1, handle2].includes(physicsBody.collider.handle)) {
-                if (isPatched(object) && "onCollisionEnter" in object) {
-                  object.onCollisionEnter(physicsBody);
-                }
-              }
+              handleCollisionEvent(
+                this.physicsWorld,
+                handle1,
+                handle2,
+                object,
+                physicsBody,
+                "onCollisionEnter"
+              );
             });
+
             // Handle onCollisionEnter on meshes
           } else if (object instanceof Mesh) {
             const physicsBody = this.meshMap.get(object);
             if (!physicsBody) return;
 
-            if ([handle1, handle2].includes(physicsBody.collider.handle)) {
-              if (isPatched(object) && "onCollisionEnter" in object) {
-                object.onCollisionEnter(physicsBody);
-              }
-            }
+            handleCollisionEvent(
+              this.physicsWorld,
+              handle1,
+              handle2,
+              object,
+              physicsBody,
+              "onCollisionEnter"
+            );
           }
         });
       } else {
@@ -163,22 +196,29 @@ export class Physics2D extends Physics {
             const physicsBodies = this.instanceMeshMap.get(object);
 
             physicsBodies?.forEach((physicsBody) => {
-              if ([handle1, handle2].includes(physicsBody.collider.handle)) {
-                if (isPatched(object) && "onCollisionExit" in object) {
-                  object.onCollisionExit(physicsBody);
-                }
-              }
+              handleCollisionEvent(
+                this.physicsWorld,
+                handle1,
+                handle2,
+                object,
+                physicsBody,
+                "onCollisionExit"
+              );
             });
+
             // Handle onCollisionExit on meshes
           } else if (object instanceof Mesh) {
             const physicsBody = this.meshMap.get(object);
             if (!physicsBody) return;
 
-            if ([handle1, handle2].includes(physicsBody.collider.handle)) {
-              if (isPatched(object) && "onCollisionExit" in object) {
-                object.onCollisionExit(physicsBody);
-              }
-            }
+            handleCollisionEvent(
+              this.physicsWorld,
+              handle1,
+              handle2,
+              object,
+              physicsBody,
+              "onCollisionExit"
+            );
           }
         });
       }
