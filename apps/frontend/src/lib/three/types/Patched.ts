@@ -9,7 +9,12 @@ import type { PhysicsBody as Physics3DBody } from "./Rapier3D";
 export type AddPhysics2D = (physics: Physics2D) => void;
 export type AddPhysics3D = (physics: Physics3D) => void;
 
-export type PhysicsEventHandler = (
+export type CollisionEventHandler = (
+  physicsBody1: Physics2DBody | Physics3DBody,
+  physicsBody2: Physics2DBody | Physics3DBody
+) => void;
+
+export type SleepAndWakeEventHandler = (
   physicsBody: Physics2DBody | Physics3DBody
 ) => void;
 
@@ -30,10 +35,10 @@ export type UpdateGui = (gui: Gui) => void;
 export interface Patched {
   addPhysics2D?: AddPhysics2D;
   addPhysics3D?: AddPhysics3D;
-  onCollisionEnter?: PhysicsEventHandler;
-  onCollisionExit?: PhysicsEventHandler;
-  onSleep?: PhysicsEventHandler;
-  onWake?: PhysicsEventHandler;
+  onCollisionEnter?: CollisionEventHandler;
+  onCollisionExit?: CollisionEventHandler;
+  onSleep?: SleepAndWakeEventHandler;
+  onWake?: SleepAndWakeEventHandler;
   onClick?: IntersectionEventHandler;
   onPointerEnter?: IntersectionEventHandler;
   onPointerLeave?: IntersectionEventHandler;
