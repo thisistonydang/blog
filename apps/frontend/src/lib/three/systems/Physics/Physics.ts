@@ -1,5 +1,5 @@
-import type { World as PhysicsWorld2D } from "@dimforge/rapier2d-compat";
-import type { World as PhysicsWorld3D } from "@dimforge/rapier3d-compat";
+import type { World as Physics2DWorld } from "@dimforge/rapier2d-compat";
+import type { World as Physics3DWorld } from "@dimforge/rapier3d-compat";
 import type { Object3D } from "three";
 
 import type { Tick } from "../../types/Patched";
@@ -12,7 +12,7 @@ export abstract class Physics {
   collisionExitObjects: Object3D[] = [];
   sleepAndWakeObjects: Object3D[] = [];
   movableObjects: Object3D[] = [];
-  abstract physicsWorld: PhysicsWorld2D | PhysicsWorld3D;
+  abstract physicsWorld: Physics2DWorld | Physics3DWorld;
 
   constructor(world: World) {
     this.world = world;
