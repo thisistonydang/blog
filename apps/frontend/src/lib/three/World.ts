@@ -7,7 +7,6 @@ import { Gui } from "./systems/Gui";
 import { Loop } from "./systems/Loop";
 import { Physics2D } from "./systems/Physics/Physics2D";
 import { Physics3D } from "./systems/Physics/Physics3D";
-import { Pointer } from "./systems/Pointer/Pointer";
 import { Resizer } from "./systems/Resizer";
 
 import type {
@@ -17,6 +16,7 @@ import type {
   Scene,
   WebGLRenderer,
 } from "three";
+import type { Pointer } from "./systems/Pointer/Pointer";
 import type { PostProcessor } from "./systems/PostProcessor";
 import type { Rapier2D } from "./types/Rapier2D";
 import type { Rapier3D } from "./types/Rapier3D";
@@ -26,7 +26,7 @@ export class World {
   scene: Scene;
   renderer: WebGLRenderer;
   loop: Loop;
-  pointer: Pointer;
+  pointer: Pointer | null = null;
   physics: Physics2D | Physics3D | null = null;
   postProcessor: PostProcessor | null = null;
   gui: Gui | null = null;
@@ -35,12 +35,14 @@ export class World {
     camera,
     container,
     minAspectRatio = 1,
+    pointer,
     RAPIER,
     postProcessor,
   }: {
     camera: OrthographicCamera | PerspectiveCamera;
     container: HTMLDivElement;
     minAspectRatio?: number;
+    pointer?: typeof Pointer;
     RAPIER?: Rapier2D | Rapier3D;
     postProcessor?: typeof PostProcessor;
   }) {
@@ -55,7 +57,9 @@ export class World {
     this.loop = new Loop(this);
 
     // Add optional pointer
-    this.pointer = new Pointer(this);
+    if (pointer) {
+      this.pointer = new pointer(this);
+    }
 
     // Add optional physics
     if (RAPIER !== undefined) {
@@ -117,7 +121,7 @@ export class World {
         "onPointerEnter" in object ||
         "onPointerLeave" in object
       ) {
-        this.pointer.objectsToTest.push(object);
+        this.pointer?.objectsToTest.push(object);
       }
     }
 
