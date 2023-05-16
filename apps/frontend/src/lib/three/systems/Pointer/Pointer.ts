@@ -1,6 +1,6 @@
 import { Raycaster, Vector2 } from "three";
-import { clickListener } from "./click-listener";
-import { hoverListener } from "./hover-listener";
+import { clickListener } from "./clickListener";
+import { hoverListener } from "./hoverListener";
 
 import type { Intersection, Object3D } from "three";
 import type { World } from "../../World";
