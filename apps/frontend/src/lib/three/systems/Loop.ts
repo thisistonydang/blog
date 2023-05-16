@@ -24,6 +24,18 @@ export class Loop {
     this.statistics = new Statistics(this.world.renderer);
   }
 
+  /**
+   * Render with post processor if it exists, else render with the standard
+   * renderer.
+   */
+  render(): void {
+    if (this.world.postProcessor) {
+      this.world.postProcessor.render();
+    } else {
+      this.world.renderer.render(this.world.scene, this.world.camera);
+    }
+  }
+
   requestRender = (): void => {
     if (this.frameloop === "always" || this.renderRequested) return;
 
@@ -41,11 +53,7 @@ export class Loop {
       this.statistics?.begin();
 
       this.tickOnRenderRequest();
-      if (this.world.postProcessor) {
-        this.world.postProcessor.render();
-      } else {
-        this.world.renderer.render(this.world.scene, this.world.camera);
-      }
+      this.render();
 
       this.statistics?.end();
       this.statistics?.updateCustomPanels();
@@ -85,11 +93,7 @@ export class Loop {
       this.statistics?.begin();
 
       this.tickOnWorldStart();
-      if (this.world.postProcessor) {
-        this.world.postProcessor.render();
-      } else {
-        this.world.renderer.render(this.world.scene, this.world.camera);
-      }
+      this.render();
 
       this.statistics?.end();
       this.statistics?.updateCustomPanels();
