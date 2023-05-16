@@ -9,8 +9,6 @@ import type {
 
 import type { Instance } from "./Instance";
 
-export type Rapier3D = typeof RAPIER;
-
 export interface PhysicsInstance extends Instance {
   // Rigid Body
   rigidBodyDesc: RigidBodyDesc;
