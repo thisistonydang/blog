@@ -1,6 +1,6 @@
 import Stats from "stats.js";
-import type { WebGLRenderer } from "three";
 import type { UpdateGui } from "../types/Patched";
+import type { World } from "../World";
 
 interface Controls {
   showStats: boolean;
@@ -8,7 +8,6 @@ interface Controls {
 }
 
 export class Statistics {
-  // Controls
   c: Controls = {
     showStats: true,
     statsPanel: 0,
@@ -29,10 +28,10 @@ export class Statistics {
 
   customPanels: { [key: string]: Stats.Panel } = {};
   stats = new Stats();
-  renderer: WebGLRenderer;
+  world: World;
 
-  constructor(renderer: WebGLRenderer) {
-    this.renderer = renderer;
+  constructor(world: World) {
+    this.world = world;
 
     // Create custom stats panels
     this.allStatsPanels.slice(3).forEach((panelName) => {
@@ -55,6 +54,20 @@ export class Statistics {
   }
 
   /**
+   * Update custom panels with renderer stats
+   */
+  updateCustomPanels(): void {
+    const rendererInfo = this.world.renderer.info;
+    this.customPanels.geometries?.update(rendererInfo.memory.geometries, 50);
+    this.customPanels.textures?.update(rendererInfo.memory.textures, 10);
+    this.customPanels.programs?.update(rendererInfo.programs?.length ?? 0, 50);
+    this.customPanels.calls?.update(rendererInfo.render.calls, 50);
+    this.customPanels.lines?.update(rendererInfo.render.lines, 50);
+    this.customPanels.points?.update(rendererInfo.render.points, 50);
+    this.customPanels.triangles?.update(rendererInfo.render.triangles, 999999);
+  }
+
+  /**
    * Begin stats collection
    */
   begin(): void {
@@ -66,20 +79,7 @@ export class Statistics {
    */
   end(): void {
     this.stats.end();
-  }
-
-  /**
-   * Update custom panels with renderer stats
-   */
-  updateCustomPanels(): void {
-    const rendererInfo = this.renderer.info;
-    this.customPanels.geometries?.update(rendererInfo.memory.geometries, 50);
-    this.customPanels.textures?.update(rendererInfo.memory.textures, 10);
-    this.customPanels.programs?.update(rendererInfo.programs?.length ?? 0, 50);
-    this.customPanels.calls?.update(rendererInfo.render.calls, 50);
-    this.customPanels.lines?.update(rendererInfo.render.lines, 50);
-    this.customPanels.points?.update(rendererInfo.render.points, 50);
-    this.customPanels.triangles?.update(rendererInfo.render.triangles, 999999);
+    this.updateCustomPanels();
   }
 
   updateGui: UpdateGui = ({ devFolder }) => {
