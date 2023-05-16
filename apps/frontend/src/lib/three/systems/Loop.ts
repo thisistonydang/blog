@@ -1,6 +1,5 @@
 import { Clock } from "three";
 import { isPatched } from "../types/Patched";
-import { Statistics } from "./Statistics";
 
 import type { EventDispatcher, Object3D } from "three";
 import type { UpdateGui } from "../types/Patched";
@@ -15,13 +14,11 @@ const clock = new Clock();
 export class Loop {
   world: World;
   tickables: (EventDispatcher | Object3D | Physics2D | Physics3D)[] = [];
-  statistics: Statistics | null = null;
   frameloop: Frameloop = "demand";
   renderRequested = false;
 
   constructor(world: World) {
     this.world = world;
-    this.statistics = new Statistics(this.world.renderer);
   }
 
   /**
@@ -50,13 +47,12 @@ export class Loop {
       // damping.
       this.renderRequested = false;
 
-      this.statistics?.begin();
+      this.world.statistics?.begin();
 
       this.tickOnRenderRequest();
       this.render();
 
-      this.statistics?.end();
-      this.statistics?.updateCustomPanels();
+      this.world.statistics?.end();
     };
     requestAnimationFrame(render);
   };
@@ -90,13 +86,12 @@ export class Loop {
   start(): void {
     this.frameloop = "always";
     this.world.renderer.setAnimationLoop(() => {
-      this.statistics?.begin();
+      this.world.statistics?.begin();
 
       this.tickOnWorldStart();
       this.render();
 
-      this.statistics?.end();
-      this.statistics?.updateCustomPanels();
+      this.world.statistics?.end();
     });
   }
 
