@@ -30,18 +30,27 @@ export class Resizer {
     });
   }
 
-  setSize({ camera, renderer }: World, container: HTMLDivElement): void {
+  setSize(
+    { camera, renderer, postProcessor }: World,
+    container: HTMLDivElement
+  ): void {
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    const pixelRatio = Math.min(window.devicePixelRatio, 2);
+
     // Set the camera's aspect ratio.
     if (camera instanceof PerspectiveCamera) {
-      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.aspect = width / height;
     }
 
-    // Update the size of the renderer.
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    // Update the size of the renderer and effect composer.
+    renderer.setSize(width, height);
+    postProcessor?.effectComposer.setSize(width, height);
 
-    // Set the pixel ratio. Note: pixel ratio may change when moving across
-    // different monitors.
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Set the pixel ratio of the renderer and effect composer. Note: pixel
+    // ratio may change when moving across different monitors.
+    renderer.setPixelRatio(pixelRatio);
+    postProcessor?.effectComposer.setPixelRatio(pixelRatio);
   }
 
   /**
