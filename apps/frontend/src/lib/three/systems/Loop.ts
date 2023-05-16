@@ -2,14 +2,7 @@ import { Clock } from "three";
 import { isPatched } from "../types/Patched";
 import { Statistics } from "./Statistics";
 
-import type {
-  Camera,
-  EventDispatcher,
-  Object3D,
-  Scene,
-  WebGLRenderer,
-} from "three";
-
+import type { EventDispatcher, Object3D } from "three";
 import type { UpdateGui } from "../types/Patched";
 import type { World } from "../World";
 import type { Physics2D } from "./Physics/Physics2D";
@@ -20,19 +13,15 @@ type Frameloop = "always" | "demand";
 const clock = new Clock();
 
 export class Loop {
-  scene: Scene;
-  camera: Camera;
-  renderer: WebGLRenderer;
+  world: World;
   tickables: (EventDispatcher | Object3D | Physics2D | Physics3D)[] = [];
   statistics: Statistics | null = null;
   frameloop: Frameloop = "demand";
   renderRequested = false;
 
-  constructor({ scene, camera, renderer }: World) {
-    this.scene = scene;
-    this.camera = camera;
-    this.renderer = renderer;
-    this.statistics = new Statistics(this.renderer);
+  constructor(world: World) {
+    this.world = world;
+    this.statistics = new Statistics(this.world.renderer);
   }
 
   requestRender = (): void => {
@@ -52,7 +41,11 @@ export class Loop {
       this.statistics?.begin();
 
       this.tickOnRenderRequest();
-      this.renderer.render(this.scene, this.camera);
+      if (this.world.postProcessor) {
+        this.world.postProcessor.render();
+      } else {
+        this.world.renderer.render(this.world.scene, this.world.camera);
+      }
 
       this.statistics?.end();
       this.statistics?.updateCustomPanels();
@@ -88,11 +81,15 @@ export class Loop {
 
   start(): void {
     this.frameloop = "always";
-    this.renderer.setAnimationLoop(() => {
+    this.world.renderer.setAnimationLoop(() => {
       this.statistics?.begin();
 
       this.tickOnWorldStart();
-      this.renderer.render(this.scene, this.camera);
+      if (this.world.postProcessor) {
+        this.world.postProcessor.render();
+      } else {
+        this.world.renderer.render(this.world.scene, this.world.camera);
+      }
 
       this.statistics?.end();
       this.statistics?.updateCustomPanels();
@@ -101,7 +98,7 @@ export class Loop {
 
   stop(): void {
     this.frameloop = "demand";
-    this.renderer.setAnimationLoop(null);
+    this.world.renderer.setAnimationLoop(null);
   }
 
   tickOnRenderRequest(): void {
