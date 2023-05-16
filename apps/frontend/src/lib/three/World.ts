@@ -3,7 +3,6 @@ import { Object3D } from "three";
 import { createRenderer } from "./components-core/renderer";
 import { createScene } from "./components-core/scene";
 
-import { Gui } from "./systems/Gui";
 import { Loop } from "./systems/Loop";
 import { Resizer } from "./systems/Resizer";
 
@@ -17,6 +16,7 @@ import type {
 import type { Physics2D } from "./systems/Physics/Physics2D";
 import type { Physics3D } from "./systems/Physics/Physics3D";
 import type { Pointer } from "./systems/Pointer/Pointer";
+import type { Gui } from "./systems/Gui";
 import type { PostProcessor } from "./systems/PostProcessor";
 
 export class World {
@@ -36,6 +36,7 @@ export class World {
     pointer,
     physics,
     postProcessor,
+    gui,
   }: {
     camera: OrthographicCamera | PerspectiveCamera;
     container: HTMLDivElement;
@@ -43,6 +44,7 @@ export class World {
     pointer?: typeof Pointer;
     physics?: typeof Physics2D | typeof Physics3D;
     postProcessor?: typeof PostProcessor;
+    gui?: typeof Gui;
   }) {
     // Create core components
     this.camera = camera;
@@ -71,7 +73,9 @@ export class World {
     }
 
     // Add optional GUI
-    this.gui = new Gui(this);
+    if (gui) {
+      this.gui = new gui(this);
+    }
   }
 
   addObjects(objects: (EventDispatcher | Object3D)[]): void {
