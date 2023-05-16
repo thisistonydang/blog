@@ -17,6 +17,7 @@ import type {
   Scene,
   WebGLRenderer,
 } from "three";
+import type { PostProcessor } from "./systems/PostProcessor";
 import type { Rapier2D } from "./types/Rapier2D";
 import type { Rapier3D } from "./types/Rapier3D";
 
@@ -24,9 +25,10 @@ export class World {
   camera: OrthographicCamera | PerspectiveCamera;
   scene: Scene;
   renderer: WebGLRenderer;
-  pointer: Pointer;
   loop: Loop;
+  pointer: Pointer;
   physics: Physics2D | Physics3D | null = null;
+  postProcessor: PostProcessor | null = null;
   gui: Gui | null = null;
 
   constructor({
@@ -34,11 +36,13 @@ export class World {
     container,
     minAspectRatio = 1,
     RAPIER,
+    postProcessor,
   }: {
     camera: OrthographicCamera | PerspectiveCamera;
     container: HTMLDivElement;
     minAspectRatio?: number;
     RAPIER?: Rapier2D | Rapier3D;
+    postProcessor?: typeof PostProcessor;
   }) {
     // Create core components
     this.camera = camera;
@@ -46,11 +50,14 @@ export class World {
     this.renderer = createRenderer();
     container.append(this.renderer.domElement);
 
-    // Create systems
+    // Add core systems
     new Resizer(this, container, minAspectRatio);
-    this.pointer = new Pointer(this);
     this.loop = new Loop(this);
 
+    // Add optional pointer
+    this.pointer = new Pointer(this);
+
+    // Add optional physics
     if (RAPIER !== undefined) {
       if ("Vector2" in RAPIER) {
         this.physics = new Physics2D(this);
@@ -63,6 +70,12 @@ export class World {
       }
     }
 
+    // Add optional post processing
+    if (postProcessor) {
+      this.postProcessor = new postProcessor(this, container);
+    }
+
+    // Add optional GUI
     this.gui = new Gui(this);
   }
 
