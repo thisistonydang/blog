@@ -18,6 +18,7 @@ import type { Physics3D } from "./systems/Physics/Physics3D";
 import type { Pointer } from "./systems/Pointer/Pointer";
 import type { Gui } from "./systems/Gui";
 import type { PostProcessor } from "./systems/PostProcessor";
+import type { Statistics } from "./systems/Statistics";
 
 export class World {
   camera: OrthographicCamera | PerspectiveCamera;
@@ -28,6 +29,7 @@ export class World {
   physics: Physics2D | Physics3D | null = null;
   postProcessor: PostProcessor | null = null;
   gui: Gui | null = null;
+  statistics: Statistics | null = null;
 
   constructor({
     camera,
@@ -37,6 +39,7 @@ export class World {
     physics,
     postProcessor,
     gui,
+    statistics,
   }: {
     camera: OrthographicCamera | PerspectiveCamera;
     container: HTMLDivElement;
@@ -45,6 +48,7 @@ export class World {
     physics?: typeof Physics2D | typeof Physics3D;
     postProcessor?: typeof PostProcessor;
     gui?: typeof Gui;
+    statistics?: typeof Statistics;
   }) {
     // Create core components
     this.camera = camera;
@@ -75,6 +79,13 @@ export class World {
     // Add optional GUI
     if (gui) {
       this.gui = new gui(this);
+      this.gui.tweakables.push(this.loop);
+    }
+
+    // Add optional statistics
+    if (statistics) {
+      this.statistics = new statistics(this);
+      this.gui?.tweakables.push(this.statistics);
     }
   }
 
