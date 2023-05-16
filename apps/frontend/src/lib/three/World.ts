@@ -56,11 +56,10 @@ export class World {
     this.renderer = createRenderer();
     container.append(this.renderer.domElement);
 
-    // Add core systems
-    new Resizer(this, container, minAspectRatio);
+    // Add animation loop
     this.loop = new Loop(this);
 
-    // Add optional pointer
+    // Add optional pointer to listen for pointer events
     if (pointer) {
       this.pointer = new pointer(this);
     }
@@ -73,7 +72,7 @@ export class World {
 
     // Add optional post processing
     if (postProcessor) {
-      this.postProcessor = new postProcessor(this, container);
+      this.postProcessor = new postProcessor(this);
     }
 
     // Add optional GUI
@@ -82,11 +81,14 @@ export class World {
       this.gui.tweakables.push(this.loop);
     }
 
-    // Add optional statistics
+    // Add optional stats collection
     if (statistics) {
       this.statistics = new statistics(this);
       this.gui?.tweakables.push(this.statistics);
     }
+
+    // Add handling for window resizes
+    new Resizer(this, container, minAspectRatio);
   }
 
   addObjects(objects: (EventDispatcher | Object3D)[]): void {
