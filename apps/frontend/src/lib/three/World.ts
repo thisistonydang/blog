@@ -5,8 +5,6 @@ import { createScene } from "./components-core/scene";
 
 import { Gui } from "./systems/Gui";
 import { Loop } from "./systems/Loop";
-import { Physics2D } from "./systems/Physics/Physics2D";
-import { Physics3D } from "./systems/Physics/Physics3D";
 import { Resizer } from "./systems/Resizer";
 
 import type {
@@ -16,10 +14,10 @@ import type {
   Scene,
   WebGLRenderer,
 } from "three";
+import type { Physics2D } from "./systems/Physics/Physics2D";
+import type { Physics3D } from "./systems/Physics/Physics3D";
 import type { Pointer } from "./systems/Pointer/Pointer";
 import type { PostProcessor } from "./systems/PostProcessor";
-import type { Rapier2D } from "./types/Rapier2D";
-import type { Rapier3D } from "./types/Rapier3D";
 
 export class World {
   camera: OrthographicCamera | PerspectiveCamera;
@@ -36,14 +34,14 @@ export class World {
     container,
     minAspectRatio = 1,
     pointer,
-    RAPIER,
+    physics,
     postProcessor,
   }: {
     camera: OrthographicCamera | PerspectiveCamera;
     container: HTMLDivElement;
     minAspectRatio?: number;
     pointer?: typeof Pointer;
-    RAPIER?: Rapier2D | Rapier3D;
+    physics?: typeof Physics2D | typeof Physics3D;
     postProcessor?: typeof PostProcessor;
   }) {
     // Create core components
@@ -62,16 +60,9 @@ export class World {
     }
 
     // Add optional physics
-    if (RAPIER !== undefined) {
-      if ("Vector2" in RAPIER) {
-        this.physics = new Physics2D(this);
-      } else if ("Vector3" in RAPIER) {
-        this.physics = new Physics3D(this);
-      }
-
-      if (this.physics) {
-        this.loop.tickables.push(this.physics);
-      }
+    if (physics) {
+      this.physics = new physics(this);
+      this.loop.tickables.push(this.physics);
     }
 
     // Add optional post processing
