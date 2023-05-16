@@ -7,7 +7,7 @@ import { Gui } from "./systems/Gui";
 import { Loop } from "./systems/Loop";
 import { Physics2D } from "./systems/Physics/Physics2D";
 import { Physics3D } from "./systems/Physics/Physics3D";
-import { Pointer } from "./systems/Pointer";
+import { Pointer } from "./systems/Pointer/Pointer";
 import { Resizer } from "./systems/Resizer";
 
 import type {

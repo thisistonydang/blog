@@ -1,7 +1,7 @@
 import { InstancedMesh } from "three";
 
 import { hasTouchScreen } from "@lib/hooks/hasTouchScreen";
-import { isPatched } from "../types/Patched";
+import { isPatched } from "../../types/Patched";
 
 import type { Intersection } from "three";
 import type { Pointer } from "./Pointer";

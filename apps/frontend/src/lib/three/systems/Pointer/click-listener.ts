@@ -1,4 +1,4 @@
-import { isPatched } from "../types/Patched";
+import { isPatched } from "../../types/Patched";
 import type { Pointer } from "./Pointer";
 
 export function clickListener({ world, castRay }: Pointer): void {

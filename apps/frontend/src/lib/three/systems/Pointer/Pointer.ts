@@ -3,7 +3,7 @@ import { clickListener } from "./click-listener";
 import { hoverListener } from "./hover-listener";
 
 import type { Intersection, Object3D } from "three";
-import type { World } from "../World";
+import type { World } from "../../World";
 
 export class Pointer {
   raycaster = new Raycaster();
