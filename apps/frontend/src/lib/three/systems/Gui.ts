@@ -23,10 +23,6 @@ export class Gui {
     this.foldersFolder = this.gui.addFolder("folders");
     this.devFolder = this.createFolder("dev");
 
-    // Add Loop and Statistics systems as tweakables objects
-    this.tweakables.push(world.loop);
-    world.loop.statistics && this.tweakables.push(world.loop.statistics);
-
     // Request a render with every change on the GUI
     this.gui.onChange(() => world.requestRender());
   }
