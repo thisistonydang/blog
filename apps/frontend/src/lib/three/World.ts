@@ -1,6 +1,6 @@
 import { Object3D } from "three";
 
-import { createRenderer } from "./components-core/renderer";
+import { webGLRenderer } from "./components-core/webGLRenderer";
 import { createScene } from "./components-core/scene";
 
 import { Loop } from "./systems/Loop";
@@ -33,6 +33,7 @@ export class World {
 
   constructor({
     camera,
+    renderer = webGLRenderer({}),
     container,
     minAspectRatio = 1,
     pointer,
@@ -42,6 +43,7 @@ export class World {
     statistics,
   }: {
     camera: OrthographicCamera | PerspectiveCamera;
+    renderer?: WebGLRenderer;
     container: HTMLDivElement;
     minAspectRatio?: number;
     pointer?: typeof Pointer;
@@ -52,8 +54,8 @@ export class World {
   }) {
     // Create core components
     this.camera = camera;
+    this.renderer = renderer;
     this.scene = createScene();
-    this.renderer = createRenderer();
     container.append(this.renderer.domElement);
 
     // Add animation loop
