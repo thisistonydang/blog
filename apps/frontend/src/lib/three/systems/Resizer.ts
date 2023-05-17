@@ -2,11 +2,15 @@ import { MathUtils, PerspectiveCamera } from "three";
 import type { World } from "../World";
 
 export class Resizer {
+  pixelRatio: number;
   minAspectRatio: number;
   defaultCameraFov: number | null = null;
 
   constructor(world: World, container: HTMLDivElement, minAspectRatio: number) {
-    // Set initial minimum aspect ratio and default camera fov
+    // Remember initial pixel ratio.
+    this.pixelRatio = Math.min(window.devicePixelRatio, 2);
+
+    // Set initial minimum aspect ratio and default camera fov.
     this.minAspectRatio = minAspectRatio;
     if (world.camera instanceof PerspectiveCamera) {
       this.defaultCameraFov = world.camera.fov;
@@ -36,7 +40,16 @@ export class Resizer {
   ): void {
     const width = container.clientWidth;
     const height = container.clientHeight;
-    const pixelRatio = Math.min(window.devicePixelRatio, 2);
+    const newPixelRatio = Math.min(window.devicePixelRatio, 2);
+
+    // Reset effect composer render target in order to have correct sample size
+    // for MSAA anti-aliasing if pixel ratio has changed.
+    if (newPixelRatio !== this.pixelRatio) {
+      postProcessor?.resetRenderTarget();
+
+      // Remember current pixel ratio.
+      this.pixelRatio = newPixelRatio;
+    }
 
     // Set the camera's aspect ratio.
     if (camera instanceof PerspectiveCamera) {
@@ -49,8 +62,8 @@ export class Resizer {
 
     // Set the pixel ratio of the renderer and effect composer. Note: pixel
     // ratio may change when moving across different monitors.
-    renderer.setPixelRatio(pixelRatio);
-    postProcessor?.effectComposer.setPixelRatio(pixelRatio);
+    renderer.setPixelRatio(newPixelRatio);
+    postProcessor?.effectComposer.setPixelRatio(newPixelRatio);
   }
 
   /**
