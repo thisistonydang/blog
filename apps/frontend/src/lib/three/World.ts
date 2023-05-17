@@ -1,8 +1,6 @@
-import { Object3D } from "three";
+import { Object3D, Scene } from "three";
 
 import { webGLRenderer } from "./components-core/webGLRenderer";
-import { createScene } from "./components-core/scene";
-
 import { Loop } from "./systems/Loop";
 import { Resizer } from "./systems/Resizer";
 
@@ -10,7 +8,6 @@ import type {
   EventDispatcher,
   OrthographicCamera,
   PerspectiveCamera,
-  Scene,
   WebGLRenderer,
 } from "three";
 import type { Physics2D } from "./systems/Physics/Physics2D";
@@ -55,7 +52,7 @@ export class World {
     // Create core components
     this.camera = camera;
     this.renderer = renderer;
-    this.scene = createScene();
+    this.scene = new Scene();
     container.append(this.renderer.domElement);
 
     // Add animation loop
@@ -96,7 +93,7 @@ export class World {
   addObjects(objects: (EventDispatcher | Object3D)[]): void {
     // Add objects to root scene and relevant systems
     objects.forEach((object) => {
-      if (object instanceof Object3D) {
+      if (object instanceof Object3D && !(object instanceof Scene)) {
         this.scene.add(object);
       }
       this.updateSystems(object);
