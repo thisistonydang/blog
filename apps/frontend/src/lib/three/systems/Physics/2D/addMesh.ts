@@ -8,6 +8,7 @@ export function addMesh({
   physics,
   mesh,
   rigidBodyDesc,
+  gravityScale,
   lockRotations,
   colliderDesc,
   activeEvents,
@@ -17,6 +18,7 @@ export function addMesh({
   physics: Physics2D;
   mesh: Mesh;
   rigidBodyDesc: RigidBodyDesc;
+  gravityScale?: number;
   lockRotations?: boolean;
   colliderDesc: ColliderDesc;
   activeEvents?:
@@ -30,6 +32,7 @@ export function addMesh({
   rigidBodyDesc
     .setTranslation(mesh.position.x, mesh.position.y)
     .setRotation(mesh.rotation.z);
+  gravityScale && rigidBodyDesc.setGravityScale(gravityScale);
   lockRotations && rigidBodyDesc.lockRotations();
 
   // Create rigid body
