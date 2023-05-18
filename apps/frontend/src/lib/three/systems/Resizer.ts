@@ -71,9 +71,43 @@ export class Resizer {
       this.pixelRatio = newPixelRatio;
     }
 
-    // Set the camera's aspect ratio.
+    // Set perspective camera aspect ratio.
     if (camera instanceof PerspectiveCamera) {
-      camera.aspect = width / height;
+      camera.aspect = aspectRatio;
+    }
+
+    // Set orthographic camera size.
+    if (camera instanceof OrthographicCamera && this.defaultCameraSize) {
+      // Reset camera to default sizes.
+      camera.left = this.defaultCameraSize.left;
+      camera.right = this.defaultCameraSize.right;
+      camera.top = this.defaultCameraSize.top;
+      camera.bottom = this.defaultCameraSize.bottom;
+
+      const defaultCameraWidth =
+        this.defaultCameraSize.right - this.defaultCameraSize.left;
+      const defaultCameraHeight =
+        this.defaultCameraSize.top - this.defaultCameraSize.bottom;
+
+      // Update camera left and right if screen is too wide.
+      if (aspectRatio > this.minAspectRatio) {
+        const newCameraWidth = defaultCameraHeight * aspectRatio;
+
+        camera.left =
+          (this.defaultCameraSize.left / defaultCameraWidth) * newCameraWidth;
+        camera.right =
+          (this.defaultCameraSize.right / defaultCameraWidth) * newCameraWidth;
+
+        // Update camera top and bottom if screen is too narrow.
+      } else if (aspectRatio < this.minAspectRatio) {
+        const newCameraHeight = defaultCameraWidth / aspectRatio;
+
+        camera.top =
+          (this.defaultCameraSize.top / defaultCameraHeight) * newCameraHeight;
+        camera.bottom =
+          (this.defaultCameraSize.bottom / defaultCameraHeight) *
+          newCameraHeight;
+      }
     }
 
     // Update the size of the renderer and effect composer.
