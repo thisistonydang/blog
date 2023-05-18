@@ -25,6 +25,7 @@ export function addInstancedMesh({
       position,
       rotation,
       rigidBodyDesc,
+      gravityScale,
       lockRotations,
       colliderDesc,
       activeEvents,
@@ -38,6 +39,7 @@ export function addInstancedMesh({
         .setRotation(
           quaternion.setFromEuler(euler.set(rotation.x, rotation.y, rotation.z))
         );
+      gravityScale && rigidBodyDesc.setGravityScale(gravityScale);
       lockRotations && rigidBodyDesc.lockRotations();
 
       // Create rigid body
