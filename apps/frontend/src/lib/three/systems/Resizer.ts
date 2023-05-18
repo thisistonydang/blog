@@ -89,17 +89,18 @@ export class Resizer {
       const defaultCameraHeight =
         this.defaultCameraSize.top - this.defaultCameraSize.bottom;
 
-      // Update camera left and right if screen is too wide.
       if (aspectRatio > this.minAspectRatio) {
+        // Update camera left and right if screen is too wide.
+
         const newCameraWidth = defaultCameraHeight * aspectRatio;
 
         camera.left =
           (this.defaultCameraSize.left / defaultCameraWidth) * newCameraWidth;
         camera.right =
           (this.defaultCameraSize.right / defaultCameraWidth) * newCameraWidth;
-
-        // Update camera top and bottom if screen is too narrow.
       } else if (aspectRatio < this.minAspectRatio) {
+        // Update camera top and bottom if screen is too narrow.
+
         const newCameraHeight = defaultCameraWidth / aspectRatio;
 
         camera.top =
