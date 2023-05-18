@@ -1,19 +1,38 @@
-import { MathUtils, PerspectiveCamera } from "three";
+import { MathUtils, OrthographicCamera, PerspectiveCamera } from "three";
 import type { World } from "../World";
 
 export class Resizer {
   pixelRatio: number;
   minAspectRatio: number;
   defaultCameraFov: number | null = null;
+  defaultCameraSize: {
+    left: number;
+    right: number;
+    top: number;
+    bottom: number;
+  } | null = null;
 
   constructor(world: World, container: HTMLDivElement, minAspectRatio: number) {
-    // Remember initial pixel ratio.
     this.pixelRatio = Math.min(window.devicePixelRatio, 2);
-
-    // Set initial minimum aspect ratio and default camera fov.
     this.minAspectRatio = minAspectRatio;
+
+    // Set default camera fov for perspective camera.
     if (world.camera instanceof PerspectiveCamera) {
       this.defaultCameraFov = world.camera.fov;
+    }
+
+    // Set default camera size and minimum aspect ratio for orthographic camera.
+    if (world.camera instanceof OrthographicCamera) {
+      this.defaultCameraSize = {
+        left: world.camera.left,
+        right: world.camera.right,
+        top: world.camera.top,
+        bottom: world.camera.bottom,
+      };
+
+      this.minAspectRatio =
+        (this.defaultCameraSize.right - this.defaultCameraSize.left) /
+        (this.defaultCameraSize.top - this.defaultCameraSize.bottom);
     }
 
     // Set initial size and fov on load.
@@ -40,6 +59,7 @@ export class Resizer {
   ): void {
     const width = container.clientWidth;
     const height = container.clientHeight;
+    const aspectRatio = width / height;
     const newPixelRatio = Math.min(window.devicePixelRatio, 2);
 
     // Reset effect composer render target in order to have correct sample size
