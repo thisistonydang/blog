@@ -4,7 +4,7 @@
   export let width: string | undefined = undefined;
   export let disabled = false;
   export let loading = false;
-  export let handle_click: (() => void) | undefined = undefined;
+  export let onClick: ((e: Event) => void) | undefined = undefined;
 
   let button: HTMLButtonElement;
   let cursor: "wait" | "not-allowed" | null = null;
@@ -22,7 +22,7 @@
   aria-label={loading ? "loading..." : undefined}
   bind:this={button}
   {disabled}
-  on:click={handle_click}
+  on:click={onClick}
   style:width
   class:cursor-wait={cursor === "wait"}
   class:cursor-not-allowed={cursor === "not-allowed"}
