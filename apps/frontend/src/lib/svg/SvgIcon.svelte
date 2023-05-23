@@ -1,8 +1,8 @@
 <script lang="ts">
-  export let width = 25;
-  export let height = 25;
-  export let viewBoxWidth = 512;
-  export let viewBoxHeight = 512;
+  export let width: number | undefined = 25;
+  export let height: number | undefined = 25;
+  export let viewBoxWidth: number | undefined = 512;
+  export let viewBoxHeight: number | undefined = 512;
 </script>
 
 <svg
