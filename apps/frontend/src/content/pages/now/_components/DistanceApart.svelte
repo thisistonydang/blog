@@ -109,7 +109,7 @@
   button :)
 </p>
 
-<Button {loading} {handle_click} width="120px">CLICK HERE...</Button>
+<Button {loading} onClick={handle_click} width="120px">CLICK HERE...</Button>
 
 {#if message}
   <p transition:fly={{ y: 20, duration: 1000 }} class="bg-surface p-4">
