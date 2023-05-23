@@ -125,6 +125,7 @@ export class Loop {
       .add(this, "frameloop", ["always", "demand"])
       .onChange((frameloop: Frameloop) => {
         frameloop === "always" ? this.start() : this.stop();
-      });
+      })
+      .listen();
   };
 }
