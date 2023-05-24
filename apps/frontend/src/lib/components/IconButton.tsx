@@ -1,4 +1,4 @@
-import { useMounted } from "@lib/hooks/useMounted";
+import { useMounted } from "@lib/react/hooks/useMounted";
 import Ping from "./Ping";
 import Prose from "./Prose";
 
