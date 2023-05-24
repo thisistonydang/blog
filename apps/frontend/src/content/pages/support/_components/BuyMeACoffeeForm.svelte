@@ -67,5 +67,5 @@
     </span>
   </div>
 
-  <Button width="150px">SUPPORT ${qty * 5}</Button>
+  <Button width={150}>SUPPORT ${qty * 5}</Button>
 </form>
