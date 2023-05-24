@@ -1,4 +1,4 @@
-import { useHasTouchScreen } from "@lib/hooks/useHasTouchScreen";
+import { useHasTouchScreen } from "@lib/react/hooks/useHasTouchScreen";
 
 import Prose from "./Prose";
 

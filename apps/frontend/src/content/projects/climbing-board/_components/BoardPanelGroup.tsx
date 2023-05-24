@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 
-import { useHasTouchScreen } from "@lib/hooks/useHasTouchScreen";
+import { useHasTouchScreen } from "@lib/react/hooks/useHasTouchScreen";
 
 import { ControlsModeContext } from "../_context/ControlsModeContext";
 import { BOARD_THICKNESS } from "../_lib/constants/constants.js";
