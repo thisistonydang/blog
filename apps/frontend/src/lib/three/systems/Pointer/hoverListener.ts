@@ -1,13 +1,14 @@
 import { InstancedMesh } from "three";
 
-import { hasTouchScreen } from "@lib/hooks/hasTouchScreen";
-import { isPatched } from "../../types/Patched";
+import { useHasTouchScreen } from "@lib/hooks/useHasTouchScreen";
+import { isPatched } from "@lib/three/types/Patched";
 
 import type { Intersection } from "three";
-import type { Pointer } from "./Pointer";
+import type { Pointer } from "@lib/three/systems/Pointer/Pointer";
 
 export function hoverListener({ castRay, world }: Pointer): void {
-  if (hasTouchScreen()) return; // Don't listen for hover events on touch devices.
+  const hasTouchScreen = useHasTouchScreen();
+  if (hasTouchScreen) return; // Don't listen for hover events on touch devices.
 
   let prevIntersection: Intersection | undefined = undefined;
   let newIntersection: Intersection | undefined = undefined;
