@@ -5,7 +5,7 @@ import { useControls } from "leva";
 import { AdditiveBlending, ShaderMaterial } from "three";
 
 import { rgb_to_vec3 } from "@lib/colors/rgb_to_vec3";
-import { useTheme } from "@lib/hooks/useTheme";
+import { useTheme } from "@lib/react/hooks/useTheme";
 // @ts-expect-error glsl import
 import vertexShader from "@lib/shaders/particle/vertex.glsl";
 // @ts-expect-error glsl import
