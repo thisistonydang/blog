@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { hasTouchScreen } from "@lib/hooks/hasTouchScreen";
+import { useHasTouchScreen as hasTouchScreen } from "@lib/hooks/useHasTouchScreen";
 
 /**
  * Returns whether user device has a touch screen.
