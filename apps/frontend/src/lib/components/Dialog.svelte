@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { fly } from "svelte/transition";
   import Button from "@lib/components/Button.svelte";
   import Prose from "@lib/components/Prose.svelte";
 
@@ -20,11 +21,8 @@
 
 <dialog
   bind:this={dialog}
-  class="
-    bg-surface/95 border-text relative z-50
-    animate-[fade-in_0.25s] animate-[fly-up_0.25s]
-    rounded border drop-shadow
-  "
+  in:fly={{ duration: 250, y: 50 }}
+  class="bg-surface/95 border-text relative z-50 rounded border drop-shadow"
   class:p-5={hasPadding}
   class:p-0={!hasPadding}
   on:close={onClose}
