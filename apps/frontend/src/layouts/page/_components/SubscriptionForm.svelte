@@ -108,11 +108,7 @@
       helper_text={email_helper_text}
     />
 
-    <Button
-      width="76px"
-      disabled={status !== "typing"}
-      loading={status === "submitting"}
-    >
+    <Button disabled={status !== "typing"} loading={status === "submitting"}>
       SUBMIT
     </Button>
   </div>
