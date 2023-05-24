@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-
-  export let width: string | undefined = undefined;
+  export let width: number | undefined = undefined;
   export let disabled = false;
   export let loading = false;
   export let onClick: ((e: Event) => void) | undefined = undefined;
@@ -11,11 +9,12 @@
 
   $: cursor = loading ? "wait" : disabled ? "not-allowed" : null;
 
-  onMount((): void => {
-    // Set button width based on slotted text to prevent change in width when
-    // loading spinner shows.
-    if (!width) width = `${button.offsetWidth}px`;
-  });
+  // If width prop is not given, set button width based on its length when first
+  // rendered to prevent change in width if the text changes.
+  //
+  // Note: A reactive statement is used in order to keep checking the button's
+  // width until the first time its length is greater than 0.
+  $: if (!width) width = button?.offsetWidth;
 </script>
 
 <button
@@ -23,7 +22,7 @@
   bind:this={button}
   {disabled}
   on:click={onClick}
-  style:width
+  style:width={`${width}px`}
   class:cursor-wait={cursor === "wait"}
   class:cursor-not-allowed={cursor === "not-allowed"}
   class="
