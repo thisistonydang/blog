@@ -4,7 +4,7 @@ import { Canvas } from "@react-three/fiber";
 
 import LevaControls from "@lib/components/LevaControls";
 import Loading from "@lib/components/Loading";
-import { useMounted } from "@lib/hooks/useMounted";
+import { useMounted } from "@lib/react/hooks/useMounted";
 
 import Experience from "./Experience";
 import Interface from "./Interface";
