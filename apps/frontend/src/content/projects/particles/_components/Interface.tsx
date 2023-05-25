@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import Dialog from "@lib/components/Dialog";
-import IconButton from "@lib/components/IconButton";
-import Prose from "@lib/components/Prose";
+import Dialog from "@lib/react/components/Dialog";
+import IconButton from "@lib/react/components/IconButton";
+import Prose from "@lib/react/components/Prose";
 
 export default function Interface({ children }: { children: React.ReactNode }) {
   const [hasPing, setHasPing] = useState(true);

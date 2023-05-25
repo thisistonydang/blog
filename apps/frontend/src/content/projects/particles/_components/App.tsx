@@ -2,8 +2,8 @@ import { StrictMode } from "react";
 import { Canvas } from "@react-three/fiber";
 // import { Perf } from "r3f-perf";
 
-import LevaControls from "@lib/components/LevaControls";
-import Loading from "@lib/components/Loading";
+import LevaControls from "@lib/react/components/LevaControls";
+import Loading from "@lib/react/components/Loading";
 import { useMounted } from "@lib/react/hooks/useMounted";
 
 import Experience from "./Experience";
