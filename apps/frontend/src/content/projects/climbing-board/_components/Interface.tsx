@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 
-import IconButton from "@lib/components/IconButton";
-import Prose from "@lib/components/Prose";
+import IconButton from "@lib/react/components/IconButton";
+import Prose from "@lib/react/components/Prose";
 import HamburgerMenuIcon from "@lib/svg/HamburgerMenuIcon";
 import XIcon from "@lib/svg/XIcon";
 

@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { useContext } from "react";
 
-import Loading from "@lib/components/Loading";
+import Loading from "@lib/react/components/Loading";
 import { useMounted } from "@lib/react/hooks/useMounted";
 
 import { ALLOWED_WIDTHS } from "../_context/BoardWidthContext";

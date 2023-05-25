@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 
-import Dialog from "@lib/components/Dialog";
-import OrbitControlsInfo from "@lib/components/OrbitControlsInfo";
+import Dialog from "@lib/react/components/Dialog";
+import OrbitControlsInfo from "@lib/react/components/OrbitControlsInfo";
 
 import { ControlsModeContext } from "../_context/ControlsModeContext";
 import {

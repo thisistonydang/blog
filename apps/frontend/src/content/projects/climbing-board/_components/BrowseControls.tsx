@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 
-import ControlsDialog from "@lib/components/ControlsDialog";
+import ControlsDialog from "@lib/react/components/ControlsDialog";
 import ControlsList from "@lib/react/components/ControlsList";
-import IconButton from "@lib/components/IconButton";
-import Prose from "@lib/components/Prose";
+import IconButton from "@lib/react/components/IconButton";
+import Prose from "@lib/react/components/Prose";
 import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
 
 import { BoardWidthContext } from "../_context/BoardWidthContext";

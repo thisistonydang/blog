@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import ControlsList from "@lib/react/components/ControlsList";
-import IconButton from "@lib/components/IconButton";
+import IconButton from "@lib/react/components/IconButton";
 import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
 
 import { ControlsModeContext } from "../_context/ControlsModeContext";

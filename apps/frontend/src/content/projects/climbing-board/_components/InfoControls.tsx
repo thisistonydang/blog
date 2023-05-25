@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import Dialog from "@lib/components/Dialog";
+import Dialog from "@lib/react/components/Dialog";
 
 import { ALLOWED_ANGLES } from "../_context/BoardAngleContext";
 import { ALLOWED_WIDTHS } from "../_context/BoardWidthContext";
