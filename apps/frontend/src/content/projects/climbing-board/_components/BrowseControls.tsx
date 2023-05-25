@@ -4,7 +4,7 @@ import ControlsDialog from "@lib/react/components/ControlsDialog";
 import ControlsList from "@lib/react/components/ControlsList";
 import IconButton from "@lib/react/components/IconButton";
 import Prose from "@lib/react/components/Prose";
-import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
+import CheckMarkIcon from "@lib/react/svg/CheckMarkIcon";
 
 import { BoardWidthContext } from "../_context/BoardWidthContext";
 import { ControlsModeContext } from "../_context/ControlsModeContext";

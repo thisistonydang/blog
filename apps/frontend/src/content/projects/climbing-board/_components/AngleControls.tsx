@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import ControlsList from "@lib/react/components/ControlsList";
 import IconButton from "@lib/react/components/IconButton";
-import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
+import CheckMarkIcon from "@lib/react/svg/CheckMarkIcon";
 
 import {
   ALLOWED_ANGLES,

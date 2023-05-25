@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 
 import IconButton from "@lib/react/components/IconButton";
 import Prose from "@lib/react/components/Prose";
-import HamburgerMenuIcon from "@lib/svg/HamburgerMenuIcon";
-import XIcon from "@lib/svg/XIcon";
+import HamburgerMenuIcon from "@lib/react/svg/HamburgerMenuIcon";
+import XIcon from "@lib/react/svg/XIcon";
 
 import { ControlsModeContext } from "../_context/ControlsModeContext";
 import AngleControls from "./AngleControls";
