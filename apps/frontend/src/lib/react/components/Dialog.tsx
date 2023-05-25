@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import Prose from "@lib/components/Prose";
+import Prose from "./Prose";
 
 import type { MouseEventHandler, ReactNode } from "react";
 
