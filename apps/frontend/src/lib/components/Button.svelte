@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+  import { useHasTouchScreen } from "@lib/hooks/useHasTouchScreen";
+
   export let width: number | undefined = undefined;
   export let disabled = false;
   export let loading = false;
@@ -6,8 +9,7 @@
 
   let button: HTMLButtonElement;
   let cursor: "wait" | "not-allowed" | null = null;
-
-  $: cursor = loading ? "wait" : disabled ? "not-allowed" : null;
+  let hasTouchScreen = false;
 
   // If width prop is not given, set button width based on its length when first
   // rendered to prevent change in width if the text changes.
@@ -15,6 +17,10 @@
   // Note: A reactive statement is used in order to keep checking the button's
   // width until the first time its length is greater than 0.
   $: if (!width) width = button?.offsetWidth;
+
+  $: cursor = loading ? "wait" : disabled ? "not-allowed" : null;
+
+  onMount(() => (hasTouchScreen = useHasTouchScreen()));
 </script>
 
 <button
@@ -23,15 +29,13 @@
   {disabled}
   on:click={onClick}
   style:width={`${width}px`}
+  class="bg-heading text-bg group h-[41px] rounded px-3 text-center text-sm"
   class:cursor-wait={cursor === "wait"}
   class:cursor-not-allowed={cursor === "not-allowed"}
-  class="
-    bg-heading text-bg
-    hover:bg-bg hover:text-heading hover:border-heading
-    group h-[41px]
-    rounded px-3 text-center text-sm
-    hover:border
-  "
+  class:hover:bg-bg={!hasTouchScreen}
+  class:hover:text-heading={!hasTouchScreen}
+  class:hover:border={!hasTouchScreen}
+  class:hover:border-heading={!hasTouchScreen}
 >
   {#if loading}
     <svg
