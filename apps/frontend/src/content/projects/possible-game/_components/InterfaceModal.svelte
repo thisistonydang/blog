@@ -2,6 +2,8 @@
   import Dialog from "@lib/components/Dialog.svelte";
   import { interfaceState } from "../_stores/appState";
 
+  export let title: string;
+
   function close(e: Event) {
     e.preventDefault();
     $interfaceState = "opened";
@@ -17,5 +19,9 @@
   onConfirm={close}
   onClose={close}
 >
-  <slot />
+  <h1 class="text-center">{title}</h1>
+
+  <div class="mb-5">
+    <slot />
+  </div>
 </Dialog>
