@@ -24,7 +24,7 @@
   "
   class:min-w-[40px]={!fixedWidth}
   class:cursor-not-allowed={!mounted}
-  style:width={fixedWidth}
+  style:width={`${fixedWidth}px`}
   aria-label={isToggled ? ariaLabelToggled : ariaLabel}
   {disabled}
   on:click={onClick}
