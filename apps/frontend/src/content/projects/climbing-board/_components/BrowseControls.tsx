@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 
 import ControlsDialog from "@lib/components/ControlsDialog";
+import ControlsList from "@lib/react/components/ControlsList";
 import IconButton from "@lib/components/IconButton";
 import Prose from "@lib/components/Prose";
 import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
@@ -10,8 +11,6 @@ import { ControlsModeContext } from "../_context/ControlsModeContext";
 import { CurrentProblemContext } from "../_context/CurrentProblemContext";
 import allProblems from "../_data/problems.json";
 import { updateLocalStorage } from "../_hooks/useSyncLocalStorage";
-
-import ControlsList from "./ControlsList";
 
 export default function BrowseControls() {
   const { boardWidth } = useContext(BoardWidthContext);

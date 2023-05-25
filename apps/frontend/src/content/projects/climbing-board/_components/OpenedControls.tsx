@@ -1,13 +1,12 @@
 import { useContext } from "react";
 
+import ControlsList from "@lib/react/components/ControlsList";
 import IconButton from "@lib/components/IconButton";
 
 import { BoardAngleContext } from "../_context/BoardAngleContext";
 import { BoardWidthContext } from "../_context/BoardWidthContext";
 import { ControlsModeContext } from "../_context/ControlsModeContext";
 import { CurrentProblemContext } from "../_context/CurrentProblemContext";
-
-import ControlsList from "./ControlsList";
 
 import type { Dispatch, SetStateAction } from "react";
 

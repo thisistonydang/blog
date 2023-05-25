@@ -1,5 +1,6 @@
 import { useContext } from "react";
 
+import ControlsList from "@lib/react/components/ControlsList";
 import IconButton from "@lib/components/IconButton";
 import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
 
@@ -15,7 +16,6 @@ import allProblems from "../_data/problems.json";
 import { updateLocalStorage } from "../_hooks/useSyncLocalStorage";
 
 import ControlsDisplay from "./ControlsDisplay";
-import ControlsList from "./ControlsList";
 import { unSetProblem } from "./ContextProvider";
 
 export default function WidthControls() {

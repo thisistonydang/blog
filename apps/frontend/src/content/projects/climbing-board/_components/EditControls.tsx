@@ -1,5 +1,6 @@
 import { useContext } from "react";
 
+import ControlsList from "@lib/react/components/ControlsList";
 import IconButton from "@lib/components/IconButton";
 import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
 
@@ -7,7 +8,6 @@ import { ControlsModeContext } from "../_context/ControlsModeContext";
 import { CurrentProblemContext } from "../_context/CurrentProblemContext";
 import { updateLocalStorage } from "../_hooks/useSyncLocalStorage";
 
-import ControlsList from "./ControlsList";
 import { unSetProblem } from "./ContextProvider";
 
 export default function EditControls() {

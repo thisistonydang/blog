@@ -1,5 +1,6 @@
 import { useContext } from "react";
 
+import ControlsList from "@lib/react/components/ControlsList";
 import IconButton from "@lib/components/IconButton";
 import CheckMarkIcon from "@lib/svg/CheckMarkIcon";
 
@@ -13,7 +14,6 @@ import { ControlsModeContext } from "../_context/ControlsModeContext";
 import { updateLocalStorage } from "../_hooks/useSyncLocalStorage";
 
 import ControlsDisplay from "./ControlsDisplay";
-import ControlsList from "./ControlsList";
 
 export default function AngleControls() {
   const { boardAngle, setBoardAngle } = useContext(BoardAngleContext);
