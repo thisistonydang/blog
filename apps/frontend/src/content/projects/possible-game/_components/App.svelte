@@ -5,7 +5,7 @@
   import { App } from "../_world/App";
 
   import Interface from "./Interface.svelte";
-  import RestartModal from "./RestartModal.svelte";
+  import RestartDialog from "./RestartDialog.svelte";
 
   let container: HTMLDivElement;
   let app: App;
@@ -29,7 +29,7 @@
 {#if $gameState === "not_started"}
   <Interface />
 {:else if $gameState === "stopped"}
-  <RestartModal title="You died :(" {app} />
+  <RestartDialog title="You died :(" {app} />
 {:else if $gameState === "ended"}
-  <RestartModal title="You won!" {app} />
+  <RestartDialog title="You won!" {app} />
 {/if}
