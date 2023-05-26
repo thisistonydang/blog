@@ -11,7 +11,6 @@
 </script>
 
 <Dialog
-  isModal
   isProse
   hasPadding
   buttonWidth={100}
