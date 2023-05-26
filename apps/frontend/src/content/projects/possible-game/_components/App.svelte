@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { gameState, isFullscreen } from "../_stores/appState";
+  import { gameState, interfaceState, isFullscreen } from "../_stores/appState";
   import { App } from "../_world/App";
 
   import Interface from "./Interface.svelte";
@@ -16,6 +16,12 @@
   });
 
   $: if ($isFullscreen) container.requestFullscreen();
+
+  function closeInterfaceDialog() {
+    if (["credits", "how_to_play"].includes($interfaceState)) {
+      $interfaceState = "opened";
+    }
+  }
 </script>
 
 <div
@@ -24,6 +30,8 @@
   on:fullscreenchange={() => {
     $isFullscreen = Boolean(document.fullscreenElement);
   }}
+  on:click={closeInterfaceDialog}
+  on:keypress={closeInterfaceDialog}
 />
 
 {#if $gameState === "not_started"}
