@@ -18,7 +18,7 @@
   onConfirm={close}
   onClose={close}
 >
-  <h1 class="text-center">{title}</h1>
+  <h1 class="text-center underline underline-offset-8">{title}</h1>
 
   <div class="mb-5">
     <slot />
