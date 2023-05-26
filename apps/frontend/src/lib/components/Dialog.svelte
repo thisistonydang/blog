@@ -15,14 +15,24 @@
   export let onClose: ((e: Event) => void) | undefined = undefined;
 
   let dialog: HTMLDialogElement;
+  let width;
+  let height;
 
   onMount(() => (isModal ? dialog.showModal() : dialog.show()));
 </script>
 
 <dialog
   bind:this={dialog}
+  bind:clientWidth={width}
+  bind:clientHeight={height}
   in:fly={{ duration: 250, y: 50 }}
-  class="bg-surface/95 border-text relative z-50 rounded border drop-shadow"
+  class="bg-surface/95 border-text z-50 rounded border drop-shadow"
+  class:fixed={!isModal}
+  class:m-0={!isModal}
+  class:left-[50%]={!isModal}
+  class:top-[50%]={!isModal}
+  style:margin-left={!isModal ? `-${width / 2}px` : undefined}
+  style:margin-top={!isModal ? `-${height / 2}px` : undefined}
   class:p-5={hasPadding}
   class:p-0={!hasPadding}
   on:close={onClose}
