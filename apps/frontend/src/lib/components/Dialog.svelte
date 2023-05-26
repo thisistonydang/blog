@@ -26,9 +26,12 @@
   bind:clientWidth={width}
   bind:clientHeight={height}
   in:fly={{ duration: 250, y: 50 }}
-  class="bg-surface/95 border-text z-50 rounded border drop-shadow"
+  class="
+    bg-surface/95 border-text z-50
+    max-h-[calc(100vh-128px)] max-w-[calc(100vw-64px)]
+    overflow-y-auto rounded border drop-shadow
+  "
   class:fixed={!isModal}
-  class:m-0={!isModal}
   class:left-[50%]={!isModal}
   class:top-[50%]={!isModal}
   style:margin-left={!isModal ? `-${width / 2}px` : undefined}
