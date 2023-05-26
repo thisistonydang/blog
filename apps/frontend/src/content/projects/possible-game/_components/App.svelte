@@ -29,7 +29,7 @@
 {#if $gameState === "not_started"}
   <Interface />
 {:else if $gameState === "stopped"}
-  <RestartModal title="Try again?" {app} />
+  <RestartModal title="You died :(" {app} />
 {:else if $gameState === "ended"}
   <RestartModal title="You won!" {app} />
 {/if}
