@@ -18,6 +18,7 @@
 </script>
 
 <Dialog
+  isModal={$isFullscreen}
   isProse
   hasPadding
   buttonWidth={175}
