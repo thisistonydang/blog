@@ -30,6 +30,7 @@
     bg-surface/95 border-text z-50
     max-h-[calc(100vh-128px)] max-w-[calc(100vw-64px)]
     overflow-y-auto rounded border drop-shadow
+    backdrop:backdrop-blur-sm
   "
   class:fixed={!isModal}
   class:left-[50%]={!isModal}
