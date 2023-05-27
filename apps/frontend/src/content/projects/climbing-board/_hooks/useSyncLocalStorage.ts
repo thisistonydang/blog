@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getParsedValue } from "../_lib/local-storage/getParsedValue";
+import { getParsedValue } from "@lib/local-storage/getParsedValue";
 import { isBoardAngle } from "../_context/BoardAngleContext";
 import { isBoardWidth } from "../_context/BoardWidthContext";
 

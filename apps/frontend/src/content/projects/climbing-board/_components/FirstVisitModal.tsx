@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 
+import { getParsedValue } from "@lib/local-storage/getParsedValue";
 import Dialog from "@lib/react/components/Dialog";
 import OrbitControlsInfo from "@lib/react/components/OrbitControlsInfo";
 
@@ -9,7 +10,6 @@ import {
   LOCAL_STORAGE_VERSION,
   updateLocalStorage,
 } from "../_hooks/useSyncLocalStorage";
-import { getParsedValue } from "../_lib/local-storage/getParsedValue";
 
 import type { MouseEvent } from "react";
 
