@@ -15,6 +15,7 @@
     gameState,
     interfaceState,
     isFullscreen,
+    isMuted,
     longestStreak,
     visited,
   } from "../_stores/appState";
@@ -62,6 +63,7 @@
     if (isValid(data.finishes)) $finishes = data.finishes;
     if (isValid(data.currentStreak)) $currentStreak = data.currentStreak;
     if (isValid(data.longestStreak)) $longestStreak = data.longestStreak;
+    if (typeof data.isMuted === "boolean") $isMuted = data.isMuted;
 
     // Create and render game app
     app = new App(container);
