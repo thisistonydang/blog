@@ -23,5 +23,9 @@
     <IconButton isPill onClick={() => ($interfaceState = "how_to_play")}>
       How To Play
     </IconButton>
+
+    <IconButton isPill onClick={() => ($interfaceState = "stats")}>
+      Stats
+    </IconButton>
   </li>
 </InterfaceList>
