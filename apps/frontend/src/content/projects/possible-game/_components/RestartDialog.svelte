@@ -31,7 +31,7 @@
   onClose={restart}
 >
   <div class="mx-8">
-    <h1 class="text-center">{title}</h1>
+    <h1 class="mb-4 text-center">{title}</h1>
     <StatsList />
   </div>
 </Dialog>
