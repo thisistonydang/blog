@@ -1,6 +1,8 @@
 <script lang="ts">
   import Dialog from "@lib/components/Dialog.svelte";
   import { isFullscreen } from "../_stores/appState";
+  import StatsList from "./StatsList.svelte";
+
   import type { App } from "../_world/App";
 
   export let title: string;
@@ -28,5 +30,8 @@
   onCancel={exitFullscreen}
   onClose={restart}
 >
-  <h1 class="mb-8 text-center">{title}</h1>
+  <div class="mx-8">
+    <h1 class="text-center">{title}</h1>
+    <StatsList />
+  </div>
 </Dialog>
