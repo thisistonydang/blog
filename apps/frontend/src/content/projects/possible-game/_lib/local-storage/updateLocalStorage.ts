@@ -8,7 +8,7 @@ export const LOCAL_STORAGE_VERSION = "2023-05-27";
  */
 export function updateLocalStorage([objectKey, newValue]:
   | ["attempts" | "finishes" | "currentStreak" | "longestStreak", number]
-  | ["visited", boolean]): void {
+  | ["isMuted" | "visited", boolean]): void {
   const data = getParsedValue(LOCAL_STORAGE_KEY, LOCAL_STORAGE_VERSION);
 
   // Update stored data object with new value.
