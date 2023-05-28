@@ -9,7 +9,7 @@
   import Stat from "./Stat.svelte";
 </script>
 
-<dl class="mx-auto mb-8 max-w-[160px]">
+<dl class="xxs:text-base mx-auto mb-8 max-w-[160px] text-sm">
   <Stat name="Attempts" count={$attempts} />
   <Stat name="Finishes" count={$finishes} />
   <Stat name="Current Streak" count={$currentStreak} />
