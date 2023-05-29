@@ -14,7 +14,7 @@
   });
 
   function play() {
-    if (audio && $gameOverAudioCanPlayThrough && !$isMuted) {
+    if (audio && !$isMuted) {
       audio.pause();
       audio.currentTime = 0;
       audio.play();
