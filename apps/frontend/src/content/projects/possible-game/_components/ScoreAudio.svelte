@@ -24,7 +24,7 @@
   }
 
   function pause() {
-    if (mounted && $scoreAudioCanPlayThrough) {
+    if (mounted) {
       audio.pause();
       audio.currentTime = 0;
     }

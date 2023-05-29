@@ -24,7 +24,7 @@
   }
 
   function pause() {
-    if (mounted && $gameOverAudioCanPlayThrough) {
+    if (mounted) {
       audio.pause();
       audio.currentTime = 0;
     }
