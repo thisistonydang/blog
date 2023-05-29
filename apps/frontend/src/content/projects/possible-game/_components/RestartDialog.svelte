@@ -1,16 +1,13 @@
 <script lang="ts">
   import Dialog from "@lib/components/Dialog.svelte";
-  import { isFullscreen } from "../_stores/appState";
+  import { app, isFullscreen } from "../_stores/appState";
   import StatsList from "./StatsList.svelte";
 
-  import type { App } from "../_world/App";
-
   export let title: string;
-  export let app: App;
 
   function restart(e: Event) {
     e.preventDefault();
-    app.restart();
+    $app.restart();
   }
 
   function exitFullscreen(e: Event) {
