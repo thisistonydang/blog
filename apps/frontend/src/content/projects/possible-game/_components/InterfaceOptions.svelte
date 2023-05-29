@@ -1,7 +1,6 @@
 <script lang="ts">
   import IconButton from "@lib/components/IconButton.svelte";
   import InterfaceList from "@lib/components/InterfaceList.svelte";
-  import { updateLocalStorage } from "../_lib/local-storage/updateLocalStorage";
   import { interfaceState, isFullscreen, isMuted } from "../_stores/appState";
 </script>
 
@@ -11,14 +10,7 @@
       Enter Fullscreen
     </IconButton>
 
-    <IconButton
-      isPill
-      fixedWidth={100}
-      onClick={() => {
-        $isMuted = !$isMuted;
-        updateLocalStorage(["isMuted", $isMuted]);
-      }}
-    >
+    <IconButton isPill fixedWidth={100} onClick={() => ($isMuted = !$isMuted)}>
       Sound {$isMuted ? "Off" : "On"}
     </IconButton>
   </li>
