@@ -1,12 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { getParsedValue } from "@lib/local-storage/getParsedValue";
-
-  import {
-    LOCAL_STORAGE_KEY,
-    LOCAL_STORAGE_VERSION,
-  } from "../_lib/local-storage/updateLocalStorage";
   import { interfaceState, visited } from "../_stores/appState";
 
   import Credits from "./Credits.svelte";
@@ -19,11 +13,6 @@
   onMount(() => {
     // Show welcome information if user has not visited before, else show the
     // interface options.
-    const data = getParsedValue(LOCAL_STORAGE_KEY, LOCAL_STORAGE_VERSION);
-    if (typeof data.visited === "boolean") {
-      $visited = data.visited;
-    }
-
     $interfaceState = $visited ? "opened" : "welcome";
   });
 </script>
