@@ -1,4 +1,7 @@
 import { writable } from "svelte/store";
+import type { App } from "../_world/App";
+
+export const app = writable<App>(undefined);
 
 export const gameState = writable<
   "not_started" | "playing" | "stopped" | "ended"
@@ -10,12 +13,14 @@ export const interfaceState = writable<
 
 export const isFullscreen = writable(false);
 
-// Start isMuted as undefined so sound doesn't play on start up
-export const isMuted = writable<boolean>(undefined);
+export const scoreAudioCanPlayThrough = writable<boolean>(false);
+export const gameOverAudioCanPlayThrough = writable<boolean>(false);
+export const levelAudioCanPlayThrough = writable<boolean>(false);
 
 // Local storage
 export const attempts = writable<number>(0);
 export const finishes = writable<number>(0);
 export const currentStreak = writable<number>(0);
 export const longestStreak = writable<number>(0);
+export const isMuted = writable<boolean>(false);
 export const visited = writable<boolean>(false);
