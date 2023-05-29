@@ -3,11 +3,26 @@
     attempts,
     currentStreak,
     finishes,
+    gameState,
     interfaceState,
     longestStreak,
   } from "../_stores/appState";
 
   import Stat from "./Stat.svelte";
+
+  $: if ($gameState === "stopped") {
+    $attempts++;
+    $currentStreak = 0;
+  }
+
+  $: if ($gameState === "ended") {
+    $attempts++;
+    $finishes++;
+    $currentStreak++;
+    if ($currentStreak > $longestStreak) {
+      $longestStreak = $currentStreak;
+    }
+  }
 </script>
 
 <dl class="xxs:text-base mx-auto mb-4 max-w-[160px] text-sm">
