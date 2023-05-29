@@ -8,15 +8,13 @@
   } from "../_stores/appState";
 
   let audio: HTMLAudioElement;
-  let mounted = false;
 
   onMount(() => {
     audio.load();
-    mounted = true;
   });
 
   function play() {
-    if (mounted && $levelAudioCanPlayThrough && !$isMuted) {
+    if (audio && $levelAudioCanPlayThrough && !$isMuted) {
       audio.pause();
       audio.currentTime = 0;
       audio.play();
@@ -24,7 +22,7 @@
   }
 
   function pause() {
-    if (mounted) {
+    if (audio) {
       audio.pause();
       audio.currentTime = 0;
     }
