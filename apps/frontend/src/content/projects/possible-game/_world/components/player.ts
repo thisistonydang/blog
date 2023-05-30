@@ -21,7 +21,6 @@ export function player(app: App): Mesh {
   // State
   let playerState: "grounded" | "aerial" | "dead" = "grounded";
   let rotationY = 0;
-  let restarted = false;
 
   // Create mesh
   const material = new MeshBasicMaterial({ wireframe: true });
@@ -44,10 +43,8 @@ export function player(app: App): Mesh {
   };
 
   player.onCollisionEnter = (_, { id }) => {
-    // Update player state when collision occurs
-    if (id.includes("platform")) {
-      playerState = "grounded";
-    } else if (id.includes("trap")) {
+    // Stop game if player hits a trap
+    if (id.includes("trap")) {
       playerState = "dead";
       app.stopGame();
     }
@@ -61,15 +58,15 @@ export function player(app: App): Mesh {
   };
 
   player.onCollisionExit = () => {
-    // Prevent onCollisionExit from firing on restarts. This prevents a bug
-    // where the playerState is incorrectly aerial despite being in contact with
-    // the starting platfom.
-    if (restarted) {
-      restarted = false;
-      return;
-    }
-
+    // Set player state to aerial when not in contact with anything
     playerState = "aerial";
+  };
+
+  player.onContactsWith = (_, { id }) => {
+    // Set player state to grounded while in contact with platforms
+    if (id.includes("platform")) {
+      playerState = "grounded";
+    }
   };
 
   player.tickOnWorldStart = () => {
@@ -127,9 +124,6 @@ export function player(app: App): Mesh {
     // Reset player rotation
     rotationY = 0;
     player.rotation.y = 0;
-
-    // Flag as restarted
-    restarted = true;
   };
 
   // Sync player color with theme
