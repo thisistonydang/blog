@@ -28,7 +28,7 @@
   in:fly={{ duration: 250, y: 50 }}
   class="
     bg-surface/95 border-text z-50
-    max-h-[calc(100vh-128px)] max-w-[calc(100vw-64px)]
+    max-h-[calc(100vh-32px)] max-w-[calc(100vw-32px)]
     overflow-y-auto rounded border drop-shadow
     backdrop:backdrop-blur-sm
   "
