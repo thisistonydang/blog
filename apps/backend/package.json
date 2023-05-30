@@ -10,11 +10,11 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.22.0",
+    "@supabase/supabase-js": "^2.24.0",
     "@tonydangblog/error-handling": "workspace:1.0.0",
-    "itty-router": "^3.0.12",
+    "itty-router": "^4.0.6",
     "jose": "^4.14.4",
-    "stripe": "^12.6.0",
+    "stripe": "^12.7.0",
     "zod": "^3.21.4"
   }
 }
