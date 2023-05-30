@@ -44,7 +44,7 @@ export class App extends World {
       container,
       physics: Physics2D,
       // pointer: Pointer,
-      // gui: Gui
+      // gui: Gui,
       // statistics: Statistics,
     });
 
