@@ -15,13 +15,7 @@ import type { Instance } from "@lib/three/types/Instance";
 import type { Patched } from "@lib/three/types/Patched";
 import type { PhysicsInstance } from "@lib/three/types/Rapier2D";
 
-export function traps({
-  instances,
-  hasPhysics = false,
-}: {
-  instances: Instance[];
-  hasPhysics?: boolean;
-}): InstancedMesh {
+export function traps({ instances }: { instances: Instance[] }): InstancedMesh {
   // Create instancedMesh
   const material = new MeshBasicMaterial({ wireframe: true });
   const instancedMesh: InstancedMesh<BoxGeometry> & Patched = new InstancedMesh(
@@ -34,19 +28,17 @@ export function traps({
   updateInstanceColors(instancedMesh, instances);
 
   // Add physics
-  if (hasPhysics) {
-    instancedMesh.addPhysics2D = (physics) => {
-      const physicsInstances: PhysicsInstance[] = instances.map((instance) => {
-        return {
-          ...instance,
-          rigidBodyDesc: RAPIER.RigidBodyDesc.fixed(),
-          colliderDesc: cuboidColliderDesc(instancedMesh, instance.scale),
-        };
-      });
+  instancedMesh.addPhysics2D = (physics) => {
+    const physicsInstances: PhysicsInstance[] = instances.map((instance) => {
+      return {
+        ...instance,
+        rigidBodyDesc: RAPIER.RigidBodyDesc.fixed(),
+        colliderDesc: cuboidColliderDesc(instancedMesh, instance.scale),
+      };
+    });
 
-      addInstancedMesh({ physics, instancedMesh, physicsInstances });
-    };
-  }
+    addInstancedMesh({ physics, instancedMesh, physicsInstances });
+  };
 
   // Sync trap color with theme
   theme.subscribe((theme) => {
