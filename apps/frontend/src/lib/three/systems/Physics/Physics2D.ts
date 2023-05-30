@@ -226,4 +226,39 @@ export class Physics2D extends Physics {
       }
     });
   }
+
+  handleContactsWith(): void {
+    function handleContacts(
+      physicsWorld: Physics2DWorld,
+      object: Mesh | InstancedMesh,
+      physicsBody: PhysicsBody
+    ) {
+      physicsWorld.contactsWith(physicsBody.collider, ({ handle }) => {
+        // Get the other physicsBody involved in the contact
+        const rigidBody = physicsWorld.getRigidBody(handle);
+        const id = (rigidBody.userData as { id: string }).id;
+        const collider = physicsWorld.getCollider(handle);
+
+        // Handle the contact event
+        if (isPatched(object) && "onContactsWith" in object) {
+          object.onContactsWith(physicsBody, { id, rigidBody, collider });
+        }
+      });
+    }
+
+    this.contactsWithObjects.forEach((object) => {
+      if (object instanceof InstancedMesh) {
+        const physicsBodies = this.instanceMeshMap.get(object);
+
+        physicsBodies?.forEach((physicsBody) => {
+          handleContacts(this.physicsWorld, object, physicsBody);
+        });
+      } else if (object instanceof Mesh) {
+        const physicsBody = this.meshMap.get(object);
+        if (!physicsBody) return;
+
+        handleContacts(this.physicsWorld, object, physicsBody);
+      }
+    });
+  }
 }
