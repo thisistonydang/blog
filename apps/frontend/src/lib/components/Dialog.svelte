@@ -32,13 +32,13 @@
     overflow-y-auto rounded border drop-shadow
     backdrop:backdrop-blur-sm
   "
+  class:p-5={hasPadding}
+  class:p-0={!hasPadding}
   class:fixed={!isModal}
   class:left-[50%]={!isModal}
   class:top-[50%]={!isModal}
   style:margin-left={!isModal ? `-${width / 2}px` : undefined}
   style:margin-top={!isModal ? `-${height / 2}px` : undefined}
-  class:p-5={hasPadding}
-  class:p-0={!hasPadding}
   on:close={onClose}
 >
   {#if isProse}
