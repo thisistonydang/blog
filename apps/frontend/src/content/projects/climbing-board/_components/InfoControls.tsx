@@ -16,14 +16,19 @@ export default function InfoControls() {
       isModal
       isProse
       hasPadding
-      buttonText="CLOSE"
-      onButtonClick={(e) => {
+      buttonWidth={100}
+      confirmText="CLOSE"
+      onConfirm={(e) => {
+        e.preventDefault();
+        setControlsMode("opened");
+      }}
+      onClose={(e) => {
         e.preventDefault();
         setControlsMode("opened");
       }}
     >
       <div className="mb-5">
-        <h1>Climbing Board</h1>
+        <h1 className="text-center">Climbing Board</h1>
         <p>Concept training board app for climbing. Features include:</p>
         <ul>
           <li>
