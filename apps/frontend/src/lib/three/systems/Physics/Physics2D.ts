@@ -16,6 +16,8 @@ import type { World as Physics2DWorld } from "@dimforge/rapier2d-compat";
 import type { PhysicsBody } from "../../types/Rapier2D";
 import type { World } from "../../World";
 
+await RAPIER.init();
+
 const positionVector = new Vector3();
 const euler = new Euler();
 const quaternion = new Quaternion();

@@ -9,6 +9,8 @@ import type { World as Physics3DWorld } from "@dimforge/rapier3d-compat";
 import type { PhysicsBody } from "../../types/Rapier3D";
 import type { World } from "../../World";
 
+await RAPIER.init();
+
 const positionVector = new Vector3();
 const quaternion = new Quaternion();
 const scaleVector = new Vector3();
