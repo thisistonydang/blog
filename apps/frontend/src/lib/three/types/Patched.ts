@@ -37,6 +37,7 @@ export interface Patched {
   addPhysics3D?: AddPhysics3D;
   onCollisionEnter?: CollisionEventHandler;
   onCollisionExit?: CollisionEventHandler;
+  onContactsWith?: CollisionEventHandler;
   onSleep?: SleepAndWakeEventHandler;
   onWake?: SleepAndWakeEventHandler;
   onClick?: IntersectionEventHandler;
