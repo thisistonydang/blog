@@ -10,6 +10,7 @@ export abstract class Physics {
   objects: Object3D[] = [];
   collisionEnterObjects: Object3D[] = [];
   collisionExitObjects: Object3D[] = [];
+  contactsWithObjects: Object3D[] = [];
   sleepAndWakeObjects: Object3D[] = [];
   movableObjects: Object3D[] = [];
   abstract physicsWorld: Physics2DWorld | Physics3DWorld;
@@ -22,12 +23,14 @@ export abstract class Physics {
   abstract updateThreeJsObjects(): void;
   abstract handleSleepAndWake(): void;
   abstract handleCollisions(): void;
+  abstract handleContactsWith(): void;
 
   stepWorld(): void {
     this.stepPhysicsWorld();
     this.updateThreeJsObjects();
     this.handleSleepAndWake();
     this.handleCollisions();
+    this.handleContactsWith();
   }
 
   tickOnWorldStart: Tick = () => {
