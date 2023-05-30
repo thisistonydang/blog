@@ -8,15 +8,19 @@ export default function Dialog({
   isModal = false,
   isProse = false,
   hasPadding = false,
-  buttonText,
-  onButtonClick,
+  buttonWidth,
+  confirmText,
+  onConfirm,
+  onClose,
   children,
 }: {
   isModal?: boolean;
   isProse?: boolean;
   hasPadding?: boolean;
-  buttonText?: string;
-  onButtonClick?: MouseEventHandler<HTMLButtonElement>;
+  buttonWidth?: number;
+  confirmText?: string;
+  onConfirm?: MouseEventHandler<HTMLButtonElement>;
+  onClose?: MouseEventHandler<HTMLDialogElement>;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
@@ -40,12 +44,19 @@ export default function Dialog({
         bg-surface/95 border-text relative z-50
         animate-[fade-in_0.25s] animate-[fly-up_0.25s]
         rounded border drop-shadow
+        backdrop:backdrop-blur-sm
         ${hasPadding ? "p-5" : "p-0"}
       `}
+      onClose={onClose}
     >
       {isProse ? <Prose>{children}</Prose> : children}
-      {buttonText && (
-        <form method="dialog">
+
+      <form
+        method="dialog"
+        className="m-auto flex flex-col gap-3"
+        style={{ width: buttonWidth }}
+      >
+        {confirmText && (
           <button
             className="
               bg-heading text-bg
@@ -54,12 +65,12 @@ export default function Dialog({
               rounded px-3 text-center text-sm
               hover:border
             "
-            onClick={onButtonClick}
+            onClick={onConfirm}
           >
-            {buttonText}
+            {confirmText}
           </button>
-        </form>
-      )}
+        )}
+      </form>
     </dialog>
   );
 }
