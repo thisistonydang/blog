@@ -27,7 +27,7 @@ export default function FirstVisitModal() {
     }
   }, [hasVisited, setControlsMode]);
 
-  function handleButtonClick(e: MouseEvent): void {
+  function closeModal(e: MouseEvent): void {
     e.preventDefault();
     updateLocalStorage(["visited", true]);
     setHasVisited(true);
@@ -39,8 +39,10 @@ export default function FirstVisitModal() {
     <Dialog
       isModal
       hasPadding
-      buttonText="GOT IT"
-      onButtonClick={handleButtonClick}
+      buttonWidth={100}
+      confirmText="GOT IT"
+      onConfirm={closeModal}
+      onClose={closeModal}
     >
       <OrbitControlsInfo />
     </Dialog>
