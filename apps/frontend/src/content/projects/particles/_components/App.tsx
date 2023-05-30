@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+// import { StrictMode } from "react";
 import { Canvas } from "@react-three/fiber";
 // import { Perf } from "r3f-perf";
 
@@ -13,7 +13,7 @@ export default function App({ children }: { children: React.ReactNode }) {
   const mounted = useMounted();
 
   return (
-    <StrictMode>
+    <>
       <main>
         {mounted ? (
           <div
@@ -34,6 +34,6 @@ export default function App({ children }: { children: React.ReactNode }) {
         )}
       </main>
       <Interface>{children}</Interface>
-    </StrictMode>
+    </>
   );
 }
