@@ -119,6 +119,9 @@ export class World {
       if ("onCollisionExit" in object) {
         this.physics?.collisionExitObjects.push(object);
       }
+      if ("onContactsWith" in object) {
+        this.physics?.contactsWithObjects.push(object);
+      }
       if ("onSleep" in object || "onWake" in object) {
         this.physics?.sleepAndWakeObjects.push(object);
       }
