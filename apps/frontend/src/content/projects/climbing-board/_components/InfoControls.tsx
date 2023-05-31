@@ -68,7 +68,7 @@ export default function InfoControls() {
         <br />
         <small>
           <b>Code:</b>{" "}
-          <a href="https://github.com/tonydangblog/blog/tree/main/apps/frontend/src/content/projects/climbing-board/_components">
+          <a href="https://github.com/tonydangblog/blog/tree/main/apps/frontend/src/content/projects/climbing-board">
             Github
           </a>
         </small>
