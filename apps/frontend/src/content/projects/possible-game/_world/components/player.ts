@@ -1,6 +1,6 @@
 import RAPIER from "@dimforge/rapier2d-compat";
 import { get } from "svelte/store";
-import { MathUtils, Mesh, MeshBasicMaterial } from "three";
+import { MathUtils, Mesh, MeshBasicMaterial, Texture } from "three";
 
 import { theme } from "@layouts/page/_stores/theme";
 
@@ -8,7 +8,7 @@ import { boxGeometry } from "@lib/three/geometries/box";
 import { addMesh } from "@lib/three/systems/Physics/2D/addMesh";
 import { cuboidColliderDesc } from "@lib/three/systems/Physics/2D/cuboidColliderDesc";
 
-import { gameState } from "../../_stores/appState";
+import { gameState, playerImage } from "../../_stores/appState";
 
 import type { BoxGeometry } from "three";
 import type { Physics2D } from "@lib/three/systems/Physics/Physics2D";
@@ -17,13 +17,21 @@ import type { App } from "../App";
 
 export function player(app: App): Mesh {
   const playerHeight = 1;
+  const image = get(playerImage);
+  let map: Texture | undefined;
 
   // State
   let playerState: "grounded" | "aerial" | "dead" = "grounded";
   let rotationY = 0;
 
+  // Load player image as texture if available
+  if (image) {
+    map = new Texture(image);
+    map.needsUpdate = true;
+  }
+
   // Create mesh
-  const material = new MeshBasicMaterial({ wireframe: true });
+  const material = new MeshBasicMaterial({ map, wireframe: !image });
   const player: Mesh<BoxGeometry> & Patched = new Mesh(boxGeometry, material);
   // start: 0, pre-stairs: 115, pre-drop: 213
   player.position.set(0, playerHeight / 2, 0);
@@ -77,7 +85,9 @@ export function player(app: App): Mesh {
     }
 
     // Spin player if player rotation does not equal current rotationY value
-    player.rotation.y = MathUtils.lerp(player.rotation.y, rotationY, 0.075);
+    if (!image) {
+      player.rotation.y = MathUtils.lerp(player.rotation.y, rotationY, 0.075);
+    }
 
     // End game if player is past finishEnd checkpoint and game hasn't ended
     if (
@@ -127,9 +137,11 @@ export function player(app: App): Mesh {
   };
 
   // Sync player color with theme
-  theme.subscribe((theme) => {
-    material.color.set(theme === "dark" ? 0x00ffff : 0x006161);
-  });
+  if (!image) {
+    theme.subscribe((theme) => {
+      material.color.set(theme === "dark" ? 0x00ffff : 0x006161);
+    });
+  }
 
   return player;
 }
