@@ -31,7 +31,11 @@ export function player(app: App): Mesh {
   }
 
   // Create mesh
-  const material = new MeshBasicMaterial({ map, wireframe: !image });
+  const material = new MeshBasicMaterial({
+    map,
+    transparent: true,
+    wireframe: !image,
+  });
   const player: Mesh<BoxGeometry> & Patched = new Mesh(boxGeometry, material);
   // start: 0, pre-stairs: 115, pre-drop: 213
   player.position.set(0, playerHeight / 2, 0);

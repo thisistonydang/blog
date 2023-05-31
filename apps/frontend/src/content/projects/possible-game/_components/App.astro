@@ -2,23 +2,23 @@
 import FixedHeader from "@layouts/page/_components/FixedHeader.astro";
 import App from "./App.svelte";
 
-interface ImageFile {
+interface File {
   default: {
     src: string;
   };
 }
 
-// Glob all player image files from public folder
-const imageFiles = Object.values(
-  import.meta.glob<ImageFile>("../../../../../public/img/possible-game/*.jpg", {
+// Glob all player png files from public folder
+const files = Object.values(
+  import.meta.glob<File>("../../../../../public/img/possible-game/*.png", {
     eager: true,
   })
 );
 
 // Extract valid player names into an array to pass to svelte app
 const validPlayerNames: string[] = [];
-imageFiles.forEach((file) => {
-  const fileName = file.default.src.match(/[a-z-]+\.jpg/)?.[0];
+files.forEach((file) => {
+  const fileName = file.default.src.match(/[a-z-]+\.png/)?.[0];
   const name = fileName?.match(/[a-z-]+/)?.[0];
 
   if (name) {

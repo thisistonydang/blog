@@ -23,7 +23,7 @@
 {#if tryLoadingImage}
   <img
     bind:this={$playerImage}
-    src={`/img/possible-game/${playerName}.jpg`}
+    src={`/img/possible-game/${playerName}.png`}
     alt=""
     class="hidden"
     on:load={() => ($playerImageLoaded = true)}
