@@ -18,7 +18,7 @@ import type { App } from "../App";
 export function player(app: App): Mesh {
   const playerHeight = 1;
   const image = get(playerImage);
-  let map: Texture | undefined;
+  let map: Texture | null = null;
 
   // State
   let playerState: "grounded" | "aerial" | "dead" = "grounded";
