@@ -3,25 +3,27 @@
     gameOverAudioCanPlayThrough,
     gameState,
     levelAudioCanPlayThrough,
+    playerImageLoaded,
     scoreAudioCanPlayThrough,
   } from "../_stores/appState";
 
-  import Audio from "./Audio.svelte";
+  import Assets from "./Assets.svelte";
   import Canvas from "./Canvas.svelte";
   import Interface from "./Interface.svelte";
   import LocalStorage from "./LocalStorage.svelte";
   import RestartDialog from "./RestartDialog.svelte";
 
-  $: isReady =
+  $: assetsReady =
     $scoreAudioCanPlayThrough &&
     $gameOverAudioCanPlayThrough &&
-    $levelAudioCanPlayThrough;
+    $levelAudioCanPlayThrough &&
+    $playerImageLoaded;
 </script>
 
-<Audio />
+<Assets />
 <LocalStorage />
 
-{#if isReady}
+{#if assetsReady}
   <Canvas />
 {/if}
 
