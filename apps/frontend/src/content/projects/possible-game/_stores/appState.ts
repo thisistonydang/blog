@@ -1,7 +1,7 @@
 import { writable } from "svelte/store";
 import type { App } from "../_world/App";
 
-export const app = writable<App>(undefined);
+export const app = writable<App | undefined>(undefined);
 
 export const gameState = writable<
   "not_started" | "playing" | "stopped" | "ended"
@@ -18,7 +18,7 @@ export const scoreAudioCanPlayThrough = writable<boolean>(false);
 export const gameOverAudioCanPlayThrough = writable<boolean>(false);
 export const levelAudioCanPlayThrough = writable<boolean>(false);
 export const playerImageLoaded = writable<boolean>(false);
-export const playerImage = writable<HTMLImageElement>(undefined);
+export const playerImage = writable<HTMLImageElement | undefined>(undefined);
 
 // Local storage
 export const attempts = writable<number>(0);
