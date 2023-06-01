@@ -20,8 +20,9 @@ export interface PhysicsInstance extends Instance {
   activeEvents?:
     | RAPIER.ActiveEvents.COLLISION_EVENTS
     | RAPIER.ActiveEvents.CONTACT_FORCE_EVENTS;
-  restitution?: number;
   friction?: number;
+  mass?: number;
+  restitution?: number;
 }
 
 export interface PhysicsBody {
