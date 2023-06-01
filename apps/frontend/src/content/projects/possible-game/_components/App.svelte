@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Loading from "@lib/components/Loading.svelte";
+
   import {
     gameOverAudioCanPlayThrough,
     gameState,
@@ -27,6 +29,8 @@
 
 {#if assetsReady}
   <Canvas />
+{:else}
+  <Loading />
 {/if}
 
 {#if $gameState === "not_started"}
