@@ -1,10 +1,13 @@
-import { Mesh, MeshBasicMaterial } from "three";
+import { get } from "svelte/store";
 
+import { Mesh, MeshBasicMaterial } from "three";
 import font from "three/examples/fonts/helvetiker_regular.typeface.json";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { Font } from "three/examples/jsm/loaders/FontLoader";
 
 import { theme } from "@layouts/page/_stores/theme";
+
+import { playerImage } from "../../_stores/appState";
 
 export function finishText(): Mesh {
   // Create mesh
@@ -16,7 +19,7 @@ export function finishText(): Mesh {
   });
   const material = new MeshBasicMaterial();
   const finishText = new Mesh(geometry, material);
-  finishText.position.set(293, -12.25, 0);
+  finishText.position.set(get(playerImage) ? 291.3 : 293, -12.25, 0);
 
   // Sync finish text color with theme
   theme.subscribe((theme) => {
