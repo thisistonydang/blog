@@ -12,8 +12,9 @@ export function addMesh({
   lockRotations,
   colliderDesc,
   activeEvents,
-  restitution,
   friction,
+  mass,
+  restitution,
 }: {
   physics: Physics3D;
   mesh: Mesh;
@@ -24,8 +25,9 @@ export function addMesh({
   activeEvents?:
     | RAPIER.ActiveEvents.COLLISION_EVENTS
     | RAPIER.ActiveEvents.CONTACT_FORCE_EVENTS;
-  restitution?: number;
   friction?: number;
+  mass?: number;
+  restitution?: number;
 }): void {
   // Describe rigid body
   rigidBodyDesc.userData = { id: mesh.name };
@@ -40,8 +42,9 @@ export function addMesh({
 
   // Describe collider
   activeEvents && colliderDesc.setActiveEvents(activeEvents);
-  restitution && colliderDesc.setRestitution(restitution);
   friction && colliderDesc.setFriction(friction);
+  mass && colliderDesc.setMass(mass);
+  restitution && colliderDesc.setRestitution(restitution);
 
   // Create collider
   const collider = physics.physicsWorld.createCollider(colliderDesc, rigidBody);
