@@ -29,7 +29,7 @@ export default function InfoControls() {
     >
       <div className="mb-5">
         <h1 className="text-center">Climbing Board</h1>
-        <p>Concept training board app for climbing. Features include:</p>
+        <p>Concept climbing training board app. Features include:</p>
         <ul>
           <li>
             Board <InAppLink controlsMode="width">width adjustment</InAppLink>{" "}
