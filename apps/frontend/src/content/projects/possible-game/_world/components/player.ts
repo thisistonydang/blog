@@ -1,6 +1,12 @@
 import RAPIER from "@dimforge/rapier2d-compat";
 import { get } from "svelte/store";
-import { MathUtils, Mesh, MeshBasicMaterial, Texture } from "three";
+import {
+  MathUtils,
+  Mesh,
+  MeshBasicMaterial,
+  SRGBColorSpace,
+  Texture,
+} from "three";
 
 import { theme } from "@layouts/page/_stores/theme";
 
@@ -27,6 +33,7 @@ export function player(app: App): Mesh {
   // Load player image as texture if available
   if (image) {
     map = new Texture(image);
+    map.colorSpace = SRGBColorSpace;
     map.needsUpdate = true;
   }
 
