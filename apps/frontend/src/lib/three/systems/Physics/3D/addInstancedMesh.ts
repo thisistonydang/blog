@@ -29,8 +29,9 @@ export function addInstancedMesh({
       lockRotations,
       colliderDesc,
       activeEvents,
-      restitution,
       friction,
+      mass,
+      restitution,
     }) => {
       // Describe rigid body
       rigidBodyDesc.userData = { id };
@@ -48,8 +49,9 @@ export function addInstancedMesh({
       // Describe collider
       if (!colliderDesc) throw new Error("No colliderDesc set on instance.");
       activeEvents && colliderDesc.setActiveEvents(activeEvents);
-      restitution && colliderDesc.setRestitution(restitution);
       friction && colliderDesc.setFriction(friction);
+      mass && colliderDesc.setMass(mass);
+      restitution && colliderDesc.setRestitution(restitution);
 
       // Create collider
       const collider = physics.physicsWorld.createCollider(
