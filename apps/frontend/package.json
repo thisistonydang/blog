@@ -9,7 +9,7 @@
     "a11y-check": "pa11y-ci --sitemap https://tonydang.blog/sitemap-index.xml --sitemap-find https://tonydang.blog --sitemap-replace http://localhost:3000",
     "build": "pnpm run type-check && astro build && pnpm run link-check && pnpm run a11y-check",
     "preview": "wrangler pages dev --port 4000 dist",
-    "deploy": "wrangler pages publish dist"
+    "deploy": "wrangler pages deploy dist"
   },
   "dependencies": {
     "@astrojs/image": "^0.16.9",
