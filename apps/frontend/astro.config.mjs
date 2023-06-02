@@ -42,4 +42,5 @@ export default defineConfig({
     },
     plugins: [glsl()],
   },
+  compressHTML: true,
 });
