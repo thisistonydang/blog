@@ -3,8 +3,6 @@
   import LevelAudio from "./LevelAudio.svelte";
   import PlayerImage from "./PlayerImage.svelte";
   import ScoreAudio from "./ScoreAudio.svelte";
-
-  export let validPlayerNames: string[];
 </script>
 
 <!-- Audio -->
@@ -13,4 +11,4 @@
 <LevelAudio />
 
 <!-- Textures -->
-<PlayerImage {validPlayerNames} />
+<PlayerImage />
