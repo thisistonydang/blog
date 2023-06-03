@@ -1,6 +1,6 @@
 name = "blog-backend"
 main = "src/router.ts"
-compatibility_date = "2022-10-28"
+compatibility_date = "2023-03-14"
 minify = true
 node_compat = true
 
