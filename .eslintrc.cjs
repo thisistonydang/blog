@@ -16,7 +16,6 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "react-app",
     "plugin:astro/recommended",
     "plugin:astro/jsx-a11y-recommended",
     "prettier",
@@ -26,5 +25,6 @@ module.exports = {
   overrides: [
     { files: ["*.astro"], parser: "astro-eslint-parser" },
     { files: ["*.svelte"], processor: "svelte3/svelte3" },
+    { files: ["*.tsx"], extends: ["react-app"] },
   ],
 };
