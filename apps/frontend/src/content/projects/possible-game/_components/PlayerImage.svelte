@@ -2,8 +2,6 @@
   import { onMount } from "svelte";
   import { playerImage, playerImageLoaded } from "../_stores/appState";
 
-  export let validPlayerNames: string[];
-
   let tryLoadingImage = false;
   let playerName: string | undefined;
 
@@ -11,7 +9,7 @@
     const params = new URLSearchParams(window.location.search);
     playerName = params.get("player")?.toLowerCase();
 
-    if (playerName && validPlayerNames.includes(playerName)) {
+    if (playerName) {
       tryLoadingImage = true;
       return;
     }
