@@ -15,8 +15,6 @@
   import LocalStorage from "./LocalStorage.svelte";
   import RestartDialog from "./RestartDialog.svelte";
 
-  export let validPlayerNames: string[];
-
   $: assetsReady =
     $scoreAudioCanPlayThrough &&
     $gameOverAudioCanPlayThrough &&
@@ -24,7 +22,7 @@
     $playerImageLoaded;
 </script>
 
-<Assets {validPlayerNames} />
+<Assets />
 <LocalStorage />
 
 {#if assetsReady}
