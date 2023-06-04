@@ -87,7 +87,8 @@ export class App extends World {
     this.requestRender();
 
     // Set focus on the canvas so user can immediately start playing again
-    this.renderer.domElement.focus();
+    const canvas = this.renderer.domElement;
+    setTimeout(() => canvas.focus(), 0);
 
     gameState.set("not_started");
   }
