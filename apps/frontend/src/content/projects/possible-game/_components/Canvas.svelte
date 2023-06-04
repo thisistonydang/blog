@@ -18,9 +18,9 @@
       // Close the currently opened interface dialog
       $interfaceState = "opened";
     } else if ($gameState === "not_started") {
-      $app.startGame();
+      $app?.startGame();
     } else if ($gameState === "playing") {
-      $app.jump();
+      $app?.jump();
     }
   }
 
@@ -40,6 +40,15 @@
     canvas.tabIndex = 0; // Allow canvas to be focusable
     canvas.addEventListener("mousedown", handleMouseDown);
     canvas.addEventListener("keydown", handleKeyDown);
+
+    // Handle fullscreenchange events on safari webkit
+    if ("webkitFullscreenElement" in document) {
+      container.addEventListener("webkitfullscreenchange", () => {
+        if ("webkitFullscreenElement" in document) {
+          $isFullscreen = Boolean(document.webkitFullscreenElement);
+        }
+      });
+    }
   });
 </script>
 
