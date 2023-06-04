@@ -1,6 +1,7 @@
 <script lang="ts">
   import IconButton from "@lib/components/IconButton.svelte";
   import InterfaceList from "@lib/components/InterfaceList.svelte";
+  import { requestFullscreen } from "@lib/fullscreen/requestFullscreen";
   import { app, interfaceState, isMuted } from "../_stores/appState";
 </script>
 
@@ -8,7 +9,12 @@
   <li class="flex flex-wrap gap-2">
     <IconButton
       isPill
-      onClick={() => $app.renderer.domElement.requestFullscreen()}
+      onClick={() => {
+        const canvas = $app?.renderer.domElement;
+        if (canvas) {
+          requestFullscreen(canvas);
+        }
+      }}
     >
       Enter Fullscreen
     </IconButton>
