@@ -1,5 +1,6 @@
 <script lang="ts">
   import Dialog from "@lib/components/Dialog.svelte";
+  import { exitFullscreen } from "@lib/fullscreen/exitFullscreen";
   import { app, isFullscreen } from "../_stores/appState";
   import StatsList from "./StatsList.svelte";
 
@@ -7,12 +8,7 @@
 
   function restart(e: Event) {
     e.preventDefault();
-    $app.restart();
-  }
-
-  function exitFullscreen(e: Event) {
-    e.preventDefault();
-    document.exitFullscreen();
+    $app?.restart();
   }
 </script>
 
