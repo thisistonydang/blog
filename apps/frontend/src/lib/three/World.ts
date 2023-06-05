@@ -51,8 +51,8 @@ export class World {
   }) {
     // Create core components
     this.camera = camera;
-    this.renderer = renderer;
     this.scene = new Scene();
+    this.renderer = renderer;
     container.append(this.renderer.domElement);
 
     // Add animation loop
