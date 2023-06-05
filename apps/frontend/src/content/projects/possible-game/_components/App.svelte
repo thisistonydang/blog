@@ -7,6 +7,7 @@
     levelAudioCanPlayThrough,
     playerImageLoaded,
     scoreAudioCanPlayThrough,
+    trapImageLoaded,
   } from "../_stores/appState";
 
   import Assets from "./Assets.svelte";
@@ -19,7 +20,8 @@
     $scoreAudioCanPlayThrough &&
     $gameOverAudioCanPlayThrough &&
     $levelAudioCanPlayThrough &&
-    $playerImageLoaded;
+    $playerImageLoaded &&
+    $trapImageLoaded;
 </script>
 
 <Assets />
