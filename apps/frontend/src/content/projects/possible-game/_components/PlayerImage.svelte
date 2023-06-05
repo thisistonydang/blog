@@ -2,32 +2,20 @@
   import { onMount } from "svelte";
   import { playerImage, playerImageLoaded } from "../_stores/appState";
 
-  let tryLoadingImage = false;
+  const defaultPlayerName = "dev";
   let playerName: string | undefined;
 
   onMount(() => {
     const params = new URLSearchParams(window.location.search);
-    playerName = params.get("player")?.toLowerCase();
-
-    if (playerName) {
-      tryLoadingImage = true;
-      return;
-    }
-
-    $playerImageLoaded = true;
+    playerName = params.get("player")?.toLowerCase() || defaultPlayerName;
   });
 </script>
 
-{#if tryLoadingImage}
-  <img
-    bind:this={$playerImage}
-    src={`/img/possible-game/${playerName}.png`}
-    alt=""
-    class="hidden"
-    on:load={() => ($playerImageLoaded = true)}
-    on:error={() => {
-      $playerImage = undefined;
-      $playerImageLoaded = true;
-    }}
-  />
-{/if}
+<img
+  bind:this={$playerImage}
+  src={`/img/possible-game/${playerName}.png`}
+  alt={playerName}
+  class="hidden"
+  on:load={() => ($playerImageLoaded = true)}
+  on:error={() => (playerName = defaultPlayerName)}
+/>
