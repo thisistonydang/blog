@@ -1,4 +1,3 @@
-import { MathUtils } from "three";
 import type { Instance } from "@lib/three/types/Instance";
 
 const traps = [
@@ -89,7 +88,7 @@ export const trapInstances: Instance[] = traps.map(({ gap, y }, index) => {
   return {
     id: `trap-${index}`,
     position: { x: positionX, y, z: 0 },
-    rotation: { x: 0, y: 0, z: MathUtils.degToRad(45) },
+    rotation: { x: 0, y: 0, z: 0 },
     scale: { x: 0.5, y: 0.5, z: 0.5 },
     color: 0xffffff,
   };
