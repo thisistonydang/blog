@@ -148,7 +148,7 @@ export function player(app: App): Mesh {
   };
 
   // Sync player color with theme
-  if (!image) {
+  if (!image || image.alt === "dev") {
     theme.subscribe((theme) => {
       material.color.set(theme === "dark" ? 0x00ffff : 0x006161);
     });
