@@ -2,6 +2,9 @@
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
 
+  import { theme } from "@layouts/page/_stores/theme";
+  import { requestFullscreen } from "@lib/fullscreen/requestFullscreen";
+
   import {
     app,
     gameState,
@@ -50,12 +53,15 @@
       });
     }
   });
+
+  $: if ($theme) $app?.requestRender();
+  $: if ($isFullscreen) requestFullscreen(container);
 </script>
 
 <div
   bind:this={container}
   in:fade={{ duration: 5000 }}
-  class="h-screen w-screen"
+  class="bg-bg h-screen w-screen"
   on:fullscreenchange={() => {
     $isFullscreen = Boolean(document.fullscreenElement);
   }}
