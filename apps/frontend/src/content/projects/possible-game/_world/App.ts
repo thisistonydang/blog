@@ -1,6 +1,7 @@
 import { get } from "svelte/store";
 
 import { orthographicCamera } from "@lib/three/components-core/orthographicCamera";
+import { webGLRenderer } from "@lib/three/components-core/webGLRenderer";
 import { Physics2D } from "@lib/three/systems/Physics/Physics2D";
 // import { Pointer } from "@lib/three/systems/Pointer/Pointer";
 // import { Gui } from "@lib/three/systems/Gui";
@@ -43,6 +44,7 @@ export class App extends World {
         scale: get(playerImage) ? 1 : 1.5,
         position: [0, 3, 10],
       }),
+      renderer: webGLRenderer({ antialias: false }),
       container,
       physics: Physics2D,
       // pointer: Pointer,
