@@ -3,7 +3,6 @@
   import { fade } from "svelte/transition";
 
   import { theme } from "@layouts/page/_stores/theme";
-  import { requestFullscreen } from "@lib/fullscreen/requestFullscreen";
 
   import {
     app,
@@ -55,7 +54,6 @@
   });
 
   $: if ($theme) $app?.requestRender();
-  $: if ($isFullscreen) requestFullscreen(container);
 </script>
 
 <div
