@@ -13,12 +13,16 @@ export const interfaceState = writable<
 
 export const isFullscreen = writable(false);
 
-// Assets
+// Audio
 export const scoreAudioCanPlayThrough = writable<boolean>(false);
 export const gameOverAudioCanPlayThrough = writable<boolean>(false);
 export const levelAudioCanPlayThrough = writable<boolean>(false);
+
+// Textures
 export const playerImageLoaded = writable<boolean>(false);
 export const playerImage = writable<HTMLImageElement | undefined>(undefined);
+export const trapImageLoaded = writable<boolean>(false);
+export const trapImage = writable<HTMLImageElement | undefined>(undefined);
 
 // Local storage
 export const attempts = writable<number>(0);
