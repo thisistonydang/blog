@@ -14,7 +14,6 @@ import { camera } from "./components/camera";
 import { finishText } from "./components/finishText";
 import { platforms } from "./components/platforms";
 import { player } from "./components/player";
-import { scene } from "./components/scene";
 import { traps } from "./components/traps";
 
 import { platformInstances } from "./instances/platformInstances";
@@ -54,7 +53,6 @@ export class App extends World {
 
     // Add objects
     this.addObjects([
-      scene(this),
       camera(this),
       platforms({ instances: platformInstances }),
       traps({ instances: trapInstances }),
