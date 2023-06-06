@@ -1,5 +1,3 @@
-import { get } from "svelte/store";
-
 import { orthographicCamera } from "@lib/three/components-core/orthographicCamera";
 import { webGLRenderer } from "@lib/three/components-core/webGLRenderer";
 import { Physics2D } from "@lib/three/systems/Physics/Physics2D";
@@ -8,7 +6,7 @@ import { Physics2D } from "@lib/three/systems/Physics/Physics2D";
 // import { Statistics } from "@lib/three/systems/Statistics";
 import { World } from "@lib/three/World";
 
-import { gameState, playerImage } from "../_stores/appState";
+import { gameState } from "../_stores/appState";
 
 import { camera } from "./components/camera";
 import { finishText } from "./components/finishText";
@@ -40,7 +38,6 @@ export class App extends World {
         bottom: -4.5,
         near: 9,
         far: 11,
-        scale: get(playerImage)?.alt === "default" ? 1.5 : 1,
         position: [0, 3, 10],
       }),
       renderer: webGLRenderer({ antialias: false }),
