@@ -3,7 +3,7 @@
   import { trapImage, trapImageLoaded } from "../_stores/appState";
 
   const defaultTrapName = "box";
-  let trapName: string | undefined;
+  let trapName: string;
 
   onMount(() => {
     const params = new URLSearchParams(window.location.search);
@@ -11,11 +11,13 @@
   });
 </script>
 
-<img
-  bind:this={$trapImage}
-  src={`/img/possible-game/${trapName}.png`}
-  alt={trapName}
-  class="hidden"
-  on:load={() => ($trapImageLoaded = true)}
-  on:error={() => (trapName = defaultTrapName)}
-/>
+{#if trapName}
+  <img
+    bind:this={$trapImage}
+    src={`/img/possible-game/${trapName}.png`}
+    alt={trapName}
+    class="hidden"
+    on:load={() => ($trapImageLoaded = true)}
+    on:error={() => (trapName = defaultTrapName)}
+  />
+{/if}
