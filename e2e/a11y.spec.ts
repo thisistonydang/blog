@@ -21,6 +21,7 @@ test.describe("a11y", () => {
     // Projects
     "/climbing-board",
     "/particles",
+    "/possible-game",
   ];
 
   for (const path of paths) {
