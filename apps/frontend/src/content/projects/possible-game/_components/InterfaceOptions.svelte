@@ -1,8 +1,16 @@
 <script lang="ts">
+  import Dialog from "@lib/components/Dialog.svelte";
   import IconButton from "@lib/components/IconButton.svelte";
   import InterfaceList from "@lib/components/InterfaceList.svelte";
   import { requestFullscreen } from "@lib/fullscreen/requestFullscreen";
   import { app, interfaceState, isMuted } from "../_stores/appState";
+
+  let showFullscreenError = false;
+
+  function dismissError(e: Event) {
+    e.preventDefault();
+    showFullscreenError = false;
+  }
 </script>
 
 <InterfaceList isVertical shiftUp>
@@ -11,8 +19,13 @@
       isPill
       onClick={() => {
         const container = $app?.renderer.domElement.parentElement;
+
         if (container) {
-          requestFullscreen(container);
+          const success = requestFullscreen(container);
+
+          if (!success) {
+            showFullscreenError = true;
+          }
         }
       }}
     >
@@ -38,3 +51,19 @@
     </IconButton>
   </li>
 </InterfaceList>
+
+{#if showFullscreenError}
+  <Dialog
+    isModal
+    isProse
+    hasPadding
+    buttonWidth={100}
+    confirmText="CLOSE"
+    onConfirm={dismissError}
+    onClose={dismissError}
+  >
+    <h1 class="text-center">Whoops!</h1>
+
+    <p class="mb-5">Fullscreen is not supported on this browser :(</p>
+  </Dialog>
+{/if}
