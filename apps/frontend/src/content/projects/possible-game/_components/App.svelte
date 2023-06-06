@@ -27,16 +27,18 @@
 <Assets />
 <LocalStorage />
 
-{#if assetsReady}
-  <Canvas />
-{:else}
-  <Loading />
-{/if}
+<main>
+  {#if assetsReady}
+    <Canvas />
+  {:else}
+    <Loading />
+  {/if}
 
-{#if $gameState === "not_started"}
-  <Interface />
-{:else if $gameState === "stopped"}
-  <RestartDialog title="You died :(" />
-{:else if $gameState === "ended"}
-  <RestartDialog title="You won!" />
-{/if}
+  {#if $gameState === "not_started"}
+    <Interface />
+  {:else if $gameState === "stopped"}
+    <RestartDialog title="You died :(" />
+  {:else if $gameState === "ended"}
+    <RestartDialog title="You won!" />
+  {/if}
+</main>
