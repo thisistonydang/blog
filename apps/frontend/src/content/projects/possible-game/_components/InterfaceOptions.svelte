@@ -64,6 +64,6 @@
   >
     <h1 class="text-center">Whoops!</h1>
 
-    <p class="mb-5">Fullscreen is not supported on this browser :(</p>
+    <p class="mb-5">Fullscreen is not supported on this browser.</p>
   </Dialog>
 {/if}
