@@ -21,7 +21,7 @@ export function platforms({
   instances: Instance[];
 }): InstancedMesh {
   // Create instancedMesh
-  const material = new MeshBasicMaterial({ wireframe: true });
+  const material = new MeshBasicMaterial();
   const instancedMesh: InstancedMesh<BoxGeometry> & Patched = new InstancedMesh(
     boxGeometry,
     material,

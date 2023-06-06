@@ -1,6 +1,6 @@
 import type { Instance } from "@lib/three/types/Instance";
 
-const platformHeight = 0.01;
+const platformHeight = 0.05;
 
 const platforms = [
   // Intro
