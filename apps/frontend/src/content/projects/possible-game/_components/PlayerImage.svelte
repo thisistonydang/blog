@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { playerImage, playerImageLoaded } from "../_stores/appState";
 
-  const defaultPlayerName = "dev";
+  const defaultPlayerName = "default";
   let playerName: string | undefined;
 
   onMount(() => {

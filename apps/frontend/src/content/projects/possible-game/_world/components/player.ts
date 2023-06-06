@@ -95,8 +95,8 @@ export function player(app: App): Mesh {
       physicsBody?.rigidBody.setLinvel({ x: 6, y: 0 }, true);
     }
 
-    // Spin player if player rotation does not equal current rotationY value
-    if (!image) {
+    if (!image || image.alt === "default") {
+      // Spin player if player rotation does not equal current rotationY value
       player.rotation.y = MathUtils.lerp(player.rotation.y, rotationY, 0.075);
     }
 
@@ -147,8 +147,8 @@ export function player(app: App): Mesh {
     player.rotation.y = 0;
   };
 
-  // Sync player color with theme
-  if (!image || image.alt === "dev") {
+  if (!image || image.alt === "default") {
+    // Sync player color with theme
     theme.subscribe((theme) => {
       material.color.set(theme === "dark" ? 0x00ffff : 0x006161);
     });
