@@ -40,7 +40,7 @@ export class App extends World {
         bottom: -4.5,
         near: 9,
         far: 11,
-        scale: get(playerImage) ? 1 : 1.5,
+        scale: get(playerImage)?.alt === "default" ? 1.5 : 1,
         position: [0, 3, 10],
       }),
       renderer: webGLRenderer({ antialias: false }),
