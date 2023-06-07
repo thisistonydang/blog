@@ -25,6 +25,7 @@ export function addInstancedMesh({
       position,
       rotation,
       rigidBodyDesc,
+      ccdEnabled,
       gravityScale,
       lockRotations,
       colliderDesc,
@@ -40,6 +41,7 @@ export function addInstancedMesh({
         .setRotation(
           quaternion.setFromEuler(euler.set(rotation.x, rotation.y, rotation.z))
         );
+      ccdEnabled && rigidBodyDesc.setCcdEnabled(ccdEnabled);
       gravityScale && rigidBodyDesc.setGravityScale(gravityScale);
       lockRotations && rigidBodyDesc.lockRotations();
 

@@ -20,6 +20,7 @@ export function addInstancedMesh({
       position,
       rotation,
       rigidBodyDesc,
+      ccdEnabled,
       gravityScale,
       lockRotations,
       colliderDesc,
@@ -33,6 +34,7 @@ export function addInstancedMesh({
       rigidBodyDesc
         .setTranslation(position.x, position.y)
         .setRotation(rotation.z);
+      ccdEnabled && rigidBodyDesc.setCcdEnabled(ccdEnabled);
       gravityScale && rigidBodyDesc.setGravityScale(gravityScale);
       lockRotations && rigidBodyDesc.lockRotations();
 
