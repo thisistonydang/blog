@@ -12,6 +12,7 @@ import type { Instance } from "./Instance";
 export interface PhysicsInstance extends Instance {
   // Rigid Body
   rigidBodyDesc: RigidBodyDesc;
+  ccdEnabled?: boolean;
   gravityScale?: number;
   lockRotations?: boolean;
 
