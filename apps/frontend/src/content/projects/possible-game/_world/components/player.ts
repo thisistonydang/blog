@@ -1,12 +1,7 @@
 import RAPIER from "@dimforge/rapier2d-compat";
+import gsap from "gsap";
 import { get } from "svelte/store";
-import {
-  MathUtils,
-  Mesh,
-  MeshBasicMaterial,
-  SRGBColorSpace,
-  Texture,
-} from "three";
+import { Mesh, MeshBasicMaterial, SRGBColorSpace, Texture } from "three";
 
 import { theme } from "@layouts/page/_stores/theme";
 
@@ -54,6 +49,7 @@ export function player(app: App): Mesh {
       physics,
       mesh: player,
       rigidBodyDesc: RAPIER.RigidBodyDesc.dynamic(),
+      ccdEnabled: true,
       gravityScale: 1.5,
       lockRotations: true,
       colliderDesc: cuboidColliderDesc(player),
@@ -95,11 +91,6 @@ export function player(app: App): Mesh {
       physicsBody?.rigidBody.setLinvel({ x: 6, y: 0 }, true);
     }
 
-    if (!image || image.alt === "default") {
-      // Spin player if player rotation does not equal current rotationY value
-      player.rotation.y = MathUtils.lerp(player.rotation.y, rotationY, 0.075);
-    }
-
     // End game if player is past finishEnd checkpoint and game hasn't ended
     if (
       player.position.x > app.checkpoints.finishEnd &&
@@ -129,7 +120,10 @@ export function player(app: App): Mesh {
     physicsBody?.rigidBody.applyImpulse({ x: 0, y: 7 }, true);
 
     // Spin!
-    rotationY = rotationY + Math.PI;
+    if (!image || image.alt === "default") {
+      rotationY = rotationY + Math.PI;
+      gsap.to(player.rotation, { duration: 1, y: rotationY });
+    }
   };
 
   // Reset player on restart
