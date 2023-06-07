@@ -8,6 +8,7 @@ export function addMesh({
   physics,
   mesh,
   rigidBodyDesc,
+  ccdEnabled,
   gravityScale,
   lockRotations,
   colliderDesc,
@@ -19,6 +20,7 @@ export function addMesh({
   physics: Physics3D;
   mesh: Mesh;
   rigidBodyDesc: RigidBodyDesc;
+  ccdEnabled?: boolean;
   gravityScale?: number;
   lockRotations?: boolean;
   colliderDesc: ColliderDesc;
@@ -34,6 +36,7 @@ export function addMesh({
   rigidBodyDesc
     .setTranslation(mesh.position.x, mesh.position.y, mesh.position.z)
     .setRotation(mesh.quaternion);
+  ccdEnabled && rigidBodyDesc.setCcdEnabled(ccdEnabled);
   gravityScale && rigidBodyDesc.setGravityScale(gravityScale);
   lockRotations && rigidBodyDesc.lockRotations();
 
