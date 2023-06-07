@@ -1,9 +1,13 @@
+import { Clock } from "three";
+
 import type { World as Physics2DWorld } from "@dimforge/rapier2d-compat";
 import type { World as Physics3DWorld } from "@dimforge/rapier3d-compat";
 import type { Object3D } from "three";
 
 import type { Tick } from "../../types/Patched";
 import type { World } from "../../World";
+
+const clock = new Clock();
 
 export abstract class Physics {
   world: World;
@@ -26,6 +30,7 @@ export abstract class Physics {
   abstract handleContactsWith(): void;
 
   stepWorld(): void {
+    this.physicsWorld.timestep = clock.getDelta();
     this.stepPhysicsWorld();
     this.updateThreeJsObjects();
     this.handleSleepAndWake();
