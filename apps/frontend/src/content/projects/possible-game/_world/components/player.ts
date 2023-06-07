@@ -137,6 +137,7 @@ export function player(app: App): Mesh {
     playerState = "grounded";
 
     // Reset player rotation
+    gsap.killTweensOf(player.rotation);
     rotationY = 0;
     player.rotation.y = 0;
   };
