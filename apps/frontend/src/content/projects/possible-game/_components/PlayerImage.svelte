@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
   import { playerImage, playerImageLoaded } from "../_stores/appState";
 
+  export let assetsVersion: number;
+
   const defaultPlayerName = "default";
   let playerName: string;
 
@@ -14,7 +16,7 @@
 {#if playerName}
   <img
     bind:this={$playerImage}
-    src={`/img/possible-game/${playerName}.png`}
+    src={`/img/possible-game/${playerName}.png?v=${assetsVersion}`}
     alt={playerName}
     class="hidden"
     on:load={() => ($playerImageLoaded = true)}

@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
   import { trapImage, trapImageLoaded } from "../_stores/appState";
 
+  export let assetsVersion: number;
+
   const defaultTrapName = "box";
   let trapName: string;
 
@@ -14,7 +16,7 @@
 {#if trapName}
   <img
     bind:this={$trapImage}
-    src={`/img/possible-game/${trapName}.png`}
+    src={`/img/possible-game/${trapName}.png?v=${assetsVersion}`}
     alt={trapName}
     class="hidden"
     on:load={() => ($trapImageLoaded = true)}
