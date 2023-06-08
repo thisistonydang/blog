@@ -4,13 +4,15 @@
   import PlayerImage from "./PlayerImage.svelte";
   import ScoreAudio from "./ScoreAudio.svelte";
   import TrapImage from "./TrapImage.svelte";
+
+  export let assetsVersion: number;
 </script>
 
 <!-- Audio -->
-<ScoreAudio />
-<GameOverAudio />
-<LevelAudio />
+<ScoreAudio {assetsVersion} />
+<GameOverAudio {assetsVersion} />
+<LevelAudio {assetsVersion} />
 
 <!-- Textures -->
-<PlayerImage />
-<TrapImage />
+<PlayerImage {assetsVersion} />
+<TrapImage {assetsVersion} />
