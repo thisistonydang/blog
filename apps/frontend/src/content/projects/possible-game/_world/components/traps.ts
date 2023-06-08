@@ -64,7 +64,7 @@ export function traps({ instances }: { instances: Instance[] }): InstancedMesh {
 
   // Sync trap color with theme
   theme.subscribe((theme) => {
-    material.color.set(theme === "dark" ? 0xff00ff : 0x9e009e);
+    material.color.set(theme === "dark" ? 0xffffff : 0xc0c0c0);
   });
 
   return instancedMesh;
