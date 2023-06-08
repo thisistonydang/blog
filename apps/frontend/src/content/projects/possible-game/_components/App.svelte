@@ -16,6 +16,8 @@
   import LocalStorage from "./LocalStorage.svelte";
   import RestartDialog from "./RestartDialog.svelte";
 
+  export let assetsVersion: number;
+
   $: assetsReady =
     $scoreAudioCanPlayThrough &&
     $gameOverAudioCanPlayThrough &&
@@ -24,7 +26,7 @@
     $trapImageLoaded;
 </script>
 
-<Assets />
+<Assets {assetsVersion} />
 <LocalStorage />
 
 <main>
