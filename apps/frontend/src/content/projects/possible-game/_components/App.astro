@@ -1,7 +1,9 @@
 ---
 import FixedHeader from "@layouts/page/_components/FixedHeader.astro";
 import App from "./App.svelte";
+
+const assetsVersion = Date.now();
 ---
 
 <FixedHeader />
-<App client:load />
+<App {assetsVersion} client:load />
