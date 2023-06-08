@@ -20,6 +20,8 @@ entries.sort(
   (a: Entry, b: Entry) =>
     new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
+
+const assetsVersion = Date.now();
 ---
 
-<EntrySearch entries={entries} client:load />
+<EntrySearch {assetsVersion} {entries} client:load />

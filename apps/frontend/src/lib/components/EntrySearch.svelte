@@ -6,6 +6,7 @@
 
   type Entry = CollectionEntry<"posts"> | CollectionEntry<"projects">;
 
+  export let assetsVersion: number;
   export let entries: Entry[];
 
   let mounted = false;
@@ -65,8 +66,8 @@
             <div class="aspect-[1200/630]">
               <img
                 src={entry.data.image
-                  ? `/og/dist/960/${entry.slug}.jpg`
-                  : "/og/dist/960/tony-dang.jpg"}
+                  ? `/og/dist/960/${entry.slug}.jpg?v=${assetsVersion}`
+                  : `/og/dist/960/tony-dang.jpg?v=${assetsVersion}`}
                 alt={entry.data.image ? entry.data.alt : "Photo of Tony Dang"}
                 loading="lazy"
                 class="rounded-t"
