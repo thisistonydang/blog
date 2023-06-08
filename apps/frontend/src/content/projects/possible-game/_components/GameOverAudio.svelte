@@ -7,6 +7,7 @@
     isMuted,
   } from "../_stores/appState";
 
+  export let assetsVersion: number;
   let audio: HTMLAudioElement;
 
   onMount(() => {
@@ -34,7 +35,7 @@
 
 <audio
   bind:this={audio}
-  src="/audio/possible-game/game-over.mp3"
+  src={`/audio/possible-game/game-over.mp3?v=${assetsVersion}`}
   preload="auto"
   on:canplaythrough={() => ($gameOverAudioCanPlayThrough = true)}
 />

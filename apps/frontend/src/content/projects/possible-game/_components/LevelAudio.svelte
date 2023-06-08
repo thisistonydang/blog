@@ -7,6 +7,7 @@
     levelAudioCanPlayThrough,
   } from "../_stores/appState";
 
+  export let assetsVersion: number;
   let audio: HTMLAudioElement;
 
   onMount(() => {
@@ -35,7 +36,7 @@
 
 <audio
   bind:this={audio}
-  src="/audio/possible-game/level-2.mp3"
+  src={`/audio/possible-game/level-2.mp3?v=${assetsVersion}`}
   preload="auto"
   on:canplaythrough={() => ($levelAudioCanPlayThrough = true)}
 />
