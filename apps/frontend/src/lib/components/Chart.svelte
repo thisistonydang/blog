@@ -5,8 +5,9 @@
   export let title: string;
 </script>
 
-<svg role="figure" width={dms.width} height={dms.height} on:focus={() => null}>
+<svg role="figure" width={dms.width} height={dms.height}>
   <title>{title}</title>
+
   <g transform={`translate(${dms.left}, ${dms.top})`}>
     <slot />
   </g>
