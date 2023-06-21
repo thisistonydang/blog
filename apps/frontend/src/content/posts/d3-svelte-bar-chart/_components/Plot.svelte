@@ -99,7 +99,13 @@
       {/if}
 
       <!-- Tick Labels -->
-      <text fill="currentColor" text-anchor="end" x={-9} y={y(d / 100)} dy={5}>
+      <text
+        fill="currentColor"
+        text-anchor="end"
+        dominant-baseline="middle"
+        x={-9}
+        y={y(d / 100)}
+      >
         {d}
       </text>
     {/each}
