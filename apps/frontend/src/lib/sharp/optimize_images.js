@@ -1,5 +1,7 @@
 // @ts-check
 
+// Example cmd: pnpm opt-img og 1200
+
 import { glob } from "glob";
 import sharp from "sharp";
 
