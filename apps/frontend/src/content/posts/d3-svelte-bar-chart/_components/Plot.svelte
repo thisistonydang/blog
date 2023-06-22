@@ -60,7 +60,7 @@
     <line stroke="currentColor" x1={marginLeft - 6} x2={width} />
 
     {#each data as d}
-      <!-- Ticks -->
+      <!-- X-Axis Ticks -->
       <line
         stroke="currentColor"
         x1={xScale(d.letter) + xScale.bandwidth() / 2}
@@ -69,7 +69,7 @@
         y2={6}
       />
 
-      <!-- Tick Labels -->
+      <!-- X-Axis Tick Labels -->
       <text
         fill="currentColor"
         text-anchor="middle"
@@ -88,7 +88,7 @@
   <g transform="translate({marginLeft},0)">
     {#each [...Array(yMax).keys()] as d}
       <!-- 
-        Ticks. 
+        Y-Axis Ticks. 
         Note: First tick is skipped since the x-axis already acts as a tick. 
       -->
       {#if d !== 0}
@@ -101,7 +101,7 @@
         />
       {/if}
 
-      <!-- Tick Labels -->
+      <!-- Y-Axis Tick Labels -->
       <text
         fill="currentColor"
         text-anchor="end"
