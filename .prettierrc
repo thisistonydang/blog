@@ -5,5 +5,11 @@
     "prettier-plugin-svelte",
     "prettier-plugin-tailwindcss"
   ],
-  "astroAllowShorthand": true
+  "astroAllowShorthand": true,
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": { "parser": "astro" }
+    }
+  ]
 }
