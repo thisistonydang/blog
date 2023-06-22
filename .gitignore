@@ -38,3 +38,6 @@ playwright/.cache/
 
 # Misc
 TODO.md
+
+# assets folder symlinked to public
+assets
