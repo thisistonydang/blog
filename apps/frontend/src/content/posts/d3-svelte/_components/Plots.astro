@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+type Entry = CollectionEntry<"posts">;
+
+export interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+
+// Get non-draft posts filtered by tags
+const entries = await getCollection(
+  "posts",
+  (entry: Entry) =>
+    !entry.data.draft &&
+    entry.data.tags.includes("d3") &&
+    entry.data.tags.includes("svelte") &&
+    entry.data.tags.includes(tag)
+);
+
+// Sort by publish date
+entries.sort(
+  (a: Entry, b: Entry) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+const assetsVersion = Date.now();
+---
+
+<div class="not-prose">
+  <ul class="flex flex-wrap justify-between gap-y-5">
+    {
+      entries.map((entry) => (
+        <li
+          class="
+            bg-surface/30 border-surface xs:w-[49%] hover:border-heading
+            rounded border
+          "
+        >
+          <a href={`/${entry.slug}/`} rel="prefetch">
+            <div class="aspect-[1200/630]">
+              <img
+                src={`/og/dist/960/${entry.slug}.jpg?v=${assetsVersion}`}
+                alt={entry.data.alt}
+                loading="lazy"
+                class="rounded-t"
+              />
+            </div>
+
+            <h3 class="text-heading p-3 text-xl">
+              {entry.data.title.substring(10)}
+            </h3>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
