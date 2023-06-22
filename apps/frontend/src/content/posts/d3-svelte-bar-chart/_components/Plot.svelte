@@ -13,7 +13,7 @@
   export let marginLeft = 40;
 
   // Create the x (horizontal position) scale.
-  const x = d3
+  const xScale = d3
     .scaleBand()
     .domain(
       // Sort the data in descending frequency
@@ -27,13 +27,13 @@
     .padding(0.1);
 
   // Create the y (vertical position) scale.
-  const y = d3
+  const yScale = d3
     .scaleLinear()
     .domain([0, d3.max(data, (d) => d.frequency)])
     .range([height - marginBottom, marginTop]);
 
-  // Get max frequency to use when creating y-axis ticks.
-  const maxFrequency = Math.ceil(y.domain()[1] * 100);
+  // Get max y value from domain to use when creating y-axis ticks.
+  const yMax = Math.ceil(yScale.domain()[1] * 100);
 </script>
 
 <svg
@@ -47,10 +47,10 @@
   <g fill="steelblue">
     {#each data as d}
       <rect
-        x={x(d.letter)}
-        y={y(d.frequency)}
-        height={y(0) - y(d.frequency)}
-        width={x.bandwidth()}
+        x={xScale(d.letter)}
+        y={yScale(d.frequency)}
+        height={yScale(0) - yScale(d.frequency)}
+        width={xScale.bandwidth()}
       />
     {/each}
   </g>
@@ -63,8 +63,8 @@
       <!-- Ticks -->
       <line
         stroke="currentColor"
-        x1={x(d.letter) + x.bandwidth() / 2}
-        x2={x(d.letter) + x.bandwidth() / 2}
+        x1={xScale(d.letter) + xScale.bandwidth() / 2}
+        x2={xScale(d.letter) + xScale.bandwidth() / 2}
         y1={0}
         y2={6}
       />
@@ -73,7 +73,7 @@
       <text
         fill="currentColor"
         text-anchor="middle"
-        x={x(d.letter) + x.bandwidth() / 2}
+        x={xScale(d.letter) + xScale.bandwidth() / 2}
         y={22}
       >
         {d.letter}
@@ -86,15 +86,18 @@
 
   <!-- Y-Axis -->
   <g transform="translate({marginLeft},0)">
-    {#each [...Array(maxFrequency).keys()] as d}
-      <!-- Ticks. Note: First tick is skipped. -->
+    {#each [...Array(yMax).keys()] as d}
+      <!-- 
+        Ticks. 
+        Note: First tick is skipped since the x-axis already acts as a tick. 
+      -->
       {#if d !== 0}
         <line
           stroke="currentColor"
           x1={0}
           x2={-6}
-          y1={y(d / 100)}
-          y2={y(d / 100)}
+          y1={yScale(d / 100)}
+          y2={yScale(d / 100)}
         />
       {/if}
 
@@ -104,7 +107,7 @@
         text-anchor="end"
         dominant-baseline="middle"
         x={-9}
-        y={y(d / 100)}
+        y={yScale(d / 100)}
       >
         {d}
       </text>
