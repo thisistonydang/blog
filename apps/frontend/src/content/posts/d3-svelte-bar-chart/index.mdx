@@ -3,7 +3,7 @@ title: D3 Svelte Bar Chart
 description: D3 bar chart example, rewritten in Svelte.
 image: true
 alt: D3 bar chart example, rewritten in Svelte.
-pubDate: 2023-06-21
+pubDate: 2023-06-26
 tags: ["d3", "svelte", "bars"]
 draft: false
 ---
@@ -18,17 +18,6 @@ Svelte](/d3-svelte).
 <App />
 
 Original Plot: https://observablehq.com/@d3/bar-chart/2
-
-## Things I learned
-
-- The official D3 Svelte [example](https://d3js.org/getting-started) uses D3's
-  built-in axis generators combined with Svelte's reactive statements for
-  rendering axes. While this approach is concise, I found it less intuitive and
-  it doesn't allow for server-side rendering (SSR).
-
-  In my implementation, I chose not to use D3's axis generators in order to have
-  faster page load times and avoid unnecessary hydration. However, I can see
-  cases where using D3's axis generators would be a better choice.
 
 ## Svelte code ([GitHub](https://github.com/tonydangblog/blog/tree/main/apps/frontend/src/content/posts/d3-svelte-bar-chart/_components/Plot.svelte))
 
@@ -155,3 +144,14 @@ Original Plot: https://observablehq.com/@d3/bar-chart/2
   </g>
 </svg>
 ```
+
+## Things I learned
+
+- The official D3 Svelte [example](https://d3js.org/getting-started) uses D3's
+  built-in axis generators combined with Svelte's reactive statements for
+  rendering axes. While this approach is concise, I found it less intuitive and
+  it doesn't allow for server-side rendering (SSR).
+
+  In my implementation, I chose not to use D3's axis generators in order to have
+  faster page load times and avoid unnecessary hydration. However, I can see
+  cases where using D3's axis generators would be a better choice.
