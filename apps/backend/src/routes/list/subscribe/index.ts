@@ -7,7 +7,7 @@ import type { Env } from "@lib/types/env";
 
 import type { Contact } from "../_types/contact";
 
-export default async function (request: Request, env: Env): Promise<Response> {
+export default async function subscribe(request: Request, env: Env): Promise<Response> {
   const { name, email }: { name?: string; email?: string } =
     await request.json();
 
