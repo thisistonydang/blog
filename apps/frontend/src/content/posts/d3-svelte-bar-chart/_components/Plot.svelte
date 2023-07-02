@@ -31,9 +31,6 @@
     .scaleLinear()
     .domain([0, d3.max(data, (d) => d.frequency)])
     .range([height - marginBottom, marginTop]);
-
-  // Get max y value from domain to use when creating y-axis ticks.
-  const yMax = Math.ceil(yScale.domain()[1] * 100);
 </script>
 
 <svg
@@ -86,18 +83,18 @@
 
   <!-- Y-Axis -->
   <g transform="translate({marginLeft},0)">
-    {#each [...Array(yMax).keys()] as d}
+    {#each yScale.ticks() as tick}
       <!-- 
         Y-Axis Ticks. 
         Note: First tick is skipped since the x-axis already acts as a tick. 
       -->
-      {#if d !== 0}
+      {#if tick !== 0}
         <line
           stroke="currentColor"
           x1={0}
           x2={-6}
-          y1={yScale(d / 100)}
-          y2={yScale(d / 100)}
+          y1={yScale(tick)}
+          y2={yScale(tick)}
         />
       {/if}
 
@@ -107,9 +104,9 @@
         text-anchor="end"
         dominant-baseline="middle"
         x={-9}
-        y={yScale(d / 100)}
+        y={yScale(tick)}
       >
-        {d}
+        {Math.trunc(tick * 100)}
       </text>
     {/each}
 
