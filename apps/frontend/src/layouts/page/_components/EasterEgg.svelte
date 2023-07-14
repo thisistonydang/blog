@@ -5,61 +5,57 @@
   const UNHATCHED = "&#x1F95A;";
   const HATCHED = "&#x1F423;";
 
-  let checked = false;
-  let egg = UNHATCHED;
+  let state: "unhatched" | "hatching" | "hatched" = "unhatched";
   let wiggle = false;
 
-  function handle_keydown(e: KeyboardEvent): void {
-    if (e.key === "Enter" || e.key === " ") checked = !checked;
+  function handleClick() {
+    switch (state) {
+      case "unhatched":
+        state = "hatching";
+        setTimeout(() => {
+          state = "hatched";
+        }, 500);
+        break;
+
+      case "hatching":
+        break;
+
+      case "hatched":
+        state = "unhatched";
+    }
   }
 
-  $: if (checked) setTimeout((): string => (egg = HATCHED), 500);
-  else egg = UNHATCHED;
-
-  $: message_is_visible = egg === HATCHED;
-
+  // TODO: Use pure CSS instead.
   onMount(() => setInterval(() => (wiggle = !wiggle), 2000));
 </script>
 
-<input id="easter-egg" type="checkbox" class="peer hidden" bind:checked />
-<label
-  for="easter-egg"
-  class="
-    peer-checked:animate-shake
-    relative
-    cursor-help
-    peer-checked:cursor-pointer
-  "
-  class:motion-safe:animate-[wiggle_0.5s]={wiggle}
-  aria-label="toggling this checkbox shows a random easter egg for fun"
-  on:keydown={handle_keydown}
+<button
+  class="relative"
+  class:motion-safe:animate-[wiggle_0.5s]={state === "unhatched" && wiggle}
+  class:cursor-help={state === "unhatched"}
+  class:animate-shake={state === "hatching"}
+  aria-label="Clicking this shows a random easter egg for fun."
+  on:click={handleClick}
 >
-  {#if message_is_visible}
+  {#if state === "hatched"}
     <span
       in:fly={{ y: 20 }}
-      class="
-        bg-surface absolute
-        -top-12
-        w-48
-        rounded p-2
-        text-center
-        text-sm
-      "
+      class="bg-surface absolute -right-40 -top-12 w-48 rounded p-2 text-center text-sm"
     >
       I'm a random easter egg!
     </span>
 
     <span
       in:fly={{ y: 20 }}
-      class="
-        border-t-surface absolute -top-3
-        left-2.5 h-3
-        w-3 border-8 border-transparent
-      "
+      class="border-t-surface absolute -top-3 left-2.5 h-3 w-3 border-8 border-transparent"
     />
   {/if}
 
   <div class="m-0 text-4xl">
-    {@html egg}
+    {#if state === "hatched"}
+      {@html HATCHED}
+    {:else}
+      {@html UNHATCHED}
+    {/if}
   </div>
-</label>
+</button>
