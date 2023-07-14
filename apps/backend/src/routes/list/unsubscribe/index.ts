@@ -1,7 +1,10 @@
 import { supabase } from "@lib/db/supabase";
 import type { Env } from "@lib/types/env";
 
-export default async function (request: Request, env: Env): Promise<Response> {
+export default async function unsubscribe(
+  request: Request,
+  env: Env
+): Promise<Response> {
   const { error } = await supabase(env)
     .from("contact")
     .update({ is_verified: true, is_subscriber: false })
