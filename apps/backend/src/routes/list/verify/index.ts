@@ -5,7 +5,10 @@ import type { Env } from "@lib/types/env";
 
 import type { Contact } from "../_types/contact";
 
-export default async function (request: Request, env: Env): Promise<Response> {
+export default async function verify(
+  request: Request,
+  env: Env
+): Promise<Response> {
   let payload;
   const jwt = new URL(request.url).searchParams.get("jwt");
   if (jwt) payload = await verify_jwt(env, jwt);
