@@ -1,11 +1,11 @@
 ---
 title: D3 Svelte Bar Chart
-description: D3 bar chart example, rewritten in Svelte.
+description: D3 bar chart example, written in Svelte.
 image: true
-alt: D3 bar chart example, rewritten in Svelte.
-pubDate: 2023-06-26
+alt: D3 bar chart example, written in Svelte.
+pubDate: 2023-07-18
 tags: ["d3", "svelte", "bars"]
-draft: true
+draft: false
 ---
 
 import App from "./_components/App.astro";
@@ -17,9 +17,11 @@ Svelte](/d3-svelte).
 
 <App />
 
-Original Plot: https://observablehq.com/@d3/bar-chart/2
+[Original Plot](https://observablehq.com/@d3/bar-chart/2) |
+[Svelte REPL Version](https://svelte.dev/repl/961551ddb57a4b559ecb1c968a3d07b4?version=4.0.5) |
+[Github Source Code](https://github.com/tonydangblog/blog/tree/main/apps/frontend/src/content/posts/d3-svelte-bar-chart/_components/Plot.svelte)
 
-## Svelte code ([GitHub](https://github.com/tonydangblog/blog/tree/main/apps/frontend/src/content/posts/d3-svelte-bar-chart/_components/Plot.svelte))
+## Code
 
 ```svelte
 <script>
@@ -144,10 +146,11 @@ Original Plot: https://observablehq.com/@d3/bar-chart/2
 
 ## Things I learned
 
-- The official D3 Svelte [example](https://d3js.org/getting-started) uses D3's
-  built-in axis generators combined with Svelte's reactive statements for
-  rendering axes. While this approach is concise, I found it less intuitive and
-  it doesn't allow for server-side rendering (SSR).
+- The official D3 Svelte
+  [example](https://d3js.org/getting-started#d3-in-svelte) uses D3's built-in axis
+  generators combined with Svelte's reactive statements for rendering axes. While
+  this approach is concise, I found it less intuitive and it doesn't allow for
+  server-side rendering (SSR).
 
   In my implementation, I chose not to use D3's axis generators in order to have
   faster page load times and avoid unnecessary hydration. However, I can see
