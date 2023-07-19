@@ -38,6 +38,7 @@
   on:click={handleClick}
 >
   {#if state === "hatched"}
+    <!-- Speech bubble -->
     <span
       in:fly={{ y: 20 }}
       class="bg-surface absolute -right-40 -top-12 w-48 rounded p-2 text-center text-sm"
@@ -45,9 +46,10 @@
       I'm a random easter egg!
     </span>
 
+    <!-- Carrot -->
     <span
       in:fly={{ y: 20 }}
-      class="border-t-surface absolute -top-3 left-2.5 h-3 w-3 border-8 border-transparent"
+      class="border-t-surface absolute -top-3 left-4 h-3 w-3 border-8 border-transparent"
     />
   {/if}
 
