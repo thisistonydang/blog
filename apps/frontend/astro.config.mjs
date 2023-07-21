@@ -44,6 +44,6 @@ export default defineConfig({
   },
   compressHTML: true,
   experimental: {
-    assets: true
-  }
+    assets: true,
+  },
 });
