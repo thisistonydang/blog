@@ -1,6 +1,8 @@
 <script lang="ts">
   import type { CollectionEntry } from "astro:content";
   import { onMount } from "svelte";
+
+  import EntryImage from "@lib/components/EntryImage.svelte";
   import TextField from "@lib/components/TextField.svelte";
   import Whoops from "@lib/components/Whoops.svelte";
 
@@ -63,23 +65,8 @@
           "
         >
           <a href="/{entry.slug}/" rel="prefetch">
-            <div class="aspect-[1200/630]">
-              <!-- Light mode image -->
-              <img
-                class="rounded-t dark:hidden"
-                src="/og/light/dist/960/{entry.slug}.jpg?v={assetsVersion}"
-                alt={entry.data.alt}
-                loading="lazy"
-              />
+            <EntryImage {entry} {assetsVersion} />
 
-              <!-- Dark mode image -->
-              <img
-                class="hidden rounded-t dark:inline"
-                src="/og/dark/dist/960/{entry.slug}.jpg?v={assetsVersion}"
-                alt={entry.data.alt}
-                loading="lazy"
-              />
-            </div>
             <div class="p-3">
               <time
                 class="text-xs"
