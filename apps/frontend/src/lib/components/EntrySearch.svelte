@@ -62,15 +62,22 @@
             rounded border
           "
         >
-          <a href={`/${entry.slug}/`} rel="prefetch">
+          <a href="/{entry.slug}/" rel="prefetch">
             <div class="aspect-[1200/630]">
+              <!-- Light mode image -->
               <img
-                src={entry.data.image
-                  ? `/og/dist/960/${entry.slug}.jpg?v=${assetsVersion}`
-                  : `/og/dist/960/tony-dang.jpg?v=${assetsVersion}`}
-                alt={entry.data.image ? entry.data.alt : "Photo of Tony Dang"}
+                class="rounded-t dark:hidden"
+                src="/og/light/dist/960/{entry.slug}.jpg?v={assetsVersion}"
+                alt={entry.data.alt}
                 loading="lazy"
-                class="rounded-t"
+              />
+
+              <!-- Dark mode image -->
+              <img
+                class="hidden rounded-t dark:inline"
+                src="/og/dark/dist/960/{entry.slug}.jpg?v={assetsVersion}"
+                alt={entry.data.alt}
+                loading="lazy"
               />
             </div>
             <div class="p-3">
