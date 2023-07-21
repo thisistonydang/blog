@@ -16,7 +16,6 @@
 >
   {#each color.domain() as category}
     <span
-      class="border"
       style="
         display: inline-flex;
         align-items: center; 
