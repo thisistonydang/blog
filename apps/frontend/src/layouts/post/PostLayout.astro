@@ -13,7 +13,7 @@ const formatted_date = new Intl.DateTimeFormat(undefined, {
 }).format(entry.data.pubDate);
 ---
 
-<PageLayout entry={entry}>
+<PageLayout {entry}>
   <div class="mb-12 text-sm">
     <a class="no-underline" href="/posts">&larr; Back to all posts</a>
   </div>
