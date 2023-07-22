@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "opt-img": "node src/lib/sharp/optimize_images.js",
+    "opt-imgs": "node src/lib/sharp/optimizeImages.js",
     "type-check": "astro check && tsc --noEmit --skipLibCheck",
     "link-check": "linkinator http://localhost:3000 -r -s adidas,butora,linkedin",
     "a11y-check": "pa11y-ci --sitemap https://tonydang.blog/sitemap-index.xml --sitemap-find https://tonydang.blog --sitemap-replace http://localhost:3000",
