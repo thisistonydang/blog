@@ -35,8 +35,8 @@ const { entry } = Astro.props;
             : entry.data.title,
         type: entry.collection === "posts" ? "article" : "website",
         image: entry.data.image
-          ? `https://tonydang.blog/og/dist/1200/${entry.slug}.jpg`
-          : "https://tonydang.blog/og/dist/1200/tony-dang.jpg",
+          ? `https://tonydang.blog/og/light/dist/1200/${entry.slug}.jpg`
+          : "https://tonydang.blog/og/light/dist/1200/tony-dang.jpg",
       },
       optional: {
         description: entry.data.description,
