@@ -29,7 +29,7 @@
   {disabled}
   on:click={onClick}
   style:width={`${width}px`}
-  class="bg-heading text-bg group h-[41px] rounded px-3 text-center text-sm"
+  class="bg-heading text-bg group h-[41px] rounded-sm px-3 text-center text-sm"
   class:cursor-wait={cursor === "wait"}
   class:cursor-not-allowed={cursor === "not-allowed"}
   class:hover:bg-bg={!hasTouchScreen}
