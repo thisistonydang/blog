@@ -27,11 +27,11 @@
   $: if (mounted && userExplicitlyChoseTheme && $theme === "dark") {
     document.documentElement.classList.add("dark");
     localStorage.theme = "dark";
-    dispatchEvent(new CustomEvent(THEME_TOGGLED_EVENT));
+    window.dispatchEvent(new CustomEvent(THEME_TOGGLED_EVENT));
   } else if (mounted && userExplicitlyChoseTheme && $theme === "light") {
     document.documentElement.classList.remove("dark");
     localStorage.theme = "light";
-    dispatchEvent(new CustomEvent(THEME_TOGGLED_EVENT));
+    window.dispatchEvent(new CustomEvent(THEME_TOGGLED_EVENT));
   }
 
   onMount((): void => {
@@ -41,6 +41,16 @@
       : "light";
   });
 </script>
+
+<!-- Keep theme synced across different tabs. -->
+<svelte:window
+  on:storage={() => {
+    if ($theme !== localStorage.theme) {
+      userExplicitlyChoseTheme = true;
+      $theme = localStorage.theme;
+    }
+  }}
+/>
 
 <button
   class="
