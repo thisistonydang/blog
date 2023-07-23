@@ -1,16 +1,30 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
+
+import landscapeImg from "@assets/og/light/dist/1200/tony-dang.jpg";
+import squareImg from "@lib/assets/tony-dang-400px.jpg";
 
 import Section from "./Section.astro";
 ---
 
 <Section title="About">
   <div class="sm:flex sm:gap-8">
-    <Image
-      class="stagger m-auto my-7 h-52 w-52 rounded"
-      src={import("@lib/assets/tony-dang-400px.jpg")}
-      alt="Photo of Tony typing on a MacBook Pro."
-    />
+    <div class="stagger dark:brightness-90">
+      <!-- Landscape image for small screens. -->
+      <Image
+        class="my-7 rounded-sm sm:hidden"
+        src={landscapeImg}
+        alt="Photo of Tony typing on a MacBook Pro."
+      />
+
+      <!-- Square image for small screens. -->
+      <Image
+        class="my-7 hidden max-w-[208px] rounded-sm sm:inline"
+        src={squareImg}
+        alt="Photo of Tony typing on a MacBook Pro."
+      />
+    </div>
+
     <div class="stagger">
       <p>
         Hi! My name is Tony Dang. I am a web developer, rock climber, and
