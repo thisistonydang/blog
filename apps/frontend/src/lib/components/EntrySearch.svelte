@@ -61,7 +61,7 @@
         <li
           class="
             bg-surface/30 border-surface xs:w-[49%] hover:border-heading
-            rounded border
+            rounded-sm border
           "
         >
           <a href="/{entry.slug}/" rel="prefetch">
