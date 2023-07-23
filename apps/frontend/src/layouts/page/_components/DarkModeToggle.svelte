@@ -42,7 +42,7 @@
   });
 </script>
 
-<!-- Keep theme synced across different tabs. -->
+<!-- Keep theme synced across different windows and tabs. -->
 <svelte:window
   on:storage={() => {
     if ($theme !== localStorage.theme) {
