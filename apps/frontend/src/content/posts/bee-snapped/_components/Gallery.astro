@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 
 interface PhotoFile {
   default: {
@@ -28,7 +28,9 @@ const photos = photoFiles.map((photo) => {
       <a href={photo.href} class="max-w-[49%]">
         <Image
           class="my-1.5 duration-200 hover:scale-105"
-          src={import(`../_assets/${photo.src}.jpg`)}
+          src={`/bee-snapped-assets/${photo.src}.jpg`}
+          width="640"
+          height="480"
           alt={photo.alt}
         />
       </a>
