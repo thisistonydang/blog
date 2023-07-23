@@ -8,27 +8,10 @@ tags: []
 draft: false
 ---
 
-import { Picture } from "@astrojs/image/components";
 import Gallery from "./_components/Gallery.astro";
-export const __ = undefined;
 
-<Picture
-  src={import("./_assets/01-bee-snapped-logo-1280px.png")}
-  alt="Bee Snapped Logo"
-  sizes=""
-  widths={[1280]}
-  aspectRatio="1280:337"
-  loading="eager"
-/>
-
-<Picture
-  src={import("./_assets/_000-tony-1280px.jpg")}
-  alt="Photo of Tony Dang with a camera on a tripod"
-  sizes=""
-  widths={[1280]}
-  aspectRatio="4:3"
-  loading="eager"
-/>
+![Bee Snapped Logo](./_assets/01-bee-snapped-logo-1280px.png)
+![Photo of Tony Dang with a camera on a tripod](./_assets/_000-tony-1280px.jpg)
 
 ## What is Bee Snapped?
 
