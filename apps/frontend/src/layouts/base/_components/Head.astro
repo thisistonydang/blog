@@ -4,7 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import { SEO } from "astro-seo";
 
 import DarkModeScript from "./DarkModeScript.astro";
-import "./ExternalLinksScript.astro";
+import ExternalLinksScript from "./ExternalLinksScript.astro";
 import Favicon from "./Favicon.astro";
 
 export interface Props {
@@ -20,6 +20,7 @@ const { entry } = Astro.props;
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://mastodon.social/@tonydang" rel="me" />
   <Favicon />
   <SEO
     title={entry.data.title === "Tony Dang"
@@ -57,5 +58,5 @@ const { entry } = Astro.props;
     }}
   />
   <DarkModeScript />
-  <link href="https://mastodon.social/@tonydang" rel="me" />
+  <ExternalLinksScript />
 </head>

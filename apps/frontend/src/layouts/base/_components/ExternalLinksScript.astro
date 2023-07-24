@@ -1,9 +1,17 @@
 <script>
+  // Add addtional attributes to external links.
   document.querySelectorAll("a").forEach((anchor: HTMLAnchorElement): void => {
     const a = anchor;
+
     if (a.hostname !== window.location.hostname) {
+      // Open link in new tab/window.
       a.target = "_blank";
-      a.rel = a.rel ? `${a.rel} noopener` : "noopener";
+
+      // Add additional rel relationships to prevent window.opener API
+      // exploitation attacks per -
+      // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#security_and_privacy
+      const additionalRels = "noopener noreferrer";
+      a.rel = a.rel ? `${a.rel} ${additionalRels}` : additionalRels;
     }
   });
 </script>
