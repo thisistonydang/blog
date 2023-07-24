@@ -12,10 +12,10 @@
   export let entries: Entry[];
 
   let mounted = false;
-  let search_string = "";
+  let searchString = "";
   let filteredPosts = entries;
 
-  $: words = search_string.trim().replace(/\s+/g, " ").split(" ");
+  $: words = searchString.toLowerCase().trim().replace(/\s+/g, " ").split(" ");
 
   $: if (words.length) {
     filteredPosts = entries.filter((entry): boolean => {
@@ -23,8 +23,8 @@
 
       for (let word of words) {
         if (
-          entry.data.title.match(new RegExp(word, "i")) ||
-          entry.data.description.match(new RegExp(word, "i"))
+          entry.data.title.toLowerCase().includes(word) ||
+          entry.data.description.toLowerCase().includes(word)
         ) {
           match = true;
         }
@@ -51,7 +51,7 @@
   label="Search"
   type="search"
   disabled={!mounted}
-  bind:value={search_string}
+  bind:value={searchString}
 />
 
 <div class="not-prose my-8">
