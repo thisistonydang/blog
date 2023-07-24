@@ -3,7 +3,7 @@
     const a = anchor;
     if (a.hostname !== window.location.hostname) {
       a.target = "_blank";
-      a.rel = "noopener";
+      a.rel = a.rel ? `${a.rel} noopener` : "noopener";
     }
   });
 </script>
