@@ -5,6 +5,7 @@ const urls = [
   "github.com/tonydangblog",
   "instagram.com/tonydang.blog",
   "linkedin.com/in/tonydangblog",
+  "mastodon.social/@tonydang",
   /* "twitter.com/tonydangblog", */
   /* "facebook.com/tonydang.blog", */
 ];
@@ -14,8 +15,14 @@ const urls = [
   {
     urls.map((url) => {
       const name = (url.match(/^[^.]+/) as string[])[0] as string;
+
       return (
-        <a href={"https://" + url} aria-label={name} class="stagger">
+        <a
+          href={"https://" + url}
+          aria-label={name}
+          class="stagger"
+          rel={name === "mastodon" ? "me" : ""}
+        >
           <Icon name={name} width="40" height="40" />
         </a>
       );
