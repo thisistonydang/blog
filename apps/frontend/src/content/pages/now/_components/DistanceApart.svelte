@@ -112,7 +112,7 @@
 <Button {loading} onClick={handle_click} width={120}>CLICK HERE...</Button>
 
 {#if message}
-  <p transition:fly={{ y: 20, duration: 1000 }} class="bg-surface p-4">
+  <p transition:fly={{ y: 20, duration: 1000 }} class="bg-surface rounded p-4">
     {@html message}
   </p>
 {/if}
