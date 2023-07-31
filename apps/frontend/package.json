@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.7",
-    "@astrojs/prefetch": "^0.2.3",
+    "@astrojs/prefetch": "^0.3.0",
     "@astrojs/react": "^2.2.1",
     "@astrojs/rss": "^2.4.3",
-    "@astrojs/sitemap": "^1.4.0",
+    "@astrojs/sitemap": "^2.0.1",
     "@astrojs/svelte": "^3.1.0",
     "@astrojs/tailwind": "^4.0.0",
     "@dimforge/rapier2d-compat": "^0.11.2",
@@ -42,7 +42,7 @@
     "remark-toc": "^8.0.1",
     "sharp": "^0.32.4",
     "stats.js": "^0.17.0",
-    "svelte": "^4.1.1",
+    "svelte": "^4.1.2",
     "tailwindcss": "^3.3.3",
     "three": "^0.154.0",
     "vite-plugin-glsl": "^1.1.2"
@@ -51,7 +51,7 @@
     "@types/d3": "^7.4.0",
     "@types/plotly.js-dist-min": "^2.3.1",
     "@types/react": "^18.2.17",
-    "@types/three": "^0.152.1",
+    "@types/three": "^0.154.0",
     "glob": "^10.3.3",
     "linkinator": "^5.0.1",
     "pa11y-ci": "^3.0.1"
