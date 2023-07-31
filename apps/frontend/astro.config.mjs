@@ -3,7 +3,6 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 
-import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
@@ -20,7 +19,6 @@ export default defineConfig({
   integrations: [
     react(),
     svelte(),
-    image({ logLevel: "debug", serviceEntryPoint: "@astrojs/image/sharp" }),
     mdx({ remarkPlugins: [a11yEmoji, remarkToc] }),
     prefetch(),
     sitemap({
