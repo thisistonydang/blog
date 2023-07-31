@@ -8,6 +8,7 @@
       "@assets/*": ["src/assets/*"],
       "@layouts/*": ["src/layouts/*"],
       "@lib/*": ["src/lib/*"]
-    }
+    },
+    "types": ["vite/client"] // Fix for Vite issue #9539 https://github.com/vitejs/vite/issues/9539
   }
 }
