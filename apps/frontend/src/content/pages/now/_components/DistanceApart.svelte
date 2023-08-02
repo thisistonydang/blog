@@ -25,7 +25,7 @@
 
   function compute_distance(
     startCoords: Coordinates,
-    destCoords: Coordinates
+    destCoords: Coordinates,
   ): number {
     const startLatRads = deg2rad(startCoords.latitude);
     const startLongRads = deg2rad(startCoords.longitude);
@@ -37,7 +37,7 @@
         Math.sin(startLatRads) * Math.sin(destLatRads) +
           Math.cos(startLatRads) *
             Math.cos(destLatRads) *
-            Math.cos(startLongRads - destLongRads)
+            Math.cos(startLongRads - destLongRads),
       ) * radius
     );
   }
@@ -82,7 +82,7 @@
       navigator.geolocation.getCurrentPosition(
         display_distance,
         display_error,
-        position_options
+        position_options,
       );
       message = error_messages[error.code] + position_options.timeout / 100;
     } else {
@@ -99,7 +99,7 @@
     navigator.geolocation.getCurrentPosition(
       display_distance,
       display_error,
-      position_options
+      position_options,
     );
   }
 </script>
@@ -112,7 +112,11 @@
 <Button {loading} onClick={handle_click} width={120}>CLICK HERE...</Button>
 
 {#if message}
-  <p transition:fly={{ y: 20, duration: 1000 }} class="bg-surface rounded p-4">
+  <p
+    transition:fly={{ y: 20, duration: 1000 }}
+    class="bg-surface rounded p-4"
+    aria-live="assertive"
+  >
     {@html message}
   </p>
 {/if}
