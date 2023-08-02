@@ -29,5 +29,6 @@ export const attempts = writable<number>(0);
 export const finishes = writable<number>(0);
 export const currentStreak = writable<number>(0);
 export const longestStreak = writable<number>(0);
-export const isMuted = writable<boolean>(false);
+export const isMuted = writable<boolean>(true);
+export const soundToggled = writable<boolean>(false);
 export const visited = writable<boolean>(false);
