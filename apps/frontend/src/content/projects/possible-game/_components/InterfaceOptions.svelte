@@ -3,7 +3,12 @@
   import IconButton from "@lib/components/IconButton.svelte";
   import InterfaceList from "@lib/components/InterfaceList.svelte";
   import { requestFullscreen } from "@lib/fullscreen/requestFullscreen";
-  import { app, interfaceState, isMuted } from "../_stores/appState";
+  import {
+    app,
+    interfaceState,
+    isMuted,
+    soundToggled,
+  } from "../_stores/appState";
 
   let showFullscreenError = false;
 
@@ -32,7 +37,15 @@
       Enter Fullscreen
     </IconButton>
 
-    <IconButton isPill fixedWidth={100} onClick={() => ($isMuted = !$isMuted)}>
+    <IconButton
+      hasPing={!$soundToggled}
+      isPill
+      fixedWidth={100}
+      onClick={() => {
+        $isMuted = !$isMuted;
+        $soundToggled = true;
+      }}
+    >
       Sound {$isMuted ? "Off" : "On"}
     </IconButton>
   </li>
