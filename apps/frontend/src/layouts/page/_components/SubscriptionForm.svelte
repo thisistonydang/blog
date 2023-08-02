@@ -119,7 +119,7 @@
     class="bg-surface my-3 flex w-fit items-center gap-5 rounded p-4"
     in:fly={{ y: -20 }}
   >
-    <p class="m-0">{message}</p>
+    <p class="m-0" aria-live="polite">{message}</p>
     <button
       aria-label="Dismiss."
       class="cursor-pointer text-2xl"
