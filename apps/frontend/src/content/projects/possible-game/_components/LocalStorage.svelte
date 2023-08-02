@@ -10,6 +10,7 @@
     gameState,
     isMuted,
     longestStreak,
+    soundToggled,
     visited,
   } from "../_stores/appState";
 
@@ -23,7 +24,7 @@
 
   function updateLocalStorage([objectKey, newValue]:
     | ["attempts" | "finishes" | "currentStreak" | "longestStreak", number]
-    | ["isMuted" | "visited", boolean]): void {
+    | ["isMuted" | "soundToggled" | "visited", boolean]): void {
     const data = getParsedValue(LOCAL_STORAGE_KEY, LOCAL_STORAGE_VERSION);
 
     // Update stored data object with new value.
@@ -39,6 +40,8 @@
     if (isValidCount(data.currentStreak)) $currentStreak = data.currentStreak;
     if (isValidCount(data.longestStreak)) $longestStreak = data.longestStreak;
     if (typeof data.isMuted === "boolean") $isMuted = data.isMuted;
+    if (typeof data.soundToggled === "boolean")
+      $soundToggled = data.soundToggled;
     if (typeof data.visited === "boolean") $visited = data.visited;
 
     mounted = true;
@@ -50,6 +53,7 @@
   $: if (mounted) updateLocalStorage(["currentStreak", $currentStreak]);
   $: if (mounted) updateLocalStorage(["longestStreak", $longestStreak]);
   $: if (mounted) updateLocalStorage(["isMuted", $isMuted]);
+  $: if (mounted) updateLocalStorage(["soundToggled", $soundToggled]);
   $: if (mounted) updateLocalStorage(["visited", $visited]);
 
   // Set visited state to true if user has played a game
