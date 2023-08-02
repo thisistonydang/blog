@@ -45,7 +45,7 @@
   </Prose>
 
   {#if hasPing}
-    <div class="absolute bottom-8 left-8">
+    <div class="absolute bottom-8">
       <Ping />
     </div>
   {/if}
