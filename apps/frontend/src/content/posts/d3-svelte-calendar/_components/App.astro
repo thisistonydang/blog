@@ -1,0 +1,8 @@
+---
+import data from "../_data/dji.json";
+import Plot from "./Plot.svelte";
+---
+
+<div class="dark:brightness-95" style="background: #fff; padding: 20px;">
+  <Plot {data} client:load />
+</div>
