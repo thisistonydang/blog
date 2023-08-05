@@ -12,7 +12,7 @@
   // Specify the color scale.
   const color = d3.scaleOrdinal(
     data.children.map((d) => d.name),
-    d3.schemeTableau10
+    d3.schemeTableau10,
   );
 
   // Specify formatting function.
@@ -31,7 +31,7 @@
     d3
       .hierarchy(data)
       .sum((d) => d.value)
-      .sort((a, b) => b.value - a.value)
+      .sort((a, b) => b.value - a.value),
   );
 
   // Helper function to recursively find the parent of a given leaf at depth 1.
