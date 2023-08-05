@@ -44,7 +44,13 @@
 <canvas bind:this={canvas} width={n} height="1" hidden />
 
 <!-- Legend -->
-<svg {width} {height} viewBox="0 0 {width} {height}" style:overflow="visible">
+<svg
+  {width}
+  {height}
+  viewBox="0 0 {width} {height}"
+  style:max-width="100%"
+  style:overflow="visible"
+>
   <!-- Add color gradient image -->
   <image
     x={marginLeft}
