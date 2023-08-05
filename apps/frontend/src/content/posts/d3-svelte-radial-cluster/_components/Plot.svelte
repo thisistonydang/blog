@@ -1,0 +1,72 @@
+<script>
+  import * as d3 from "d3";
+
+  // Receive plot data as prop.
+  export let data;
+
+  // Specify the chart’s dimensions.
+  const width = 928;
+  const height = width;
+  const cx = width * 0.5; // adjust as needed to fit
+  const cy = height * 0.54; // adjust as needed to fit
+  const radius = Math.min(width, height) / 2 - 80;
+
+  // Create a radial cluster layout. The layout’s first dimension (x)
+  // is the angle, while the second (y) is the radius.
+  const tree = d3
+    .cluster()
+    .size([2 * Math.PI, radius])
+    .separation((a, b) => (a.parent == b.parent ? 1 : 2) / a.depth);
+
+  // Sort the tree and apply the layout.
+  const root = tree(
+    d3.hierarchy(data).sort((a, b) => d3.ascending(a.data.name, b.data.name)),
+  );
+</script>
+
+<svg
+  {width}
+  {height}
+  viewBox="{-cx} {-cy} {width} {height}"
+  style="width: 100%; height: auto; font: 10px sans-serif;"
+>
+  <!-- Links -->
+  <g fill="none" stroke="#555" stroke-opacity="0.4" stroke-width="1.5">
+    {#each root.links() as link}
+      <path
+        d={d3
+          .linkRadial()
+          .angle((d) => d.x)
+          .radius((d) => d.y)(link)}
+      ></path>
+    {/each}
+  </g>
+
+  <!-- Nodes -->
+  <g>
+    {#each root.descendants() as d}
+      <circle
+        transform="rotate({(d.x * 180) / Math.PI - 90}) translate({d.y},0)"
+        fill={d.children ? "#555" : "#999"}
+        r="2.5"
+      ></circle>
+    {/each}
+  </g>
+
+  <!-- Labels -->
+  <g stroke-linejoin="round" stroke-width="3">
+    {#each root.descendants() as d}
+      <text
+        transform="rotate({(d.x * 180) / Math.PI -
+          90}) translate({d.y},0) rotate({d.x >= Math.PI ? 180 : 0})"
+        dy="0.31em"
+        x={d.x < Math.PI === !d.children ? 6 : -6}
+        text-anchor={d.x < Math.PI === !d.children ? "start" : "end"}
+        paint-order="stroke"
+        fill="currentColor"
+      >
+        {d.data.name}
+      </text>
+    {/each}
+  </g>
+</svg>
