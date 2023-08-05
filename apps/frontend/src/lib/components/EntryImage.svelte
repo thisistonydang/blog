@@ -9,7 +9,7 @@
 <div class="aspect-[1200/630]">
   <!-- Light mode image -->
   <img
-    class="rounded-t dark:hidden"
+    class="dark:hidden"
     src="/og/light/dist/960/{entry.slug}.jpg?v={assetsVersion}"
     alt={entry.data.alt}
     loading="lazy"
@@ -17,7 +17,7 @@
 
   <!-- Dark mode image -->
   <img
-    class="hidden rounded-t dark:inline"
+    class="hidden dark:inline brightness-90"
     src="/og/dark/dist/960/{entry.slug}.jpg?v={assetsVersion}"
     alt={entry.data.alt}
     loading="lazy"
