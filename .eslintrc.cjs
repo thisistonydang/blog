@@ -19,7 +19,7 @@ module.exports = {
     "plugin:astro/recommended",
     "plugin:astro/jsx-a11y-recommended",
     // "react-app",
-    "plugin:prettier/recommended",
+    "prettier",
   ],
   plugins: ["svelte3"],
   settings: { "svelte3/typescript": () => require("typescript") },
