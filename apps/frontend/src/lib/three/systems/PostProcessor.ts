@@ -1,6 +1,6 @@
 import { WebGLRenderTarget } from "three";
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
-import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 
 import type { World } from "../World";
 
@@ -13,7 +13,7 @@ export class PostProcessor {
   constructor(
     world: World,
     samplesForLowPixelDensity = 2,
-    samplesForHighPixelDensity = 0
+    samplesForHighPixelDensity = 0,
   ) {
     this.samplesForLowPixelDensity = samplesForLowPixelDensity;
     this.samplesForHighPixelDensity = samplesForHighPixelDensity;
@@ -24,7 +24,7 @@ export class PostProcessor {
     // Create effect composer
     this.effectComposer = new EffectComposer(
       world.renderer,
-      this.currentRenderTarget
+      this.currentRenderTarget,
     );
 
     // Render scene through effect composer

@@ -1,4 +1,4 @@
-import type { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import type { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import type { Patched } from "@lib/three/types/Patched";
 import type { Controls } from "./orbitControls";
 

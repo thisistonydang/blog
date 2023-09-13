@@ -2,8 +2,8 @@ import { get } from "svelte/store";
 
 import { Mesh, MeshBasicMaterial } from "three";
 import font from "three/examples/fonts/helvetiker_regular.typeface.json";
-import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
-import { Font } from "three/examples/jsm/loaders/FontLoader";
+import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
+import { Font } from "three/examples/jsm/loaders/FontLoader.js";
 
 import { theme } from "@layouts/page/_stores/theme";
 
