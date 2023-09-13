@@ -7,7 +7,10 @@ import type { Env } from "@lib/types/env";
 
 import type { Contact } from "../_types/contact";
 
-export default async function subscribe(request: Request, env: Env): Promise<Response> {
+export default async function subscribe(
+  request: Request,
+  env: Env,
+): Promise<Response> {
   const { name, email }: { name?: string; email?: string } =
     await request.json();
 
@@ -36,7 +39,7 @@ export default async function subscribe(request: Request, env: Env): Promise<Res
   const body = await process_subscription_request(
     env,
     form.data.name,
-    form.data.email
+    form.data.email,
   );
   return new Response(JSON.stringify(body), {
     headers: { "Access-Control-Allow-Origin": env.BLOG_URL },
@@ -46,7 +49,7 @@ export default async function subscribe(request: Request, env: Env): Promise<Res
 export async function process_subscription_request(
   env: Env,
   name: string,
-  email: string
+  email: string,
 ): Promise<{ [key: string]: string }> {
   const preferred_name = name.split(" ")[0];
   const success = `Thank you for signing up for my mailing list! Please check
@@ -82,7 +85,7 @@ export async function process_subscription_request(
       email,
       name,
       preferred_name,
-      contact.contact_id
+      contact.contact_id,
     );
     if (mc_res.status === 202) return { success };
     return { error: "Whoops, something went wrong. Please try again later." };
@@ -99,7 +102,7 @@ export async function process_subscription_request(
     email,
     name,
     preferred_name,
-    contact_id
+    contact_id,
   );
   if (mc_res.status === 202) return { success };
   return { error: "Whoops, something went wrong. Please try again later." };
@@ -110,7 +113,7 @@ export async function send_verification_email(
   email: string,
   name: string,
   preferred_name: string,
-  contact_id: string
+  contact_id: string,
 ): Promise<Response> {
   const jwt = await sign_jwt(env, { id: contact_id }, "24hr");
   return await send_email(
@@ -136,6 +139,6 @@ export async function send_verification_email(
 
     <a href="${env.BACKEND_URL}/list/unsubscribe?id=${contact_id}">
       Unsubscribe
-    </a>`
+    </a>`,
   );
 }
