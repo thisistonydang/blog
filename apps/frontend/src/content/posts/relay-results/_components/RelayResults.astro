@@ -1,5 +1,5 @@
 ---
-import RelayResults from "./RelayResults.svelte";
+import RelayResultsSvelte from "./RelayResults.svelte";
 
 import { sql } from "@lib/db/sql";
 
@@ -15,4 +15,4 @@ const runs = rows.map((row) => ({
 }));
 ---
 
-<RelayResults runs={runs} client:load />
+<RelayResultsSvelte runs={runs} client:load />
