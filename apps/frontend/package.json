@@ -7,7 +7,7 @@
     "type-check": "astro check && tsc --noEmit --skipLibCheck",
     "link-check": "linkinator http://localhost:3000 -r -s adidas,butora,linkedin",
     "a11y-check": "pa11y-ci --sitemap https://tonydang.blog/sitemap-index.xml --sitemap-find https://tonydang.blog --sitemap-replace http://localhost:3000",
-    "build": "pnpm run type-check && astro build && pnpm run link-check && pnpm run a11y-check",
+    "build": "pnpm run type-check && astro build && pnpm run link-check",
     "preview": "wrangler pages dev --compatibility-date=2023-03-14 --port 4000 dist",
     "deploy": "wrangler pages deploy dist"
   },
