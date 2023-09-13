@@ -19,7 +19,7 @@ then
 
     # Tab 0: terminal
     tmux rename-window -t 0 'terminal'
-    tmux send-keys -t 'terminal' 'code /Users/tonydang/Dropbox/root/repos/blog' C-m
+    tmux send-keys -t 'terminal' "code $ROOT_DIR/repos/blog" C-m
     tmux send-keys -t 'terminal' 'npm outdated -g' C-m
     tmux send-keys -t 'terminal' 'pnpm outdated -r --long' C-m
     tmux send-keys -t 'terminal' 'pnpm audit' C-m
@@ -47,7 +47,7 @@ then
 
     # Tab 5: tsc-frontend
     tmux new-window -t 5 -n 'tsc-frontend'
-    tmux send-keys -t 'tsc' 'cd ~/root/repos/blog/apps/frontend' C-m
+    tmux send-keys -t 'tsc' "cd $ROOT_DIR/repos/blog/apps/frontend" C-m
     tmux send-keys -t 'tsc' 'pnpm tsc -w --noEmit' C-m
 
     # Attach to session
