@@ -9,7 +9,7 @@ entries.sort(
     new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 
-export const get: APIRoute = () =>
+export const GET: APIRoute = () =>
   rss({
     title: "Tony Dang",
     description: "Tony Dang’s Blog",
