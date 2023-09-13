@@ -6,16 +6,16 @@
     "deploy": "wrangler deploy"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20230801.0",
-    "typescript": "^5.1.6",
+    "@cloudflare/workers-types": "^4.20230904.0",
+    "typescript": "^5.2.2",
     "wrangler": "^3.7.0"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.31.0",
+    "@supabase/supabase-js": "^2.33.2",
     "@tonydangblog/error-handling": "workspace:*",
-    "itty-router": "^4.0.14",
-    "jose": "^4.14.4",
-    "stripe": "^12.16.0",
-    "zod": "^3.21.4"
+    "itty-router": "^4.0.23",
+    "jose": "^4.14.6",
+    "stripe": "^13.5.0",
+    "zod": "^3.22.2"
   }
 }
