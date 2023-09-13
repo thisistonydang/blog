@@ -10,7 +10,15 @@ export const GET: APIRoute = async ({ params }) => {
     name: run.name,
     pace: string_to_seconds(run.time) / run.leg_distance,
   }));
-  return { body: JSON.stringify(data.sort((a, b) => a.pace - b.pace)) };
+
+  return new Response(
+    JSON.stringify(data.sort((a, b) => a.pace - b.pace)), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  );
 };
 
 export async function getStaticPaths() {

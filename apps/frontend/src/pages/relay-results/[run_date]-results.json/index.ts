@@ -42,7 +42,14 @@ export const GET: APIRoute = async ({ params }) => {
     x_max: Math.max(...team_results.map((team) => team.total_time)),
   };
 
-  return { body: JSON.stringify(data) };
+  return new Response(
+    JSON.stringify(data), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  );
 };
 
 export async function getStaticPaths() {

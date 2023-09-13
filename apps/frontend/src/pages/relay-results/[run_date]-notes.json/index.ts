@@ -8,7 +8,15 @@ export const GET: APIRoute = async ({ params }) => {
     SELECT notes FROM relay_run WHERE run_date = ${run_date} ORDER BY position
   `;
   const notes = runs.map((run) => run.notes).filter((note) => note);
-  return { body: JSON.stringify(notes) };
+
+  return new Response(
+    JSON.stringify(notes), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  );
 };
 
 export async function getStaticPaths() {

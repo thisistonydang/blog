@@ -50,7 +50,15 @@ export const GET: APIRoute = async ({ params }) => {
   }
 
   data.sort((a, b) => (b.at(-1)?.pace as number) - (a.at(-1)?.pace as number));
-  return { body: JSON.stringify(data) };
+
+  return new Response(
+    JSON.stringify(data), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  );
 };
 
 export async function getStaticPaths() {
