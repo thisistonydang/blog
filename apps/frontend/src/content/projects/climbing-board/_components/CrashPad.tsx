@@ -1,5 +1,7 @@
+import type { BufferGeometryNode } from "@react-three/fiber";
+
 import { useTexture } from "@react-three/drei";
-import { BufferGeometryNode, extend } from "@react-three/fiber";
+import { extend } from "@react-three/fiber";
 import { useContext } from "react";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 
