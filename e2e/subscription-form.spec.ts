@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 import { supabase } from "@lib/db/supabase";
 
 test.describe("subscription form", () => {
-  const new_contact_email = "e2e_subscription_form#1@tonydang.blog";
+  const new_contact_email = "e2e_subscription_form1@tonydang.blog";
 
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
