@@ -3,7 +3,7 @@ import type { APIRoute } from "astro";
 import {sql} from "@lib/db/sql";
 import { string_to_seconds } from "../_lib/time/string-to-seconds";
 
-export const get: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ params }) => {
   const { run_date } = params as { run_date: string };
   const runs = await sql`SELECT * FROM relay_run WHERE run_date = ${run_date}`;
   const data = runs.map((run) => ({

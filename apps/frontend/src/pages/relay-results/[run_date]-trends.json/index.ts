@@ -3,7 +3,7 @@ import type { APIRoute } from "astro";
 import { sql } from "@lib/db/sql";
 import { string_to_seconds } from "../_lib/time/string-to-seconds";
 
-export const get: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ params }) => {
   const { run_date } = params as { run_date: string };
 
   const relay_run =

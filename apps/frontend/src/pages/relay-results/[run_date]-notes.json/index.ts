@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 
 import { sql } from "@lib/db/sql";
 
-export const get: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ params }) => {
   const { run_date } = params as { run_date: string };
   const runs = await sql`
     SELECT notes FROM relay_run WHERE run_date = ${run_date} ORDER BY position
