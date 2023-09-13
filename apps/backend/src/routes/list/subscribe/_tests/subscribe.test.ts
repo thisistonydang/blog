@@ -5,11 +5,11 @@ import { env } from "@lib/testing/env";
 
 import api_route from "../index";
 
-const subscribed_email = "/list/subscribe#1@tonydang.blog";
-const banned_email = "/list/subscribe#2@tonydang.blog";
-const verified_email = "/list/subscribe3#@tonydang.blog";
-const unverified_email = "/list/subscribe#4@tonydang.blog";
-const new_contact_email = "/list/subscribe#5@tonydang.blog";
+const subscribed_email = "list.subscribe1@tonydang.blog";
+const banned_email = "list.subscribe2@tonydang.blog";
+const verified_email = "list.subscribe3@tonydang.blog";
+const unverified_email = "list.subscribe4@tonydang.blog";
+const new_contact_email = "list.subscribe5@tonydang.blog";
 
 beforeAll(async () => {
   await supabase(env)
