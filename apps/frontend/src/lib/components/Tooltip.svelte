@@ -66,7 +66,7 @@
       {/if}
 
       <!-- Tooltip details -->
-      <div>
+      <div class="not-prose">
         <div class="text-heading font-bold">{name}</div>
         <dl bind:this={details_container}>
           {#each details as detail}
