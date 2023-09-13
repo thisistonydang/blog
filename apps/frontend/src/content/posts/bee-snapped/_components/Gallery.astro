@@ -1,15 +1,8 @@
 ---
 import { Image } from "astro:assets";
 
-interface PhotoFile {
-  default: {
-    src: string;
-  };
-}
 
-let photoFiles = Object.values(
-  import.meta.glob<PhotoFile>("../_assets/*.jpg", { eager: true })
-);
+let photoFiles = await Astro.glob("../_assets/*.jpg")
 photoFiles = photoFiles.filter((photo) => photo.default.src.includes("640px"));
 
 const photos = photoFiles.map((photo) => {
