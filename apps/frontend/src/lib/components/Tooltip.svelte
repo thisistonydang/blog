@@ -58,7 +58,7 @@
       {#if img_src}
         <div>
           <img
-            class="m-0 mt-1.5 mr-2 h-10 w-10 rounded-full"
+            class="m-0 mr-2 mt-1.5 h-10 w-10 rounded-full"
             src={img_src}
             alt={img_alt}
           />
