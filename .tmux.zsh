@@ -45,10 +45,13 @@ then
     tmux new-window -t 4 -n 'test'
     tmux send-keys -t 'test' 'pnpm test' C-m
 
-    # Tab 5: tsc-frontend
-    tmux new-window -t 5 -n 'tsc-frontend'
-    tmux send-keys -t 'tsc' "cd $ROOT_DIR/repos/blog/apps/frontend" C-m
-    tmux send-keys -t 'tsc' 'pnpm tsc -w --noEmit' C-m
+    # Tab 5: tsc-check
+    tmux new-window -t 5 -n 'tsc-check'
+    tmux send-keys -t 'tsc-check' "cd $ROOT_DIR/repos/blog/apps/frontend" C-m
+    tmux send-keys -t 'tsc-check' 'pnpm tsc -w --noEmit' C-m
+    tmux split-window -h
+    tmux send-keys -t 'tsc-check' "cd $ROOT_DIR/repos/blog/apps/frontend" C-m
+    tmux send-keys -t 'tsc-check' 'pnpm astro check --watch' C-m
 
     # Attach to session
     tmux attach-session -t $SESSION:0
