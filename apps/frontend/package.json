@@ -48,6 +48,7 @@
     "vite-plugin-glsl": "^1.1.2"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.2.0",
     "@types/d3": "^7.4.0",
     "@types/plotly.js-dist-min": "^2.3.1",
     "@types/react": "^18.2.21",
