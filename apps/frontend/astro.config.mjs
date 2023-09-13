@@ -41,7 +41,4 @@ export default defineConfig({
     plugins: [glsl()],
   },
   compressHTML: true,
-  experimental: {
-    assets: true,
-  },
 });
