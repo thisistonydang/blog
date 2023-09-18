@@ -25,7 +25,7 @@
   }
 </script>
 
-<dl class="xxs:text-base mx-auto mb-4 max-w-[160px] text-sm">
+<dl class="xxs:text-base not-prose mx-auto mb-4 max-w-[160px] text-sm">
   <Stat name="Attempts" count={$attempts} />
   <Stat name="Finishes" count={$finishes} />
   {#if $interfaceState === "stats" || $currentStreak}
