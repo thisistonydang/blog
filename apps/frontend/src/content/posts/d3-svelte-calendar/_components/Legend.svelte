@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from "svelte";
   import { format, interpolateRound } from "d3";
 
   export let color;
@@ -25,23 +24,10 @@
     },
   );
 
-  const n = 256;
-  let canvas;
-  let href;
-
-  // Create color gradient png client side
-  onMount(() => {
-    const context = canvas.getContext("2d");
-    for (let i = 0; i < n; ++i) {
-      context.fillStyle = color.interpolator()(i / (n - 1));
-      context.fillRect(i, 0, 1, 1);
-    }
-    href = canvas.toDataURL();
-  });
+  const numGradientRects = 256;
+  const gradientRectWidth =
+    (width - marginLeft - marginRight) / numGradientRects;
 </script>
-
-<!-- Hidden canvas for color gradient png generation -->
-<canvas bind:this={canvas} width={n} height="1" hidden />
 
 <!-- Legend -->
 <svg
@@ -51,17 +37,20 @@
   style:max-width="100%"
   style:overflow="visible"
 >
-  <!-- Add color gradient image -->
-  <image
-    x={marginLeft}
-    y={marginTop}
-    width={width - marginLeft - marginRight}
-    height={height - marginTop - marginBottom}
-    preserveAspectRatio="none"
-    {href}
-  />
-
   <g transform="translate(0,{height - marginBottom})" font-size="10">
+    <!-- Add color gradient -->
+    {#each [...Array(numGradientRects).keys()] as i}
+      {@const rectColor = color.interpolator()(i / (numGradientRects - 1))}
+      <rect
+        x={marginLeft + i * gradientRectWidth}
+        y="-9.5"
+        width={gradientRectWidth}
+        height="10"
+        fill={rectColor}
+        stroke={rectColor}
+      />
+    {/each}
+
     <!-- Add ticks -->
     {#each xScale.ticks() as tick}
       <!-- Display only even ticks -->
