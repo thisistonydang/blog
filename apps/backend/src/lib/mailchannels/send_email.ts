@@ -14,7 +14,7 @@ export async function send_email(
   email: string,
   name: string,
   subject: string,
-  html: string
+  html: string,
 ): Promise<Response> {
   if (env.MODE !== "production") return new Response(null, { status: 202 });
   return await fetch("https://api.mailchannels.net/tx/v1/send", {
