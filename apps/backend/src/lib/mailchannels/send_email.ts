@@ -24,7 +24,7 @@ export async function send_email(
       from: { email: "tony@tonydang.blog", name: "Tony Dang" },
       personalizations: [
         {
-          to: [{ email, name }],
+          to: name ? [{ email, name }] : [{ email }],
           dkim_domain: "tonydang.blog",
           dkim_selector: "mc",
           dkim_private_key: env.MC_DKIM_PRIVATE_KEY,
