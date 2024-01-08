@@ -1,5 +1,9 @@
 import { Router } from "itty-router";
 
+// Microservices
+import microservices_mailer_send from "./routes/microservices/mailer/send";
+
+// Blog
 import list_subscribe from "./routes/list/subscribe";
 import list_unsubscribe from "./routes/list/unsubscribe";
 import list_verify from "./routes/list/verify";
@@ -9,6 +13,11 @@ import support_donations from "./routes/support/donations";
 import webhooks_stripe from "./routes/webhooks/stripe";
 
 const router = Router();
+
+// Microservices
+router.post("/microservices/mailer/send", microservices_mailer_send);
+
+// Blog
 router.post("/list/subscribe", list_subscribe);
 router.get("/list/unsubscribe", list_unsubscribe);
 router.get("/list/verify", list_verify);
