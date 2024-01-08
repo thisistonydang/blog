@@ -24,11 +24,11 @@ export default async function send(
       return new Response("Invalid payload.", { status: 400 });
     }
 
-    // Send email.
-    send_email(env, email, name, subject, html);
+    // Send email via MailChannels.
+    const mailChannelsRes = await send_email(env, email, name, subject, html);
 
     // Send me an email notification.
-    send_email(
+    await send_email(
       env,
       "tony@tonydang.blog",
       "Tony",
@@ -36,9 +36,7 @@ export default async function send(
       `Name: ${name}<br>Email: ${email}`,
     );
 
-    return new Response("Email request forwarded to MailChannels", {
-      status: 200,
-    });
+    return mailChannelsRes;
   }
 
   return new Response("Invalid JWT.", { status: 400 });
