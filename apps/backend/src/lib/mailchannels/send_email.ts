@@ -16,7 +16,9 @@ export async function send_email(
   subject: string,
   html: string,
 ): Promise<Response> {
+  // Note: MailChannels returns 202 status code in production.
   if (env.MODE !== "production") return new Response(null, { status: 202 });
+
   return await fetch("https://api.mailchannels.net/tx/v1/send", {
     method: "POST",
     headers: { "content-type": "application/json" },
