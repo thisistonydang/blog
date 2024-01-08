@@ -31,8 +31,8 @@ export default async function send(
       env,
       "tony@tonydang.blog",
       "Tony",
-      `'${subject}' email sent to ${name} <${email}>`,
-      `Name: ${name}<br>Email: ${email}`,
+      `"${subject}" email sent to ${name} <${email}>`,
+      `Email sent:<br><br>${html}`,
     );
 
     return mailChannelsRes;
