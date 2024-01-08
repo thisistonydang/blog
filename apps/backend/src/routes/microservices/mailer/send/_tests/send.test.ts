@@ -9,7 +9,6 @@ describe("/microservices/mailer/send", () => {
   it.each([
     // Valid payload.
     [
-      "App Name",
       "test@example.com",
       "Recipient Name",
       "Subject",
@@ -20,14 +19,13 @@ describe("/microservices/mailer/send", () => {
     ],
 
     // Invalid payload.
-    [0, 0, 0, 0, 0, true, 400, "Invalid payload."],
+    [0, 0, 0, 0, true, 400, "Invalid payload."],
 
     // Invalid JWT.
-    [0, 0, 0, 0, 0, false, 400, "Invalid JWT."],
+    [0, 0, 0, 0, false, 400, "Invalid JWT."],
   ])(
-    "app: %s, email: %s, name: %s, subject: %s, html: %s, isValidJwt: %s, expectedStatus: %s, expectedBody: %s",
+    "email: %s, name: %s, subject: %s, html: %s, isValidJwt: %s, expectedStatus: %s, expectedBody: %s",
     async (
-      app,
       email,
       name,
       subject,
@@ -39,7 +37,7 @@ describe("/microservices/mailer/send", () => {
       // GIVEN Payload and whether JWT is valid.
 
       // WHEN Request is made to api route with jwt.
-      const jwt = await sign_jwt(env, { app, email, name, subject, html });
+      const jwt = await sign_jwt(env, { email, name, subject, html });
       const request = new Request(
         `https://tonydang.blog/microservices/mailer/send?jwt=${
           isValidJwt ? jwt : "invalid_jwt"
