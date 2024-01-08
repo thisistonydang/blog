@@ -15,8 +15,8 @@ describe("/microservices/mailer/send", () => {
       "Subject",
       "Body HTML",
       true,
-      200,
-      "Email request forwarded to MailChannels",
+      202,
+      "",
     ],
 
     // Invalid payload.
