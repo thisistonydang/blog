@@ -11,11 +11,10 @@ export default async function send(
   if (jwt) payload = await verify_jwt(env, jwt);
 
   if (payload) {
-    const { app, email, name, subject, html } = payload;
+    const { email, name, subject, html } = payload;
 
     // Check payload claims are valid.
     if (
-      typeof app !== "string" ||
       typeof email !== "string" ||
       typeof name !== "string" ||
       typeof subject !== "string" ||
@@ -32,7 +31,7 @@ export default async function send(
       env,
       "tony@tonydang.blog",
       "Tony",
-      `[${app}] '${subject}' email sent to ${name} <${email}>`,
+      `'${subject}' email sent to ${name} <${email}>`,
       `Name: ${name}<br>Email: ${email}`,
     );
 
