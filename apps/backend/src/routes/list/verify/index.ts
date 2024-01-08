@@ -7,7 +7,7 @@ import type { Contact } from "../_types/contact";
 
 export default async function verify(
   request: Request,
-  env: Env
+  env: Env,
 ): Promise<Response> {
   let payload;
   const jwt = new URL(request.url).searchParams.get("jwt");
@@ -27,12 +27,12 @@ export default async function verify(
         .update({ is_verified: true, is_subscriber: true })
         .match({ contact_id: payload.id });
       if (res.error) return Response.redirect(`${env.BLOG_URL}/whoops`, 303);
-      send_email(
+      await send_email(
         env,
         "tony@tonydang.blog",
         "Tony",
         "New Subscriber",
-        `Name: ${contact.name}<br>Email: ${contact.email}`
+        `Name: ${contact.name}<br>Email: ${contact.email}`,
       );
       return Response.redirect(`${env.BLOG_URL}/list/verify/success`, 303);
     }
