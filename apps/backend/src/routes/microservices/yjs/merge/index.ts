@@ -11,4 +11,7 @@ export default async function merge(
   const payload = await getJwtPayloadFromRequest(request, env);
   if (!payload) return new Response("Invalid JWT.", { status: 400 });
 
+  // Extract claims from payload.
+  const { serverDocument, clientDocument } = payload;
+
 }
