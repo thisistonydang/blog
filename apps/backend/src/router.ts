@@ -2,6 +2,7 @@ import { Router } from "itty-router";
 
 // Microservices
 import microservices_mailer_send from "./routes/microservices/mailer/send";
+import microservices_yjs_merge from "./routes/microservices/yjs/merge";
 
 // Blog
 import list_subscribe from "./routes/list/subscribe";
@@ -16,6 +17,7 @@ const router = Router();
 
 // Microservices
 router.post("/microservices/mailer/send", microservices_mailer_send);
+router.post("/microservices/yjs/merge", microservices_yjs_merge);
 
 // Blog
 router.post("/list/subscribe", list_subscribe);
