@@ -23,6 +23,7 @@ export default async function merge(
   }
 
   try {
-  } catch (error) {
+  } catch {
+    return new Response("Error merging documents.", { status: 400 });
   }
 }
