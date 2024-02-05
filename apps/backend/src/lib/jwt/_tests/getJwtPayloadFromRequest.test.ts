@@ -9,13 +9,13 @@ describe("getJwtPayloadFromRequest", async () => {
   const jwt = await sign_jwt(env, { foo: "bar" });
 
   it.each([
-    // Valid jwt.
+    // Has valid JWT.
     [true, jwt, false, "bar"],
 
-    // Invalid jwt.
+    // Has JWT but invalid.
     [true, "invalid_jwt", true, undefined],
 
-    // No jwt.
+    // No JWT.
     [false, jwt, true, undefined],
   ])(
     "hasJwt: %s, jwt: %s, isPayloadNull: %s, expectedFoo: %s",
