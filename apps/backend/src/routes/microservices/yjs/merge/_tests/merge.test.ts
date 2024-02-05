@@ -17,6 +17,23 @@ describe("/microservices/yjs/merge", () => {
   const doc2Base64 = fromUint8Array(doc2Binary);
 
   it.each([
+    // Valid payload.
+    [doc1Base64, doc2Base64, true, 200, '{"document":"AAA="}'],
+
+    // Invalid base64 document strings.
+    [
+      "invalid-doc-string",
+      "invalid-doc-string",
+      true,
+      400,
+      "Error merging documents.",
+    ],
+
+    // Invalid payload claims.
+    [0, 0, true, 400, "Invalid payload."],
+
+    // Invalid JWT.
+    [0, 0, false, 400, "Invalid JWT."],
   ])(
   );
 });
