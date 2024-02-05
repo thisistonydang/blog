@@ -23,6 +23,23 @@ export default async function merge(
   }
 
   try {
+    // Merge the server and client documents into a single Yjs document.
+    const doc = new Y.Doc();
+    Y.applyUpdate(doc, toUint8Array(serverDocument));
+    Y.applyUpdate(doc, toUint8Array(clientDocument));
+
+    // Encode the document as a base64 update.
+    const binaryDocument = Y.encodeStateAsUpdate(doc);
+    const base64Document = fromUint8Array(binaryDocument);
+
+    // Return the merged document in the response.
+    const body = JSON.stringify({ document: base64Document });
+    return new Response(body, {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   } catch {
     return new Response("Error merging documents.", { status: 400 });
   }
