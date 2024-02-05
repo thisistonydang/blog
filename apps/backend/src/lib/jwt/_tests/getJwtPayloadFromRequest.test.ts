@@ -5,27 +5,26 @@ import { env } from "@lib/testing/env";
 
 import { getJwtPayloadFromRequest } from "../getJwtPayloadFromRequest";
 
-describe("getJwtPayloadFromRequest", () => {
+describe("getJwtPayloadFromRequest", async () => {
+  const jwt = await sign_jwt(env, { foo: "bar" });
+
   it.each([
     // Valid jwt.
-    [true, true, false, "bar"],
+    [true, jwt, false, "bar"],
 
     // Invalid jwt.
-    [true, false, true, undefined],
+    [true, "invalid_jwt", true, undefined],
 
     // No jwt.
-    [false, true, true, undefined],
+    [false, jwt, true, undefined],
   ])(
-    "hasJwt: %s, isValidJwt: %s, isPayloadNull: %s, expectedFoo: %s",
-    async (hasJwt, isValidJwt, isPayloadNull, expectedFoo) => {
+    "hasJwt: %s, jwt: %s, isPayloadNull: %s, expectedFoo: %s",
+    async (hasJwt, jwt, isPayloadNull, expectedFoo) => {
       // GIVEN Whether the request has a JWT query parameter and whether the JWT is valid.
 
       // WHEN Trying to retrieve the JWT payload from the request.
-      const jwt = await sign_jwt(env, { foo: "bar" });
       const request = new Request(
-        `https://tonydang.blog/?${hasJwt ? "jwt" : "blah"}=${
-          isValidJwt ? jwt : "invalid_jwt"
-        }`,
+        `https://tonydang.blog/?${hasJwt ? "jwt" : "blah"}=${jwt}`,
       );
       const payload = await getJwtPayloadFromRequest(request, env);
 
