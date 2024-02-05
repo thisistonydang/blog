@@ -35,5 +35,14 @@ describe("/microservices/yjs/merge", () => {
     // Invalid JWT.
     [0, 0, false, 400, "Invalid JWT."],
   ])(
+    "serverDocument: %s, clientDocument: %s, isValidJwt: %s, expectedStatus: %s, expectedBody: %s",
+    async (
+      serverDocument,
+      clientDocument,
+      isValidJwt,
+      expectedStatus,
+      expectedBody,
+    ) => {
+    },
   );
 });
