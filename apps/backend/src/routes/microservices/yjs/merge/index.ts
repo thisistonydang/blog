@@ -14,4 +14,12 @@ export default async function merge(
   // Extract claims from payload.
   const { serverDocument, clientDocument } = payload;
 
+  // Check payload claims are valid.
+  if (
+    typeof serverDocument !== "string" ||
+    typeof clientDocument !== "string"
+  ) {
+    return new Response("Invalid payload.", { status: 400 });
+  }
+
 }
