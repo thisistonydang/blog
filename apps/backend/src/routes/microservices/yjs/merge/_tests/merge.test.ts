@@ -43,6 +43,20 @@ describe("/microservices/yjs/merge", () => {
       expectedStatus,
       expectedBody,
     ) => {
+      // GIVEN Payload and whether JWT is valid.
+
+      // WHEN Request is made to api route with jwt.
+      const jwt = await sign_jwt(env, { serverDocument, clientDocument });
+      const request = new Request(
+        `https://tonydang.blog/microservices/yjs/merge?jwt=${
+          isValidJwt ? jwt : "invalid_jwt"
+        }`,
+      );
+      const res = await api_route(request, env);
+
+      // THEN Expected status code and body text is returned in response.
+      expect(res.status).to.equal(expectedStatus);
+      expect(await res.text()).to.equal(expectedBody);
     },
   );
 });
