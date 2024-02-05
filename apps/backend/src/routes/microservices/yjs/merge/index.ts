@@ -22,4 +22,7 @@ export default async function merge(
     return new Response("Invalid payload.", { status: 400 });
   }
 
+  try {
+  } catch (error) {
+  }
 }
