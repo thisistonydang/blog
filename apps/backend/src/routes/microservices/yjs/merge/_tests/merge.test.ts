@@ -16,4 +16,7 @@ describe("/microservices/yjs/merge", () => {
   const doc2Binary = Y.encodeStateAsUpdate(doc2);
   const doc2Base64 = fromUint8Array(doc2Binary);
 
+  it.each([
+  ])(
+  );
 });
