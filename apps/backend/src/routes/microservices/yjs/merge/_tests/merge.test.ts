@@ -6,3 +6,6 @@ import { sign_jwt } from "@lib/jwt/sign-jwt";
 import { env } from "@lib/testing/env";
 
 import api_route from "../index";
+
+describe("/microservices/yjs/merge", () => {
+});
