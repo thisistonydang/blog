@@ -6,4 +6,6 @@ import { env } from "@lib/testing/env";
 import { getJwtPayloadFromRequestJson } from "../getJwtPayloadFromRequestJson";
 
 describe("getJwtPayloadFromRequestJson", async () => {
+  const jwt = await sign_jwt(env, { foo: "bar" });
+
 });
