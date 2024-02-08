@@ -1,4 +1,4 @@
-import { getJwtPayloadFromRequest } from "@lib/jwt/getJwtPayloadFromRequest";
+import { getJwtPayloadFromRequestParams } from "@lib/jwt/getJwtPayloadFromRequestParams";
 import { send_email } from "@lib/mailchannels/send_email";
 import type { Env } from "@lib/types/env";
 
@@ -6,7 +6,7 @@ export default async function send(
   request: Request,
   env: Env,
 ): Promise<Response> {
-  const payload = await getJwtPayloadFromRequest(request, env);
+  const payload = await getJwtPayloadFromRequestParams(request, env);
   if (!payload) return new Response("Invalid JWT.", { status: 400 });
 
   // Extract claims from payload.
