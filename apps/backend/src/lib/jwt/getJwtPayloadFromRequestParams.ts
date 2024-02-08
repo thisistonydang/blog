@@ -4,16 +4,16 @@ import type { JWTPayload } from "jose";
 import type { Env } from "@lib/types/env";
 
 /**
- * Retrieves the JWT payload from a request.
+ * Retrieves the JWT payload from request params.
  *
  * Returns null if the JWT is invalid.
  *
- * This function assumes the JWT is in the query string as "?jwt=<TOKEN>".
+ * This function assumes the JWT is in the query params as "?jwt=<TOKEN>".
  *
  * @param request - Incoming request.
  * @param env - Cloudflare worker environmental variables.
  */
-export async function getJwtPayloadFromRequest(
+export async function getJwtPayloadFromRequestParams(
   request: Request,
   env: Env,
 ): Promise<JWTPayload | null> {
