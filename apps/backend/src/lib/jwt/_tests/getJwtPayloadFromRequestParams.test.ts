@@ -3,9 +3,9 @@ import { describe, expect, it } from "vitest";
 import { sign_jwt } from "@lib/jwt/sign-jwt";
 import { env } from "@lib/testing/env";
 
-import { getJwtPayloadFromRequest } from "../getJwtPayloadFromRequest";
+import { getJwtPayloadFromRequestParams } from "../getJwtPayloadFromRequestParams";
 
-describe("getJwtPayloadFromRequest", async () => {
+describe("getJwtPayloadFromRequestParams", async () => {
   const jwt = await sign_jwt(env, { foo: "bar" });
 
   it.each([
@@ -29,7 +29,7 @@ describe("getJwtPayloadFromRequest", async () => {
           method: "POST",
         },
       );
-      const payload = await getJwtPayloadFromRequest(request, env);
+      const payload = await getJwtPayloadFromRequestParams(request, env);
 
       // THEN Expected payload is returned.
       expect(payload === null).to.equal(isPayloadNull);
