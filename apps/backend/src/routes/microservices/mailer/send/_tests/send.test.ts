@@ -39,9 +39,14 @@ describe("/microservices/mailer/send", () => {
       // WHEN Request is made to api route with jwt.
       const jwt = await sign_jwt(env, { email, name, subject, html });
       const request = new Request(
-        `https://tonydang.blog/microservices/mailer/send?jwt=${
-          isValidJwt ? jwt : "invalid_jwt"
-        }`,
+        "https://tonydang.blog/microservices/mailer/send",
+        {
+          method: "POST",
+          body: JSON.stringify({ jwt: isValidJwt ? jwt : "invalid_jwt" }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
       );
       const res = await api_route(request, env);
 
