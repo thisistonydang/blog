@@ -19,5 +19,22 @@ describe("getJwtPayloadFromRequestJson", async () => {
     [false, jwt, true, undefined],
   ])(
     "hasJwt: %s, jwt: %s, isPayloadNull: %s, expectedFoo: %s",
+    async (hasJwt, jwt, isPayloadNull, expectedFoo) => {
+      // GIVEN Whether the json request has a `jwt` key and whether the JWT is valid.
+
+      // WHEN Trying to retrieve the JWT payload from the request.
+      const request = new Request("https://tonydang.blog/", {
+        method: "POST",
+        body: JSON.stringify(hasJwt ? { jwt } : { invalidJwtKey: jwt }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const payload = await getJwtPayloadFromRequestJson(request, env);
+
+      // THEN Expected payload is returned.
+      expect(payload === null).to.equal(isPayloadNull);
+      expect(payload?.foo).to.equal(expectedFoo);
+    },
   );
 });
