@@ -5,3 +5,5 @@ import { env } from "@lib/testing/env";
 
 import { getJwtPayloadFromRequestJson } from "../getJwtPayloadFromRequestJson";
 
+describe("getJwtPayloadFromRequestJson", async () => {
+});
