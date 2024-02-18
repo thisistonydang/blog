@@ -23,10 +23,11 @@ export default async function send(
   }
 
   // Send email via MailChannels.
-  const mailChannelsRes = await send_email(env, email, name, subject, html);
+  // TODO: Add flag to enable/disable sending.
+  // const mailChannelsRes = await send_email(env, email, name, subject, html);
 
   // Send me an email notification.
-  await send_email(
+  const res = await send_email(
     env,
     "tony@tonydang.blog",
     "Tony",
@@ -34,5 +35,5 @@ export default async function send(
     `Email sent:<br><br>${html}`,
   );
 
-  return mailChannelsRes;
+  return res;
 }
