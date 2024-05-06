@@ -15,5 +15,5 @@
   href={page.path}
   rel={page.prefetch ? "prefetch" : null}
 >
-  {@html page.name}
+  {page.name}
 </a>
