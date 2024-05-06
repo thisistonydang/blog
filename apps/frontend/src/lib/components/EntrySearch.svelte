@@ -64,7 +64,7 @@
             rounded-sm border
           "
         >
-          <a href="/{entry.slug}/" rel="prefetch">
+          <a href={entry.data.external || `/${entry.slug}/`} rel="prefetch">
             <EntryImage {entry} {assetsVersion} />
 
             <div class="p-3">

@@ -11,6 +11,7 @@ const page_schema = {
 
 const post_schema = {
   ...page_schema,
+  external: z.string().default(""),
   pubDate: z.date(),
   tags: z.array(z.string()),
 };
