@@ -17,9 +17,7 @@ The blog is a space for me to experiment with various web technologies as well a
     
   - [Climbing Board](https://tonydang.blog/climbing-board/) - A 3D, interactive climbing board that allows users to create and view rock climbing problems.
 
-
     https://github.com/tonydangblog/blog/assets/63323230/d5bedd0e-e278-4eeb-85ea-85280c0e3aaf
-
 
 <br>
 
