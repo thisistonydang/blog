@@ -48,6 +48,7 @@ export async function sendEmail(
       },
     });
 
+    const res = await client.send(command);
   } catch (error) {
   }
 }
