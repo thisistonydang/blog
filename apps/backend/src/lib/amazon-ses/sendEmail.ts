@@ -24,9 +24,7 @@ export async function sendEmail(
   const sender = "Tony Dang <tony@tonydang.blog>";
   const recipient = name ? `${name} <${email}>` : email;
 
-      ],
-      subject,
-      content: [{ type: "text/html", value: html }],
-    }),
-  });
+  try {
+  } catch (error) {
+  }
 }
