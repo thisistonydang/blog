@@ -20,18 +20,10 @@ export async function sendEmail(
   // Note: MailChannels returns 202 status code in production.
   if (env.MODE !== "production") return new Response(null, { status: 202 });
 
-  return await fetch("https://api.mailchannels.net/tx/v1/send", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      from: { email: "tony@tonydang.blog", name: "Tony Dang" },
-      personalizations: [
-        {
-          to: name ? [{ email, name }] : [{ email }],
-          dkim_domain: "tonydang.blog",
-          dkim_selector: "mc",
-          dkim_private_key: env.MC_DKIM_PRIVATE_KEY,
-        },
+  // TODO: Allow dynamic sender.
+  const sender = "Tony Dang <tony@tonydang.blog>";
+  const recipient = name ? `${name} <${email}>` : email;
+
       ],
       subject,
       content: [{ type: "text/html", value: html }],
