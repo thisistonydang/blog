@@ -50,5 +50,7 @@ export async function sendEmail(
 
     const res = await client.send(command);
   } catch (error) {
+    console.log(error);
+    return new Response(get_error_message(error), { status: 500 });
   }
 }
