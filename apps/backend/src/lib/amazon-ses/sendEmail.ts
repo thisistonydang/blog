@@ -51,6 +51,12 @@ export async function sendEmail(
     const res = await client.send(command);
   } catch (error) {
     console.log(error);
-    return new Response(get_error_message(error), { status: 500 });
+
+    const status =
+      error instanceof SESv2ServiceException
+        ? error.$metadata.httpStatusCode
+        : 500;
+
+    return new Response(get_error_message(error), { status });
   }
 }
