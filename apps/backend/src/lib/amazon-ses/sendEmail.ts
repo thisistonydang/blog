@@ -20,9 +20,10 @@ export async function sendEmail(
   // Note: MailChannels returns 202 status code in production.
   if (env.MODE !== "production") return new Response(null, { status: 202 });
 
-  // TODO: Allow dynamic sender.
+  // TODO: Allow dynamic sender and replyTo.
   const sender = "Tony Dang <tony@tonydang.blog>";
   const recipient = name ? `${name} <${email}>` : email;
+  const replyTo = "Tony Dang <tony@tonydang.blog>";
 
   try {
     const client = new SESv2Client({
@@ -36,6 +37,7 @@ export async function sendEmail(
     const command = new SendEmailCommand({
       FromEmailAddress: sender,
       Destination: { ToAddresses: [recipient] },
+      ReplyToAddresses: [replyTo],
       Content: {
         Simple: {
           Subject: { Data: subject, Charset: "UTF-8" },
