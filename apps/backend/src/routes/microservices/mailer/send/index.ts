@@ -24,7 +24,7 @@ export default async function send(
 
   // Send email via Amazon SES.
   // TODO: Add flag to enable/disable sending.
-  // const mailChannelsRes = await send_email(env, email, name, subject, html);
+  // const res = await sendEmail(env, email, name, subject, html);
 
   // Send me an email notification.
   const res = await sendEmail(
