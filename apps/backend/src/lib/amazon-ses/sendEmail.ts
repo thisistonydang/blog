@@ -25,6 +25,14 @@ export async function sendEmail(
   const recipient = name ? `${name} <${email}>` : email;
 
   try {
+    const client = new SESv2Client({
+      credentials: {
+        accessKeyId: env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+      },
+      region: "us-west-1",
+    });
+
   } catch (error) {
   }
 }
