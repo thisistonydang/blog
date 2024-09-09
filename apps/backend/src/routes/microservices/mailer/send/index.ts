@@ -1,5 +1,5 @@
 import { getJwtPayloadFromRequestJson } from "@lib/jwt/getJwtPayloadFromRequestJson";
-import { send_email } from "@lib/mailchannels/send_email";
+import { sendEmail } from "@lib/amazon-ses/sendEmail";
 import type { Env } from "@lib/types/env";
 
 export default async function send(
