@@ -41,7 +41,9 @@ export async function sendEmail(
       Content: {
         Simple: {
           Subject: { Data: subject, Charset: "UTF-8" },
-          Body: { Html: { Data: html, Charset: "UTF-8" } },
+          Body: {
+            Html: { Data: html, Charset: "UTF-8" },
+          },
         },
       },
     });
