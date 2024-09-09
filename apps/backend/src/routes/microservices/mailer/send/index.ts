@@ -27,7 +27,7 @@ export default async function send(
   // const mailChannelsRes = await send_email(env, email, name, subject, html);
 
   // Send me an email notification.
-  const res = await send_email(
+  const res = await sendEmail(
     env,
     "tony@tonydang.blog",
     "Tony",
