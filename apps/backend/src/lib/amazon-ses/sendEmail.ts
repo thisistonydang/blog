@@ -49,6 +49,14 @@ export async function sendEmail(
     });
 
     const res = await client.send(command);
+
+    if (res.$metadata.httpStatusCode === 200 && res.MessageId) {
+    }
+
+    return new Response(
+      "Non-200 response and/or no MessageId from Amazon SES",
+      { status: 500 },
+    );
   } catch (error) {
     console.log(error);
 
