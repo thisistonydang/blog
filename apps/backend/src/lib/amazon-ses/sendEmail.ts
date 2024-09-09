@@ -33,6 +33,17 @@ export async function sendEmail(
       region: "us-west-1",
     });
 
+    const command = new SendEmailCommand({
+      FromEmailAddress: sender,
+      Destination: { ToAddresses: [recipient] },
+      Content: {
+        Simple: {
+          Subject: { Data: subject, Charset: "UTF-8" },
+          Body: { Html: { Data: html, Charset: "UTF-8" } },
+        },
+      },
+    });
+
   } catch (error) {
   }
 }
