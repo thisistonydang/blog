@@ -22,7 +22,7 @@ export default async function send(
     return new Response("Invalid payload.", { status: 400 });
   }
 
-  // Send email via MailChannels.
+  // Send email via Amazon SES.
   // TODO: Add flag to enable/disable sending.
   // const mailChannelsRes = await send_email(env, email, name, subject, html);
 
