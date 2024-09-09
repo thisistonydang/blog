@@ -2,7 +2,7 @@ import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
 import type { Env } from "@lib/types/env";
 
 /**
- * Send email via MailChannels.
+ * Send email via Amazon SES.
  *
  * @param env - Cloudflare worker environmental variables.
  * @param email - Email address of recipient.
