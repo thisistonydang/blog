@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   import EasterEgg from "./EasterEgg.svelte";
-  import SubscriptionForm from "./SubscriptionForm.svelte";
+  // import SubscriptionForm from "./SubscriptionForm.svelte";
 
   let year = new Date().getFullYear().toString();
 
@@ -12,7 +12,7 @@
 </script>
 
 <footer class="mt-24">
-  <SubscriptionForm />
+  <!-- <SubscriptionForm /> -->
   <div class="mt-20 flex items-center">
     <EasterEgg />
     <p class="prose-a:no-underline ml-2 text-xs leading-relaxed opacity-90">
