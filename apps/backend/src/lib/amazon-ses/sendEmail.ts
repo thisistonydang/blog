@@ -10,7 +10,7 @@ import type { Env } from "@lib/types/env";
  * @param subject - Subject line of email.
  * @param html - HTML body of email.
  */
-export async function send_email(
+export async function sendEmail(
   env: Env,
   email: string,
   name: string,
