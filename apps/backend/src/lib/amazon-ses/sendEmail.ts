@@ -11,16 +11,20 @@ import type { Env } from "@lib/types/env";
  * - Email only - "name@example.com"
  *
  * @param env - Cloudflare worker environmental variables.
- * @param email - Email address of recipient.
- * @param name - Name of recipient.
+ * @param sender - Email address of sender.
+ * @param recipient - Email address of recipient.
+ * @param replyTo - Email address to reply to.
  * @param subject - Subject line of email.
+ * @param text - Text body of email.
  * @param html - HTML body of email.
  */
 export async function sendEmail(
   env: Env,
-  email: string,
-  name: string,
+  sender: string,
+  recipient: string,
+  replyTo: string,
   subject: string,
+  text: string,
   html: string,
 ): Promise<Response> {
   const successResponse = new Response("Success: Email sent.", { status: 200 });
