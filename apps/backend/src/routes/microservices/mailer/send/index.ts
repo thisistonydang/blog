@@ -2,22 +2,21 @@ import { getJwtPayloadFromRequestJson } from "@lib/jwt/getJwtPayloadFromRequestJ
 import { sendEmail } from "@lib/amazon-ses/sendEmail";
 import type { Env } from "@lib/types/env";
 
-export default async function send(
-  request: Request,
-  env: Env,
-): Promise<Response> {
+export default async function send(request: Request, env: Env): Promise<Response> {
   const payload = await getJwtPayloadFromRequestJson(request, env);
   if (!payload) return new Response("Invalid JWT.", { status: 400 });
 
   // Extract claims from payload.
-  const { email, name, subject, html } = payload;
+  const { sender, recipient, replyTo, subject, textBody, htmlBody } = payload;
 
   // Check payload claims are valid.
   if (
-    typeof email !== "string" ||
-    typeof name !== "string" ||
+    typeof sender !== "string" ||
+    typeof recipient !== "string" ||
+    typeof replyTo !== "string" ||
     typeof subject !== "string" ||
-    typeof html !== "string"
+    typeof textBody !== "string" ||
+    typeof htmlBody !== "string"
   ) {
     return new Response("Invalid payload.", { status: 400 });
   }
