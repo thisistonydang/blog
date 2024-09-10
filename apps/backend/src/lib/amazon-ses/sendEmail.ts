@@ -23,7 +23,7 @@ export async function sendEmail(
   subject: string,
   html: string,
 ): Promise<Response> {
-  const successResponse = new Response("Success", { status: 200 });
+  const successResponse = new Response("Success: Email sent.", { status: 200 });
 
   // Don't send email in development or test environment.
   if (env.MODE !== "production") return successResponse;
