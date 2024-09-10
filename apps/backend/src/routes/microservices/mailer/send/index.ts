@@ -22,17 +22,7 @@ export default async function send(request: Request, env: Env): Promise<Response
   }
 
   // Send email via Amazon SES.
-  // TODO: Add flag to enable/disable sending.
-  // const res = await sendEmail(env, email, name, subject, html);
-
-  // Send me an email notification.
-  const res = await sendEmail(
-    env,
-    "tony@tonydang.blog",
-    "Tony",
-    `"${subject}" email sent to ${name} <${email}>`,
-    `Email sent:<br><br>${html}`,
-  );
+  const res = await sendEmail(env, sender, recipient, replyTo, subject, textBody, htmlBody);
 
   return res;
 }
