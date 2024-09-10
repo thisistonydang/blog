@@ -14,7 +14,7 @@ describe("/microservices/mailer/send", () => {
       "Subject",
       "Body HTML",
       true,
-      202,
+      200,
       "",
     ],
 
