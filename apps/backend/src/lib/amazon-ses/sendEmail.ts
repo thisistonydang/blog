@@ -15,8 +15,8 @@ import type { Env } from "@lib/types/env";
  * @param recipient - Email address of recipient.
  * @param replyTo - Email address to reply to.
  * @param subject - Subject line of email.
- * @param text - Text body of email.
- * @param html - HTML body of email.
+ * @param textBody - Text body of email.
+ * @param htmlBody - HTML body of email.
  */
 export async function sendEmail(
   env: Env,
@@ -24,8 +24,8 @@ export async function sendEmail(
   recipient: string,
   replyTo: string,
   subject: string,
-  text: string,
-  html: string,
+  textBody: string,
+  htmlBody: string,
 ): Promise<Response> {
   const successResponse = new Response("Success: Email sent.", { status: 200 });
 
@@ -49,7 +49,8 @@ export async function sendEmail(
         Simple: {
           Subject: { Data: subject, Charset: "UTF-8" },
           Body: {
-            Html: { Data: html, Charset: "UTF-8" },
+            Text: { Data: textBody, Charset: "UTF-8" },
+            Html: { Data: htmlBody, Charset: "UTF-8" },
           },
         },
       },
