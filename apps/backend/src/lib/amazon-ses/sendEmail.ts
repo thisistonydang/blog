@@ -1,8 +1,4 @@
-import {
-  SESv2Client,
-  SESv2ServiceException,
-  SendEmailCommand,
-} from "@aws-sdk/client-sesv2";
+import { SESv2Client, SESv2ServiceException, SendEmailCommand } from "@aws-sdk/client-sesv2";
 import { get_error_message } from "@tonydangblog/error-handling";
 
 import type { Env } from "@lib/types/env";
@@ -63,17 +59,11 @@ export async function sendEmail(
       return successResponse;
     }
 
-    return new Response(
-      "Non-200 response and/or no MessageId from Amazon SES",
-      { status: 500 },
-    );
+    return new Response("Non-200 response and/or no MessageId from Amazon SES", { status: 500 });
   } catch (error) {
     console.log(error);
 
-    const status =
-      error instanceof SESv2ServiceException
-        ? error.$metadata.httpStatusCode
-        : 500;
+    const status = error instanceof SESv2ServiceException ? error.$metadata.httpStatusCode : 500;
 
     return new Response(get_error_message(error), { status });
   }
