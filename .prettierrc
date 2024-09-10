@@ -1,4 +1,5 @@
 {
+  "printWidth": 100,
   "plugins": [
     "prettier-plugin-glsl",
     "prettier-plugin-astro",
