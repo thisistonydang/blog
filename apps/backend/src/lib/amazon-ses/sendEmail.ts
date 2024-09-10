@@ -32,11 +32,6 @@ export async function sendEmail(
   // Don't send email in development or test environment.
   if (env.MODE !== "production") return successResponse;
 
-  // TODO: Allow dynamic sender and replyTo.
-  const sender = "Tony Dang <tony@tonydang.blog>";
-  const recipient = name ? `${name} <${email}>` : email;
-  const replyTo = "Tony Dang <tony@tonydang.blog>";
-
   try {
     const client = new SESv2Client({
       credentials: {
