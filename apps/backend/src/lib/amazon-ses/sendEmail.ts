@@ -23,8 +23,8 @@ export async function sendEmail(
   subject: string,
   html: string,
 ): Promise<Response> {
-  // Note: MailChannels returns 202 status code in production.
-  if (env.MODE !== "production") return new Response(null, { status: 202 });
+  // Don't send email in development or test environment.
+  if (env.MODE !== "production") return new Response(null, { status: 200 });
 
   // TODO: Allow dynamic sender and replyTo.
   const sender = "Tony Dang <tony@tonydang.blog>";
@@ -57,6 +57,7 @@ export async function sendEmail(
     const res = await client.send(command);
 
     if (res.$metadata.httpStatusCode === 200 && res.MessageId) {
+      return new Response(null, { status: 200 });
     }
 
     return new Response(
