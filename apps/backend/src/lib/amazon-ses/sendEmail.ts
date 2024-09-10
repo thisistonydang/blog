@@ -57,6 +57,7 @@ export async function sendEmail(
     });
 
     const res = await client.send(command);
+    console.log("res:", res);
 
     if (res.$metadata.httpStatusCode === 200 && res.MessageId) {
       return successResponse;
