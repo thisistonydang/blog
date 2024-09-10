@@ -23,8 +23,10 @@ export async function sendEmail(
   subject: string,
   html: string,
 ): Promise<Response> {
+  const successResponse = new Response("Success", { status: 200 });
+
   // Don't send email in development or test environment.
-  if (env.MODE !== "production") return new Response(null, { status: 200 });
+  if (env.MODE !== "production") return successResponse;
 
   // TODO: Allow dynamic sender and replyTo.
   const sender = "Tony Dang <tony@tonydang.blog>";
@@ -57,7 +59,7 @@ export async function sendEmail(
     const res = await client.send(command);
 
     if (res.$metadata.httpStatusCode === 200 && res.MessageId) {
-      return new Response(null, { status: 200 });
+      return successResponse;
     }
 
     return new Response(

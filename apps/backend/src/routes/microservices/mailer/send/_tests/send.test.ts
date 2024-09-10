@@ -15,7 +15,7 @@ describe("/microservices/mailer/send", () => {
       "Body HTML",
       true,
       200,
-      "",
+      "Success",
     ],
 
     // Invalid payload.
