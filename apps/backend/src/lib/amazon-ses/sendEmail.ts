@@ -6,6 +6,10 @@ import type { Env } from "@lib/types/env";
 /**
  * Send email via Amazon SES.
  *
+ * `sender`, `recipient`, and `replyTo` format can be in either of the following formats:
+ * - Name with email (preferred) - "First Last \<name@example.com\>"
+ * - Email only - "name@example.com"
+ *
  * @param env - Cloudflare worker environmental variables.
  * @param email - Email address of recipient.
  * @param name - Name of recipient.
