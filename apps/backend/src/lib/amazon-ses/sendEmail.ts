@@ -1,4 +1,10 @@
-import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
+import {
+  SESv2Client,
+  SESv2ServiceException,
+  SendEmailCommand,
+} from "@aws-sdk/client-sesv2";
+import { get_error_message } from "@tonydangblog/error-handling";
+
 import type { Env } from "@lib/types/env";
 
 /**
