@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tonydang.blog/sitemap-index.xml
+Sitemap: https://tonydang.com/sitemap-index.xml

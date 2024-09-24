@@ -14,7 +14,7 @@ import remarkToc from "remark-toc";
 import glsl from "vite-plugin-glsl";
 
 export default defineConfig({
-  site: "https://tonydang.blog",
+  site: "https://tonydang.com",
   server: { port: 3000 },
   integrations: [
     react(),
