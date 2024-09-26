@@ -2,7 +2,7 @@
 
 This is the repo for my personal website built with [Astro](https://astro.build/). The live site can viewed at [tonydang.com](https://tonydang.com).
 
-The blog is a space for me to experiment with various web technologies as well as share useful things I create and learn.
+The site is a space for me to experiment with various web technologies as well as share useful things I create and learn.
 
 ## Cool things you can find there...
 
