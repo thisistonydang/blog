@@ -38,12 +38,10 @@
   class:hover:border-heading={!hasTouchScreen}
 >
   {#if loading}
+    <span class="sr-only">loading...</span>
     <svg
-      class="
-        fill-bg group-hover:fill-heading
-        inline-block
-        animate-[spin_2s_linear_infinite]
-      "
+      class="fill-bg inline-block animate-[spin_2s_linear_infinite]"
+      class:group-hover:fill-heading={!hasTouchScreen}
       width="1.4rem"
       height="1.4rem"
       viewBox="0 0 512 512"
