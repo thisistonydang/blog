@@ -2,6 +2,8 @@
   import type { CollectionEntry } from "astro:content";
   import { onMount } from "svelte";
 
+  import { useHasTouchScreen } from "@lib/hooks/useHasTouchScreen";
+
   import EntryImage from "@lib/components/EntryImage.svelte";
   import TextField from "@lib/components/TextField.svelte";
   import Whoops from "@lib/components/Whoops.svelte";
@@ -14,6 +16,7 @@
   let mounted = false;
   let searchString = "";
   let filteredPosts = entries;
+  let hasTouchScreen = false;
 
   $: words = searchString.toLowerCase().trim().replace(/\s+/g, " ").split(" ");
 
@@ -44,34 +47,25 @@
 
   onMount(() => {
     mounted = true;
+    hasTouchScreen = useHasTouchScreen();
   });
 </script>
 
-<TextField
-  label="Search"
-  type="search"
-  disabled={!mounted}
-  bind:value={searchString}
-/>
+<TextField label="Search" type="search" disabled={!mounted} bind:value={searchString} />
 
 <div class="not-prose my-8">
   {#if filteredPosts.length}
     <ul class="flex flex-wrap justify-between gap-y-5">
       {#each filteredPosts as entry (entry.slug)}
         <li
-          class="
-            bg-surface/30 border-surface xs:w-[49%] hover:border-heading
-            rounded-sm border
-          "
+          class="bg-surface/30 border-surface xs:w-[49%] rounded-sm border"
+          class:hover:border-heading={!hasTouchScreen}
         >
           <a href={entry.data.external || `/${entry.slug}/`} rel="prefetch">
             <EntryImage {entry} {assetsVersion} />
 
             <div class="p-3">
-              <time
-                class="text-xs"
-                datetime={entry.data.pubDate.toISOString().split("T")[0]}
-              >
+              <time class="text-xs" datetime={entry.data.pubDate.toISOString().split("T")[0]}>
                 {format_date(entry.data.pubDate)}
               </time>
               <br />
