@@ -5,11 +5,11 @@ import { env } from "@lib/testing/env";
 
 import api_route from "../index";
 
-const subscribed_email = "list.subscribe1@tonydang.blog";
-const banned_email = "list.subscribe2@tonydang.blog";
-const verified_email = "list.subscribe3@tonydang.blog";
-const unverified_email = "list.subscribe4@tonydang.blog";
-const new_contact_email = "list.subscribe5@tonydang.blog";
+const subscribed_email = "list.subscribe1@tonydang.com";
+const banned_email = "list.subscribe2@tonydang.com";
+const verified_email = "list.subscribe3@tonydang.com";
+const unverified_email = "list.subscribe4@tonydang.com";
+const new_contact_email = "list.subscribe5@tonydang.com";
 
 beforeAll(async () => {
   await supabase(env)
@@ -69,10 +69,10 @@ afterAll(async () => {
 
 describe("/list/subscribe", () => {
   it.each([
-    ["", "tony@tonydang.blog", { name: "Name is required" }],
+    ["", "tony@tonydang.com", { name: "Name is required" }],
     [
       "0123456789 0123456789 0123456789 0123456789 0123456789",
-      "tony@tonydang.blog",
+      "tony@tonydang.com",
       { name: "Name exceeds 50 max length" },
     ],
     ["Terry", "t@t", { email: "Invalid email" }],
@@ -92,7 +92,7 @@ describe("/list/subscribe", () => {
       {
         unsubscribed: `It looks like this email has been unsubscribed from my
         mailing list. If you would like to resubscribe, please send me an email
-        at tony@tonydang.blog and I will re-add you.`,
+        at tony@tonydang.com and I will re-add you.`,
       },
     ],
     [
@@ -115,7 +115,7 @@ describe("/list/subscribe", () => {
     // GIVEN Name and email for request.
 
     // WHEN Request is made to api route.
-    const request = new Request("https://tonydang.blog/list/subscribe", {
+    const request = new Request("https://tonydang.com/list/subscribe", {
       method: "POST",
       body: JSON.stringify({ name, email }),
     });

@@ -23,7 +23,7 @@ describe("getJwtPayloadFromRequestJson", async () => {
       // GIVEN Whether the json request has a `jwt` key and whether the JWT is valid.
 
       // WHEN Trying to retrieve the JWT payload from the request.
-      const request = new Request("https://tonydang.blog/", {
+      const request = new Request("https://tonydang.com/", {
         method: "POST",
         body: JSON.stringify(hasJwt ? { jwt } : { invalidJwtKey: jwt }),
         headers: {

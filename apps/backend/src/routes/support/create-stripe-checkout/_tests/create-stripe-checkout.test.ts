@@ -12,7 +12,7 @@ describe("/support/create-stripe-checkout", () => {
     // GIVEN N/A.
 
     // WHEN Request is made to api route with mocked request.formData.
-    const request = new Request("https://tonydang.blog");
+    const request = new Request("https://tonydang.com");
     const form_data_mock = async () => ({ get: () => qty });
     request.formData = form_data_mock as unknown as () => Promise<FormData>;
     const res = await api_route(request, env);

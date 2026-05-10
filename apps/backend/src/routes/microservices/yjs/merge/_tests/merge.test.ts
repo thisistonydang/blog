@@ -48,7 +48,7 @@ describe("/microservices/yjs/merge", () => {
       // WHEN Request is made to api route with jwt.
       const jwt = await sign_jwt(env, { serverDocument, clientDocument });
       const request = new Request(
-        "https://tonydang.blog/microservices/yjs/merge",
+        "https://tonydang.com/microservices/yjs/merge",
         {
           method: "POST",
           body: JSON.stringify({ jwt: isValidJwt ? jwt : "invalid_jwt" }),

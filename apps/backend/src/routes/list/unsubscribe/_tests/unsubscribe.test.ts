@@ -26,7 +26,7 @@ describe("/list/unsubscribe", () => {
 
     // WHEN Request is made to api route with contact_id.
     const request = new Request(
-      `https://tonydang.blog/list/unsubscribe?id=${contact_id}`
+      `https://tonydang.com/list/unsubscribe?id=${contact_id}`
     );
     const res = await api_route(request, env);
     rows = await supabase(env).from("contact").select("*").match({ email });
@@ -42,7 +42,7 @@ describe("/list/unsubscribe", () => {
     // GIVEN N/A.
 
     // WHEN Request is made to api route without contact_id.
-    const request = new Request("https://tonydang.blog/list/unsubscribe");
+    const request = new Request("https://tonydang.com/list/unsubscribe");
     const res = await api_route(request, env);
 
     // THEN User is redirected to whoops page.

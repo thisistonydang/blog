@@ -23,11 +23,11 @@ export async function send_email(
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
-      from: { email: "tony@tonydang.blog", name: "Tony Dang" },
+      from: { email: "tony@tonydang.com", name: "Tony Dang" },
       personalizations: [
         {
           to: name ? [{ email, name }] : [{ email }],
-          dkim_domain: "tonydang.blog",
+          dkim_domain: "tonydang.com",
           dkim_selector: "mc",
           dkim_private_key: env.MC_DKIM_PRIVATE_KEY,
         },

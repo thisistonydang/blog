@@ -33,7 +33,7 @@ describe("construct_event", () => {
       );
       const v1 = buf2hex(signed_payload);
       const stripe_signature = `t=timestamp,v1=${v1}`;
-      const request = new Request("https://tonydang.blog", {
+      const request = new Request("https://tonydang.com", {
         method: "POST",
         body: payload,
         headers: { "stripe-signature": stripe_signature },

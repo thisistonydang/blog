@@ -31,7 +31,7 @@ export default async function verify(
       // Send me an email notification.
       await send_email(
         env,
-        "tony@tonydang.blog",
+        "tony@tonydang.com",
         "Tony",
         "New Subscriber",
         `Name: ${contact.name}<br>Email: ${contact.email}`,

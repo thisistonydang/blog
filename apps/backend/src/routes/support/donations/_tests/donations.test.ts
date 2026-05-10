@@ -14,7 +14,7 @@ describe("/support/donations", () => {
     // GIVEN N/A.
 
     // WHEN Request is made to api route.
-    const request = new Request("https://tonydang.blog");
+    const request = new Request("https://tonydang.com");
     const res = await api_route(request, env);
     const data: { donations: Donation[] } = await res.json();
 

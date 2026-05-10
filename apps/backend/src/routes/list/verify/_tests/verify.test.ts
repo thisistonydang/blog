@@ -45,7 +45,7 @@ describe("/list/verify", () => {
       // WHEN Request is made to api route with jwt.
       const jwt = await sign_jwt(env, { id: jwt_id });
       const request = new Request(
-        `https://tonydang.blog/list/verify?jwt=${jwt}`
+        `https://tonydang.com/list/verify?jwt=${jwt}`
       );
       const res = await api_route(request, env);
       const { data } = await supabase(env)

@@ -69,7 +69,7 @@ export async function process_subscription_request(
       return {
         unsubscribed: `It looks like this email has been unsubscribed from my
         mailing list. If you would like to resubscribe, please send me an email
-        at tony@tonydang.blog and I will re-add you.`,
+        at tony@tonydang.com and I will re-add you.`,
       };
     }
 
@@ -134,7 +134,7 @@ export async function send_verification_email(
 
     --<br>
     Tony Dang<br>
-    What I'm up to now: <a href="${env.BLOG_URL}/now">tonydang.blog/now</a>
+    What I'm up to now: <a href="${env.BLOG_URL}/now">tonydang.com/now</a>
     <br><br>
 
     <a href="${env.BACKEND_URL}/list/unsubscribe?id=${contact_id}">

@@ -24,7 +24,7 @@ describe("getJwtPayloadFromRequestParams", async () => {
 
       // WHEN Trying to retrieve the JWT payload from the request.
       const request = new Request(
-        `https://tonydang.blog/?${hasJwt ? "jwt" : "invalidParam"}=${jwt}`,
+        `https://tonydang.com/?${hasJwt ? "jwt" : "invalidParam"}=${jwt}`,
         {
           method: "POST",
         },

@@ -65,7 +65,7 @@ describe("/webhooks/stripe", () => {
         type: "checkout.session.completed",
         data: {
           object: {
-            customer_details: { name: "Tony", email: "tony@tonydang.blog" },
+            customer_details: { name: "Tony", email: "tony@tonydang.com" },
             amount_total: 500,
             success_url: `${env.BLOG_URL}/support/successful-one-time-donation`,
           },
@@ -82,7 +82,7 @@ describe("/webhooks/stripe", () => {
       await supabase(env)
         .from("one_time_donation")
         .delete()
-        .match({ email: "tony@tonydang.blog" });
+        .match({ email: "tony@tonydang.com" });
       await supabase(env)
         .from("stripe_event")
         .delete()
@@ -108,7 +108,7 @@ describe("/webhooks/stripe", () => {
       );
       const v1 = buf2hex(signed_payload);
       const stripe_signature = `t=timestamp,v1=${v1}`;
-      const request = new Request("https://tonydang.blog", {
+      const request = new Request("https://tonydang.com", {
         method: "POST",
         body: JSON.stringify(stripe_event),
         headers: { "stripe-signature": stripe_signature },

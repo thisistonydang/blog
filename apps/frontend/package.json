@@ -6,7 +6,7 @@
     "opt-imgs": "node src/lib/sharp/optimizeImages.js",
     "type-check": "astro check && tsc --noEmit --skipLibCheck",
     "link-check": "linkinator http://localhost:3000 -r -s adidas,butora,linkedin,lasportiva,madrock,evolvsports,yelp.com,youtube.com/@sportclimbing,ifsc-climbing.org",
-    "a11y-check": "pa11y-ci --sitemap https://tonydang.blog/sitemap-index.xml --sitemap-find https://tonydang.blog --sitemap-replace http://localhost:3000",
+    "a11y-check": "pa11y-ci --sitemap https://tonydang.com/sitemap-index.xml --sitemap-find https://tonydang.com --sitemap-replace http://localhost:3000",
     "build": "pnpm run type-check && astro build",
     "preview": "wrangler pages dev --compatibility-date=2023-03-14 --port 4000 dist",
     "deploy": "wrangler pages deploy dist"
