@@ -9,7 +9,7 @@
     "a11y-check": "pa11y-ci --sitemap https://tonydang.com/sitemap-index.xml --sitemap-find https://tonydang.com --sitemap-replace http://localhost:3000",
     "build": "pnpm run type-check && astro build",
     "preview": "wrangler pages dev --compatibility-date=2023-03-14 --port 4000 dist",
-    "deploy": "wrangler pages deploy dist"
+    "release": "wrangler pages deploy dist"
   },
   "dependencies": {
     "@astrojs/mdx": "^1.0.3",
