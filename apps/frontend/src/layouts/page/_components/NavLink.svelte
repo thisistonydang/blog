@@ -9,6 +9,11 @@
   onMount(() => (hasTouchScreen = useHasTouchScreen()));
 
   $: is_external = /^https?:\/\//.test(page.path);
+  $: rel = is_external
+    ? "noopener noreferrer"
+    : page.prefetch
+      ? "prefetch"
+      : null;
 </script>
 
 <a
@@ -21,7 +26,8 @@
   class:after:hover:w-full={!hasTouchScreen}
   class:after:w-full={current_path === page.path}
   href={page.path}
-  rel={page.prefetch ? "prefetch" : null}
+  {rel}
+  target={is_external ? "_blank" : null}
 >
   {page.name}{#if is_external}<svg
       xmlns="http://www.w3.org/2000/svg"
