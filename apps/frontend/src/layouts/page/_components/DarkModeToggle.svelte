@@ -1,10 +1,7 @@
-<script context="module" lang="ts">
-  export const THEME_TOGGLED_EVENT = "dark_mode_toggle-theme_toggled";
-</script>
-
 <script lang="ts">
   import { onMount } from "svelte";
   import { theme } from "../_stores/theme";
+  import { THEME_TOGGLED_EVENT } from "./DarkModeToggle.events";
 
   let mounted = false;
   let userExplicitlyChoseTheme = false;

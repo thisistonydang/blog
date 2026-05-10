@@ -1,8 +1,7 @@
 import { AdditiveBlending, ShaderMaterial } from "three";
 import type { Controls } from "../_types/Controls";
 
-// @ts-expect-error svelte import
-import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.svelte";
+import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.events";
 import { rgb_to_vec3 } from "@lib/colors/rgb_to_vec3";
 // @ts-expect-error glsl import
 import vertexShader from "@lib/shaders/particle/vertex.glsl";

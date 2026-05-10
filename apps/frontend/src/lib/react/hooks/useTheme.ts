@@ -1,7 +1,6 @@
 import { useSyncExternalStore } from "react";
 
-// @ts-expect-error svelte import
-import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.svelte";
+import { THEME_TOGGLED_EVENT } from "@layouts/page/_components/DarkModeToggle.events";
 
 /**
  * Return the current theme in localStorage.

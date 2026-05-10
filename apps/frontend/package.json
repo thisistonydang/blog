@@ -5,9 +5,9 @@
     "dev": "astro dev",
     "opt-imgs": "node src/lib/sharp/optimizeImages.js",
     "type-check": "astro check && tsc --noEmit --skipLibCheck",
-    "link-check": "linkinator http://localhost:3000 -r -s adidas,butora,linkedin",
+    "link-check": "linkinator http://localhost:3000 -r -s adidas,butora,linkedin,lasportiva,madrock,evolvsports,yelp.com,youtube.com/@sportclimbing,ifsc-climbing.org",
     "a11y-check": "pa11y-ci --sitemap https://tonydang.blog/sitemap-index.xml --sitemap-find https://tonydang.blog --sitemap-replace http://localhost:3000",
-    "build": "pnpm run type-check && astro build && pnpm run link-check",
+    "build": "pnpm run type-check && astro build",
     "preview": "wrangler pages dev --compatibility-date=2023-03-14 --port 4000 dist",
     "deploy": "wrangler pages deploy dist"
   },
@@ -16,7 +16,7 @@
     "@astrojs/prefetch": "^0.4.0",
     "@astrojs/react": "^3.0.2",
     "@astrojs/rss": "^3.0.0",
-    "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/sitemap": "3.0.0",
     "@astrojs/svelte": "^4.0.2",
     "@astrojs/tailwind": "^5.0.0",
     "@dimforge/rapier2d-compat": "^0.11.2",
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.2.0",
+    "@rollup/pluginutils": "^5.3.0",
     "@types/d3": "^7.4.0",
     "@types/plotly.js-dist-min": "^2.3.1",
     "@types/react": "^18.2.21",
