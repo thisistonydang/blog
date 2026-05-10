@@ -13,7 +13,7 @@
     "e2e": "playwright test",
     "build": "pnpm -F @blog/frontend run build",
     "preview": "pnpm -F @blog/frontend run preview",
-    "deploy": "pnpm -F @blog/frontend run deploy"
+    "release": "pnpm -F @blog/frontend run deploy"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.7.3",
