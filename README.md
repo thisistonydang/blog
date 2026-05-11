@@ -9,7 +9,6 @@ The site is a space for me to experiment with various web technologies as well a
 - Blog [posts](https://tonydang.com/posts/) on data visualization and other topics.
 - A [now page](https://tonydang.com/now/) to see what I'm currently up to.
 - Links to my [talks, presentations, and podcasts](https://www.youtube.com/playlist?list=PL8lFmBcH3vX-JNIgxW3THUy7REthSRFEI).
-- My [unoffice hours](https://tonydang.com/unoffice-hours/) if you'd like to chat with me.
 - Various projects I've worked on, including Three.js experiments such as:
 
   - [Possible Game](https://tonydang.com/possible-game/) - A 2D box jumping jump inspired by the Impossible Game.
