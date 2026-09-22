@@ -1,7 +1,7 @@
 import { z, defineCollection } from "astro:content";
 
 const page_schema = {
-  title: z.string().max(60),
+  title: z.string().max(70),
   description: z.string().max(160),
   image: z.boolean().default(false),
   alt: z.string().default(""),
