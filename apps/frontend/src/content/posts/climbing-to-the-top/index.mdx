@@ -5,3 +5,53 @@ pubDate: 2026-09-22
 tags: []
 draft: false
 ---
+
+import MedalRace from "./_components/MedalRace.svelte";
+import leadWinners from "./_data/lead-women-winners.json";
+import boulderingWinners from "./_data/bouldering-women-winners.json";
+import speedWinners from "./_data/speed-women-winners.json";
+import menLeadWinners from "./_data/lead-men-winners.json";
+import menBoulderingWinners from "./_data/bouldering-men-winners.json";
+import menSpeedWinners from "./_data/speed-men-winners.json";
+
+<MedalRace
+  heading="Women's Lead"
+  discipline="lead"
+  winners={leadWinners}
+  client:visible
+/>
+
+<MedalRace
+  heading="Women's Bouldering"
+  discipline="bouldering"
+  winners={boulderingWinners}
+  client:visible
+/>
+
+<MedalRace
+  heading="Women's Speed"
+  discipline="women-speed"
+  winners={speedWinners}
+  client:visible
+/>
+
+<MedalRace
+  heading="Men's Lead"
+  discipline="men-lead"
+  winners={menLeadWinners}
+  client:visible
+/>
+
+<MedalRace
+  heading="Men's Bouldering"
+  discipline="men-bouldering"
+  winners={menBoulderingWinners}
+  client:visible
+/>
+
+<MedalRace
+  heading="Men's Speed"
+  discipline="men-speed"
+  winners={menSpeedWinners}
+  client:visible
+/>
