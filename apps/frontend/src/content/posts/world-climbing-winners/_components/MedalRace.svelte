@@ -47,6 +47,9 @@
     name: string;
     value: [number, string, number, number, number];
     medals: MedalCounts;
+    countryCode: string;
+    countryFlag: string;
+    cursor: "default" | "pointer";
     wikipediaTitle?: string;
     itemStyle: {
       color: string;
@@ -58,29 +61,67 @@
   const firstYear = Math.min(...winners.map(({ year }) => year));
   const lastYear = Math.max(...winners.map(({ year }) => year));
   const frameDuration = 1000;
-  const colors = [
-    "#4e79a7",
-    "#f28e2c",
-    "#e15759",
-    "#76b7b2",
-    "#59a14f",
-    "#edc949",
-    "#af7aa1",
-    "#ff9da7",
-    "#9c755f",
-    "#bab0ab",
-  ];
+  const countryColors: Record<string, string> = {
+    Australia: "#17becf",
+    Austria: "#af7aa1",
+    Belgium: "#59a14f",
+    Canada: "#e377c2",
+    China: "#d62728",
+    "Czech Republic": "#8c564b",
+    France: "#4e79a7",
+    Germany: "#7f7f7f",
+    Indonesia: "#ff7f0e",
+    Iran: "#2ca02c",
+    Italy: "#f28e2c",
+    Japan: "#9c755f",
+    Netherlands: "#bcbd22",
+    Poland: "#c44e52",
+    Russia: "#1f77b4",
+    Slovenia: "#edc949",
+    "South Korea": "#ff9da7",
+    Spain: "#e5ae38",
+    Switzerland: "#76b7b2",
+    Ukraine: "#2a9d8f",
+    "United Kingdom": "#bab0ab",
+    "United States": "#e15759",
+  };
+  const countryCodes: Record<string, string> = {
+    Australia: "AU",
+    Austria: "AT",
+    Belgium: "BE",
+    Canada: "CA",
+    China: "CN",
+    "Czech Republic": "CZ",
+    France: "FR",
+    Germany: "DE",
+    Indonesia: "ID",
+    Iran: "IR",
+    Italy: "IT",
+    Japan: "JP",
+    Netherlands: "NL",
+    Poland: "PL",
+    Russia: "RU",
+    Slovenia: "SI",
+    "South Korea": "KR",
+    Spain: "ES",
+    Switzerland: "CH",
+    Ukraine: "UA",
+    "United Kingdom": "GB",
+    "United States": "US",
+  };
+
+  function countryFlag(country: string) {
+    return (countryCodes[country] ?? "")
+      .split("")
+      .map((letter) => String.fromCodePoint(127397 + letter.charCodeAt(0)))
+      .join("");
+  }
 
   const athletes = winners.flatMap(({ gold, silver, bronze }) => [
     ...gold,
     ...silver,
     ...bronze,
   ]);
-  const countryColors = new Map(
-    Array.from(new Set(athletes.map(({ country }) => country))).map(
-      (country, index) => [country, colors[index % colors.length]]
-    )
-  );
   const countryByAthlete = new Map(
     athletes.map(({ name, country }) => [name, country])
   );
@@ -121,6 +162,9 @@
       const rankValue =
         medals.gold + medals.silver / 100 + medals.bronze / 10_000;
 
+      const country = countryByAthlete.get(name) ?? "";
+      const wikipediaTitle = (wikipediaPages as Record<string, string>)[name];
+
       return {
         name,
         value: [
@@ -131,10 +175,12 @@
           medals.bronze,
         ],
         medals,
-        wikipediaTitle: (wikipediaPages as Record<string, string>)[name],
+        countryCode: countryCodes[country] ?? "",
+        countryFlag: countryFlag(country),
+        cursor: wikipediaTitle ? "pointer" : "default",
+        wikipediaTitle,
         itemStyle: {
-          color:
-            countryColors.get(countryByAthlete.get(name) ?? "") ?? colors[0],
+          color: countryColors[country] ?? "#4e79a7",
           opacity: 0.85,
           borderRadius: [0, 4, 4, 0],
         },
@@ -160,6 +206,18 @@
     const maxGold = Math.max(
       1,
       ...frameData.map(({ medals }) => medals.gold)
+    );
+    const flagStyles = Object.fromEntries(
+      frameData.map(({ countryCode }) => [
+        `flag_${countryCode}`,
+        {
+          width: 18,
+          height: 12,
+          backgroundColor: {
+            image: `/flags/${countryCode.toLowerCase()}.svg`,
+          },
+        },
+      ])
     );
 
     return {
@@ -230,12 +288,19 @@
             align: "right",
             color: nameColor,
             fontFamily: "system-ui, sans-serif",
-            fontSize: 11,
+            fontSize: 9,
             fontWeight: "bold",
-            formatter: (params: {
-              name: string;
-              value: [number, string, number, number, number];
-            }) => `${params.name}  ${params.value[2]}`,
+            rich: {
+              ...flagStyles,
+              name: {
+                color: nameColor,
+                fontFamily: "system-ui, sans-serif",
+                fontSize: 9,
+                fontWeight: "bold",
+              },
+            },
+            formatter: (params: { data: BarDatum }) =>
+              `{flag_${params.data.countryCode}| } {name|${params.data.name}  ${params.data.medals.gold}}`,
           },
         },
       ],
@@ -336,13 +401,6 @@
         "_blank",
         "noopener,noreferrer"
       );
-    });
-    chart.on("mouseover", (params) => {
-      const datum = params.data as BarDatum;
-      container.style.cursor = datum?.wikipediaTitle ? "pointer" : "default";
-    });
-    chart.on("mouseout", () => {
-      container.style.cursor = "default";
     });
     renderFrame(false);
 
