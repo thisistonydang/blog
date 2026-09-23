@@ -36,8 +36,9 @@
 
   <p>
     Created with <a href="https://threejs.org/">Three.js</a>,
-    <a href="https://rapier.rs/">Rapier</a>, and
-    <a href="https://svelte.dev/">Svelte</a>.
+    <a href="https://rapier.rs/">Rapier</a>,
+    <a href="https://svelte.dev/">Svelte</a>, and
+    <a href="https://neon.com/">Neon</a>.
   </p>
 
   <small>
