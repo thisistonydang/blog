@@ -5,7 +5,9 @@ import { Physics2D } from "@lib/three/systems/Physics/Physics2D";
 // import { Gui } from "@lib/three/systems/Gui";
 // import { Statistics } from "@lib/three/systems/Statistics";
 import { World } from "@lib/three/World";
+import { get } from "svelte/store";
 
+import { completeCompetitiveAttempt } from "../_competitive/client";
 import { gameState } from "../_stores/appState";
 
 import { camera } from "./components/camera";
@@ -64,12 +66,21 @@ export class App extends World {
   }
 
   stopGame() {
+    if (get(gameState) !== "playing") return;
     this.stop(); // Stop render loop
+    this.recordResult("died");
     gameState.set("stopped");
   }
 
   endGame() {
+    if (get(gameState) !== "playing") return;
+    this.stop();
+    this.recordResult("finished");
     gameState.set("ended");
+  }
+
+  private recordResult(result: "died" | "finished") {
+    void completeCompetitiveAttempt(result);
   }
 
   restart() {

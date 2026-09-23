@@ -3,6 +3,7 @@
   import { interfaceState } from "../_stores/appState";
 
   export let title: string;
+  export let compactHeading = false;
 
   function close(e: Event) {
     e.preventDefault();
@@ -18,7 +19,12 @@
   onConfirm={close}
   onClose={close}
 >
-  <h1 class="text-center underline underline-offset-8">{title}</h1>
+  <h1
+    class="text-center underline underline-offset-8"
+    class:mb-1={compactHeading}
+  >
+    {title}
+  </h1>
 
   <div class="mb-5">
     <slot />

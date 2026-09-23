@@ -22,6 +22,7 @@ export class World {
   scene: Scene;
   renderer: WebGLRenderer;
   loop: Loop;
+  resizer: Resizer;
   pointer: Pointer | null = null;
   physics: Physics2D | Physics3D | null = null;
   postProcessor: PostProcessor | null = null;
@@ -87,7 +88,14 @@ export class World {
     }
 
     // Add handling for window resizes
-    new Resizer(this, container, minAspectRatio);
+    this.resizer = new Resizer(this, container, minAspectRatio);
+  }
+
+  dispose(): void {
+    this.stop();
+    this.resizer.dispose();
+    this.renderer.dispose();
+    this.renderer.domElement.remove();
   }
 
   addObjects(objects: (EventDispatcher | Object3D)[]): void {

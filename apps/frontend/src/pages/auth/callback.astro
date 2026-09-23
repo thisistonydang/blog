@@ -1,0 +1,25 @@
+---
+// Neon Auth uses this route to complete OAuth when the site runs in an iframe.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Completing sign in</title>
+  </head>
+  <body>
+    <p>Completing sign in…</p>
+
+    <script>
+      import { createAuthClient } from "@neondatabase/auth";
+      import { SupabaseAuthAdapter } from "@neondatabase/auth/vanilla";
+
+      const authUrl = import.meta.env.PUBLIC_NEON_AUTH_URL;
+      if (authUrl) {
+        createAuthClient(authUrl, { adapter: SupabaseAuthAdapter() });
+      }
+    </script>
+  </body>
+</html>

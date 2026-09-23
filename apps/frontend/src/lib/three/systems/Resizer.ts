@@ -5,6 +5,7 @@ export class Resizer {
   pixelRatio: number;
   minAspectRatio: number;
   defaultCameraFov: number | null = null;
+  private readonly handleResize: () => void;
   defaultCameraSize: {
     left: number;
     right: number;
@@ -41,7 +42,7 @@ export class Resizer {
     world.camera.updateProjectionMatrix();
 
     // Set size and fov again if a resize event occurs.
-    window.addEventListener("resize", () => {
+    this.handleResize = () => {
       this.setSize(world, container);
       this.setFov(world);
       world.camera.updateProjectionMatrix();
@@ -50,7 +51,12 @@ export class Resizer {
       if (world.loop.frameloop === "demand") {
         world.requestRender();
       }
-    });
+    };
+    window.addEventListener("resize", this.handleResize);
+  }
+
+  dispose(): void {
+    window.removeEventListener("resize", this.handleResize);
   }
 
   setSize(

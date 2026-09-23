@@ -24,17 +24,19 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         ![
+          "/auth/callback",
           "/list/unsubscribe/success",
           "/list/verify/expired",
           "/list/verify/success",
           "/sandbox",
           "/support/successful-one-time-donation",
           "/whoops",
-        ].includes(page.slice(21, -1)),
+        ].includes(new URL(page).pathname.replace(/\/$/, "")),
     }),
     tailwind({ config: { applyBaseStyles: false } }),
   ],
   vite: {
+    envDir: "../..",
     optimizeDeps: {
       exclude: ["postgres"],
     },

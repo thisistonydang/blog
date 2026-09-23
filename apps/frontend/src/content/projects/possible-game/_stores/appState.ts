@@ -3,12 +3,10 @@ import type { App } from "../_world/App";
 
 export const app = writable<App | undefined>(undefined);
 
-export const gameState = writable<
-  "not_started" | "playing" | "stopped" | "ended"
->("not_started");
+export const gameState = writable<"not_started" | "playing" | "stopped" | "ended">("not_started");
 
 export const interfaceState = writable<
-  "closed" | "opened" | "credits" | "how_to_play" | "stats" | "welcome"
+  "closed" | "opened" | "credits" | "how_to_play" | "leaderboard" | "welcome"
 >("closed");
 
 export const isFullscreen = writable(false);

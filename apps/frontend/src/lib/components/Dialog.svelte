@@ -10,6 +10,8 @@
   export let buttonWidth: number | undefined = undefined;
   export let confirmText: string | undefined = undefined;
   export let cancelText: string | undefined = undefined;
+  export let preventCancel = false;
+  export let confirmLoading = false;
   export let onConfirm: ((e: Event) => void) | undefined = undefined;
   export let onCancel: ((e: Event) => void) | undefined = undefined;
   export let onClose: ((e: Event) => void) | undefined = undefined;
@@ -17,6 +19,10 @@
   let dialog: HTMLDialogElement;
   let width;
   let height;
+
+  function handleCancel(event: Event): void {
+    if (preventCancel) event.preventDefault();
+  }
 
   onMount(() => (isModal ? dialog.showModal() : dialog.show()));
 </script>
@@ -39,6 +45,7 @@
   class:top-[50%]={!isModal}
   style:margin-left={!isModal ? `-${width / 2}px` : undefined}
   style:margin-top={!isModal ? `-${height / 2}px` : undefined}
+  on:cancel={handleCancel}
   on:close={onClose}
 >
   {#if isProse}
@@ -53,13 +60,13 @@
     style:width={buttonWidth ? `${buttonWidth}px` : ""}
   >
     {#if confirmText}
-      <Button onClick={onConfirm}>
+      <Button loading={confirmLoading} disabled={confirmLoading} onClick={onConfirm}>
         {confirmText}
       </Button>
     {/if}
 
     {#if cancelText}
-      <Button onClick={onCancel}>
+      <Button disabled={confirmLoading} onClick={onCancel}>
         {cancelText}
       </Button>
     {/if}

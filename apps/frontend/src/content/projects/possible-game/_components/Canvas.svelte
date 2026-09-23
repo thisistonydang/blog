@@ -4,23 +4,23 @@
 
   import { theme } from "@layouts/page/_stores/theme";
 
+  import { startCompetitiveAttempt } from "../_competitive/client";
   import {
     app,
     gameState,
     interfaceState,
     isFullscreen,
   } from "../_stores/appState";
-
   import { App } from "../_world/App";
 
   let container: HTMLDivElement;
 
-  function handleMouseDown() {
+  async function handleMouseDown() {
     if (!["closed", "opened"].includes($interfaceState)) {
       // Close the currently opened interface dialog
       $interfaceState = "opened";
     } else if ($gameState === "not_started") {
-      $app?.startGame();
+      if (await startCompetitiveAttempt()) $app?.startGame();
     } else if ($gameState === "playing") {
       $app?.jump();
     }
@@ -34,23 +34,32 @@
 
   onMount(() => {
     // Create and render game app
-    $app = new App(container);
-    $app.requestRender();
+    const gameApp = new App(container);
+    $app = gameApp;
+    gameApp.requestRender();
 
     // Add event listeners to canvas
-    const canvas = $app.renderer.domElement;
+    const canvas = gameApp.renderer.domElement;
     canvas.tabIndex = 0; // Allow canvas to be focusable
     canvas.addEventListener("mousedown", handleMouseDown);
     canvas.addEventListener("keydown", handleKeyDown);
 
-    // Handle fullscreenchange events on safari webkit
+    const handleWebkitFullscreenChange = () => {
+      if ("webkitFullscreenElement" in document) {
+        $isFullscreen = Boolean(document.webkitFullscreenElement);
+      }
+    };
     if ("webkitFullscreenElement" in document) {
-      container.addEventListener("webkitfullscreenchange", () => {
-        if ("webkitFullscreenElement" in document) {
-          $isFullscreen = Boolean(document.webkitFullscreenElement);
-        }
-      });
+      container.addEventListener("webkitfullscreenchange", handleWebkitFullscreenChange);
     }
+
+    return () => {
+      canvas.removeEventListener("mousedown", handleMouseDown);
+      canvas.removeEventListener("keydown", handleKeyDown);
+      container.removeEventListener("webkitfullscreenchange", handleWebkitFullscreenChange);
+      gameApp.dispose();
+      if ($app === gameApp) $app = undefined;
+    };
   });
 
   $: if ($theme) $app?.requestRender();

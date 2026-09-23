@@ -41,3 +41,5 @@ TODO.md
 
 # assets folder symlinked to public
 assets
+.neon
+.env.local

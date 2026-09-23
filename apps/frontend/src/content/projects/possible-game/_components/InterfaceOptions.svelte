@@ -3,14 +3,30 @@
   import IconButton from "@lib/components/IconButton.svelte";
   import InterfaceList from "@lib/components/InterfaceList.svelte";
   import { requestFullscreen } from "@lib/fullscreen/requestFullscreen";
+  import { signOut } from "../_competitive/client";
   import {
     app,
     interfaceState,
     isMuted,
     soundToggled,
   } from "../_stores/appState";
+  import { addGameToast } from "../_stores/competitiveState";
 
   let showFullscreenError = false;
+  let signingOut = false;
+
+  async function handleSignOut(): Promise<void> {
+    if (signingOut) return;
+    signingOut = true;
+
+    try {
+      await signOut();
+    } catch {
+      addGameToast("Could not sign out. Please try again.");
+    } finally {
+      signingOut = false;
+    }
+  }
 
   function dismissError(e: Event) {
     e.preventDefault();
@@ -48,6 +64,15 @@
     >
       Sound {$isMuted ? "Off" : "On"}
     </IconButton>
+
+    <IconButton
+      isPill
+      fixedWidth={90}
+      loading={signingOut}
+      onClick={() => void handleSignOut()}
+    >
+      Sign Out
+    </IconButton>
   </li>
 
   <li class="flex flex-wrap gap-2">
@@ -59,8 +84,8 @@
       How To Play
     </IconButton>
 
-    <IconButton isPill onClick={() => ($interfaceState = "stats")}>
-      Stats
+    <IconButton isPill onClick={() => ($interfaceState = "leaderboard")}>
+      Leaderboard
     </IconButton>
   </li>
 </InterfaceList>

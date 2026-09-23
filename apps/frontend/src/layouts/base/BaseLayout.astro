@@ -3,12 +3,10 @@ import type { CollectionEntry } from "astro:content";
 
 import "./_styles/main.css";
 import Head from "./_components/Head.astro";
+import OAuthReturnScript from "./_components/OAuthReturnScript.astro";
 
 export interface Props {
-  entry:
-    | CollectionEntry<"pages">
-    | CollectionEntry<"posts">
-    | CollectionEntry<"projects">;
+  entry: CollectionEntry<"pages"> | CollectionEntry<"posts"> | CollectionEntry<"projects">;
   rm_classes?: boolean;
 }
 
@@ -21,11 +19,12 @@ const { entry, rm_classes = false } = Astro.props;
   class:list={[
     "bg-bg",
     {
-      "overflow-y-scroll scroll-smooth p-4 sm:pl-8 caret-accent": !rm_classes,
+      "caret-accent overflow-y-scroll scroll-smooth p-4 sm:pl-8": !rm_classes,
     },
   ]}
 >
   <Head {entry} />
+  <OAuthReturnScript />
   <body>
     <slot />
   </body>

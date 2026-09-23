@@ -17,8 +17,10 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.7.3",
+    "@neon/config": "^1.7.2",
     "@playwright/test": "^1.37.1",
     "@supabase/supabase-js": "^2.33.2",
+    "@types/node": "^24.13.5",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
     "@vitest/coverage-v8": "^0.34.4",

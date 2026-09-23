@@ -7,7 +7,7 @@
   import HowToPlay from "./HowToPlay.svelte";
   import InterfaceOptions from "./InterfaceOptions.svelte";
   import InterfaceTitle from "./InterfaceTitle.svelte";
-  import Stats from "./Stats.svelte";
+  import Leaderboard from "./Leaderboard.svelte";
   import Welcome from "./Welcome.svelte";
 
   onMount(() => {
@@ -28,8 +28,8 @@
     <Credits />
   {:else if $interfaceState === "how_to_play"}
     <HowToPlay />
-  {:else if $interfaceState === "stats"}
-    <Stats />
+  {:else if $interfaceState === "leaderboard"}
+    <Leaderboard />
   {:else if $interfaceState === "welcome"}
     <Welcome />
   {/if}

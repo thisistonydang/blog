@@ -1,0 +1,38 @@
+<script is:inline>
+  (() => {
+    const key = "possible_game_oauth_return";
+
+    try {
+      const savedUrl = sessionStorage.getItem(key);
+      if (!savedUrl) return;
+
+      const target = new URL(savedUrl, window.location.origin);
+      const isPossibleGame =
+        target.origin === window.location.origin &&
+        target.pathname === "/possible-game/";
+
+      if (!isPossibleGame) {
+        sessionStorage.removeItem(key);
+        return;
+      }
+
+      if (
+        window.location.pathname === target.pathname &&
+        window.location.search === target.search
+      ) {
+        return;
+      }
+
+      const currentUrl = new URL(window.location.href);
+      for (const parameter of ["neon_auth_session_verifier", "error", "error_description"]) {
+        const value = currentUrl.searchParams.get(parameter);
+        if (value) target.searchParams.set(parameter, value);
+      }
+
+      sessionStorage.removeItem(key);
+      window.location.replace(target.toString());
+    } catch {
+      sessionStorage.removeItem(key);
+    }
+  })();
+</script>
