@@ -197,7 +197,9 @@
           borderRadius: [0, 4, 4, 0],
         },
       };
-    }).filter(({ medals }) => medals.gold > 0);
+    })
+      .filter(({ medals }) => medals.gold > 0)
+      .sort((a, b) => b.value[0] - a.value[0]);
   }
 
   function cssColor(variable: string) {
@@ -239,7 +241,7 @@
       animationEasingUpdate: "linear",
       aria: {
         enabled: true,
-        description: `Cumulative ${heading.toLowerCase()} World Climbing Series podium finishes through ${year}. Athletes are ranked by wins, then second-place finishes, then third-place finishes.`,
+        description: `Cumulative ${heading.toLowerCase()} World Climbing Series podium finishes through ${year}. Athletes are ranked by wins, then second-place finishes, then third-place finishes, then who reached the tied total first.`,
       },
       grid: { top: 24, right: 8, bottom: 8, left: 0 },
       tooltip: {
@@ -447,7 +449,7 @@
       class="chart"
       bind:this={container}
       role="img"
-      aria-label={`Animated bar chart showing cumulative ${heading.toLowerCase()} World Climbing Series podium finishes by year, ranked by wins, then second-place finishes, then third-place finishes.`}
+      aria-label={`Animated bar chart showing cumulative ${heading.toLowerCase()} World Climbing Series podium finishes by year, ranked by wins, then second-place finishes, then third-place finishes, then who reached the tied total first.`}
     ></div>
 
     <div class="controls" aria-label="Chart animation controls">
@@ -499,7 +501,8 @@
     <figcaption>
       Cumulative World Climbing Series podium finishes from {firstYear} to
       {lastYear}. Ties are broken by second-place finishes, then third-place
-      finishes. No series was held in 2020.
+      finishes, then by who reached the tied total first. No series was held in
+      2020.
     </figcaption>
   </figure>
 </section>
