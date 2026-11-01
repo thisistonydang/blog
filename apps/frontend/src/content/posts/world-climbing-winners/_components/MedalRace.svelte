@@ -140,27 +140,39 @@
 
   function dataForFrame(index: number): BarDatum[] {
     const totals = new Map<string, MedalCounts>();
+    const reachedAt = new Map<string, number>();
 
-    function addMedal(name: string, medal: keyof MedalCounts) {
+    function addMedal(
+      name: string,
+      medal: keyof MedalCounts,
+      year: number
+    ) {
       const medals = totals.get(name) ?? { gold: 0, silver: 0, bronze: 0 };
       medals[medal] += 1;
       totals.set(name, medals);
+      reachedAt.set(name, year);
     }
 
     for (let yearIndex = 0; yearIndex <= index; yearIndex += 1) {
       const podium = podiumsByYear.get(years[yearIndex]);
       if (!podium) continue;
 
-      podium.gold.forEach(({ name }) => addMedal(name, "gold"));
-      podium.silver.forEach(({ name }) => addMedal(name, "silver"));
-      podium.bronze.forEach(({ name }) => addMedal(name, "bronze"));
+      podium.gold.forEach(({ name }) => addMedal(name, "gold", podium.year));
+      podium.silver.forEach(({ name }) => addMedal(name, "silver", podium.year));
+      podium.bronze.forEach(({ name }) => addMedal(name, "bronze", podium.year));
     }
 
     return Array.from(totals, ([name, medals]) => {
-      // Small decimal values make ECharts use silver and bronze as tiebreakers
-      // without visibly changing the gold-medal bar length.
+      // Small decimal values make ECharts break ties by silver, bronze, and
+      // then who reached the exact medal total first. They do not visibly
+      // change the gold-medal bar length.
+      const firstToTie =
+        (lastYear - (reachedAt.get(name) ?? lastYear)) / 1_000_000_000;
       const rankValue =
-        medals.gold + medals.silver / 100 + medals.bronze / 10_000;
+        medals.gold +
+        medals.silver / 100 +
+        medals.bronze / 10_000 +
+        firstToTie;
 
       const country = countryByAthlete.get(name) ?? "";
       const wikipediaTitle = (wikipediaPages as Record<string, string>)[name];
@@ -203,9 +215,9 @@
     const tooltipBorderColor = cssColor("--surface");
     const year = years[index];
     const frameData = dataForFrame(index);
-    const maxGold = Math.max(
+    const maxRank = Math.max(
       1,
-      ...frameData.map(({ medals }) => medals.gold)
+      ...frameData.map(({ value }) => value[0])
     );
     const flagStyles = Object.fromEntries(
       frameData.map(({ countryCode }) => [
@@ -252,7 +264,7 @@
       xAxis: {
         type: "value",
         position: "top",
-        max: maxGold,
+        max: maxRank,
         minInterval: 1,
         axisLabel: {
           color: textColor,
