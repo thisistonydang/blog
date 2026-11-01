@@ -264,6 +264,7 @@
       xAxis: {
         type: "value",
         position: "top",
+        min: 0,
         max: maxRank,
         minInterval: 1,
         axisLabel: {
@@ -280,6 +281,7 @@
       },
       yAxis: {
         type: "category",
+        data: frameData.map(({ name }) => name),
         inverse: true,
         max: 9,
         axisLabel: { show: false },
@@ -335,6 +337,7 @@
   }
 
   function renderFrame(animate = true) {
+    if (!animate) chart.clear();
     chart.setOption(optionForFrame(frameIndex, animate), {
       replaceMerge: ["graphic"],
     });
