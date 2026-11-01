@@ -24,5 +24,6 @@
   { "year": 2022, "gold": [{ "name": "Yoshiyuki Ogata", "country": "Japan" }], "silver": [{ "name": "Tomoa Narasaki", "country": "Japan" }], "bronze": [{ "name": "Kokoro Fujii", "country": "Japan" }] },
   { "year": 2023, "gold": [{ "name": "Sorato Anraku", "country": "Japan" }], "silver": [{ "name": "Lee Do-hyun", "country": "South Korea" }], "bronze": [{ "name": "Tomoa Narasaki", "country": "Japan" }] },
   { "year": 2024, "gold": [{ "name": "Sorato Anraku", "country": "Japan" }], "silver": [{ "name": "Meichi Narasaki", "country": "Japan" }], "bronze": [{ "name": "Tomoa Narasaki", "country": "Japan" }] },
-  { "year": 2025, "gold": [{ "name": "Sorato Anraku", "country": "Japan" }], "silver": [{ "name": "Mejdi Schalck", "country": "France" }], "bronze": [{ "name": "Sohta Amagasa", "country": "Japan" }] }
+  { "year": 2025, "gold": [{ "name": "Sorato Anraku", "country": "Japan" }], "silver": [{ "name": "Mejdi Schalck", "country": "France" }], "bronze": [{ "name": "Sohta Amagasa", "country": "Japan" }] },
+  { "year": 2026, "gold": [{ "name": "Sorato Anraku", "country": "Japan" }], "silver": [{ "name": "Lee Do-hyun", "country": "South Korea" }], "bronze": [{ "name": "Mejdi Schalck", "country": "France" }] }
 ]

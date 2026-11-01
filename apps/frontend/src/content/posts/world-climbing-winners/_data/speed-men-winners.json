@@ -25,5 +25,6 @@
   { "year": 2022, "gold": [{ "name": "Veddriq Leonardo", "country": "Indonesia" }], "silver": [{ "name": "Kiromal Katibin", "country": "Indonesia" }], "bronze": [{ "name": "Long Jinbao", "country": "China" }] },
   { "year": 2023, "gold": [{ "name": "Veddriq Leonardo", "country": "Indonesia" }], "silver": [{ "name": "Wu Peng", "country": "China" }], "bronze": [{ "name": "Samuel Watson", "country": "United States" }] },
   { "year": 2024, "gold": [{ "name": "Samuel Watson", "country": "United States" }], "silver": [{ "name": "Matteo Zurloni", "country": "Italy" }], "bronze": [{ "name": "Xinshang Wang", "country": "China" }] },
-  { "year": 2025, "gold": [{ "name": "Kiromal Katibin", "country": "Indonesia" }], "silver": [{ "name": "Samuel Watson", "country": "United States" }], "bronze": [{ "name": "Ryo Omasa", "country": "Japan" }] }
+  { "year": 2025, "gold": [{ "name": "Kiromal Katibin", "country": "Indonesia" }], "silver": [{ "name": "Samuel Watson", "country": "United States" }], "bronze": [{ "name": "Ryo Omasa", "country": "Japan" }] },
+  { "year": 2026, "gold": [{ "name": "Zhao Yicheng", "country": "China" }], "silver": [{ "name": "Ryo Omasa", "country": "Japan" }], "bronze": [{ "name": "Raharjati Nursamsa", "country": "Indonesia" }] }
 ]

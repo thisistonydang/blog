@@ -34,5 +34,6 @@
   { "year": 2022, "gold": [{ "name": "Janja Garnbret", "country": "Slovenia" }], "silver": [{ "name": "Seo Chae-hyun", "country": "South Korea" }], "bronze": [{ "name": "Natalia Grossman", "country": "United States" }] },
   { "year": 2023, "gold": [{ "name": "Jessica Pilz", "country": "Austria" }], "silver": [{ "name": "Janja Garnbret", "country": "Slovenia" }], "bronze": [{ "name": "Vita Lukan", "country": "Slovenia" }] },
   { "year": 2024, "gold": [{ "name": "Jessica Pilz", "country": "Austria" }], "silver": [{ "name": "Janja Garnbret", "country": "Slovenia" }], "bronze": [{ "name": "Ai Mori", "country": "Japan" }] },
-  { "year": 2025, "gold": [{ "name": "Erin McNeice", "country": "United Kingdom" }], "silver": [{ "name": "Seo Chae-hyun", "country": "South Korea" }], "bronze": [{ "name": "Laura Rogora", "country": "Italy" }] }
+  { "year": 2025, "gold": [{ "name": "Erin McNeice", "country": "United Kingdom" }], "silver": [{ "name": "Seo Chae-hyun", "country": "South Korea" }], "bronze": [{ "name": "Laura Rogora", "country": "Italy" }] },
+  { "year": 2026, "gold": [{ "name": "Annie Sanders", "country": "United States" }], "silver": [{ "name": "Janja Garnbret", "country": "Slovenia" }], "bronze": [{ "name": "Seo Chae-hyun", "country": "South Korea" }] }
 ]

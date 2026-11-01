@@ -34,5 +34,6 @@
   { "year": 2022, "gold": [{ "name": "Luka Potočar", "country": "Slovenia" }], "silver": [{ "name": "Taisei Homma", "country": "Japan" }], "bronze": [{ "name": "Jesse Grupper", "country": "United States" }] },
   { "year": 2023, "gold": [{ "name": "Sorato Anraku", "country": "Japan" }], "silver": [{ "name": "Alexander Megos", "country": "Germany" }], "bronze": [{ "name": "Taisei Homma", "country": "Japan" }] },
   { "year": 2024, "gold": [{ "name": "Toby Roberts", "country": "United Kingdom" }], "silver": [{ "name": "Shion Omata", "country": "Japan" }], "bronze": [{ "name": "Sorato Anraku", "country": "Japan" }] },
-  { "year": 2025, "gold": [{ "name": "Alberto Ginés López", "country": "Spain" }], "silver": [{ "name": "Sorato Anraku", "country": "Japan" }], "bronze": [{ "name": "Satone Yoshida", "country": "Japan" }] }
+  { "year": 2025, "gold": [{ "name": "Alberto Ginés López", "country": "Spain" }], "silver": [{ "name": "Sorato Anraku", "country": "Japan" }], "bronze": [{ "name": "Satone Yoshida", "country": "Japan" }] },
+  { "year": 2026, "gold": [{ "name": "Neo Suzuki", "country": "Japan" }], "silver": [{ "name": "Putra Tri Ramadani", "country": "Indonesia" }], "bronze": [{ "name": "Alberto Ginés López", "country": "Spain" }] }
 ]
