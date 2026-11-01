@@ -63,8 +63,8 @@
   };
 
   const labelFont = "bold 9px system-ui, sans-serif";
-  // Flag width, the space after it, and ECharts label padding.
-  const labelExtraWidth = 18 + 4 + 10;
+  // Flag width, ECharts' default 5px label distance, and a small safety margin.
+  const labelExtraWidth = 18 + 5 + 2;
   let measureContext: CanvasRenderingContext2D | null | undefined;
 
   function labelWidth(datum: BarDatum) {
@@ -72,7 +72,8 @@
     if (!measureContext) return 0;
     measureContext.font = labelFont;
     return (
-      measureContext.measureText(`${datum.name}  ${datum.medals.gold}`).width +
+      // The leading space matches the space between the flag and the name.
+      measureContext.measureText(` ${datum.name}  ${datum.medals.gold}`).width +
       labelExtraWidth
     );
   }
