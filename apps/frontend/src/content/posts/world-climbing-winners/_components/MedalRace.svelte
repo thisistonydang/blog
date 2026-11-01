@@ -56,7 +56,26 @@
       opacity: number;
       borderRadius: [number, number, number, number];
     };
+    label?: {
+      position: "insideRight" | "right" | "insideLeft";
+      align: "right" | "left";
+    };
   };
+
+  const labelFont = "bold 9px system-ui, sans-serif";
+  // Flag width, the space after it, and ECharts label padding.
+  const labelExtraWidth = 18 + 4 + 10;
+  let measureContext: CanvasRenderingContext2D | null | undefined;
+
+  function labelWidth(datum: BarDatum) {
+    measureContext ??= document.createElement("canvas").getContext("2d");
+    if (!measureContext) return 0;
+    measureContext.font = labelFont;
+    return (
+      measureContext.measureText(`${datum.name}  ${datum.medals.gold}`).width +
+      labelExtraWidth
+    );
+  }
 
   const firstYear = Math.min(...winners.map(({ year }) => year));
   const lastYear = Math.max(...winners.map(({ year }) => year));
@@ -221,6 +240,19 @@
       1,
       ...frameData.map(({ value }) => value[0])
     );
+    // Short bars cannot fit their label inside, especially on small screens.
+    // Put those labels just to the right of the bar instead of clipping them.
+    const plotWidth = chart.getWidth() - 8;
+    for (const datum of frameData) {
+      const barWidth = (datum.value[0] / maxRank) * plotWidth;
+      const width = labelWidth(datum);
+      datum.label =
+        width <= barWidth
+          ? { position: "insideRight", align: "right" }
+          : width <= plotWidth - barWidth
+            ? { position: "right", align: "left" }
+            : { position: "insideLeft", align: "left" };
+    }
     const flagStyles = Object.fromEntries(
       frameData.map(({ countryCode }) => [
         `flag_${countryCode}`,
@@ -421,7 +453,10 @@
     });
     renderFrame(false);
 
-    const resizeObserver = new ResizeObserver(() => chart.resize());
+    const resizeObserver = new ResizeObserver(() => {
+      chart.resize();
+      if (!isRunning) renderFrame(false);
+    });
     resizeObserver.observe(container);
 
     const themeObserver = new MutationObserver(() => renderFrame(false));
