@@ -274,7 +274,7 @@
       animationEasingUpdate: "linear",
       aria: {
         enabled: true,
-        description: `Cumulative ${heading.toLowerCase()} World Climbing Series podium finishes through ${year}. Athletes are ranked by wins, then second-place finishes, then third-place finishes, then who reached the tied total first.`,
+        description: `Overall ${heading.toLowerCase()} World Climbing Series titles through ${year}. Athletes are ranked by overall titles, then 2nd-place overall finishes, then 3rd-place overall finishes, then who reached the tied total first.`,
       },
       grid: { top: 24, right: 8, bottom: 8, left: 0 },
       tooltip: {
@@ -286,9 +286,9 @@
           const { name, medals } = params.data;
           const lines = [
             `<strong>${name}</strong>`,
-            `🥇 Winner: ${medals.gold}`,
-            `🥈 Second: ${medals.silver}`,
-            `🥉 Third: ${medals.bronze}`,
+            `🥇 Overall titles: ${medals.gold}`,
+            `🥈 2nd overall: ${medals.silver}`,
+            `🥉 3rd overall: ${medals.bronze}`,
           ];
           if (params.data.wikipediaTitle) {
             lines.push("<small>Click to view on Wikipedia ↗</small>");
@@ -489,7 +489,7 @@
       class="chart"
       bind:this={container}
       role="img"
-      aria-label={`Animated bar chart showing cumulative ${heading.toLowerCase()} World Climbing Series podium finishes by year, ranked by wins, then second-place finishes, then third-place finishes, then who reached the tied total first.`}
+      aria-label={`Animated bar chart showing overall ${heading.toLowerCase()} World Climbing Series titles by year, ranked by overall titles, then 2nd-place overall finishes, then 3rd-place overall finishes, then who reached the tied total first.`}
     ></div>
 
     <div class="controls" aria-label="Chart animation controls">
@@ -539,8 +539,8 @@
     </div>
 
     <figcaption>
-      Cumulative World Climbing Series podium finishes from {firstYear} to
-      {lastYear}. Ties are broken by second-place finishes, then third-place
+      Overall World Climbing Series titles from {firstYear} to {lastYear}.
+      Ties are broken by 2nd-place overall finishes, then 3rd-place overall
       finishes, then by who reached the tied total first. No series was held in
       2020.
     </figcaption>
