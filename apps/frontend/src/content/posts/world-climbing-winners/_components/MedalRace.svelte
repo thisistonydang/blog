@@ -185,13 +185,13 @@
     return Array.from(totals, ([name, medals]) => {
       // Small decimal values make ECharts break ties by silver, bronze, and
       // then who reached the exact medal total first. They do not visibly
-      // change the gold-medal bar length.
+      // change the gold-medal bar length, even on wide screens.
       const firstToTie =
-        (lastYear - (reachedAt.get(name) ?? lastYear)) / 1_000_000_000;
+        (lastYear - (reachedAt.get(name) ?? lastYear)) / 1_000_000_000_000;
       const rankValue =
         medals.gold +
-        medals.silver / 100 +
-        medals.bronze / 10_000 +
+        medals.silver / 100_000 +
+        medals.bronze / 10_000_000 +
         firstToTie;
 
       const country = countryByAthlete.get(name) ?? "";
@@ -306,11 +306,15 @@
           color: textColor,
           formatter: (value: number) =>
             value === 0 ? "" : String(Math.floor(value)),
+          // The tie-break decimals put the axis end just past a whole number.
+          // Hide that end label so it does not repeat the whole number.
+          showMaxLabel: Number.isInteger(maxRank),
         },
         axisLine: { show: false },
         axisTick: { show: false },
         splitLine: {
           show: true,
+          showMaxLine: Number.isInteger(maxRank),
           lineStyle: { color: textColor, opacity: 0.2 },
         },
       },
